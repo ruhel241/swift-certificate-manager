@@ -1,0 +1,490 @@
+// Styles for request certificate page
+.wscm-request-certificate-wrapper {
+    max-width: 1000px;
+    margin: 60px auto !important;
+    padding: 20px;
+    // background: #f5f7fb;
+    .wscm-container {
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #1f2937;
+        }
+
+        label {
+            font-weight: 600;
+            color: #374151;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"] {
+            width: 100%;
+            padding: 12px 14px;
+            margin-top: 6px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: 0.3s ease;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #4a90e2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background: #4a90e2;
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: #357ab7;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input:disabled {
+            background-color: #f3f4f6;
+            color: #9ca3af;
+            border-color: #e5e7eb;
+            cursor: not-allowed;
+        }
+    }
+
+    .wscm_payment_checkbox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: #f9fafb;
+        padding: 12px;
+        border-radius: 10px;
+        border: 1px solid #e5e7eb;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .wscm_payment_checkbox:hover {
+        border-color: #4a90e2;
+        background: #f0f7ff;
+    }
+
+    #wscm_payment_checkbox {
+        accent-color: #4a90e2;
+        transform: scale(1.2);
+    }
+
+    .wscm_payment_method {
+        margin-top: 10px;
+        padding: 15px;
+        border-radius: 10px;
+        background: #f9fafb;
+        border: 1px solid #e5e7eb;
+    }
+
+    .wscm_payment_method input[type="radio"] {
+        accent-color: #4a90e2;
+        margin-right: 6px;
+    }
+
+    .wscm_payment_method label {
+        margin-right: 15px;
+        font-weight: 500;
+    }
+
+    .wscm-form-submit-message {
+        display: none;
+        border-radius: 10px;
+        margin: 25px 0;
+        font-weight: 600;
+        text-align: center;
+        p {
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success-message {
+            background: #eaffea;
+            color: #1a7f37;
+            border: 1px solid #b6f0c2;
+        }
+        .error-message {
+            background: #ffeaea;
+            color: #b42318;
+            border: 1px solid #f5c2c7;
+        }
+    }
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 600px) {
+    .wscm-request-certificate-wrapper {
+        .wscm-container {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 22px;
+        }
+    }
+}
+
+// Styles for verify certificate page
+.wscm-verify-form-wrapper {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // background: #f5f7fb;
+    padding: 20px;
+    .wscm-card {
+        width: 100%;
+        max-width: 700px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 40px;
+        // box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .wscm-title {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 20px;
+        color: #1f2937;
+    }
+    .wscm-verify-certificate-message {
+        // padding: 12px 15px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: 600;
+        margin-bottom: 20px;
+        p {
+            margin: 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .success-message {
+            background: #eaffea;
+            color: #1a7f37;
+        }
+        .error-message {
+            background: #ffe5e5;
+            color: #b91c1c;
+        }
+    }
+    .wscm-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 25px;
+    }
+    .wscm-form input {
+        padding: 12px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        outline: none;
+        transition: 0.3s;
+    }
+    .wscm-form input:focus {
+        border-color: #4a90e2;
+    }
+    .wscm-form button {
+        padding: 12px;
+        background: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+    .wscm-form button:hover {
+        background: #357ab7;
+    }
+    .wscm-loader {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    .wscm-loader img {
+        width: 60px;
+    }
+
+    .wscm-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .wscm-grid .item {
+        background: #f9fafb;
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .wscm-grid .full {
+        grid-column: span 2;
+    }
+
+    .label {
+        font-size: 12px;
+        color: #6b7280;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .value {
+        font-size: 16px;
+        font-weight: 600;
+        color: #111827;
+    }
+
+    @media (max-width: 600px) {
+        .wscm-card {
+            padding: 20px;
+        }
+
+        .wscm-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .wscm-grid .full {
+            grid-column: span 1;
+        }
+    }
+}
+   
+// Styles for payment invoice page
+.wscm-invoice-wrrapper {
+    max-width: 800px;
+    /*width: 70%;*/
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+    background-color: #fff;
+    .invoice-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #5469d4;
+    }
+
+    .logo {
+        font-size: 28px;
+        font-weight: 700;
+        color: #5469d4;
+    }
+
+    .invoice-title {
+        text-align: right;
+    }
+
+    .invoice-title h1 {
+        color: #5469d4;
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .invoice-number {
+        color: #888;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .invoice-details {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+    }
+
+    .invoice-details-col {
+        flex: 1;
+    }
+
+    .invoice-details-col:last-child {
+        text-align: right;
+    }
+
+    .client-details h3, .company-details h3 {
+        font-size: 16px;
+        color: #5469d4;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .info-block {
+        margin-bottom: 20px;
+    }
+
+    .info-block p {
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .invoice-items {
+        margin-bottom: 30px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th {
+        background-color: #f8fafc;
+        padding: 12px 15px;
+        text-align: left;
+        font-size: 14px;
+        font-weight: 600;
+        color: #5469d4;
+        border-bottom: 2px solid #eaeaea;
+    }
+
+    td {
+        padding: 12px 15px;
+        font-size: 14px;
+        border-bottom: 1px solid #eaeaea;
+    }
+
+    .item-price, .item-total {
+        text-align: right;
+    }
+
+    .invoice-totals {
+        width: 300px;
+        margin-left: auto;
+    }
+
+    .totals-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        font-size: 14px;
+    }
+
+    .totals-row.final {
+        font-weight: 700;
+        font-size: 16px;
+        color: #5469d4;
+        border-top: 2px solid #eaeaea;
+        margin-top: 10px;
+        padding-top: 15px;
+    }
+
+    .payment-info {
+        background-color: #f8fafc;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+    }
+
+    .payment-info h3 {
+        color: #5469d4;
+        margin-bottom: 15px;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .payment-method {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .status-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 50px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .status-paid {
+        background-color: #e3fcef;
+        color: #0c9d58;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 40px;
+        color: #888;
+        font-size: 13px;
+    }
+    .footer p {
+        margin-bottom: 5px;
+    }
+    .invoice-logo img {
+        max-height: 40px;
+    }
+}
+
+.wscm-error-message {
+    color: red;
+    font-weight: 500;
+}
+
+// use for invoice
+@page {
+    size: A4;
+    margin: 0;
+}
+@media print {
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+        background: #fff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    header,
+    footer {
+        display: none !important;
+    }
+
+    .wscm-invoice-wrrapper {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 !important;
+        padding: 18mm 16mm !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #fff !important;
+        page-break-after: avoid;
+        .payment-info {
+            background-color: #f5f7fb !important;
+        }
+
+        .status-paid {
+            background-color: #e3fcef !important;
+            color: #0c9d58 !important;
+        }
+
+        .footer {
+            margin-top: 60px !important;
+        }
+    }
+}

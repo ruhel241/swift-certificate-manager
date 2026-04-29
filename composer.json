@@ -1,0 +1,23 @@
+{
+  "name": "swiftcertificatemanager/swift-certificate-manager",
+  "description": "Swift Certificate Manager",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "swiftcertificatemanager",
+      "email": "info@swiftcertificate.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "SwiftCertificateManager\\": "app/"
+    },
+    "exclude-from-classmap": [
+      "app/Libs/wp-fluent/"
+    ]
+  },
+  "require": {
+    "setasign/fpdf": "*"
+  }
+}

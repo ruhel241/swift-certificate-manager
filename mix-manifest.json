@@ -1,0 +1,16 @@
+{
+    "/assets/admin/js/boot.js": "/assets/admin/js/boot.js",
+    "/assets/admin/js/start.js": "/assets/admin/js/start.js",
+    "/assets/public/js/wscm_request_form.js": "/assets/public/js/wscm_request_form.js",
+    "/assets/public/js/PaymentMethods/stripe-checkout.js": "/assets/public/js/PaymentMethods/stripe-checkout.js",
+    "/assets/public/js/PaymentMethods/paypal-checkout.js": "/assets/public/js/PaymentMethods/paypal-checkout.js",
+    "/assets/admin/css/admin.css": "/assets/admin/css/admin.css",
+    "/assets/admin/images/PayPal.svg": "/assets/admin/images/PayPal.svg",
+    "/assets/admin/images/frame.png": "/assets/admin/images/frame.png",
+    "/assets/admin/images/logo.png": "/assets/admin/images/logo.png",
+    "/assets/admin/images/setup-img.png": "/assets/admin/images/setup-img.png",
+    "/assets/admin/images/stripe.svg": "/assets/admin/images/stripe.svg",
+    "/assets/public/images/loading.gif": "/assets/public/images/loading.gif",
+    "/assets/admin/css/fonts/element-icons.ttf": "/assets/admin/css/fonts/element-icons.ttf",
+    "/assets/admin/css/fonts/element-icons.woff": "/assets/admin/css/fonts/element-icons.woff"
+}

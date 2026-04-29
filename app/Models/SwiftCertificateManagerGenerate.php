@@ -1,0 +1,125 @@
+<?php
+
+namespace SwiftCertificateManager\Models;
+
+use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
+
+
+class SwiftCertificateManagerGenerate {
+
+    protected $table = 'wscm_generates';
+   
+    public function getDatas($request)
+    {
+        // assume already sanitized, but still safe fallback
+        $search      = $request['search'] ?? '';
+        $status      = $request['status'] ?? '';
+        $currentPage = $request['current_page'] ?? 1;
+        $perPage     = $request['per_page'] ?? 10;
+
+        $offset = ($currentPage - 1) * $perPage;
+
+        $query = SwiftCertificateManagerQuery()->table($this->table)
+            ->orderBy('id', 'DESC');
+
+        if ($status) {
+            $query->where('status', $status);
+        }
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('id', 'LIKE', "%{$search}%")
+                ->orWhere('course_name', 'LIKE', "%{$search}%")
+                ->orWhere('student_name', 'LIKE', "%{$search}%")
+                ->orWhere('graduation_date', 'LIKE', "%{$search}%")
+                ->orWhere('certificate_code', 'LIKE', "%{$search}%")
+                ->orWhere('status', 'LIKE', "%{$search}%")
+                ->orWhere('payment_status', 'LIKE', "%{$search}%");
+            });
+        }
+
+        // total আগে count
+        $total = (clone $query)->count();
+
+        // pagination
+        $infos = $query->offset($offset)->limit($perPage)->get();
+
+        foreach ($infos as $info) {
+            $info->human_created_at = human_time_diff(strtotime($info->created_at), time()) . ' ago';
+        }
+
+        return [
+            'infos'        => $infos,
+            'total'        => $total,
+            'last_page'    => (int) ceil($total / $perPage),
+            'current_page' => $currentPage,
+        ];
+    }
+    
+    public function getInfo($id)
+    {
+        return SwiftCertificateManagerQuery()
+            ->table($this->table)
+            ->where('id', $id)
+            ->first();
+    }
+
+    public function find($id)
+    {
+        $info = SwiftCertificateManagerQuery()->table($this->table)->where('id', $id)->first();
+
+        return $info;
+    }
+
+    public function insertGetId($data) {
+        $save = SwiftCertificateManagerQuery()->table($this->table)->insert($data);
+
+        return $save;
+    }
+
+
+    public function updateInfo($id, $data) {
+       
+        $update = SwiftCertificateManagerQuery()->table($this->table)
+                ->where('id', $id)
+                ->update($data);
+
+        return $update; 
+    }
+
+
+    public function updateStatus($infoIds, $actionType) {
+    
+        $data = [
+            'status'     => $actionType,
+            'updated_at' => gmdate('Y-m-d H:i:s')
+        ];
+
+        SwiftCertificateManagerQuery()->table($this->table)->whereIn('id', $infoIds)->update($data);
+    }
+
+    public function verifyCertificateCode($certificateCode) {
+       
+        $info = SwiftCertificateManagerQuery()->table($this->table)
+                ->where('certificate_code', $certificateCode)
+                ->where('status', 'assign')
+                ->first();
+
+        return $info; 
+    }
+
+    public function deleteInfo($infoIds) {
+        $infos = SwiftCertificateManagerQuery()->table($this->table)->whereIn('id', $infoIds)->get();
+
+        foreach ($infos as $info) {
+            SwiftCertificateManagerQuery()->table($this->table)->where('id', $info->id)->delete();
+
+            // Removed certificate
+            if (!empty($info->image_url) || !empty($info->pdf_url)) {
+                $filenames = array_filter([$info->image_url, $info->pdf_url]);
+                AvailableOptions::removedFile($filenames); 
+            }
+        }
+    }
+
+}

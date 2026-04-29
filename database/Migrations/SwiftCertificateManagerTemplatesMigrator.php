@@ -1,0 +1,36 @@
+<?php
+
+namespace SwiftCertificateManager\database\Migrations;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class SwiftCertificateManagerTemplatesMigrator {
+
+	public static $tableName = 'wscm_templates';
+
+	public static function migrate() {
+		global $wpdb;
+
+		$charset_collate = $wpdb->get_charset_collate();
+		$table           = $wpdb->prefix . static::$tableName;
+
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+		dbDelta(
+			"CREATE TABLE {$table} (
+				id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+				template_name VARCHAR(255) NULL,
+				slug VARCHAR(255) NULL,
+				template_image VARCHAR(255) NULL,
+				title VARCHAR(255) NULL,
+				pro INT(1) NULL,
+				settings LONGTEXT NULL,
+				created_at TIMESTAMP NULL,
+				updated_at TIMESTAMP NULL,
+				PRIMARY KEY (id)
+			) {$charset_collate};"
+		);
+	}
+}
