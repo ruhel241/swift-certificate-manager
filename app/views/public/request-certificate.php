@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     $swiftCertificateStripeEnabled = $swiftCertificatePaymentSettingsStripe['enable'] ?? 'no';
     $swiftCertificatePaypalEnabled = $swiftCertificatePaymentSettingsPaypal['enable'] ?? 'no';
 
-    $swiftCertificatePro = defined('SWIFT_CERTIFICATE_PRO');
+    $swiftCertificatePro = defined('SWIFT_CERTIFICATE_MANAGER_PRO');
 
 ?>
 

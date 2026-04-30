@@ -1,10 +1,10 @@
 <template>
-  <div class="wpsc-customizations-wrapper">
+  <div class="wscm-customizations-wrapper">
     <!-- {{ settings }} -->
     <el-row :gutter="20">
       <!-- Certificate Panel -->
       <el-col :span="17">
-        <div class="wpsc-certificate-preview" v-loading="fetching">
+        <div class="wscm-certificate-preview" v-loading="fetching">
           <!-- Certificate Container with Fixed Size -->
           <div class="certificate-outer-container">
             <div id="view-template" class="view-template" :style="viewTemplateStyle">
@@ -145,7 +145,7 @@
 
       <!-- Customization Panel -->
       <el-col :span="7">
-        <div class="wpsc-customizations-panel">
+        <div class="wscm-customizations-panel">
           <div class="title">
             <h2 class="panel-title mb-20">Certificate Information</h2>
           </div>

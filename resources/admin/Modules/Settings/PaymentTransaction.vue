@@ -1,6 +1,6 @@
 <template>
   <div class="wscm_payment_transaction">
-    <div class="wpsc-card">
+    <div class="wscm-card">
       <div class="settings-item">
         <div class="header-title">
           <h3 class="title">Payment Transaction</h3>
@@ -159,7 +159,7 @@ export default {
     getPaymentTransactionHandler() {
       this.fetching = true;
       this.$get({
-        action: 'swift_certificate_manager_transaction_admin_ajax',
+        action: 'wscm_transaction_admin_ajax',
         route: 'get_payment_transactions',
         current_page: this.paginate.current_page,
         per_page: this.paginate.per_page,
@@ -200,7 +200,7 @@ export default {
 
      performAction(type, id) {
       this.$post({
-        action: "swift_certificate_manager_transaction_admin_ajax",
+        action: "wscm_transaction_admin_ajax",
         route: "maybe_delete_transactions",
         transactions_ids: [id],
         action_type: type,

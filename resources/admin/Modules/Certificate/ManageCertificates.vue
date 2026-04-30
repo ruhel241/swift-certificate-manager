@@ -1,5 +1,5 @@
 <template>
-  <div class="wpsc-manage-certificate">
+  <div class="wscm-manage-certificate">
     <div class="title header">
       <h1>Manage Certificate</h1>
       <!-- {{ infos }} -->
@@ -468,7 +468,7 @@ export default {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: new URLSearchParams({
-            action: 'swift_certificate_manager_generate_admin_ajax',
+            action: 'wscm_generate_admin_ajax',
             route: 'get_csv_download',
             status: this.status,
             search: this.search,
@@ -561,7 +561,7 @@ export default {
     },
     performAction(type, infoId) {
       this.$post({
-        action: "swift_certificate_manager_generate_admin_ajax",
+        action: "wscm_generate_admin_ajax",
         route: "maybe_delete_infos",
         info_ids: [infoId],
         action_type: type,
@@ -583,7 +583,7 @@ export default {
     fetchInfos() {
       this.fetching = true;
       this.$get({
-        action: "swift_certificate_manager_generate_admin_ajax",
+        action: "wscm_generate_admin_ajax",
         route: "get_certificate_infos",
         status: this.status,
         search: this.search,

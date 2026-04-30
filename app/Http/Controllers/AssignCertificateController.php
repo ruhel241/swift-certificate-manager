@@ -17,7 +17,7 @@ use SwiftCertificateManager\Helpers\HelperFunction;
 class AssignCertificateController
 {
     public function register() {
-        add_action('wp_ajax_swift_certificate_manager_generate_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_wscm_generate_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
@@ -433,7 +433,7 @@ class AssignCertificateController
 
         // Get uploads directory
         $upload_dir = wp_upload_dir();
-        $certificates_dir = $upload_dir['basedir'] . '/wscm_templates_upload_dir/temp';
+        $certificates_dir = $upload_dir['basedir'] .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR .'/temp';
 
         // Create certificates directory if it doesn't exist
         if (!file_exists($certificates_dir)) {

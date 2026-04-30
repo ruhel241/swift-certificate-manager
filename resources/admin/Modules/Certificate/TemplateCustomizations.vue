@@ -1,5 +1,5 @@
 <template>
-  <div class="wpsc-customization">
+  <div class="wscm-customization">
     <div class="title header">
       <h1>Template Customize Certificate</h1>
       <div class="header-buttons">
@@ -66,7 +66,7 @@ export default {
       getTemplate() {
         this.fetching = true;
         this.$get({
-          action: "swift_certificate_manager_template_admin_ajax",
+          action: "wscm_template_admin_ajax",
           route: "get_template",
           template_id: this.templateID,
           nonce: window.SwiftCertificateManagerAdminVars.nonce,
@@ -91,7 +91,7 @@ export default {
         this.fetching = true;
         this.template.settings = this.settings;
         this.$post({
-          action: "swift_certificate_manager_template_admin_ajax",
+          action: "wscm_template_admin_ajax",
           route: "update_template",
           template: this.template,
           nonce: window.SwiftCertificateManagerAdminVars.nonce,
@@ -114,7 +114,7 @@ export default {
         this.template.settings = this.settings;
         this.redesigning = true;
         this.$post({
-          action: "swift_certificate_manager_template_admin_ajax",
+          action: "wscm_template_admin_ajax",
           route: "redesign_template",
           template_id: this.templateID,
           nonce: window.SwiftCertificateManagerAdminVars.nonce,

@@ -254,7 +254,7 @@ export default {
       const transactionId = this.$route.params.transaction_id;
 
       this.$get({
-        action: 'swift_certificate_manager_transaction_admin_ajax',
+        action: 'wscm_transaction_admin_ajax',
         route: 'get_transaction_details',
         transaction_id: transactionId,
         nonce: window.SwiftCertificateManagerAdminVars.nonce
@@ -281,7 +281,7 @@ export default {
       this.updatingStatus = true;
 
       this.$post({
-        action: 'swift_certificate_manager_transaction_admin_ajax',
+        action: 'wscm_transaction_admin_ajax',
         route: 'update_transaction_status',
         transaction_id: this.transaction.id,
         status: this.editStatus,

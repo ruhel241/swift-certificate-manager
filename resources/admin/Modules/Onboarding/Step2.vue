@@ -1,5 +1,5 @@
 <template>
-  <div class="wpsc-templates">
+  <div class="wscm-templates">
     <div class="title header">
       <h1>Templates</h1>
       <!-- {{ templates }} -->
@@ -167,7 +167,7 @@ export default {
     getActivatedTemplate() {
       this.fetching = true;
       this.$get({
-        action: 'swift_certificate_manager_template_admin_ajax',
+        action: 'wscm_template_admin_ajax',
         route: 'get_active_template',
         nonce: window.SwiftCertificateManagerAdminVars.nonce
       })
@@ -184,7 +184,7 @@ export default {
     saveActivatedTemplate(slug) {
       this.action = true;
       this.$post({
-        action: 'swift_certificate_manager_template_admin_ajax',
+        action: 'wscm_template_admin_ajax',
         route: 'save_active_template',
         slug: slug,
         nonce: window.SwiftCertificateManagerAdminVars.nonce
@@ -213,7 +213,7 @@ export default {
       });
 
       this.$post({
-        action: 'swift_certificate_manager_template_admin_ajax',
+        action: 'wscm_template_admin_ajax',
         route: 'save_templates_by_api',
         nonce: window.SwiftCertificateManagerAdminVars.nonce
       })
@@ -242,7 +242,7 @@ export default {
     getTemplatesHandler() {
       this.fetching = true;
       this.$get({
-        action: 'swift_certificate_manager_template_admin_ajax',
+        action: 'wscm_template_admin_ajax',
         route: 'get_templates',
         nonce: window.SwiftCertificateManagerAdminVars.nonce
       })

@@ -23,7 +23,7 @@ class FrontendHandler
 
         $this->registerShortcodes();  
 
-        if ( defined('SWIFT_CERTIFICATE_MANAGER_PRO') ) {
+        if ( defined('SWIFT_CERTIFICATE_MANAGER_MANAGER_PRO') ) {
             // // Load payment gateways for frontend to render payment options in certificate request form
             new \SwiftCertificateManagerPro\Services\Integrations\PayPal\PayPal();
             new \SwiftCertificateManagerPro\Services\Integrations\Stripe\Stripe();
@@ -119,7 +119,7 @@ class FrontendHandler
     }
 
     public function shortcodeRenderRequestForm() {
-        require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'app/views/public/request-certificate.php';
+        require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/views/public/request-certificate.php';
 
         $paymentSettingsStripe = get_option('swift_certificate_manager_payment_settings_stripe', []);
         $paymentSettingsPaypal = get_option('swift_certificate_manager_payment_settings_paypal', []);
@@ -136,12 +136,12 @@ class FrontendHandler
     }
 
     public function shortcodeRenderVerifyForm() {
-        require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'app/views/public/verify-certificate.php';
+        require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/views/public/verify-certificate.php';
     }
 
     public function getInvoice()
     {
-        require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'app/views/public/payment-invoice.php';
+        require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/views/public/payment-invoice.php';
     }
 
     public function requestCertificateInfo($request)
@@ -365,7 +365,7 @@ class FrontendHandler
 
         $loaded = true;
 
-        $assetsUrl = SWIFT_CERTIFICATE_PLUGIN_URL . 'assets/';
+        $assetsUrl = SWIFT_CERTIFICATE_MANAGER_PLUGIN_URL . 'assets/';
 
         $globalSettings        = get_option('swift_certificate_manager_global_settings', []);
         $paymentSettingsStripe = get_option('swift_certificate_manager_payment_settings_stripe', []);
@@ -378,7 +378,7 @@ class FrontendHandler
             'wscm_request_certificate',
             $assetsUrl . 'public/js/wscm_request_certificate.js',
             ['jquery'],
-            SWIFT_CERTIFICATE_VERSION,
+            SWIFT_CERTIFICATE_MANAGER_VERSION,
             true // footer
         );
 
@@ -395,7 +395,7 @@ class FrontendHandler
             'wscm_public_styles',
             $assetsUrl . 'public/css/swift-certificate-manager-public.css',
             [],
-            SWIFT_CERTIFICATE_VERSION
+            SWIFT_CERTIFICATE_MANAGER_VERSION
         ); 
       
         // $helperFunction = new HelperFunction();
@@ -407,7 +407,7 @@ class FrontendHandler
             'paypal_enabled' => $isPaypalEnabled,
             'globalSettings' => $globalSettings,
             'currencySymbol' => PaymentHelper::currencySymbol($globalSettings['currency'] ?? 'USD'),
-            'has_pro'        => defined('SWIFT_CERTIFICATE_PRO'),
+            'has_pro'        => defined('SWIFT_CERTIFICATE_MANAGER_PRO'),
         ]);
 
         wp_localize_script('wscm_request_certificate', 'SwiftCertificateManagerPublicVars', $scPublicVars);

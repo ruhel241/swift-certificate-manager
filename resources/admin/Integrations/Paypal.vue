@@ -154,7 +154,7 @@ export default {
       getSettings() {
           this.fetching = true;
           this.$get({
-              action: 'swift_certificate_manager_payment_settings_admin_ajax',
+              action: 'wscm_payment_settings_admin_ajax',
               route: 'get_payment_settings',
               method: 'paypal',
               nonce: window.SwiftCertificateManagerAdminVars.nonce
@@ -177,7 +177,7 @@ export default {
         }
           this.saving = true;
           this.$post({
-              action: 'swift_certificate_manager_payment_settings_admin_ajax',
+              action: 'wscm_payment_settings_admin_ajax',
               route: 'save_payment_settings',
               method: 'paypal',
               settings: this.settings,

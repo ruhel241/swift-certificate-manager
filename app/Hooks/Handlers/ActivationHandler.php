@@ -12,7 +12,7 @@ class ActivationHandler
         self::maybeCreateFolderStructure();
         self::maybeCreatePages();
 
-        require_once(SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'database/DBMigrator.php');
+        require_once(SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'database/DBMigrator.php');
 
         DBMigrator::run($network_wide);
 
@@ -37,7 +37,7 @@ class ActivationHandler
     public static function maybeCreateFolderStructure()
     {
         if (!class_exists('\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
-            require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
+            require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
         }
 
         $dirs = AvailableOptions::getDirStructure();

@@ -1,9 +1,9 @@
 <template>
-    <div class="wpsc-app">
-        <div class="wpsc-header">
+    <div class="wscm-app">
+        <div class="wscm-header">
             <navigation/>
         </div>
-        <div class="wpsc-body">
+        <div class="wscm-body">
             <router-view :key="$route.fullPath"></router-view>
         </div>
     </div>

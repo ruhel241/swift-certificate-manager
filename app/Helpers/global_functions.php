@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
 if (!class_exists('\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
-	require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
+	require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
 }
 
 // db wp-fluent helper functions
@@ -13,7 +13,7 @@ if (!function_exists('SwiftCertificateManagerQuery')) {
     function SwiftCertificateManagerQuery()
     {
         if (!function_exists('SwiftCertificateManagerDB')) {
-            include SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'app/Libs/wp-fluent/wp-fluent.php';
+            include SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/Libs/wp-fluent/wp-fluent.php';
         }
        
         return SwiftCertificateManagerDB();

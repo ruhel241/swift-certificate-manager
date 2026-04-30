@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class SettingsController
 {
     public function register() {
-        add_action('wp_ajax_swift_certificate_manager_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_wscm_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()

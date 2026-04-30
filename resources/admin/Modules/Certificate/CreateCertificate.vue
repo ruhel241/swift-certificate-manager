@@ -1,5 +1,5 @@
 <template>
-    <div class="wpsc-assign-certificate">
+    <div class="wscm-assign-certificate">
         <certificate-creator-intro/>
     </div>
 </template>

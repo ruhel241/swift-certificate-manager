@@ -1,5 +1,5 @@
 <template>
-  <div class="wpsc-finishing-setup">
+  <div class="wscm-finishing-setup">
     <div class="cong_wrap" v-loading="action">
       <div class="title-box">
         <h1 class="title">Congratulations! you are ready to generate certificate</h1>

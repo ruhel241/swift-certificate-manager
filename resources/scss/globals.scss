@@ -275,7 +275,7 @@ body {
   background: var(--White, #fff);
   margin-right: 20px;
 }
-.wpsc-card {
+.wscm-card {
   display: flex;
   margin: 24px 0px;
   padding: 16px;
@@ -328,7 +328,7 @@ body {
 }
 
 //setting page
-.wpsc-settings-wrap {
+.wscm-settings-wrap {
   .setting_header {
     .el-radio-group{
       margin-bottom: 10px !important;
@@ -392,7 +392,7 @@ body {
       width: 60%;
     }
   }
-  .wpsc-card {
+  .wscm-card {
     display: flex;
     flex-direction: column;
     //.settings-item {

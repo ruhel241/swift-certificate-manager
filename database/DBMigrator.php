@@ -34,9 +34,9 @@ class DBMigrator {
 	}
 
 	private static function migrate() {
-		require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCertificateManagerGenerateMigrator.php';
-		require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCertificateManagerTemplatesMigrator.php';
-		require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCertificateManagerPaymentsMigrator.php';
+		require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCertificateManagerGenerateMigrator.php';
+		require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCertificateManagerTemplatesMigrator.php';
+		require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCertificateManagerPaymentsMigrator.php';
 
 		SwiftCertificateManagerGenerateMigrator::migrate();
 		SwiftCertificateManagerTemplatesMigrator::migrate();

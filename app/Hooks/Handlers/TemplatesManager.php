@@ -10,7 +10,7 @@ class TemplatesManager
 
     public function getCoreTemplates()
     {
-        $file = SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'app/Libs/certificate-templates.json';
+        $file = SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/Libs/certificate-templates.json';
 
         if (!file_exists($file)) {
             return [];

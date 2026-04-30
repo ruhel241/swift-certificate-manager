@@ -27,7 +27,7 @@ class AdminPageHandler
 
         $menuName = __('Swift Certificate Manager', 'swift-certificate-manager');
 
-        if (defined('SWIFT_CERTIFICATE_PRO')) {
+        if (defined('SWIFT_CERTIFICATE_MANAGER_PRO')) {
             $menuName =  __('Swift Certificate Manager Pro', 'swift-certificate-manager');
         }
     
@@ -108,14 +108,14 @@ class AdminPageHandler
                 wp_enqueue_media();
             }
 
-            $assetsUrl = SWIFT_CERTIFICATE_PLUGIN_URL.'assets/';
+            $assetsUrl = SWIFT_CERTIFICATE_MANAGER_PLUGIN_URL.'assets/';
             
             $uploadDir = AvailableOptions::getDirStructure();
             $uploadUrl = AvailableOptions::getDirUrlStructure();
 
-            wp_enqueue_style('swift_certificate_manager_admin',$assetsUrl.'admin/css/admin.css', array(),  SWIFT_CERTIFICATE_VERSION);
-            wp_enqueue_script('swift_certificate_manager_admin_boot', $assetsUrl.'admin/js/boot.js', array('jquery'), SWIFT_CERTIFICATE_VERSION, false);
-            wp_enqueue_script('swift_certificate_manager_admin_app', $assetsUrl.'admin/js/start.js', array('jquery'), SWIFT_CERTIFICATE_VERSION, true);
+            wp_enqueue_style('swift_certificate_manager_admin',$assetsUrl.'admin/css/admin.css', array(),  SWIFT_CERTIFICATE_MANAGER_VERSION);
+            wp_enqueue_script('swift_certificate_manager_admin_boot', $assetsUrl.'admin/js/boot.js', array('jquery'), SWIFT_CERTIFICATE_MANAGER_VERSION, false);
+            wp_enqueue_script('swift_certificate_manager_admin_app', $assetsUrl.'admin/js/start.js', array('jquery'), SWIFT_CERTIFICATE_MANAGER_VERSION, true);
            
             $activeTemplate  = get_option('swift_certificate_manager_active_template', 'template-1');
             $isOnboarded     = get_option('swift_certificate_manager_is_onboarded', "no");
@@ -147,8 +147,8 @@ class AdminPageHandler
                 'globalSettings'         => $globalSettings,
                 'coreTemplates'          => $templateManager->getCoreTemplates(),
                 'currencies'             => (new PaymentHelper)->getCurrencies(),
-                'has_pro'                => defined('SWIFT_CERTIFICATE_PRO'),
-                'has_pro_version'        => defined('SWIFT_CERTIFICATE_PRO_VERSION'),
+                'has_pro'                => defined('SWIFT_CERTIFICATE_MANAGER_PRO'),
+                'has_pro_version'        => defined('SWIFT_CERTIFICATE_MANAGER_PRO_VERSION'),
 
             ));
     

@@ -47,7 +47,7 @@ $wscm-dark-500: #101013;
     padding: 65px;
 }
 
-.wpsc-body {
+.wscm-body {
     padding-right: 20px;
 }
 h1, h3, h4, h4, h6 {
@@ -186,7 +186,7 @@ input:focus, a:focus{
   }
 }
 
-.wpsc-header {
+.wscm-header {
   background-color: #fff;
   margin-left: -20px;
   padding-left: 20px;
@@ -212,7 +212,7 @@ input:focus, a:focus{
       }
     }
   }
-  .wpsc-navigation {
+  .wscm-navigation {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -263,12 +263,12 @@ input:focus, a:focus{
       }
     }
   }
-  .wpsc-nav-pro-btn {
+  .wscm-nav-pro-btn {
     display: flex;
     justify-content: center;
   }
 }
-.wpsc-dashboard {
+.wscm-dashboard {
   background-color: #f5f5fa;
   border-radius: 20px;
   height: auto;
@@ -282,7 +282,7 @@ input:focus, a:focus{
     width: 90%;
     padding: 12px;
     border-radius: 16px;
-    .wpsc-setup-bg {  
+    .wscm-setup-bg {  
       svg {   
         width: 100%;   
       } 
@@ -323,7 +323,7 @@ input:focus, a:focus{
   }
 }
 
-.wpsc-assign-certificate {
+.wscm-assign-certificate {
   .el-card {
     // width: 95%;
     padding: 16px;
@@ -355,7 +355,7 @@ input:focus, a:focus{
 }
 
 // manage templates
-.wpsc-manage-certificate {
+.wscm-manage-certificate {
   .wscm-mange-action {
     padding: 20px;
     margin-bottom: 20px;
@@ -451,16 +451,16 @@ input:focus, a:focus{
   }
 }
 
-.wpsc-assign-certificate {
+.wscm-assign-certificate {
   .el-card__body {
     padding: initial !important;
   }
 }
 
 // license management styles
-.wpsc-license-management {
-  .wpwscm_header {
-    .wpwscm_header_title {
+.wscm-license-management {
+  .wscm_header {
+    .wscm_header_title {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -472,9 +472,9 @@ input:focus, a:focus{
       }
     }
   }  
-  .wpwscm_license_valid {
+  .wscm_license_valid {
     // text-align: center;
-    .wpsc-valid {
+    .wscm-valid {
       .title {
         font-size: 1.3em;
         margin-bottom: 10px;
@@ -511,8 +511,8 @@ input:focus, a:focus{
       }
     }
   }
-  .wpwscm_license_expired {
-    .wpsc-expired {
+  .wscm_license_expired {
+    .wscm-expired {
         .title {
           margin-bottom: 10px;
         }
@@ -566,7 +566,7 @@ input:focus, a:focus{
     border-radius: 5px;
     margin-bottom: 20px;
   }
-  .wpsc-provide-license-key {
+  .wscm-provide-license-key {
       max-width: 750px;
       margin: 0 auto;
       padding: 45px 45px 0px 45px;
@@ -598,7 +598,7 @@ input:focus, a:focus{
 }
 //pro overlay upgrade
 .pro-template {
-  .wpsc-certificate-preview {
+  .wscm-certificate-preview {
       position: relative;
       overflow: hidden;
   }
@@ -647,13 +647,13 @@ input:focus, a:focus{
   }
 }
 // customizations component
-.wpsc-customizations-wrapper {
+.wscm-customizations-wrapper {
   .el-row {
     display: flex;
   }
 }
 // preview certificate
-.wpsc-certificate-preview {
+.wscm-certificate-preview {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -785,7 +785,7 @@ input:focus, a:focus{
   }
 }
 // customizations panel
-.wpsc-customizations-panel {
+.wscm-customizations-panel {
   display: flex;
   flex-direction: column;
   // height: 757px;
@@ -876,7 +876,7 @@ input:focus, a:focus{
 }
 
 // templates component
-.wpsc-templates {
+.wscm-templates {
   .templates-wrap {
     position: relative;
     .el-row {
@@ -1029,7 +1029,7 @@ input:focus, a:focus{
 }
 
 // onboarding finishing setup
-.wpsc-finishing-setup {
+.wscm-finishing-setup {
     margin-top: 30px;
     margin-bottom: 30px;
    .cong_wrap {

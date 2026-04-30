@@ -1,5 +1,5 @@
 <template>
-  <div class="wpsc-view-certificate-wrapper">
+  <div class="wscm-view-certificate-wrapper">
     <div class="title header">
       <h1>View {{ statusTitle }} Certificate</h1>
       <div class="fetch-certificate" style="text-align:right;">
@@ -22,7 +22,7 @@
     </div>
     <el-row>
       <el-col :span="24" class="pro-template">
-        <div class="wpsc-certificate-preview" v-loading="fetching">
+        <div class="wscm-certificate-preview" v-loading="fetching">
           <!-- ✅ Preview box (fit into 1024x700 like Customization) -->
           <div class="certificate-outer-container">
             <div
@@ -356,7 +356,7 @@ export default {
       this.fetching = true;
 
       this.$get({
-        action: "swift_certificate_manager_generate_admin_ajax",
+        action: "wscm_generate_admin_ajax",
         route: "get_certificate_info",
         info_id: this.infoId,
         nonce: window.SwiftCertificateManagerAdminVars.nonce,
@@ -421,7 +421,7 @@ export default {
     updateHandler() {
       this.saving = true;
       this.$post({
-        action: "swift_certificate_manager_generate_admin_ajax",
+        action: "wscm_generate_admin_ajax",
         route: "update_certificate_info",
         info: this.info,
         info_id: this.infoId,
@@ -570,7 +570,7 @@ export default {
       const imageData = canvas.toDataURL("image/png", 1.0);
 
       this.$post({
-        action: "swift_certificate_manager_generate_admin_ajax",
+        action: "wscm_generate_admin_ajax",
         route: "sending_email_certificate",
         info: this.info,
         certificate_data: imageData,

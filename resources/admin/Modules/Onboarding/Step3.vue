@@ -1,5 +1,5 @@
 <template>
-  <div class="wpsc-fonts-manager">
+  <div class="wscm-fonts-manager">
     <div class="title header" v-if="isOnboarded === 'no'">
       <h1>Fonts Manager</h1>
     </div>

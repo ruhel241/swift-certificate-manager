@@ -18,7 +18,7 @@ $swiftCertificatePaymentInfo = (new \SwiftCertificateManager\Models\Payment())->
     <div class="wscm-invoice-wrrapper">
         <div class="invoice-header">
             <div class="invoice-logo">
-                <img src="<?php echo esc_url( SWIFT_CERTIFICATE_PLUGIN_URL . 'assets/admin/images/logo.png' ); ?>" alt="SwiftCertificateManager">
+                <img src="<?php echo esc_url( SWIFT_CERTIFICATE_MANAGER_PLUGIN_URL . 'assets/admin/images/logo.png' ); ?>" alt="SwiftCertificateManager">
             </div>
             <div class="invoice-title">
                 <h1>INVOICE</h1>

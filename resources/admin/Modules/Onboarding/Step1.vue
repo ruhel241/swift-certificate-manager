@@ -1,10 +1,10 @@
 <template>
-  <div class="wpsc-dashboard">
+  <div class="wscm-dashboard">
     <div class="wscm_onboarding">
       <div class="wscm_setup_step_1" v-if="active === 1">
         <el-row :gutter="20">
           <el-col :span="14">
-            <div class="wpsc-setup-bg">
+            <div class="wscm-setup-bg">
               <!-- <img :src="imageURL+'/setup-img.png'" alt=""> -->
                 <svg height="742" viewBox="0 0 576 742" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <path d="M0 16C0 7.16345 7.16344 0 16 0H576V742H16C7.16345 742 0 734.837 0 726V16Z" fill="url(#pattern0_86_293)"/>
@@ -233,7 +233,7 @@ export default {
 
 <style lang="scss">
   .wscm_onboarding {
-    .wpsc-setup-bg {
+    .wscm-setup-bg {
       img {
         width: 100%;
       }

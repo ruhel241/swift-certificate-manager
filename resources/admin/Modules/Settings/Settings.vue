@@ -1,5 +1,5 @@
 <template>
-  <div class="wpsc-settings-wrap">
+  <div class="wscm-settings-wrap">
       <div class="header">
         <div class="setting_header">
           <!-- {{ settings }} -->
@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="wpsc-card" v-if="settingTabMenu === 'general'" v-loading="fetching">
+      <div class="wscm-card" v-if="settingTabMenu === 'general'" v-loading="fetching">
         <div class="settings-item">
           <div class="header-title">
             <h3 class="title">General Information</h3>
@@ -242,7 +242,7 @@
         </div>
       </div>
 
-      <div class="wpsc-card" v-if="settingTabMenu === 'payment_methods'">
+      <div class="wscm-card" v-if="settingTabMenu === 'payment_methods'">
         <div class="settings-item">
           <div class="header-title">
             <h3 class="title">Payment Method</h3>
@@ -321,7 +321,7 @@ export default {
     getSettings(){
       this.fetching = true;
       this.$post({
-        action: "swift_certificate_manager_global_settings_admin_ajax",
+        action: "wscm_global_settings_admin_ajax",
         route: "get_settings",
         nonce: window.SwiftCertificateManagerAdminVars.nonce,
       })
@@ -340,7 +340,7 @@ export default {
     saveSettings() {
       this.saving = true;
       this.$post({
-        action: "swift_certificate_manager_global_settings_admin_ajax",
+        action: "wscm_global_settings_admin_ajax",
         route: "save_settings",
         settings: this.settings,
         nonce: window.SwiftCertificateManagerAdminVars.nonce,

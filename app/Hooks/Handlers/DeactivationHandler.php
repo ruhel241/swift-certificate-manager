@@ -18,7 +18,7 @@ class DeactivationHandler
         wp_clear_scheduled_hook('swift_certificate_manager_cleanup_tmp_dir');
 
         if (!class_exists('\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
-            require_once SWIFT_CERTIFICATE_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
+            require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
         } 
         
         $dirs = AvailableOptions::getDirStructure();
@@ -69,7 +69,7 @@ class DeactivationHandler
         $tables = [
             $wpdb->prefix . 'wscm_generates',
             $wpdb->prefix . 'wscm_payments',
-            $wpdb->prefix . 'wscm_templates_upload_dir'
+            $wpdb->prefix . SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR
         ];
 
         // Drop each table

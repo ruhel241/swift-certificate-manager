@@ -1,5 +1,5 @@
 <template>
-    <div class="wpsc-assign-certificate">
+    <div class="wscm-assign-certificate">
         <div class="title header">
             <h1>
                 {{ $t('Upadte Certificate Manually') }}
@@ -64,7 +64,7 @@ export default {
             }
 
             this.$post({
-                action: 'swift_certificate_manager_generate_admin_ajax',
+                action: 'wscm_generate_admin_ajax',
                 route: 'update_certificate_info',
                 info: this.info,
                 info_id: this.infoId,
@@ -90,7 +90,7 @@ export default {
         fetchInfo() {
             this.saving = true;
             this.$post({
-                action: 'swift_certificate_manager_generate_admin_ajax',
+                action: 'wscm_generate_admin_ajax',
                 route: 'get_certificate_info',
                 info_id: this.infoId, 
                 nonce: window.SwiftCertificateManagerAdminVars.nonce

@@ -1,5 +1,5 @@
 <template>
-    <el-row class="wpsc-header">
+    <el-row class="wscm-header">
       <el-col :span="4">
         <div class="nav-logo">
           <router-link to="/" class="nav-logo-link">
@@ -12,7 +12,7 @@
         <el-menu
           :router="true"
           mode="horizontal"
-          class="wpsc-navigation"
+          class="wscm-navigation"
           :default-active="active"
         >
           <el-menu-item class="el-menu-item" v-if="this.appVars.is_onboarded === 'no'">
@@ -32,7 +32,7 @@
       </el-col>
       <!-- Pro Button -->
       <el-col :span="4">
-        <div class="wpsc-nav-pro-btn" v-if="!hasPro">
+        <div class="wscm-nav-pro-btn" v-if="!hasPro">
           <a href="/#" class="nav-logo-link">
             <el-button class="wscm-pro-btn">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,5 +1,5 @@
 <template>
-    <div class="wpsc-assign-certificate" style="margin-top: 24px;">
+    <div class="wscm-assign-certificate" style="margin-top: 24px;">
         <InformationForm
             ref="informationForm"
             :info="info"
@@ -72,7 +72,7 @@ export default {
             this.saving = true;
 
             this.$post({
-                action: 'swift_certificate_manager_generate_admin_ajax',
+                action: 'wscm_generate_admin_ajax',
                 route: 'save_certificate_info',
                 info: this.info,
                 nonce: window.SwiftCertificateManagerAdminVars.nonce

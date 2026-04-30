@@ -15,7 +15,7 @@ use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 class TemplateController
 {
     public function register() {
-        add_action('wp_ajax_swift_certificate_manager_template_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_wscm_template_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()

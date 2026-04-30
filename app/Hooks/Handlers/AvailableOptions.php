@@ -273,7 +273,7 @@ class AvailableOptions
     public static function getDirStructure()
     {
         $workingPath = wp_upload_dir()['basedir'];
-        $workingDir  = apply_filters('swift-certificate-manager/working_dir', $workingPath . '/wscm_templates_upload_dir');
+        $workingDir  = apply_filters('swift-certificate-manager/working_dir', $workingPath .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
       
         return [
             'workingDir'      => $workingDir,
@@ -287,7 +287,7 @@ class AvailableOptions
     public static function getDirUrlStructure()
     {
         $workingPathUrl = wp_upload_dir()['baseurl'];
-        $workingUrl     = apply_filters('swift-certificate-manager/working_url', $workingPathUrl . '/wscm_templates_upload_dir');
+        $workingUrl     = apply_filters('swift-certificate-manager/working_url', $workingPathUrl .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
       
         return [
             'workingUrl'      => $workingUrl,
