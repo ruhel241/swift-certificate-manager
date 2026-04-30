@@ -4,8 +4,8 @@ Plugin Name: Swift Certificate Manager
 Plugin URI: https://wordpress.org/plugins/swift-certificate-manager/
 Description: The Most certificate generato For WordPress  
 Version: 1.0.0
-Author: ''
-Author URI: ''
+Author: arimtiaz
+Author URI: https://profiles.wordpress.org/arimtiaz/
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: swift-certificate-manager
