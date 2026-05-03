@@ -51,13 +51,13 @@
                 </div>
                 
                 <div class="actions">
-                    <el-button type="primary" class="btn-primary">
+                    <a href="https://swiftcertificate.com/" type="button" class="btn-primary el-button el-button--primary" target="_blank">
                     👑 Upgrade To PRO
-                    </el-button>
+                    </a>
 
-                    <el-button class="btn-secondary">
+                    <a href="https://swiftcertificate.com/pricing/" type="button" class="el-button btn-secondary el-button--default">
                         Learn More
-                    </el-button>
+                    </a>
                 </div>
             </div>
         </div>
