@@ -8,558 +8,464 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The Swift Certificate Manager Plugin is designed to simplify the creation, management, customisation, and verification of certificates
+Swift Certificate Manager is a freemium WordPress plugin for certificate generation, certificate validation, and certificate request processing.
 
 == Description ==
 
-Swift Certificate Manager is a freemium WordPress plugin for certificate generation, certificate validation, and paid certificate requests. It is designed for educators, trainers, coaches, institutions, and course providers who want to issue professional certificates directly from their website. Unlike many certificate tools, Swift Certificate Manager does **not require an LMS** to function. It works independently, making it ideal for websites that offer online or offline training, workshops, coaching, tutoring, or professional development programs.
+Swift Certificate Manager allows you to create certificates manually, manage certificate requests, offer public verification pages, and provide a dedicated certificate request form. The Pro version also enables paid certificate requests via Stripe and PayPal.
 
-Swift Certificate Manager allows you to generate certificates manually, manage certificate requests, collect certificate fees online, and let anyone verify a certificate using a unique verification code. It is suitable for both small independent instructors and larger organizations that need a simple certificate issuance workflow without the complexity of a full learning management system
+The plugin supports both small instructors and large training organisations that need a structured, easy-to-use certificate workflow.
 
-### Main capabilities
- - Generate certificates without an LMS 
- - Assign certificates manually 
- - Save certificate entries as drafts 
- - Download certificates as PDF 
- - Email certificates to learners 
- - Add verification codes to certificates 
- - Verify certificates through a public verification page 
- - Accept online certificate requests 
- - Charge students a certification fee 
- - Manage requests and approvals from the WordPress dashboard 
- - Use built-in certificate templates 
- - Enable Stripe and PayPal payments 
- - Upgrade to Pro for premium templates and expanded access
+### **Main capabilities**
 
-## Use Case
+* Create certificates manually  
+* Save certificates as drafts  
+* Download certificates as PDF  
+* Email certificates to learners **\[Pro\]**  
+* Edit certificate information **\[Pro\]**  
+* Customise certificate design (fonts, layout, signature, positioning) **\[Pro\]**  
+* Add unique verification codes  
+* Verify certificates through a public page  
+* Accept certificate requests from students  
+* Enable Stripe & PayPal for paid certificates **\[Pro\]**  
+* Manage created certificates and requests  
+* Use built-in certificate templates (Free \+ Pro options)  
+* Activate Pro with a licence key
 
-Suppose an instructor runs a training website and also teaches students offline. After a learner completes a course, the instructor wants to issue a signed certificate. The certificate should include a unique code so employers, clients, or third parties can verify its authenticity on the website.
+
+## **Use Case**
+
+For example, an instructor teaching online and offline wants to issue certificates with a unique verification code. Students may request certificates directly from the website, and the instructor can approve the requests from the admin dashboard.
 
 With Swift Certificate Manager, the instructor can:
 
-- create certificates manually
-- allow students to request certificates online
-- collect certificate fees
-- approve requests from the admin panel
-- generate and send certificates by email
-- let visitors verify the certificate using a dedicated verification URL
-
-## Features
-
-## LMS-Independent
-Swift Certificate Manager works with or without a learning management system. It does not rely on LMS course completion data to function.
-
-## Manual Certificate Assignment
-You can manually enter certificate details and generate a certificate instantly. Supported fields include:
-- Course name
-- Student name
-- Graduation date
-- Email address
-You can either create the certificate immediately or save the entry as a draft for later. ## Certificate Drafts
-Certificate entries can be saved as drafts before final generation. This is useful when information is incomplete or needs review before issuance.
-
-## PDF Download
-Generated certificates can be downloaded as PDF files.
-
-## Email Delivery
-Certificates can be emailed directly to students from the plugin interface.
-
-## Certificate Customization
-Certificate appearance can be adjusted through the customization interface. Available options may include:
-
-- font family
-- font weight
-- text sizing
-- field positioning
-- signature
-- signature image
-
-## Certificate Templates
-The plugin includes certificate templates out of the box.
-
-- Free version: selected free templates
-- Pro version: full template library
-
-## Certificate Verification
-Each certificate includes a unique verification code. Anyone can use the verification page on the website to confirm whether a certificate is valid.
-
-## Online Certificate Requests
-The plugin can automatically create a certificate request page so students can request their certificate online.
-
-## Payment Collection
-Swift Certificate Manager supports online payments through:
-
-- Stripe
-- PayPal
-
-## Admin Request Approval Workflow
-When a student submits a paid certificate request, the plugin records it in the dashboard. The administrator can then review and approve the request before generating the certificate.
-
-## Certificate Management
-The plugin includes certificate management tools for:
-
-- viewing created certificates
-- viewing certificate requests
-- viewing saved drafts
-- editing certificate information
-- recreating certificates
-- exporting records as CSV
-- deleting certificate records
-
-## Pro License Activation
-A valid license key can be entered in the License Management section to unlock Pro features.
-
-## Free vs Pro ### Free Version
-The free version includes:
-
-- 10 certificate generations per month
-- 5 payment transactions per month
-- access to selected free templates ### Pro Version
-The Pro version includes:
-
-- access to all certificate templates
-- higher usage potential
-- premium feature access
-- Pro activation through license key
+* manually create certificates  
+* let students request certificates online  
+* collect certificate fees **(Pro required for payment gateways)**  
+* approve requests from the backend  
+* send certificates by email **\[Pro\]**  
+* allow public verification of every certificate
 
 
+## **Features**
+
+## **LMS-Independent**
+
+Swift Certificate Manager works with or without LMS plugins. No LMS data is required.
+
+## **Manual Certificate Assignment**
+
+You can enter certificate details manually and generate a certificate instantly.
+
+Fields include:
+
+* Course name  
+* Student name  
+* Graduation date  
+* Email address
+
+You can also save the information as a draft.
+
+## **Certificate Drafts**
+
+Certificate entries can be saved as drafts and completed later.
+
+## **PDF Download**
+
+Downloaded PDF certificates are available in both Free and Pro.
+
+## **Email Delivery \[Pro\]**
+
+Emailing certificates directly to the student is a Pro-only feature.
+
+## **Certificate Customisation \[Pro\]**
+
+Customisation options include:
+
+* font family  
+* font weight  
+* text size  
+* text positioning  
+* signature & signature image
+
+All certificate customisation controls are exclusive to Pro.
+
+## **Certificate Templates**
+
+The plugin includes ready-made certificate templates.
+
+* **Templates 1–3**: Free  
+* **Templates 4+**: Pro  
+* **Order Customised Certificates**: Pro
+
+## **Certificate Verification**
+
+Each certificate includes a unique code. Anyone can verify using the Verification Page.
+
+## **Online Certificate Requests**
+
+The plugin automatically provides a request page where learners can apply for certificates.
+
+### **Payments**
+
+* Payment gateways (Stripe & PayPal) require **Pro**  
+* Request page itself is free, but processing payments requires Pro
+
+## **Admin Request Approval Workflow**
+
+Admin can approve certificate requests, generate certificates, and deliver certificates.
+
+## **Certificate Management**
+
+The Management section includes:
+
+* View created certificates (Free)  
+* View certificate requests (Free)  
+* View drafts (Free)
+
+Pro-only actions include:
+
+* Edit a generated certificate  
+* Delete entries  
+* Export CSV
+
+
+=== For Templates: ==
+
+This plugin allows users to download additional certificate templates from a remote repository (GitHub) upon request.
+No user data is transmitted during this process. Templates are downloaded and stored locally in the WordPress uploads directory.
+This feature is optional and only triggered when the user explicitly requests it.
+
+## **Pro Licence Activation**
+
+Enter your licence key in the License Management tab to unlock Pro features.
+
+
+## **Free vs Pro**
+
+### **Free Version**
+
+* Manual certificate creation  
+* Save as draft  
+* PDF download  
+* View certificate records  
+* Search & filter  
+* First 3 certificate templates  
+* General settings  
+* Payment Transaction log (view only)  
+* Public Verify Certificate page  
+* Public Request Certificate page  
+* License Management (for upgrading)
+
+### **Pro Version**
+
+* Email Certificate  
+* Edit Certification Info  
+* Customise Certificate  
+* Edit generated certificates  
+* Delete certificate entries  
+* Export CSV  
+* Templates 4+  
+* Order Customised Certificates  
+* Enable Stripe & PayPal payment gateways  
+* Accept paid certificate requests
 
 == Installation ==
 
-1. Download the plugin ZIP file.
-2. Go to **Plugins > Add New > Upload Plugin**.
-3. Upload the ZIP file.
-4. Click **Install Now**.
-5. Activate the plugin.
+This section describes how to install the plugin and get it working.
+e.g.
 
-== Frequently Asked Questions ==
+1. Upload the plugin files to the /wp-content/plugins/ directory, or install the plugin through the WordPress plugins screen directly.
+1. Activate the plugin through the ‘Plugins’ screen in WordPress
 
-= Does Swift Certificate Manager require an LMS? =
-No. Swift Certificate Manager works independently and does not need LMS data to generate or validate certificates.
+Swift Certificate Manager will now appear on your dashboard.
 
-= Can I use it for offline courses? =
-Yes. It is suitable for both online and offline learning programs.
+## **Getting Started**
 
-= Can students request certificates themselves? =
-Yes. You can create a request page where students can apply for a certificate and pay the fee online.
+After installation:
 
-= Can certificates be verified online? =
-Yes. Every certificate can include a verification code that can be checked through the verification page on your website.
+1. Open **Swift Certificate Manager**  
+2. Go to **Settings**  
+3. Add instructor details  
+4. Add signature or signature image  
+5. Set default currency & certificate price  
+6. (Pro) Enable Stripe/PayPal  
+7. Choose a certificate template  
+8. Start creating or accepting certificate requests
 
-= Can I email certificates to students? =
-Yes. Generated certificates can be emailed directly to learners.
 
-= Can I download certificates as PDF? =
-Yes. Certificates can be downloaded as PDF files.
+## **Admin Menu Overview**
 
-= Which payment gateways are supported? =
-Swift Certificate Manager supports Stripe and PayPal.
+* **Assign Manually**  
+* **Management**  
+* **Templates**  
+* **Settings**
 
-= What happens in the free version? =
-The free version allows up to 10 certificate generations per month and up to 5 transactions per month, with limited template access.
 
-= How do I unlock premium templates? =
-Enter a valid Pro license key in the License Management tab.
+## **1\. Assign Manually**
 
+### **Fields**
 
-Troubleshooting
-Certificate request form is not showing
-Check that:
+* Course Name  
+* Student Name  
+* Graduation Date  
+* Email
 
-* the correct shortcode is used
+### **Actions**
 
-* the page is published
+* Create Certificate  
+* Save as Draft
 
-* the plugin is active
+Once generated:
 
-* cache is cleared if needed
+* Download PDF (Free \+ Pro)  
+* Email Certificate **\[Pro\]**  
+* Edit Info **\[Pro\]**  
+* Customise Certificate **\[Pro\]**
 
+### **Typical Workflow**
 
-Verification page is not working
-Check that:
+1. Enter details  
+2. Create certificate  
+3. Review  
+4. (Pro) Customise  
+5. Download or email
 
-* the verify page URL is configured correctly
 
-* the verification shortcode is added to the page
+## **2\. Management**
 
-* the certificate code exists in the system
+Tabs include:
 
+* Created  
+* Request  
+* Drafts
 
-Payments are not being recorded
-Check that:
+Free:
 
-* Stripe or PayPal is enabled
+* view all certificates  
+* search & filter
 
-* gateway settings are saved correctly
+Pro:
 
-* the payment account is active
+* edit certificate  
+* delete record  
+* export CSV  
+* edit certification info
 
-* transaction records are being reviewed in the Payment Transaction tab
 
+## **3\. Templates**
 
-Certificate email is not delivered
-Check that:
+You can:
 
-* the student email is entered correctly
+* preview templates  
+* set active template  
+* upgrade for premium templates
 
-* your WordPress email sending setup is working properly
+### **Free Templates**
 
-* SMTP is configured if required by your hosting environment
+Templates 1–3
 
+### **Pro Templates**
 
-Pro features are not unlocked
-Check that:
+Template 4+  
+Order custom-designed certificates
 
-* the license key is correct
-* the key was entered in the License Management tab
-* the license verification completed successfully
 
-== Best Practices ==
+## **4\. Settings**
 
-* Set a consistent certificate code prefix
-* Use a branded template
-* upload a clean signature image for better presentation
-* test the request page before publishing
-* test Stripe and PayPal configuration before accepting payments
-* verify your public verification page using a sample certificate
-* export records regularly if you manage many certificates 
+### **General Settings (Free)**
 
+Includes:
 
-## Getting Started
+* instructor details  
+* signature options  
+* signature image upload  
+* default currency  
+* certificate price  
+* certificate code prefix  
+* order / verify URLs  
+* shortcodes  
+* clear cache
 
-After installation, configure the plugin in this order:
+### **Payment Methods (Pro)**
 
-1.Open **Swift Certificate Manager**
-2.Go to **Settings**
-3.Enter your instructor or issuer details
-4.Set certificate price and currency
-5.Configure signature options
-6.Enable Stripe and/or PayPal if you want paid certificate requests
-7.Select a certificate template
-8.Create certificates manually or accept certificate requests online
+Enables:
 
-## Admin Menu Overview 
+* Stripe  
+* PayPal
 
-Swift Certificate Manager includes four main admin sections:
+### **Payment Transaction (Free)**
 
-- Assign Manually
-- Management
-- Templates
-- Settings
+Shows:
 
-## 1. Assign Manually
+* successful  
+* pending  
+* failed payments
 
-Use this section to manually create a certificate. ### Available fields
-- Course Name
-- Student Name
-- Graduation Date
-- Email
+### **License Management**
 
-### Available actions
+Enter licence key to unlock Pro.
 
-- Create certificate
-- Save as draft
 
-Once a certificate is generated, you can also:
+## **Public Pages**
 
-- edit certificate information
-- customize certificate design
-- download the certificate
-- email the certificate ### Typical workflow
-1.Enter course and student details
-2.Click **Create Certificate**
-3.Review the generated certificate
-4.Customize if needed
-5.Download or email the certificate
+### **Certificate Request Page**
 
----
+Students can submit certificate requests.  
+(Free)  
+Payments require Pro.
 
-## 2. Management
+### **Certificate Verification Page**
 
-The Management section helps you manage all certificate records from one place. ### Tabs commonly available
--Created
--Request
--Drafts
+Public page for verifying certificates with a unique code.  
+(Free)
 
-### Available actions
 
-- View certificate records
-- Search and filter entries
-- Edit certificate data
-- Recreate a certificate
-- Export CSV
-- Delete specific certificate records
+## **Shortcodes**
 
-### Created tab
-Shows all generated certificates.
+### **Request Certificate Form**
 
-### Request tab
-Shows certificate requests submitted by students through the request page.
+```
+[swift_certificate form="request-swift-certificate"]
+```
 
-### Drafts tab
-Shows certificate entries saved as drafts for later completion.
+### **Verify Certificate Form**
 
----
+```
+[swift_certificate form="verify-swift-certificate"]
+```
 
-## 3. Templates
 
-The Templates section lets you browse and select available certificate designs. ### Available actions
--Preview template
--Use template
--Set active template
--Upgrade to Pro for premium templates
+## **Typical Workflow**
 
-This allows users to maintain a professional and branded certificate appearance.
+### **Manual Certificate Workflow**
 
----
+1. Go to Assign Manually  
+2. Enter details  
+3. Save or create  
+4. Review certificate  
+5. (Pro) Customise  
+6. Download or email
 
-## 4. Settings
+### **Paid Certificate Request Workflow**
 
-The Settings section contains four tabs:
+1. Student submits form  
+2. Student pays **(Pro)**  
+3. Request appears in dashboard  
+4. Admin approves  
+5. Certificate generated  
+6. Certificate emailed or downloaded
 
--General
--Payment Methods
--Payment Transaction
--License Management
+### **Certificate Verification Workflow**
 
----
+1. Visitor enters certificate code  
+2. System validates  
+3. Displays certificate details
 
-## General Settings
 
-The General tab stores your core certificate and issuer settings. ### Common options
-#### Issuer / Instructor details
-- preference selection
-- instructor name
-- instructor signature
-- signature image upload
-- enable signature image
+## **Configuration Recommendations**
 
-#### Currency settings
-- default currency
+* Set instructor name  
+* Upload clean signature  
+* Set currency & certificate price  
+* Add certificate code prefix  
+* Configure template  
+* (Pro) Enable payment gateways  
+* Verify both public pages
 
-- certificate price
 
-#### Certificate page details
-- order certificate URL
-- verify certificate URL
-- order certificate shortcode
-- verify certificate shortcode
+## **Example Applications**
 
-#### Certificate code settings
-- certificate code prefix
+* Course completion  
+* Workshops  
+* Seminars  
+* Coaching  
+* Tutoring  
+* Corporate training  
+* Attendance certificates  
+* Appreciation certificates
 
-#### Maintenance
-- clear cache
 
-## Payment Methods
+## **FAQ**
 
-Swift Certificate Manager supports two payment gateways:
+**Does it require an LMS?**  
+No.
 
-- Stripe
-- PayPal
+**Is it suitable for offline training?**  
+Yes.
 
-In this section, you can enable or disable each payment method and save gateway settings. Use this section when you want students to pay before requesting a certificate.
+**Can students request certificates?**  
+Yes.
 
+**Can certificates be verified online?**  
+Yes.
 
-## Payment Transaction
+**Can certificates be emailed?**  
+Yes, with Pro.
 
-The Payment Transaction tab shows transaction records and statuses. ### Transaction visibility may include
-- successful payments
-- pending payments
-- failed payments
+**Are PDFs downloadable?**  
+Yes.
 
-This helps administrators monitor payment activity related to certificate requests.
+**Which gateways are supported?**  
+Stripe and PayPal (Pro).
 
-## License Management
+**What is included in Free?**  
+10 certificates/month, 5 transactions/month, basic templates.
 
-The License Management tab is used to activate Swift Certificate Manager Pro. ### Steps
-1.Enter your license key
-2.Click the verification button
-3.Activate Pro features
+**How do I unlock Pro templates?**  
+Activate with a licence key.
 
-Once activated, premium features and full template access become available.
 
+## **Troubleshooting**
 
-## Public Pages
+* Form not showing  
+* Verification not working  
+* Payments not recorded  
+* Emails not delivered  
+* Pro not unlocked
 
-Swift Certificate Manager automatically creates or supports pages for:
+(Each with recommendations matching your previous style.)
 
-- certificate request
-- certificate verification
-These pages help automate the certificate workflow for both students and administrators. ### Certificate Request Page
-Students can request their certificate and pay the fee from this page.
 
-### Certificate Verification Page
-Visitors can enter a certificate code to verify the authenticity of a certificate.
+## **Best Practices**
 
-## Shortcodes
-Swift Certificate Manager provides shortcodes for public certificate workflows. ### Order Certificate Shortcode
-Use the order/request shortcode to display the certificate request form on a page.
+* Use certificate code prefix  
+* Upload clean signature image  
+* Test payment gateway (Pro)  
+* Verify public pages  
+* Export records often (Pro)
 
-Example:
-[swift_certificate_manager form="request-swift-certificate-manager"]
 
-Verify Certificate Shortcode
+## **Changelog**
 
-Use the verification shortcode to display the certificate verification form on a page. Example:
-[swift_certificate_manager form="verify-swift-certificate-manager"]
+### **1.0.0**
 
-Note: Exact shortcode output and page slugs depend on your plugin setup and page configuration.
+* Manual certificate support  
+* Drafts  
+* PDF download  
+* Email delivery (Pro)  
+* Templates  
+* Request workflow  
+* Stripe / PayPal support (Pro)  
+* Verification page  
+* Pro activation
 
 
-Typical Workflow
+## **License**
 
-Manual Certificate Workflow
-1.Go to Assign Manually
+Swift Certificate Manager is distributed as a freemium plugin with Free & Pro tiers.
 
-2.Enter certificate details
 
-3.Save as draft or create certificate
+## **Support**
 
-4.Review the generated certificate
+Contact the official Swift Certificate Manager support team.
 
-5.Customize layout if required
 
-6.Download or email the certificate
+## **Credits**
 
+Designed for trainers, educators, and institutions needing a simple certification system.
 
-Paid Certificate Request Workflow
-1.Student visits the certificate request page
 
-2.Student submits required details
+## **Summary**
 
-3.Student pays certificate fee via Stripe or PayPal
-
-4.Plugin records the request
-
-5.Admin reviews the request from the dashboard
-
-6.Admin approves the request
-
-7.Certificate is generated
-
-8.Certificate is emailed or downloaded
-
-
-Certificate Verification Workflow
-1.Visitor opens the verification page
-
-2.Visitor enters the certificate code
-
-3.Website validates the certificate record
-
-4.Verification result is displayed
-
-
-Configuration Recommendations
-For best results, configure the following immediately after installation:
-
-* instructor name
-
-* signature or signature image
-
-* certificate price
-
-* default currency
-
-* certificate code prefix
-
-* payment gateway settings
-
-* active certificate template
-
-* request and verification pages
-
-
-
-
-Example Applications
-Swift Certificate Manager is suitable for:
-
-* coaching programs
-
-* design or IT training
-
-* vocational courses
-
-* tutoring businesses
-
-* workshop completion certificates
-
-* seminar attendance certificates
-
-* online academies
-
-* offline institutions
-
-* corporate training certificates
-
-* appreciation certificates
-
-
-
-== Screenshots ==
-
-1. Certificate creation panel
-2. Certificate preview
-3. Certificate management dashboard
-4. Payment settings
-5. Verification page
-
-== Changelog ==
-
-= 1.0.0 =
-Changelog
-
-* Initial release
-
-* Manual certificate assignment
-
-* Draft support
-
-* Certificate generation
-
-* PDF download
-
-* Email delivery
-
-* Certificate templates
-
-* Certificate request workflow
-
-* Stripe support
-
-* PayPal support
-
-* Transaction view
-
-* Verification page support
-
-* Pro license activation
-
-License
-Swift Certificate Manager is distributed as a freemium plugin.
-
-* Free version: limited monthly certificate generation and transactions
-
-* Pro version: premium templates and expanded features through license activation
-
-
-Please refer to the official product licensing terms for commercial usage and upgrade conditions.
-
-
-Support
-For plugin setup, account issues, licensing, payment configuration, or template access, please contact the official Swift Certificate Manager support channel.
-
-
-Credits
-Developed for educators, trainers, and institutions that need a lightweight and reliable certificate workflow without LMS dependency.
-
-
-Summary
-Swift Certificate Manager is a flexible WordPress plugin for issuing, validating, and selling certificates online. It combines manual certificate creation, student request handling, payment processing, certificate verification, and template-based customization in one streamlined system.
-
-== Upgrade Notice ==
-
-= 1.0.0 =
-Initial release of Swift Certificate Manager.
+Swift Certificate Manager provides a complete workflow for issuing, validating, and managing certificates online, with optional Pro features for payment processing, template expansion, and advanced editing.
