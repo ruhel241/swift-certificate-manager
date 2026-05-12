@@ -128,11 +128,11 @@ class FrontendHandler
         $isPaypalEnabled = isset($paymentSettingsPaypal['enable']) ? $paymentSettingsPaypal['enable'] : 'no';
 
         if ($isStripeEnabled === 'yes') {
-            do_action('scm_render_component_stripe');
+            do_action('swift_certificate_manager_render_component_stripe');
         }
         
         if ($isPaypalEnabled === 'yes') {
-            do_action('scm_render_component_paypal');
+            do_action('swift_certificate_manager_render_component_paypal');
         }
     }
 
