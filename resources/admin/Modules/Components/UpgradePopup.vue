@@ -8,7 +8,7 @@
             @close="closePopup"
         >
         <div class="upgrade-card">
-            <div class="wscm-upgrade-header">
+            <div class="scm-upgrade-header">
                 <!-- LEFT -->
                 <div class="upgrade-left">
                     <span class="badge">PRO</span>
@@ -28,7 +28,7 @@
                 </div>
             </div>
         
-            <div class="wscm-upgrade-footer">
+            <div class="scm-upgrade-footer">
                 <div class="features-section">
                     <span> Everything you need to work smarter</span>
                     <div class="features">

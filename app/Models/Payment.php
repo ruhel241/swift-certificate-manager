@@ -4,7 +4,7 @@ namespace SwiftCertificateManager\Models;
 
 class Payment
 {
-    protected $table = "wscm_payments";
+    protected $table = "scm_payments";
 
     public function insertGetId($data) {
         $save = SwiftCertificateManagerQuery()->table($this->table)->insert($data);
@@ -66,19 +66,19 @@ class Payment
     }
 
 
-     public function getByPaymentId($chargeId, $method = 'paypal')
-     {
-         $payment =  SwiftCertificateManagerQuery()->table($this->table)
-             ->where('charge_id', $chargeId)
-             ->where('payment_method', $method)
-             ->first();
+    public function getByPaymentId($chargeId, $method = 'paypal')
+    {
+        $payment =  SwiftCertificateManagerQuery()->table($this->table)
+            ->where('charge_id', $chargeId)
+            ->where('payment_method', $method)
+            ->first();
 
-         if ($payment) {
-             return $payment->id;
-         }
+        if ($payment) {
+            return $payment->id;
+        }
 
-         return false;
-     }
+        return false;
+    }
 
     public function deleteInfo($transactionIds) {
         $transactions = SwiftCertificateManagerQuery()->table($this->table)->whereIn('id', $transactionIds)->get();

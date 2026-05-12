@@ -48,41 +48,40 @@ class DeactivationHandler
        /**
        *  Delete all tables and options
        */
-        static::dropTables();
+        // static::dropTables();
     }
 
-    public static function dropTables()
-    {
-        global $wpdb;
+    // public static function dropTables()
+    // {
+    //     global $wpdb;
         
-        // delete options all options
-        delete_option('swift_certificate_manager_global_settings');
-        delete_option('swift_certificate_manager_onboarding_info');
-        delete_option('swift_certificate_manager_is_onboarded');
-        delete_option('swift_certificate_manager_newsletters');
+    //     // delete options all options
+    //     delete_option('swift_certificate_manager_global_settings');
+    //     delete_option('swift_certificate_manager_onboarding_info');
+    //     delete_option('swift_certificate_manager_is_onboarded');
+    //     delete_option('swift_certificate_manager_newsletters');
 
+    //     // Disable foreign key checks temporarily
+    //     $wpdb->query("SET FOREIGN_KEY_CHECKS = 0");
 
-        // Disable foreign key checks temporarily
-        $wpdb->query("SET FOREIGN_KEY_CHECKS = 0");
+    //     // List all tables to be deleted
+    //     $tables = [
+    //         $wpdb->prefix . 'scm_generates',
+    //         $wpdb->prefix . 'scm_payments',
+    //         $wpdb->prefix . SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR
+    //     ];
 
-        // List all tables to be deleted
-        $tables = [
-            $wpdb->prefix . 'wscm_generates',
-            $wpdb->prefix . 'wscm_payments',
-            $wpdb->prefix . SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR
-        ];
+    //     // Drop each table
+    //     foreach ($tables as $table) {
+    //         // Format for DROP TABLE using string concatenation outside the query
+    //         // This is the WordPress core pattern for handling table names
+    //         $table_name = '`' . esc_sql($table) . '`';
+    //         $wpdb->query("DROP TABLE IF EXISTS $table_name");
+    //     }
 
-        // Drop each table
-        foreach ($tables as $table) {
-            // Format for DROP TABLE using string concatenation outside the query
-            // This is the WordPress core pattern for handling table names
-            $table_name = '`' . esc_sql($table) . '`';
-            $wpdb->query("DROP TABLE IF EXISTS $table_name");
-        }
+    //     // Re-enable foreign key checks
+    //     $wpdb->query("SET FOREIGN_KEY_CHECKS = 1");
 
-        // Re-enable foreign key checks
-        $wpdb->query("SET FOREIGN_KEY_CHECKS = 1");
-
-        return true;
-    }
+    //     return true;
+    // }
 }

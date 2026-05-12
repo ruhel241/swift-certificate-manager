@@ -20,7 +20,7 @@ class PaypalCheckout {
             return;
         }
 
-        const paymentProcessorContainer = this.form.find('.swift_certificate_manager_payment_processor');
+        const paymentProcessorContainer = this.form.find('.scm_payment_processor');
 
         if (!paymentProcessorContainer.length) {
             console.error('Could not find the payment processor container.');
@@ -29,9 +29,9 @@ class PaypalCheckout {
 
         // Remove old message/button before re-render
         paymentProcessorContainer.empty();
-        this.form.find('.wscm_complete_payment_instruction').remove();
+        this.form.find('.scm_complete_payment_instruction').remove();
 
-        const paypalButtonContainer = jQuery("<div class='wscm_paypal_btn'></div>");
+        const paypalButtonContainer = jQuery("<div class='scm_paypal_btn'></div>");
         paymentProcessorContainer.append(paypalButtonContainer);
 
         window.paypal.Buttons({
@@ -61,7 +61,7 @@ class PaypalCheckout {
                     }
 
                     return jQuery.post(window.SwiftCertificateManagerPublicVars.ajaxurl, {
-                        action: 'swift_certificate_manager_payment_confirmation_paypal',
+                        action: 'scm_payment_confirmation_paypal',
                         hash: this.data.hash,
                         charge_id: transaction.id,
                         nonce: window.SwiftCertificateManagerPublicVars.nonce
@@ -95,11 +95,11 @@ class PaypalCheckout {
         }).render(paypalButtonContainer[0]);
 
         this.form.find('.request_cretificate_form').hide();
-        this.form.prepend("<p class='wscm_complete_payment_instruction'>Please complete your certificate payment with PayPal 👇</p>");
+        this.form.prepend("<p class='scm_complete_payment_instruction'>Please complete your certificate payment with PayPal 👇</p>");
     }
 }
 
-window.addEventListener('swift_certificate_manager_payment_next_action_paypal', (e) => {
+window.addEventListener('scm_payment_next_action_paypal', (e) => {
     const detail = e.detail;
 
     if (detail && detail.form && detail.response) {

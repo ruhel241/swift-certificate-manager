@@ -1,10 +1,10 @@
 <template>
-  <div class="wscm-customization">
+  <div class="scm-customization">
     <div class="title header">
       <h1>Template Customize Certificate</h1>
       <div class="header-buttons">
         <el-button
-            class="wscm-primary-btn"
+            class="scm-primary-btn"
             type="success"
             icon="el-icon-circle-plus-outline"
             round
@@ -66,7 +66,7 @@ export default {
       getTemplate() {
         this.fetching = true;
         this.$get({
-          action: "wscm_template_admin_ajax",
+          action: "scm_template_admin_ajax",
           route: "get_template",
           template_id: this.templateID,
           nonce: window.SwiftCertificateManagerAdminVars.nonce,
@@ -91,7 +91,7 @@ export default {
         this.fetching = true;
         this.template.settings = this.settings;
         this.$post({
-          action: "wscm_template_admin_ajax",
+          action: "scm_template_admin_ajax",
           route: "update_template",
           template: this.template,
           nonce: window.SwiftCertificateManagerAdminVars.nonce,
@@ -114,7 +114,7 @@ export default {
         this.template.settings = this.settings;
         this.redesigning = true;
         this.$post({
-          action: "wscm_template_admin_ajax",
+          action: "scm_template_admin_ajax",
           route: "redesign_template",
           template_id: this.templateID,
           nonce: window.SwiftCertificateManagerAdminVars.nonce,

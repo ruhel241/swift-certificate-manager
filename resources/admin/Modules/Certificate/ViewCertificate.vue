@@ -1,5 +1,5 @@
 <template>
-  <div class="wscm-view-certificate-wrapper">
+  <div class="scm-view-certificate-wrapper">
     <div class="title header">
       <h1>View {{ statusTitle }} Certificate</h1>
       <div class="fetch-certificate" style="text-align:right;">
@@ -22,7 +22,7 @@
     </div>
     <el-row>
       <el-col :span="24" class="pro-template">
-        <div class="wscm-certificate-preview" v-loading="fetching">
+        <div class="scm-certificate-preview" v-loading="fetching">
           <!-- ✅ Preview box (fit into 1024x700 like Customization) -->
           <div class="certificate-outer-container">
             <div
@@ -82,7 +82,7 @@
           <div class="footer-buttons">
             <el-button
               :loading="downloading"
-              class="wscm-primary-btn svg-span-btn"
+              class="scm-primary-btn svg-span-btn"
               @click="downloadCertificate"
             >
               <svg v-if="!downloading" width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -356,7 +356,7 @@ export default {
       this.fetching = true;
 
       this.$get({
-        action: "wscm_generate_admin_ajax",
+        action: "scm_generate_admin_ajax",
         route: "get_certificate_info",
         info_id: this.infoId,
         nonce: window.SwiftCertificateManagerAdminVars.nonce,
@@ -421,7 +421,7 @@ export default {
     updateHandler() {
       this.saving = true;
       this.$post({
-        action: "wscm_generate_admin_ajax",
+        action: "scm_generate_admin_ajax",
         route: "update_certificate_info",
         info: this.info,
         info_id: this.infoId,
@@ -513,7 +513,7 @@ export default {
           text: "Downloading Certificate....",
           spinner: "el-icon-loading",
           background: "rgba(0, 0, 0, 0.7)",
-          customClass: "wscm-text-loading",
+          customClass: "scm-text-loading",
         });
 
         await this.detectTemplateOrientationAndSize();
@@ -562,7 +562,7 @@ export default {
         text: "Certificate email is being processed...",
         spinner: "el-icon-loading",
         background: "rgba(0, 0, 0, 0.7)",
-        customClass: "wscm-text-loading",
+        customClass: "scm-text-loading",
       });
 
       await this.detectTemplateOrientationAndSize();
@@ -570,7 +570,7 @@ export default {
       const imageData = canvas.toDataURL("image/png", 1.0);
 
       this.$post({
-        action: "wscm_generate_admin_ajax",
+        action: "scm_generate_admin_ajax",
         route: "sending_email_certificate",
         info: this.info,
         certificate_data: imageData,

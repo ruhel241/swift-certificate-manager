@@ -1,6 +1,6 @@
 <template>
-  <div class="wscm_payment_transaction">
-    <div class="wscm-card">
+  <div class="scm_payment_transaction">
+    <div class="scm-card">
       <div class="settings-item">
         <div class="header-title">
           <h3 class="title">Payment Transaction</h3>
@@ -40,7 +40,7 @@
             <el-table-column
                 label="Status">
               <template slot-scope="scope">
-                <span :class="[scope.row.payment_status == 'pending' ? 'wscm_status_pending wscm_status' : 'wscm_status_paid wscm_status']">
+                <span :class="[scope.row.payment_status == 'pending' ? 'scm_status_pending scm_status' : 'scm_status_paid scm_status']">
                   {{scope.row.payment_status}}
                 </span>
               </template>
@@ -48,7 +48,7 @@
             <el-table-column
                 label="Method">
               <template slot-scope="scope">
-                <span class="wscm_payment_method">
+                <span class="scm_payment_method">
                   <img :src="images_url + 'stripe.svg'" alt="" v-if="scope.row.payment_method === 'stripe'">
                   <img :src="images_url + 'PayPal.svg'" alt="" v-if="scope.row.payment_method === 'paypal'">
                 </span>
@@ -64,7 +64,7 @@
             </el-table-column>
             <el-table-column :label="$t('Action')">
               <template slot-scope="scope">
-                <div class="wscm-table-action">
+                <div class="scm-table-action">
                   <el-tooltip content="View" placement="top">
                     <a href="javascript:void(0)" @click="gotoView(scope.row.id)">
                       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -104,7 +104,7 @@
         </div>
       </div>
     </div>
-    <div class="wscm_pagination_wrap">
+    <div class="scm_pagination_wrap">
       <el-pagination
           :hide-on-single-page="false"
           @size-change="handleSizeChange"
@@ -159,7 +159,7 @@ export default {
     getPaymentTransactionHandler() {
       this.fetching = true;
       this.$get({
-        action: 'wscm_transaction_admin_ajax',
+        action: 'scm_transaction_admin_ajax',
         route: 'get_payment_transactions',
         current_page: this.paginate.current_page,
         per_page: this.paginate.per_page,
@@ -200,7 +200,7 @@ export default {
 
      performAction(type, id) {
       this.$post({
-        action: "wscm_transaction_admin_ajax",
+        action: "scm_transaction_admin_ajax",
         route: "maybe_delete_transactions",
         transactions_ids: [id],
         action_type: type,
@@ -231,11 +231,11 @@ export default {
 </script>
 
 <style lang="scss">
-.wscm_payment_transaction {
+.scm_payment_transaction {
   .settings-item {
     margin-bottom: 0 !important;
   }
-  .wscm_status {
+  .scm_status {
     padding: 2px 6px;
     border-radius: 5px;
     color: #141414;
@@ -244,16 +244,16 @@ export default {
     font-size: 12px;
   }
 
-  .wscm_status_paid {
+  .scm_status_paid {
     border: 1px solid rgba(26, 255, 178, 0.5019607843);
     background: rgba(26, 255, 178, 0.5019607843);
   }
 
-  .wscm_status_pending{
+  .scm_status_pending{
     border: 1px solid rgba(255, 235, 59, 0.55);
     background: rgba(255, 235, 59, 0.55);
   }
-  .wscm_payment_method {
+  .scm_payment_method {
     img {
       width: 40%;
     }

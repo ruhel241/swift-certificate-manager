@@ -7,7 +7,7 @@ use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
 class SwiftCertificateManagerGenerate {
 
-    protected $table = 'wscm_generates';
+    protected $table = 'scm_generates';
    
     public function getDatas($request)
     {

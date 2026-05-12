@@ -16,8 +16,8 @@ use SwiftCertificateManager\Helpers\HelperFunction;
 class FrontendHandler
 {
     public function register() {
-        add_action('wp_ajax_swift_certificate_manager_public_ajax', array($this, 'ajaxRoutes'));
-        add_action('wp_ajax_nopriv_swift_certificate_manager_public_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_scm_public_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_nopriv_scm_public_ajax', array($this, 'ajaxRoutes'));
         // when paypal or strip payment success then certificate payment status update
         add_action('swift_certificate_manager_after_payment_success', array($this, 'paymentConfirmationAfterPaymentSuccess'));
 
@@ -77,12 +77,12 @@ class FrontendHandler
         }
 
         // call method
-        do_action('swift-certificate-manager/doing_ajax_public_forms_' . $route);
+        do_action('swift_certificate_manager/doing_ajax_public_forms_' . $route);
 
         // Pass raw request (sanitize inside method)
         $this->{$maps[$route]}($_REQUEST);
 
-        do_action('swift-certificate-manager/public_ajax_handler_catch', $route);
+        do_action('swift_certificate_manager/public_ajax_handler_catch', $route);
     }
 
     // shortcode register
@@ -109,13 +109,13 @@ class FrontendHandler
                 }
             }
 
-            if (isset($attr['wscm_invoice'])) {
+            if (isset($attr['scm_invoice'])) {
                 $this->getInvoice();
             }
 
         $html = ob_get_clean();
 
-        return apply_filters('swift-certificate-manager/rendered_post_html', $html);
+        return apply_filters('swift_certificate_manager/rendered_post_html', $html);
     }
 
     public function shortcodeRenderRequestForm() {
@@ -128,10 +128,11 @@ class FrontendHandler
         $isPaypalEnabled = isset($paymentSettingsPaypal['enable']) ? $paymentSettingsPaypal['enable'] : 'no';
 
         if ($isStripeEnabled === 'yes') {
-            do_action('swift_certificate_manager_render_component_stripe');
+            do_action('scm_render_component_stripe');
         }
+        
         if ($isPaypalEnabled === 'yes') {
-            do_action('swift_certificate_manager_render_component_paypal');
+            do_action('scm_render_component_paypal');
         }
     }
 
@@ -375,8 +376,8 @@ class FrontendHandler
         $isPaypalEnabled = $paymentSettingsPaypal['enable'] ?? 'no';
 
         wp_enqueue_script(
-            'wscm_request_certificate',
-            $assetsUrl . 'public/js/wscm_request_certificate.js',
+            'scm_request_certificate',
+            $assetsUrl . 'public/js/scm_request_certificate.js',
             ['jquery'],
             SWIFT_CERTIFICATE_MANAGER_VERSION,
             true // footer
@@ -385,22 +386,20 @@ class FrontendHandler
         wp_enqueue_script('jquery-ui-datepicker');
 
         wp_enqueue_style(
-            'wscm_date_picker',
+            'scm_date_picker',
             $assetsUrl . 'public/css/jquery-ui/jquery-ui.css',
             [],
             '1.13.2'
         );
 
         wp_enqueue_style(
-            'wscm_public_styles',
+            'scm_public_styles',
             $assetsUrl . 'public/css/swift-certificate-manager-public.css',
             [],
             SWIFT_CERTIFICATE_MANAGER_VERSION
         ); 
       
-        // $helperFunction = new HelperFunction();
-    
-        $scPublicVars = apply_filters('swift-certificate-manager/public_app_vars', [
+        $scmPublicVars = apply_filters('swift_certificate_manager/public_app_vars', [
             'ajaxurl'        => admin_url('admin-ajax.php'),
             'nonce'          => wp_create_nonce('swiftcertificate_public_nonce'),
             'stripe_enabled' => $isStripeEnabled,
@@ -410,6 +409,6 @@ class FrontendHandler
             'has_pro'        => defined('SWIFT_CERTIFICATE_MANAGER_PRO'),
         ]);
 
-        wp_localize_script('wscm_request_certificate', 'SwiftCertificateManagerPublicVars', $scPublicVars);
+        wp_localize_script('scm_request_certificate', 'SwiftCertificateManagerPublicVars', $scmPublicVars);
     }
 }

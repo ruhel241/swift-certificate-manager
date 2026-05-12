@@ -56,7 +56,7 @@
                     selectedIds.push(selection.id);
                 });
                 this.$post({
-                    action: 'wscm_generate_admin_ajax',
+                    action: 'scm_generate_admin_ajax',
                     route: 'maybe_delete_infos',
                     info_ids: selectedIds,
                     action_type: type,

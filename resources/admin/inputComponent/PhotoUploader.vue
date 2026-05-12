@@ -1,15 +1,15 @@
 <template>
-    <div v-if="app_ready" class="wscm_file_upload_wrap">
+    <div v-if="app_ready" class="scm_file_upload_wrap">
         <div @click="initUploader" v-if="!image_url" class="el-button el-button--upload el-button--default is-plain">
             <i class="el-icon el-icon-upload"></i>
             <span>{{ 'Upload Your Signature' }}</span>
         </div>
-        <div class="wscm_file_upload_result" v-if="image_url?.length > 0">
-            <div class="wscm_file_upload_preview">
+        <div class="scm_file_upload_result" v-if="image_url?.length > 0">
+            <div class="scm_file_upload_preview">
                 <img :src="image_url"/>
             </div>
-            <div class="wscm_file_upload_data">
-                <div v-if="image_name" class="wscm_file_upload_description">
+            <div class="scm_file_upload_data">
+                <div v-if="image_name" class="scm_file_upload_description">
                     {{ image_name }}
                     <el-button
                         class="el-button--icon"
@@ -27,7 +27,7 @@
                         @click="image_url = ''">
                     </el-button>
                 </div>
-                <div v-if="image_size" class="wscm_file_upload_size">
+                <div v-if="image_size" class="scm_file_upload_size">
                     {{ image_size }}
                 </div>
             </div>
@@ -103,7 +103,7 @@ import UpgradePopup from '../Modules/Components/UpgradePopup.vue';
 
 <style lang="scss">
 
-.wscm_file_upload_wrap {
+.scm_file_upload_wrap {
     width: 100%;
     .el-button--upload {
         border-style: dashed;
@@ -112,7 +112,7 @@ import UpgradePopup from '../Modules/Components/UpgradePopup.vue';
         justify-content: center;
     }       
 
-    .wscm_file_upload_result {
+    .scm_file_upload_result {
         background-color: #fafafa;
         border: 1px solid #f2f2f2;
         border-radius: 8px;
@@ -124,17 +124,17 @@ import UpgradePopup from '../Modules/Components/UpgradePopup.vue';
         margin-top: 8px;
     }
 
-    .wscm_file_upload_preview {
+    .scm_file_upload_preview {
         width: 44px;
         height: 44px;
     }
 
-    .wscm_file_upload_data {
+    .scm_file_upload_data {
         flex: 1;
         margin-left: 15px;
     }
 
-    .wscm_file_upload_description {
+    .scm_file_upload_description {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -148,7 +148,7 @@ import UpgradePopup from '../Modules/Components/UpgradePopup.vue';
         }
     }
 
-    .wscm_file_upload_preview img {
+    .scm_file_upload_preview img {
         width: 44px;
         height: 100%;
         -o-object-fit: cover;

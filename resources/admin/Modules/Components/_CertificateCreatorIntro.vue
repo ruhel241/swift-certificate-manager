@@ -1,5 +1,5 @@
 <template>
-    <div class="wscm-assign-certificate" style="margin-top: 24px;">
+    <div class="scm-assign-certificate" style="margin-top: 24px;">
         <InformationForm
             ref="informationForm"
             :info="info"
@@ -20,7 +20,7 @@
                 Save as Draft
               </el-button>
 
-              <el-button class="wscm-primary-btn svg-span-btn" round @click="saveHandler('assign')">
+              <el-button class="scm-primary-btn svg-span-btn" round @click="saveHandler('assign')">
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M17.5 5.83332V14.1667C17.5 16.6667 16.25 18.3333 13.3333 18.3333H6.66667C3.75 18.3333 2.5 16.6667 2.5 14.1667V5.83332C2.5 3.33332 3.75 1.66666 6.66667 1.66666H13.3333C16.25 1.66666 17.5 3.33332 17.5 5.83332Z" stroke="#424145" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                   <path d="M12.9166 1.66666V8.21664C12.9166 8.58331 12.4832 8.76664 12.2166 8.52497L10.2833 6.74168C10.1249 6.59168 9.8749 6.59168 9.71656 6.74168L7.78327 8.52497C7.51661 8.76664 7.08325 8.58331 7.08325 8.21664V1.66666H12.9166Z" stroke="#424145" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
@@ -72,7 +72,7 @@ export default {
             this.saving = true;
 
             this.$post({
-                action: 'wscm_generate_admin_ajax',
+                action: 'scm_generate_admin_ajax',
                 route: 'save_certificate_info',
                 info: this.info,
                 nonce: window.SwiftCertificateManagerAdminVars.nonce

@@ -1,5 +1,5 @@
 <template>
-  <div class="wscm-finishing-setup">
+  <div class="scm-finishing-setup">
     <div class="cong_wrap" v-loading="action">
       <div class="title-box">
         <h1 class="title">Congratulations! you are ready to generate certificate</h1>
@@ -12,9 +12,9 @@
           <span class="setup-count">0{{active}}</span>
           <span>/03</span>
         </div>
-        <div class="wscm_button_group">
+        <div class="scm_button_group">
           <el-button class="capsule-button" round @click="backBtnHandler">Back</el-button>
-          <button class="el-button wscm-primary-btn el-button--default" @click="finishHandler">Finish Setup</button>
+          <button class="el-button scm-primary-btn el-button--default" @click="finishHandler">Finish Setup</button>
         </div>
       </div>
     </div>
@@ -41,8 +41,8 @@ export default {
       this.saveOnBoarded();
       setTimeout(() => {
         this.action = false;
-        localStorage.removeItem('wscm_step_active');
-        localStorage.removeItem('wscm_onboarding_info');
+        localStorage.removeItem('scm_step_active');
+        localStorage.removeItem('scm_onboarding_info');
         location.reload();
       }, 1000);
     },

@@ -4,24 +4,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
    
-    $swiftCertificateGlobalSettings        = get_option('swift_certificate_manager_global_settings', []);
-    $swiftCertificatePaymentSettingsStripe = get_option('swift_certificate_manager_payment_settings_stripe', []);
-    $swiftCertificatePaymentSettingsPaypal = get_option('swift_certificate_manager_payment_settings_paypal', []);
+    $swift_certificate_manager_global_settings         = get_option('swift_certificate_manager_global_settings', []);
+    $swift_certificate_manager_payment_settings_stripe = get_option('swift_certificate_manager_payment_settings_stripe', []);
+    $swift_certificate_manager_payment_settings_paypal = get_option('swift_certificate_manager_payment_settings_paypal', []);
 
-    $swiftCertificateStripeEnabled = $swiftCertificatePaymentSettingsStripe['enable'] ?? 'no';
-    $swiftCertificatePaypalEnabled = $swiftCertificatePaymentSettingsPaypal['enable'] ?? 'no';
+    $swift_certificate_manager_stripe_enabled = $swift_certificate_manager_payment_settings_stripe['enable'] ?? 'no';
+    $swift_certificate_manager_paypal_enabled = $swift_certificate_manager_payment_settings_paypal['enable'] ?? 'no';
 
-    $swiftCertificatePro = defined('SWIFT_CERTIFICATE_MANAGER_PRO');
+    // $swift_certificate_manager_pro = defined('SWIFT_CERTIFICATE_MANAGER_PRO');
 
 ?>
 
-<div class="wscm-request-certificate-wrapper">
-    <div class="wscm-form-submit-message"></div>
-    <div class="wscm-container">
+<div class="scm-request-certificate-wrapper">
+    <div class="scm-form-submit-message"></div>
+    <div class="scm-container">
         <h2>Student Request Certificate</h2>
 
-        <form id="wscm_request_certificate" method="post">
-            <div class="swift_certificate_manager_payment_processor"></div>
+        <form id="scm_request_certificate" method="post">
+            <div class="scm_payment_processor"></div>
 
             <div class="request_cretificate_form">
                 <div class="form-group">
@@ -45,22 +45,22 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
 
                 <?php 
-                    if ( ($swiftCertificateStripeEnabled === 'yes') || ($swiftCertificatePaypalEnabled === 'yes') ) : 
+                    if ( ($swift_certificate_manager_stripe_enabled === 'yes') || ($swift_certificate_manager_paypal_enabled === 'yes') ) : 
                     
-                    $swiftCertificateGlobalSettings['certificate_payment'] = $swiftCertificateGlobalSettings['certificate_payment'] ?? '10';
+                    $swift_certificate_manager_global_settings['certificate_payment'] = $swift_certificate_manager_global_settings['certificate_payment'] ?? '10';
                 ?>
                     <div class="form-group">
-                        <div class="wscm_payment_checkbox">
-                            <input type="checkbox" id="wscm_payment_checkbox" name="wscm_payment_checkbox" value="yes" required>
-                            <label for="wscm_payment_checkbox">
+                        <div class="scm_payment_checkbox">
+                            <input type="checkbox" id="scm_payment_checkbox" name="scm_payment_checkbox" value="yes" required>
+                            <label for="scm_payment_checkbox">
                                 Order Digital Certificate for
-                                <?php echo esc_html(\SwiftCertificateManager\Helpers\PaymentHelper::currencySymbol($swiftCertificateGlobalSettings['currency'] ?? 'USD')); ?><?php echo esc_html($swiftCertificateGlobalSettings['certificate_payment']); ?>
+                                <?php echo esc_html(\SwiftCertificateManager\Helpers\PaymentHelper::currencySymbol($swift_certificate_manager_global_settings['currency'] ?? 'USD')); ?><?php echo esc_html($swift_certificate_manager_global_settings['certificate_payment']); ?>
                             </label>
                             <input
                                 type="number"
-                                class="wscm_payment"
-                                id="wscm_payment_total"
-                                value="<?php echo esc_attr($swiftCertificateGlobalSettings['certificate_payment']); ?>"
+                                class="scm_payment"
+                                id="scm_payment_total"
+                                value="<?php echo esc_attr($swift_certificate_manager_global_settings['certificate_payment']); ?>"
                                 required
                                 disabled
                                 hidden
@@ -68,17 +68,17 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </div>
                     </div>
 
-                    <div class="form-group wscm_payment_method" style="display: none;">
+                    <div class="form-group scm_payment_method" style="display: none;">
                         <label>Payment Method:</label><br>
 
-                        <?php if ($swiftCertificateStripeEnabled === 'yes') : ?>
-                            <input type="radio" id="wscm_stripe" name="payment_method" value="stripe" required>
-                            <label for="wscm_stripe">Pay with Card (Stripe)</label><br>
+                        <?php if ($swift_certificate_manager_stripe_enabled === 'yes') : ?>
+                            <input type="radio" id="scm_stripe" name="payment_method" value="stripe" required>
+                            <label for="scm_stripe">Pay with Card (Stripe)</label><br>
                         <?php endif; ?>
 
-                        <?php if ($swiftCertificatePaypalEnabled === 'yes') : ?>
-                            <input type="radio" id="wscm_paypal" name="payment_method" value="paypal" required>
-                            <label for="wscm_paypal">Pay with PayPal</label><br>
+                        <?php if ($swift_certificate_manager_paypal_enabled === 'yes') : ?>
+                            <input type="radio" id="scm_paypal" name="payment_method" value="paypal" required>
+                            <label for="scm_paypal">Pay with PayPal</label><br>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

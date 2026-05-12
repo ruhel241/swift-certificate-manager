@@ -1,38 +1,38 @@
 // All Global CSS
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Open+Sans&family=Lato&family=Montserrat&family=Oswald&family=Raleway&family=Nunito&family=Playfair+Display&family=Pacifico&family=Dancing+Script&family=Shadows+Into+Light&family=Abril+Fatface&family=Merriweather&family=Ubuntu&family=Crimson+Text&family=Poppins&family=Source+Sans+3&family=Roboto+Condensed&family=Roboto+Slab&family=PT+Sans&family=Noto+Sans&family=Work+Sans&family=Mulish&family=Quicksand&family=Inconsolata&family=Titillium+Web&family=Karla&family=Josefin+Sans&family=Nunito+Sans&family=Fira+Sans&family=PT+Serif&family=Rubik&family=Libre+Baskerville&family=Arimo&family=Hind&family=Barlow&family=Mukta&family=Inter&family=Abel&family=Bitter&family=Exo+2&family=Archivo&family=Comfortaa&family=IBM+Plex+Sans&family=Bebas+Neue&family=Cabin&family=Spectral&family=Libre+Franklin&family=Yanone+Kaffeesatz&family=Teko&family=Lobster&family=Anton&family=Noto+Serif&family=EB+Garamond&family=Fjalla+One&family=Oxygen&family=Cairo&family=Merriweather+Sans&family=Questrial&family=Dosis&family=Baloo+2&family=Amatic+SC&family=Indie+Flower&family=Cormorant+Garamond&family=IBM+Plex+Serif&family=Zilla+Slab&family=Permanent+Marker&family=Roboto+Mono&family=Alegreya&family=Vollkorn&family=Russo+One&family=Lora&family=Catamaran&family=Prompt&family=Sacramento&family=Caveat&family=Heebo&family=Asap&family=Space+Mono&family=Bree+Serif&family=Fredoka&family=Satisfy&family=Alegreya+Sans&family=Exo&family=PT+Sans+Narrow&family=Varela+Round&family=Nanum+Gothic&family=Cinzel&family=Jost&family=Noto+Sans+JP&family=Fira+Code&family=DM+Sans&family=Great+Vibes&family=Maven+Pro&family=Source+Code+Pro&family=Architects+Daughter&family=Didact+Gothic&family=Crete+Round&family=Lobster+Two&family=Josefin+Slab&family=Patua+One&family=Kalam&family=Archivo+Narrow&family=Righteous&family=Assistant&family=Courgette&family=Kanit&family=Acme&family=Source+Serif+4&family=Amiri&family=Concert+One&family=Signika&family=Domine&family=Red+Hat+Display&family=Orbitron&family=Overpass&family=Manrope&family=Cabin+Condensed&family=Old+Standard+TT&family=Archivo+Black&family=Play&family=Gudea&family=Rokkitt&family=Noticia+Text&family=Chivo&family=Saira&family=DM+Serif+Display&family=Martel&family=Unna&family=Space+Grotesk&family=Koulen&family=Saira+Condensed&family=Vidaloka&family=Tajawal&family=Sora&family=Rock+Salt&family=Changa&family=Patrick+Hand&family=Poiret+One&family=Frank+Ruhl+Libre&family=Urbanist&family=Sigmar+One&family=Bai+Jamjuree&family=Prata&family=Actor&family=Alfa+Slab+One&family=Cantarell&family=Gentium+Book+Basic&family=Arapey&family=League+Spartan&family=Hind+Siliguri&family=Cardo&family=Marck+Script&family=Sawarabi+Mincho&family=Pontano+Sans&family=IBM+Plex+Mono&family=Abhaya+Libre&family=Cormorant&family=Bodoni+Moda&family=Hind+Madurai&family=Neuton&family=Be+Vietnam+Pro&family=Encode+Sans&family=Alegreya+SC&family=Saira+Extra+Condensed&family=Commissioner&family=Passion+One&family=Belleza&family=DM+Serif+Text&family=Lexend&family=Neucha&family=Red+Hat+Text&family=Fira+Sans+Condensed&family=Podkova&family=Nanum+Myeongjo&family=Special+Elite&family=Jura&family=Ruda&family=Faustina&family=Glegoo&family=Yellowtail&family=Cinzel+Decorative&family=Sansita&family=Gothic+A1&family=Gochi+Hand&family=Luckiest+Guy&family=Libre+Caslon+Text&family=Noto+Sans+KR&family=Noto+Sans+TC&family=Playfair+Display+SC&family=Tenor+Sans&family=Alata&family=Literata&family=Barlow+Condensed&family=Homemade+Apple&family=Cousine&family=Amita&family=Economica&family=Kreon&family=Reenie+Beanie&family=Cormorant+Infant&family=Tinos&family=Covered+By+Your+Grace&family=Yeseva+One&family=Mali&family=Fraunces&family=Barlow+Semi+Condensed&family=Handlee&family=Khand&family=Sorts+Mill+Goudy&family=Istok+Web&family=Electrolize&family=Rambla&family=Bad+Script&family=Advent+Pro&family=Martel+Sans&family=Noto+Sans+SC&family=Aclonica&family=Overlock&family=Gruppo&family=Fredericka+the+Great&family=Sintony&family=Nanum+Gothic+Coding&family=Lusitana&family=Mitr&family=Londrina+Solid&family=Rufina&family=Niramit&family=Fugaz+One&family=Krub&family=Sarabun&family=Chakra+Petch&family=Bellefair&family=Darker+Grotesque&family=Markazi+Text&family=Michroma&family=Cookie&family=Jaldi&family=Alike&family=M+PLUS+1p&family=Pattaya&family=Reem+Kufi&family=Lateef&family=Amaranth&family=Merienda&family=Quantico&family=Sriracha&family=Antic+Slab&family=Unica+One&family=Shrikhand&display=swap');
 // Primary Color Variables
-$wscm-primary-light: #efeafc;
-$wscm-primary-light-hover: #e6e0fa;
-$wscm-primary-light-active: #ccbef5;
-$wscm-primary-normal: #5b2de0;
-$wscm-primary-normal-hover: #5229ca;
-$wscm-primary-normal-active: #4924b3;
-$wscm-primary-dark: #4422a8;
-$wscm-primary-dark-hover: #371b86;
-$wscm-primary-dark-active: #291465;
-$wscm-primary-darker: #291465;
-$wscm-primary-wscm-light-active: #ccbef5;
+$scm-primary-light: #efeafc;
+$scm-primary-light-hover: #e6e0fa;
+$scm-primary-light-active: #ccbef5;
+$scm-primary-normal: #5b2de0;
+$scm-primary-normal-hover: #5229ca;
+$scm-primary-normal-active: #4924b3;
+$scm-primary-dark: #4422a8;
+$scm-primary-dark-hover: #371b86;
+$scm-primary-dark-active: #291465;
+$scm-primary-darker: #291465;
+$scm-primary-scm-light-active: #ccbef5;
 
 // Golden Gradient
-$wscm-golden-gradient: linear-gradient(135deg, #FFEEA9 0%, #F1B934 56.55%);
+$scm-golden-gradient: linear-gradient(135deg, #FFEEA9 0%, #F1B934 56.55%);
 
 // Light Color Variables
-$wscm-light-50: #fcfcfc;
-$wscm-light-75: #f3f4f4;
-$wscm-light-100: #eef0f0;
-$wscm-light-200: #e7e9e9;
-$wscm-light-300: #e2e5e5;
-$wscm-light-400: #9ea0a0;
+$scm-light-50: #fcfcfc;
+$scm-light-75: #f3f4f4;
+$scm-light-100: #eef0f0;
+$scm-light-200: #e7e9e9;
+$scm-light-300: #e2e5e5;
+$scm-light-400: #9ea0a0;
 $background-color: #F0EFF5;
 
 // Dark Color Variables
-$wscm-dark-50: #e8e8e9;
-$wscm-dark-75: #a2a1a3;
-$wscm-dark-100: #7b7a7d;
-$wscm-dark-200: #424145;
-$wscm-dark-300: #1b1a1f;
-$wscm-dark-400: #131216;
-$wscm-dark-500: #101013;
+$scm-dark-50: #e8e8e9;
+$scm-dark-75: #a2a1a3;
+$scm-dark-100: #7b7a7d;
+$scm-dark-200: #424145;
+$scm-dark-300: #1b1a1f;
+$scm-dark-400: #131216;
+$scm-dark-500: #101013;
 
 body {
   background-color: #F5F5FA;
@@ -49,7 +49,7 @@ body {
   padding: 20px;
 }
 
-.wscm-card {
+.scm-card {
   border-radius: 4px;
   //border: 1px solid #EBEEF5;
   background-color: #FFF;
@@ -59,12 +59,12 @@ body {
   box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
 }
 
-.wscm-btn {
+.scm-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 2px;
-  border: 1px solid $wscm-primary-wscm-light-active;
+  border: 1px solid $scm-primary-scm-light-active;
   text-decoration: none;
 }
 
@@ -118,28 +118,28 @@ body {
 
 .capsule-button {
     border-radius: 100px;
-    border: 1px solid $wscm-primary-light-active;
-    color: $wscm-primary-normal;
+    border: 1px solid $scm-primary-light-active;
+    color: $scm-primary-normal;
 }
 
 
 .capsule-button {
   &:focus {
     border-radius: 100px;
-    border: 1px solid $wscm-primary-light-active;
+    border: 1px solid $scm-primary-light-active;
   }
 
   &:hover {
     border-radius: 100px;
-    border: 1px solid $wscm-primary-light-active;
-    background: $wscm-primary-light-hover;
-    color: $wscm-primary-dark-hover;
+    border: 1px solid $scm-primary-light-active;
+    background: $scm-primary-light-hover;
+    color: $scm-primary-dark-hover;
   }
 
   &:active {
     border-radius: 100px;
-    border: 1px solid $wscm-primary-light-active;
-    background:$wscm-primary-light-active;
+    border: 1px solid $scm-primary-light-active;
+    background:$scm-primary-light-active;
   }
 }
 
@@ -157,45 +157,45 @@ body {
 //   border: initial !important;
 // }
 
-.wscm-primary-btn {
+.scm-primary-btn {
   border-radius: 100px;
-  background-color: $wscm-primary-normal;
-  border-color: $wscm-primary-normal;
+  background-color: $scm-primary-normal;
+  border-color: $scm-primary-normal;
   color: white;
   &:focus {
     border-radius: 100px;
-    background-color: $wscm-primary-normal !important;
-    border-color: $wscm-primary-normal;
+    background-color: $scm-primary-normal !important;
+    border-color: $scm-primary-normal;
     color: white !important;
   }
   &:hover {
     border-radius: 100px;
-    background: $wscm-primary-dark-hover !important;
-    border-color: $wscm-primary-dark-hover;
+    background: $scm-primary-dark-hover !important;
+    border-color: $scm-primary-dark-hover;
     color: white !important;
   }
   &:active {
     border-radius: 100px;
-    background: $wscm-primary-dark-active;
-    border-color: $wscm-primary-dark-active;
+    background: $scm-primary-dark-active;
+    border-color: $scm-primary-dark-active;
     color: white;
   }
 }
 
-.wscm-pro-btn {
+.scm-pro-btn {
   border-radius: 100px;
-  background-color: $wscm-dark-300;
+  background-color: $scm-dark-300;
   color: white;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   &:hover {
     border-radius: 100px;
-    background: $wscm-dark-300 !important;
+    background: $scm-dark-300 !important;
     color: white !important;
   }
   &:focus {
-    background-color: $wscm-dark-300 !important;
+    background-color: $scm-dark-300 !important;
     color: white !important;
   }
   span {
@@ -275,7 +275,7 @@ body {
   background: var(--White, #fff);
   margin-right: 20px;
 }
-.wscm-card {
+.scm-card {
   display: flex;
   margin: 24px 0px;
   padding: 16px;
@@ -285,9 +285,9 @@ body {
   background: var(--White, #fff);
 }
 
-.wscm_action_btn{
+.scm_action_btn{
   margin-top: 30px;
-  .wscm_primary_btn {
+  .scm_primary_btn {
     border-radius: 100px;
     background-color: #5b2de0;
     color: #fff;
@@ -297,7 +297,7 @@ body {
   }
 }
 
-.wscm_checkbox{
+.scm_checkbox{
   width: 100%;
     .el-checkbox__inner {
     border: 1px solid #20104E;
@@ -324,11 +324,11 @@ body {
 .copy {
   cursor: pointer;
   background: initial !important;
-  color: $wscm-primary-normal;
+  color: $scm-primary-normal;
 }
 
 //setting page
-.wscm-settings-wrap {
+.scm-settings-wrap {
   .setting_header {
     .el-radio-group{
       margin-bottom: 10px !important;
@@ -381,7 +381,7 @@ body {
       .label{
         width: 80%;
       }
-      .wscm-socia-icon {
+      .scm-socia-icon {
         width: 100%;
       }
       .el-checkbox {
@@ -392,14 +392,14 @@ body {
       width: 60%;
     }
   }
-  .wscm-card {
+  .scm-card {
     display: flex;
     flex-direction: column;
     //.settings-item {
     //  width: 48%;
     //}
   }
-  .wscm-socia-icon {
+  .scm-socia-icon {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -422,14 +422,14 @@ body {
       }
     }
   }
-  .wscm-wordpress-icon {
+  .scm-wordpress-icon {
     width: 100%;
     text-decoration: none;
     border: solid #ddd;
     padding: 9px;
     border-radius: 20px;
   }
-  .wscm-buy-icon {
+  .scm-buy-icon {
     width: 100%;
     text-decoration: none;
     border: solid #ddd;
@@ -495,7 +495,7 @@ body {
     gap: 20px;
     padding: 0px 40px 20px 40px;
     flex-direction: column;
-    .wscm-upgrade-header {
+    .scm-upgrade-header {
       display: flex;
       border-bottom: solid 1px #ddd;
       padding-bottom: 30px;
@@ -531,7 +531,7 @@ body {
         }
       } 
     }
-    .wscm-upgrade-footer {
+    .scm-upgrade-footer {
       .features-section {
         span {
           font-size: 14px;

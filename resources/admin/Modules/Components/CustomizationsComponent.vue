@@ -1,10 +1,10 @@
 <template>
-  <div class="wscm-customizations-wrapper">
+  <div class="scm-customizations-wrapper">
     <!-- {{ settings }} -->
     <el-row :gutter="20">
       <!-- Certificate Panel -->
       <el-col :span="17">
-        <div class="wscm-certificate-preview" v-loading="fetching">
+        <div class="scm-certificate-preview" v-loading="fetching">
           <!-- Certificate Container with Fixed Size -->
           <div class="certificate-outer-container">
             <div id="view-template" class="view-template" :style="viewTemplateStyle">
@@ -123,7 +123,7 @@
 
             <el-button
               :loading="downloading"
-              class="wscm-primary-btn svg-span-btn"
+              class="scm-primary-btn svg-span-btn"
               @click="downloadCertificate"
             >
               <svg v-if="!downloading" width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -145,7 +145,7 @@
 
       <!-- Customization Panel -->
       <el-col :span="7">
-        <div class="wscm-customizations-panel">
+        <div class="scm-customizations-panel">
           <div class="title">
             <h2 class="panel-title mb-20">Certificate Information</h2>
           </div>
@@ -360,7 +360,7 @@ export default {
   data() {
     return {
       downloading: false,
-      activePanel: localStorage.getItem('wscm_settings_active_panel') || '1',
+      activePanel: localStorage.getItem('scm_settings_active_panel') || '1',
       fontColor: "",
       primaryColor: "",
       secondaryColor: "",
@@ -607,7 +607,7 @@ export default {
 
     // Your existing methods
     panelChangeHandler(val) {
-      localStorage.setItem('wscm_settings_active_panel', val);
+      localStorage.setItem('scm_settings_active_panel', val);
     },
 
     changeHandler(val, attr) {
@@ -886,7 +886,7 @@ export default {
           text: 'Downloading Certificate....',
           spinner: 'el-icon-loading',
           background: 'rgba(0, 0, 0, 0.7)',
-          customClass: 'wscm-text-loading'
+          customClass: 'scm-text-loading'
         });
 
         // ✅ ensure template orientation & size is ready

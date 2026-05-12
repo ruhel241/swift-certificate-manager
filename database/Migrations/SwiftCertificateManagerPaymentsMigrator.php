@@ -8,14 +8,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class SwiftCertificateManagerPaymentsMigrator {
 
-	public static $tableName = 'wscm_payments';
+	public static $tableName = 'scm_payments';
 
 	public static function migrate() {
 		global $wpdb;
 
 		$charset_collate = $wpdb->get_charset_collate();
 		$table           = $wpdb->prefix . static::$tableName;
-		$ref_table       = $wpdb->prefix . 'wscm_generates';
+		$ref_table       = $wpdb->prefix . 'scm_generates';
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
@@ -38,7 +38,7 @@ class SwiftCertificateManagerPaymentsMigrator {
 				updated_at TIMESTAMP NULL DEFAULT NULL,
 				PRIMARY KEY (id),
 				KEY request_id (request_id),
-				CONSTRAINT fk_wscm_payment_request_id
+				CONSTRAINT fk_scm_payment_request_id
 					FOREIGN KEY (request_id)
 					REFERENCES {$ref_table}(id)
 					ON DELETE CASCADE

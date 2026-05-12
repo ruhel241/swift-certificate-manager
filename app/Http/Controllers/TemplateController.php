@@ -15,7 +15,7 @@ use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 class TemplateController
 {
     public function register() {
-        add_action('wp_ajax_wscm_template_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_scm_template_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
@@ -32,7 +32,7 @@ class TemplateController
             ], 403);
         }
 
-       $route = sanitize_text_field(wp_unslash($_REQUEST['route'] ?? ''));
+       $route = sanitize_key(wp_unslash($_REQUEST['route'] ?? ''));
 
         $maps = array(
             'get_active_template'   => 'getActiveTemplate',
@@ -50,12 +50,12 @@ class TemplateController
             ], 400);
         }
 
-        do_action('swift-certificate-manager/doing_ajax_template_' . $route);
+        do_action('swift_certificate_manager/doing_ajax_template_' . $route);
 
         // Pass request (already sanitized inside methods)
         $this->{$maps[$route]}($_REQUEST);
 
-        do_action('swift-certificate-manager/admin_ajax_handler_template_catch', $route);
+        do_action('swift_certificate_manager/admin_ajax_handler_template_catch', $route);
     }
 
     public function getActiveTemplate($request) {
@@ -70,7 +70,10 @@ class TemplateController
         $slug = sanitize_key($request['slug'] ?? '');
 
         if (!$slug) {
-            wp_send_json_error(['message' => __('Invalid template slug')], 400);
+            wp_send_json_error(
+                [
+                    'message' => __('Invalid template slug', 'swift-certificate-manager')
+                ], 400);
         }
 
         update_option('swift_certificate_manager_active_template', $slug);
@@ -96,14 +99,14 @@ class TemplateController
         $templateId = absint($request['template_id'] ?? 0);
 
         if (!$templateId) {
-            wp_send_json_error(['message' => __('Template ID is required')], 400);
+            wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
         }
 
         $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
         $template = $SwiftCertificateManagerTemplates->getTemplate($templateId);
 
         if (!$template) {
-            wp_send_json_error(['message' => __('Template not found')], 404);
+            wp_send_json_error(['message' => __('Template not found', 'swift-certificate-manager')], 404);
         }
 
         wp_send_json_success([
@@ -118,19 +121,19 @@ class TemplateController
         $template = $request['template'] ?? [];
 
         if (!is_array($template)) {
-            wp_send_json_error(['message' => __('Invalid template data')], 400);
+            wp_send_json_error(['message' => __('Invalid template data', 'swift-certificate-manager')], 400);
         }
 
         $templateId = absint($template['id'] ?? 0);
 
         if (!$templateId) {
-            wp_send_json_error(['message' => __('Invalid template ID')], 400);
+            wp_send_json_error(['message' => __('Invalid template ID', 'swift-certificate-manager')], 400);
         }
 
         $settings = Arr::get($template, 'settings');
 
         if (!is_array($settings)) {
-            wp_send_json_error(['message' => __('Invalid settings')], 400);
+            wp_send_json_error(['message' => __('Invalid settings', 'swift-certificate-manager')], 400);
         }
 
         $settings = $this->sanitizeArray($settings);
@@ -227,14 +230,14 @@ class TemplateController
         $templateId = absint($request['template_id'] ?? 0);
 
         if (!$templateId) {
-            wp_send_json_error(['message' => __('Template ID is required')], 400);
+            wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
         }
 
         $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
         $template = $SwiftCertificateManagerTemplates->getTemplate($templateId);
 
         if (!$template) {
-            wp_send_json_error(['message' => __('Template not found')], 404);
+            wp_send_json_error(['message' => __('Template not found', 'swift-certificate-manager')], 404);
         }
 
         $slug = sanitize_key($template->slug ?? '');

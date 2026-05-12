@@ -1,12 +1,12 @@
 <template>
-  <div class="wscm-manage-certificate">
+  <div class="scm-manage-certificate">
     <div class="title header">
       <h1>Manage Certificate</h1>
       <!-- {{ infos }} -->
       <div class="header-buttons">
         <router-link to="/" class="nav-logo-lin">
           <el-button
-            class="wscm-primary-btn svg-span-btn"
+            class="scm-primary-btn svg-span-btn"
             round
           >
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,8 +22,8 @@
       </div>
     </div>
 
-    <div class="wscm-card wscm-mange-action">
-      <div class="wscm-mange-tabs">
+    <div class="scm-card scm-mange-action">
+      <div class="scm-mange-tabs">
         <el-tabs v-model="status" @tab-click="handleTabClick">
           <el-tab-pane label="Created" name="assign">
             <template #label>
@@ -148,7 +148,7 @@
           </el-tab-pane>
         </el-tabs>
       </div>
-      <div class="wscm-mange-search">
+      <div class="scm-mange-search">
         <el-input
           placeholder="Search"
           prefix-icon="el-icon-search"
@@ -158,7 +158,7 @@
         >
         </el-input>
 
-        <div class="wscm-button">
+        <div class="scm-button">
           <el-button class="capsule-btn defult-svg-span-btn" round @click="exportCSV">
             <svg
                 width="16"
@@ -202,7 +202,7 @@
       </div>
     </div>
 
-    <div class="wscm-manage-table-wrap">
+    <div class="scm-manage-table-wrap">
       <table-selections
           :current_status="status"
           @reloadData="fetchInfos"
@@ -232,7 +232,7 @@
 
         <el-table-column label="Certificate Code">
           <template slot-scope="scope">
-            <span class="wscm-certificate-code">{{ scope.row.certificate_code }}</span>
+            <span class="scm-certificate-code">{{ scope.row.certificate_code }}</span>
             <el-tooltip
               effect="dark"
               content="Click To Copy"
@@ -263,7 +263,7 @@
 
         <el-table-column :label="$t('Action')">
           <template slot-scope="scope">
-            <div class="wscm-table-action">
+            <div class="scm-table-action">
               <el-tooltip content="Edit" placement="top">
                 <a href="javascript:void(0)" @click="gotoEdit(scope.row.id)">
                   <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -322,7 +322,7 @@
           :selections="multipleSelection"
       />
 
-      <div class="wscm_pagination_wrap">
+      <div class="scm_pagination_wrap">
         <el-pagination
             :hide-on-single-page="false"
             @size-change="handleSizeChange"
@@ -341,7 +341,7 @@
       @close="upgradePopupVisible = false"
     />
 
-<!--    <div class="wscm-card p20" v-else>-->
+<!--    <div class="scm-card p20" v-else>-->
 <!--      <h3>{{ $t("No Data Found") }}</h3>-->
 <!--    </div>-->
   </div>
@@ -456,7 +456,7 @@ export default {
         text: 'Exporting CSV File....',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)',
-        customClass: 'wscm-text-loading'
+        customClass: 'scm-text-loading'
       });
 
       // Add setTimeout for 1000ms (1 second) delay
@@ -468,7 +468,7 @@ export default {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: new URLSearchParams({
-            action: 'wscm_generate_admin_ajax',
+            action: 'scm_generate_admin_ajax',
             route: 'get_csv_download',
             status: this.status,
             search: this.search,
@@ -561,7 +561,7 @@ export default {
     },
     performAction(type, infoId) {
       this.$post({
-        action: "wscm_generate_admin_ajax",
+        action: "scm_generate_admin_ajax",
         route: "maybe_delete_infos",
         info_ids: [infoId],
         action_type: type,
@@ -583,7 +583,7 @@ export default {
     fetchInfos() {
       this.fetching = true;
       this.$get({
-        action: "wscm_generate_admin_ajax",
+        action: "scm_generate_admin_ajax",
         route: "get_certificate_infos",
         status: this.status,
         search: this.search,

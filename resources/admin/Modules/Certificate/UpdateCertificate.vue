@@ -1,5 +1,5 @@
 <template>
-    <div class="wscm-assign-certificate">
+    <div class="scm-assign-certificate">
         <div class="title header">
             <h1>
                 {{ $t('Upadte Certificate Manually') }}
@@ -7,7 +7,7 @@
             <div class="header-buttons">
                 <el-button class="capsule-btn" icon="el-icon-view" round @click="previewCertificate">Preview</el-button>
                 <el-button class="capsule-btn" icon="el-icon-document" round @click="updateHandler('draft')">Update as Draft</el-button>
-                <el-button class="wscm-primary-btn" icon="el-icon-refresh-right" round @click="updateHandler('assign')">Update Certificate Info</el-button>
+                <el-button class="scm-primary-btn" icon="el-icon-refresh-right" round @click="updateHandler('assign')">Update Certificate Info</el-button>
             </div>
         </div>
         <InformationForm
@@ -64,7 +64,7 @@ export default {
             }
 
             this.$post({
-                action: 'wscm_generate_admin_ajax',
+                action: 'scm_generate_admin_ajax',
                 route: 'update_certificate_info',
                 info: this.info,
                 info_id: this.infoId,
@@ -90,7 +90,7 @@ export default {
         fetchInfo() {
             this.saving = true;
             this.$post({
-                action: 'wscm_generate_admin_ajax',
+                action: 'scm_generate_admin_ajax',
                 route: 'get_certificate_info',
                 info_id: this.infoId, 
                 nonce: window.SwiftCertificateManagerAdminVars.nonce

@@ -1,5 +1,5 @@
 <template>
-    <div class="wscm-card">
+    <div class="scm-card">
         <div class="settings-item">
             <div class="header-title">
                 <h3 class="title">License Management</h3>
@@ -10,13 +10,13 @@
                     @click="getLicense">
                 </el-button>
             </div>
-            <div class="wscm-license-management">
-                <div v-loading="verifying" class="wscm_pad_around">
-                    <div v-if="fetching" v-loading="fetching" class="wscm_narrow_box text-align-center fetching-text">
+            <div class="scm-license-management">
+                <div v-loading="verifying" class="scm_pad_around">
+                    <div v-if="fetching" v-loading="fetching" class="scm_narrow_box text-align-center fetching-text">
                         <h3>Fetching License Information Please wait</h3>
                     </div>
-                    <div v-else class="wscm_narrow_box" :class="'wscm_license_'+licenseData.status">
-                        <div class="wscm-expired" v-if="licenseData.status == 'expired'">
+                    <div v-else class="scm_narrow_box" :class="'scm_license_'+licenseData.status">
+                        <div class="scm-expired" v-if="licenseData.status == 'expired'">
                             <h3>Looks like your license has been expired </h3>
                             <div class="license-status-container">
                                 <div class="license-info-card">
@@ -52,7 +52,7 @@
                                 <el-input v-model="licenseKey" placeholder="License Key">
                                     <el-button @click="verifyLicense()" slot="append" icon="el-icon-lock">Verify License</el-button>
                                 </el-input>
-                                <!-- <div class="wscm-provide-license-key">
+                                <!-- <div class="scm-provide-license-key">
                                     <h3>Please Provide a license key of Swift Certificate Pro Addon</h3>
                                     <el-input v-model="licenseKey" placeholder="License Key">
                                         <el-button type="success" @click="verifyLicense()" slot="append" icon="el-icon-lock">Verify License</el-button>
@@ -64,7 +64,7 @@
                             </div>
                         </div>
                         
-                        <div class="wscm-valid" v-else-if="licenseData.status == 'valid'">
+                        <div class="scm-valid" v-else-if="licenseData.status == 'valid'">
                             <div class="circle-check-icon">
                                 <span class="el-icon el-icon-circle-check"></span>
                             </div>
@@ -103,7 +103,7 @@
                             <p>Want to deactivate this license? <a @click.prevent="deactivateLicense()" href="#">Click here</a></p>
                         </div>
 
-                        <div class="wscm-provide-license-key" v-else>
+                        <div class="scm-provide-license-key" v-else>
                             <h3>Please Provide a license key of Swift Certificate Manager Pro</h3>
                             <el-input v-model="licenseKey" placeholder="License Key">
                                 <el-button type="success" @click="verifyLicense()" slot="append" icon="el-icon-lock">Verify License</el-button>
@@ -139,7 +139,7 @@ export default {
             this.errorMessage = '';
             this.fetching = true;
             this.$get({
-                action: "wscm_admin_license_ajax",
+                action: "scm_admin_license_ajax",
                 route: "get_license_status",
                 nonce: window.SwiftCertificateManagerAdminVars.nonce,
                 // verify: true
@@ -165,7 +165,7 @@ export default {
             this.verifying = true;
             this.errorMessage = '';
             this.$post({
-                action: "wscm_admin_license_ajax",
+                action: "scm_admin_license_ajax",
                 route: "save_license",
                 nonce: window.SwiftCertificateManagerAdminVars.nonce,
                 license_key: this.licenseKey
@@ -206,7 +206,7 @@ export default {
         deactivateLicense() {
             this.verifying = true;
             this.$del({
-                action: "wscm_admin_license_ajax",
+                action: "scm_admin_license_ajax",
                 route: "deactivated_license",
                 nonce: window.SwiftCertificateManagerAdminVars.nonce
             })

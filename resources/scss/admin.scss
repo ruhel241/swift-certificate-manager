@@ -3,36 +3,36 @@
 @import "./variables";
 
 // Sc-primary Color Variables
-$wscm-primary-wscm-light: #efeafc;
-$wscm-primary-wscm-light-hover: #e6e0fa;
-$wscm-primary-wscm-light-active: #ccbef5;
-$wscm-primary-normal: #5b2de0;
-$wscm-primary-normal-hover: #5229ca;
-$wscm-primary-normal-active: #4924b3;
-$wscm-primary-wscm-dark: #4422a8;
-$wscm-primary-wscm-dark-hover: #371b86;
-$wscm-primary-wscm-dark-active: #291465;
-$wscm-primary-wscm-darker: #291465;
-$wscm-primary-darker: #1B1A1F;
+$scm-primary-light: #efeafc;
+$scm-primary-light-hover: #e6e0fa;
+$scm-primary-light-active: #ccbef5;
+$scm-primary-normal: #5b2de0;
+$scm-primary-normal-hover: #5229ca;
+$scm-primary-normal-active: #4924b3;
+$scm-primary-scm-dark: #4422a8;
+$scm-primary-scm-dark-hover: #371b86;
+$scm-primary-scm-dark-active: #291465;
+$scm-primary-scm-darker: #291465;
+$scm-primary-darker: #1B1A1F;
 
 
 // Sc-light Color Variables
-$wscm-light-50: #fcfcfc;
-$wscm-light-75: #f3f4f4;
-$wscm-light-100: #eef0f0;
-$wscm-light-200: #e7e9e9;
-$wscm-light-300: #e2e5e5;
-$wscm-light-400: #9ea0a0;
-$wscm-background-color: #f0eff5;
+$scm-light-50: #fcfcfc;
+$scm-light-75: #f3f4f4;
+$scm-light-100: #eef0f0;
+$scm-light-200: #e7e9e9;
+$scm-light-300: #e2e5e5;
+$scm-light-400: #9ea0a0;
+$scm-background-color: #f0eff5;
 
 // Sc-dark Color Variables
-$wscm-dark-50: #e8e8e9;
-$wscm-dark-75: #a2a1a3;
-$wscm-dark-100: #7b7a7d;
-$wscm-dark-200: #424145;
-$wscm-dark-300: #1b1a1f;
-$wscm-dark-400: #131216;
-$wscm-dark-500: #101013;
+$scm-dark-50: #e8e8e9;
+$scm-dark-75: #a2a1a3;
+$scm-dark-100: #7b7a7d;
+$scm-dark-200: #424145;
+$scm-dark-300: #1b1a1f;
+$scm-dark-400: #131216;
+$scm-dark-500: #101013;
 
 .mb-24 {
   margin-bottom: 24px;
@@ -47,7 +47,7 @@ $wscm-dark-500: #101013;
     padding: 65px;
 }
 
-.wscm-body {
+.scm-body {
     padding-right: 20px;
 }
 h1, h3, h4, h4, h6 {
@@ -60,19 +60,19 @@ h1, h3, h4, h4, h6 {
 }
 
 .el-select-dropdown__item.selected {
-  color: $wscm-primary-normal !important;
+  color: $scm-primary-normal !important;
 }
 
 .el-radio-button__inner:hover {
-  color: $wscm-primary-darker !important;
-  border-color: $wscm-primary-wscm-light-active !important;
+  color: $scm-primary-darker !important;
+  border-color: $scm-primary-light-active !important;
 }
 
 .is-active  {
-  color: $wscm-primary-normal !important;
+  color: $scm-primary-normal !important;
   svg {
     path {
-      stroke: $wscm-primary-normal;
+      stroke: $scm-primary-normal;
     }
   }
   .el-radio-button__inner:hover {
@@ -81,53 +81,53 @@ h1, h3, h4, h4, h6 {
 }
 
 .el-button.is-plain:hover {
-  color: $wscm-primary-normal !important;
-  border-color: $wscm-primary-normal !important;
+  color: $scm-primary-normal !important;
+  border-color: $scm-primary-normal !important;
 }
 
 .el-button.is-plain:focus {
-  color: $wscm-primary-normal !important;
-  border-color: $wscm-primary-normal !important;
+  color: $scm-primary-normal !important;
+  border-color: $scm-primary-normal !important;
 }
 
 input:focus, a:focus{
-  border-color: $wscm-primary-normal !important;
-  box-shadow: 0 0 0 1px $wscm-primary-normal !important;
+  border-color: $scm-primary-normal !important;
+  box-shadow: 0 0 0 1px $scm-primary-normal !important;
 }
 
 .el-select .el-input.is-focus .el-input__inner {
-   border-color: $wscm-primary-normal !important;
+   border-color: $scm-primary-normal !important;
 }
 
 .el-tabs .el-tabs__active-bar {
-  background-color: $wscm-primary-normal !important;
+  background-color: $scm-primary-normal !important;
 }
 
 .el-tabs__item:hover {
- color: $wscm-primary-normal !important;
+ color: $scm-primary-normal !important;
 }
 
 .el-popover__reference {
-  color: $wscm-primary-normal !important;
+  color: $scm-primary-normal !important;
 }
 .transaction {
   a {
-     color: $wscm-primary-normal !important;
+     color: $scm-primary-normal !important;
   }
 }
 
 .capsule-btn {
-  color: $wscm-primary-darker !important;
-  border-color: $wscm-primary-wscm-light-active !important;
+  color: $scm-primary-darker !important;
+  border-color: $scm-primary-light-active !important;
   svg {
     path {
-      stroke: $wscm-primary-darker;
+      stroke: $scm-primary-darker;
     }
   }
 }
 
 // action button edit deletd and view
-.wscm-table-action {
+.scm-table-action {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -186,7 +186,7 @@ input:focus, a:focus{
   }
 }
 
-.wscm-header {
+.scm-header {
   background-color: #fff;
   margin-left: -20px;
   padding-left: 20px;
@@ -212,7 +212,7 @@ input:focus, a:focus{
       }
     }
   }
-  .wscm-navigation {
+  .scm-navigation {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -253,22 +253,22 @@ input:focus, a:focus{
         }
       }
       .router-link-exact-active {
-        border-bottom: solid 2px $wscm-primary-normal !important;
-        color:  $wscm-primary-normal;
+        border-bottom: solid 2px $scm-primary-normal !important;
+        color:  $scm-primary-normal;
         svg {
           path {
-            stroke: $wscm-primary-normal;
+            stroke: $scm-primary-normal;
           }
         }
       }
     }
   }
-  .wscm-nav-pro-btn {
+  .scm-nav-pro-btn {
     display: flex;
     justify-content: center;
   }
 }
-.wscm-dashboard {
+.scm-dashboard {
   background-color: #f5f5fa;
   border-radius: 20px;
   height: auto;
@@ -276,13 +276,13 @@ input:focus, a:focus{
     display: flex;
     justify-content: end;
   }
-  .wscm_setup_step_1 {
+  .scm_setup_step_1 {
     margin-top: 24px;
     height: 90%;
     width: 90%;
     padding: 12px;
     border-radius: 16px;
-    .wscm-setup-bg {  
+    .scm-setup-bg {  
       svg {   
         width: 100%;   
       } 
@@ -315,15 +315,15 @@ input:focus, a:focus{
   border: 1px solid var(--Dark-D50, #e8e8e9);
   &:hover {
     border-radius: 100px;
-    border: 1px solid $wscm-primary-wscm-light-active;
+    border: 1px solid $scm-primary-light-active;
   }
   &:active {
     border-radius: 100px;
-    border: 1px solid $wscm-primary-normal;
+    border: 1px solid $scm-primary-normal;
   }
 }
 
-.wscm-assign-certificate {
+.scm-assign-certificate {
   .el-card {
     // width: 95%;
     padding: 16px;
@@ -346,22 +346,22 @@ input:focus, a:focus{
     border-radius: 12px;
     border: 1px solid var(--Dark-D50, #E8E8E9);
     &:hover {
-      border: 1px solid $wscm-primary-wscm-light-active;
+      border: 1px solid $scm-primary-light-active;
     }
     &:active {
-      border: 1px solid $wscm-primary-normal;
+      border: 1px solid $scm-primary-normal;
     }
   }
 }
 
 // manage templates
-.wscm-manage-certificate {
-  .wscm-mange-action {
+.scm-manage-certificate {
+  .scm-mange-action {
     padding: 20px;
     margin-bottom: 20px;
     display: flex;
     // justify-content: space-between;
-    .wscm-mange-tabs {
+    .scm-mange-tabs {
       flex: 1;
       .el-tabs__header {
         margin: 0;
@@ -381,7 +381,7 @@ input:focus, a:focus{
         }
       }
     }
-    .wscm-mange-search {
+    .scm-mange-search {
       flex: 1;
       display: flex;
       gap: 10px;
@@ -395,7 +395,7 @@ input:focus, a:focus{
   }
 }
 
-.wscm_pagination_wrap {
+.scm_pagination_wrap {
   margin-top: 10px;
   text-align: right;
   .el-pagination {
@@ -414,7 +414,7 @@ input:focus, a:focus{
     .el-pager li {
       border-radius: 4px;
       &.active {
-        background-color: $wscm-primary-normal;
+        background-color: $scm-primary-normal;
         color: #FFFFFF;
       }
     }
@@ -431,13 +431,13 @@ input:focus, a:focus{
   text-transform: capitalize;
 }
 
-.wscm_button_group {
+.scm_button_group {
   .el-button+.el-button {
     margin-left: 3px;
   }
 }
 
-.wscm-text-loading {
+.scm-text-loading {
   .el-loading-spinner {
     margin-left: 82px;
   }
@@ -451,16 +451,16 @@ input:focus, a:focus{
   }
 }
 
-.wscm-assign-certificate {
+.scm-assign-certificate {
   .el-card__body {
     padding: initial !important;
   }
 }
 
 // license management styles
-.wscm-license-management {
-  .wscm_header {
-    .wscm_header_title {
+.scm-license-management {
+  .scm_header {
+    .scm_header_title {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -472,9 +472,9 @@ input:focus, a:focus{
       }
     }
   }  
-  .wscm_license_valid {
+  .scm_license_valid {
     // text-align: center;
-    .wscm-valid {
+    .scm-valid {
       .title {
         font-size: 1.3em;
         margin-bottom: 10px;
@@ -511,8 +511,8 @@ input:focus, a:focus{
       }
     }
   }
-  .wscm_license_expired {
-    .wscm-expired {
+  .scm_license_expired {
+    .scm-expired {
         .title {
           margin-bottom: 10px;
         }
@@ -566,7 +566,7 @@ input:focus, a:focus{
     border-radius: 5px;
     margin-bottom: 20px;
   }
-  .wscm-provide-license-key {
+  .scm-provide-license-key {
       max-width: 750px;
       margin: 0 auto;
       padding: 45px 45px 0px 45px;
@@ -598,7 +598,7 @@ input:focus, a:focus{
 }
 //pro overlay upgrade
 .pro-template {
-  .wscm-certificate-preview {
+  .scm-certificate-preview {
       position: relative;
       overflow: hidden;
   }
@@ -647,13 +647,13 @@ input:focus, a:focus{
   }
 }
 // customizations component
-.wscm-customizations-wrapper {
+.scm-customizations-wrapper {
   .el-row {
     display: flex;
   }
 }
 // preview certificate
-.wscm-certificate-preview {
+.scm-certificate-preview {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -785,7 +785,7 @@ input:focus, a:focus{
   }
 }
 // customizations panel
-.wscm-customizations-panel {
+.scm-customizations-panel {
   display: flex;
   flex-direction: column;
   // height: 757px;
@@ -815,7 +815,7 @@ input:focus, a:focus{
       height: 650px;
       overflow-y: scroll;
   }
-  .wscm-color-select {
+  .scm-color-select {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -833,11 +833,11 @@ input:focus, a:focus{
     border: 1px solid var(--Dark-D50, #e8e8e9);
     &:hover {
       border-radius: 100px;
-      border: 1px solid $wscm-primary-wscm-light-active;
+      border: 1px solid $scm-primary-light-active;
     }
     &:active {
       border-radius: 100px;
-      border: 1px solid $wscm-primary-normal;
+      border: 1px solid $scm-primary-normal;
     }
   }
   .el-date-editor {
@@ -876,7 +876,7 @@ input:focus, a:focus{
 }
 
 // templates component
-.wscm-templates {
+.scm-templates {
   .templates-wrap {
     position: relative;
     .el-row {
@@ -931,13 +931,13 @@ input:focus, a:focus{
       border-radius: 12px;
     }
   }
-  .wscm_downloader_wrapper {
+  .scm_downloader_wrapper {
     background-color: #fff;
     border-radius: 5px;
     margin: 0px auto;
     margin-bottom: 80px;
     //padding: 100px;
-    .wscm_templates_installation_message {
+    .scm_templates_installation_message {
       width: 60%;
       display: flex;
       flex-direction: column;
@@ -953,7 +953,7 @@ input:focus, a:focus{
         line-height: 24px;
       }
     }
-    .wscm_title {   
+    .scm_title {   
      margin: 0px 0px 20px 0px;  
     }
   }
@@ -1029,7 +1029,7 @@ input:focus, a:focus{
 }
 
 // onboarding finishing setup
-.wscm-finishing-setup {
+.scm-finishing-setup {
     margin-top: 30px;
     margin-bottom: 30px;
    .cong_wrap {
@@ -1079,7 +1079,7 @@ input:focus, a:focus{
 }
 
 //payment transaction
-.wscm-transaction-details-page {
+.scm-transaction-details-page {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -1161,7 +1161,7 @@ input:focus, a:focus{
 
           .amount {
             font-weight: 600;
-            color: $wscm-primary-normal;
+            color: $scm-primary-normal;
           }
         }
       }
@@ -1227,7 +1227,7 @@ input:focus, a:focus{
             .amount-value {
               font-size: 24px;
               font-weight: 700;
-              color: $wscm-primary-normal;
+              color: $scm-primary-normal;
             }
           }
 
@@ -1270,7 +1270,7 @@ input:focus, a:focus{
   }
 }
 // popover payment status modal
-.wscm-status-edit-form {
+.scm-status-edit-form {
   h4 {
     //margin-top: 0;
     //margin-bottom: 15px;

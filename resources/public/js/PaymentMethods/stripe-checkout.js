@@ -3,7 +3,7 @@ class StripeCheckout {
         this.form = $form;
         this.data = $response?.data || {};
         this.intent = this.data?.intent || {};
-        this.parentWrapper = this.form.parents('.wscm-request-certificate-wrapper');
+        this.parentWrapper = this.form.parents('.scm-request-certificate-wrapper');
     }
 
     init() {
@@ -24,7 +24,7 @@ class StripeCheckout {
         });
 
         const paymentElement = elements.create('payment', {});
-        const formSelector = '#' + this.form.attr('id') + ' .swift_certificate_manager_payment_processor';
+        const formSelector = '#' + this.form.attr('id') + ' .scm_payment_processor';
 
         paymentElement.mount(formSelector);
 
@@ -65,7 +65,7 @@ class StripeCheckout {
                         $payNowBtn.text('Redirecting...');
 
                         return jQuery.post(window.SwiftCertificateManagerPublicVars.ajaxurl, {
-                            action: 'swift_certificate_manager_payment_confirmation_stripe',
+                            action: 'scm_payment_confirmation_stripe',
                             route: 'payment_confirmation',
                             intentId: paymentIntentId,
                             nonce: window.SwiftCertificateManagerPublicVars.nonce
@@ -108,32 +108,32 @@ class StripeCheckout {
     }
 
     startPaymentProcessing() {
-        this.form.find('.swift_certificate_manager_payment_processor')
+        this.form.find('.scm_payment_processor')
             .parent()
-            .prepend("<p class='wscm_loading_processor'>Payment processor loading...</p>");
+            .prepend("<p class='scm_loading_processor'>Payment processor loading...</p>");
 
         this.parentWrapper.find('.request_cretificate_form').hide();
 
         setTimeout(() => {
-            this.parentWrapper.find('.wscm-form-submit-message').hide();
+            this.parentWrapper.find('.scm-form-submit-message').hide();
         }, 3000);
     }
 
     // afterPaymentSuccess() {
     //     const receipt = "<a href='" + this.data?.order_items?.payment_args?.success_url + "'>View Receipt</a>";
-    //     this.parentWrapper.find('.wscm-container').append("<div class='wscm_form_receipt'>Thanks for your Request Certificate <br/>" + receipt + "</div>");
-    //     this.parentWrapper.find('#wscm_request_certificate').hide();
+    //     this.parentWrapper.find('.scm-container').append("<div class='scm_form_receipt'>Thanks for your Request Certificate <br/>" + receipt + "</div>");
+    //     this.parentWrapper.find('#scm_request_certificate').hide();
     // }
 
     afterPaymentProcessorReady(payButton) {
-        this.form.find('.wscm_complete_payment_instruction').remove();
-        this.form.prepend("<p class='wscm_complete_payment_instruction'>Please complete your payment with Stripe 👇</p>");
-        this.form.find('.swift_certificate_manager_payment_processor').append(payButton);
-        this.form.find('.wscm_loading_processor').remove();
+        this.form.find('.scm_complete_payment_instruction').remove();
+        this.form.prepend("<p class='scm_complete_payment_instruction'>Please complete your payment with Stripe 👇</p>");
+        this.form.find('.scm_payment_processor').append(payButton);
+        this.form.find('.scm_loading_processor').remove();
     }
 }
 
 // when get response from server then init the stripe checkout
-window.addEventListener('swift_certificate_manager_payment_next_action_stripe', function (e) {
+window.addEventListener('scm_payment_next_action_stripe', function (e) {
     new StripeCheckout(e.detail.form, e.detail.response).init();
 });

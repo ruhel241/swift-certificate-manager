@@ -17,29 +17,25 @@ use SwiftCertificateManager\Helpers\HelperFunction;
 class AssignCertificateController
 {
     public function register() {
-        add_action('wp_ajax_wscm_generate_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_scm_generate_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
-    public function ajaxRoutes()
-    {
-        // Nonce check
-        if (!check_ajax_referer('swiftcertificate_admin_nonce', 'nonce', false)) {
-            wp_send_json_error([
-                'message' => __('Invalid nonce', 'swift-certificate-manager')
-            ], 403);
+    public function ajaxRoutes() {
+
+        // Nonce check.
+        if ( ! check_ajax_referer( 'swiftcertificate_admin_nonce', 'nonce', false ) ) {
+            wp_send_json_error(['message' => __( 'Invalid nonce', 'swift-certificate-manager' )], 403);
         }
 
-        // Permission check
-        if (!current_user_can('manage_options')) {
-            wp_send_json_error([
-                'message' => __('Unauthorized access', 'swift-certificate-manager')
-            ], 403);
+        // Permission check.
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error(['message' => __( 'Unauthorized access', 'swift-certificate-manager' )], 403);
         }
 
-        // Route sanitize
-        $route = sanitize_text_field(wp_unslash($_REQUEST['route'] ?? ''));
+        // Route sanitize.
+        $route = sanitize_key( wp_unslash( $_REQUEST['route'] ?? '' ) );
 
-        // Route map
+        // Route map.
         $maps = [
             'get_certificate_infos'            => 'getCertificateInfos',
             'get_certificate_info'             => 'getCertificateInfoByID',
@@ -53,20 +49,28 @@ class AssignCertificateController
             'redesign_template'                => 'redesignTemplate',
         ];
 
-        // Validate route
-        if (!isset($maps[$route])) {
-            wp_send_json_error([
-                'message' => __('Invalid route', 'swift-certificate-manager')
-            ], 400);
+        // Validate route.
+        if ( ! isset( $maps[ $route ] ) ) {
+            wp_send_json_error(['message' => __( 'Invalid route', 'swift-certificate-manager' )], 400);
         }
 
-        // call method
-        do_action('swift-certificate-manager/assi_doing_ajax_forms_' . $route);
+        /**
+         * Fires before ajax route execution.
+         *
+         * @param string $route Current ajax route.
+         */
 
-        // Pass raw request (sanitize inside method)
-        $this->{$maps[$route]}($_REQUEST);
+        do_action('swift_certificate_manager/assign_doing_ajax_forms_' . $route);
 
-        do_action('swift-certificate-manager/assign_admin_ajax_handler_catch', $route);
+        // Pass raw request. Sanitization handled inside methods.
+        $this->{$maps[ $route ]}( $_REQUEST );
+
+        /**
+         * Fires after ajax route execution.
+         *
+         * @param string $route Current ajax route.
+         */
+        do_action('swift_certificate_manager/assign_admin_ajax_handler_catch', $route);
     }
 
     public function getCertificateInfos($request)
@@ -671,78 +675,101 @@ class AssignCertificateController
     }
 
     // download CSV File
-    public function getCsvDownload($request)
-    {
+    public function getCsvDownload( $request ) {
         try {
-            // optional: ensure no previous output
-            if (ob_get_length()) {
+
+            // Clear output buffer safely.
+            while ( ob_get_level() ) {
                 ob_end_clean();
             }
 
             $certificateService = new SwiftCertificateManagerGenerate();
 
-            // Note: request sanitization handled inside getDatas()
-            $result       = $certificateService->getDatas($request);
+            // Request sanitization handled inside getDatas().
+            $result       = $certificateService->getDatas( $request );
             $certificates = $result['infos'] ?? [];
 
-            if (empty($certificates)) {
-                wp_send_json_error([
-                    'message' => __('No certificate data available for export', 'swift-certificate-manager')
-                ], 404);
+            if ( empty( $certificates ) ) {
+                wp_send_json_error(
+                    [
+                        'message' => __( 'No certificate data available for export', 'swift-certificate-manager' ),
+                    ],
+                    404
+                );
             }
 
-            $date     = gmdate('Y-m-d');
-            $filename = sanitize_file_name("swift-certificate-manager-export-{$date}.csv");
+            $date     = gmdate( 'Y-m-d' );
+            $filename = sanitize_file_name( "swift-certificate-manager-export-{$date}.csv" );
 
-            // headers check
-            if (!headers_sent()) {
-                header('Content-Type: text/csv; charset=utf-8');
-                header('Content-Disposition: attachment; filename="' . $filename . '"');
-                header('Pragma: no-cache');
-                header('Expires: 0');
+            if ( ! headers_sent() ) {
+                header( 'Content-Type: text/csv; charset=utf-8' );
+                header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
+                header( 'Pragma: no-cache' );
+                header( 'Expires: 0' );
             }
 
-            $output = fopen('php://output', 'w');
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
+            $output = fopen( 'php://output', 'w' );
 
-            // UTF-8 BOM
-            fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+            if ( false === $output ) {
+                wp_send_json_error(
+                    [
+                        'message' => __( 'Unable to open output stream.', 'swift-certificate-manager' ),
+                    ],
+                    500
+                );
+            }
 
-            // headers
-            fputcsv($output, [
-                __('Serial', 'swift-certificate-manager'),
-                __('Course Name', 'swift-certificate-manager'),
-                __('Student Name', 'swift-certificate-manager'),
-                __('Student Email', 'swift-certificate-manager'),
-                __('Graduation Date', 'swift-certificate-manager'),
-                __('Certificate Code', 'swift-certificate-manager'),
-                __('Status', 'swift-certificate-manager'),
-                __('Payment Status', 'swift-certificate-manager'),
-                __('Created At', 'swift-certificate-manager')
-            ]);
+            // UTF-8 BOM for Excel support.
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fwrite
+            fwrite( $output, "\xEF\xBB\xBF" );
 
-            foreach ($certificates as $index => $certificate) {
+            // CSV Header Row.
+            fputcsv(
+                $output,
+                [
+                    __( 'Serial', 'swift-certificate-manager' ),
+                    __( 'Course Name', 'swift-certificate-manager' ),
+                    __( 'Student Name', 'swift-certificate-manager' ),
+                    __( 'Student Email', 'swift-certificate-manager' ),
+                    __( 'Graduation Date', 'swift-certificate-manager' ),
+                    __( 'Certificate Code', 'swift-certificate-manager' ),
+                    __( 'Status', 'swift-certificate-manager' ),
+                    __( 'Payment Status', 'swift-certificate-manager' ),
+                    __( 'Created At', 'swift-certificate-manager' ),
+                ]
+            );
+
+            foreach ( $certificates as $index => $certificate ) {
+
                 $row = [
                     $index + 1,
-                    $this->sanitizeCsvField($certificate->course_name ?? ''),
-                    $this->sanitizeCsvField($certificate->student_name ?? ''),
-                    $this->sanitizeCsvField($certificate->student_email ?? ''),
-                    $this->sanitizeCsvField($certificate->graduation_date ?? ''),
-                    $this->sanitizeCsvField($certificate->certificate_code ?? ''),
-                    $this->sanitizeCsvField($certificate->status ?? ''),
-                    $this->sanitizeCsvField($certificate->payment_status ?? ''),
-                    $this->sanitizeCsvField($certificate->created_at ?? '')
+                    $this->sanitizeCsvField( $certificate->course_name ?? '' ),
+                    $this->sanitizeCsvField( $certificate->student_name ?? '' ),
+                    $this->sanitizeCsvField( $certificate->student_email ?? '' ),
+                    $this->sanitizeCsvField( $certificate->graduation_date ?? '' ),
+                    $this->sanitizeCsvField( $certificate->certificate_code ?? '' ),
+                    $this->sanitizeCsvField( $certificate->status ?? '' ),
+                    $this->sanitizeCsvField( $certificate->payment_status ?? '' ),
+                    $this->sanitizeCsvField( $certificate->created_at ?? '' ),
                 ];
 
-                fputcsv($output, $row);
+                fputcsv( $output, $row );
             }
 
-            fclose($output);
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fclose
+            fclose( $output );
+
             exit;
 
-        } catch (Exception $e) {
-            wp_send_json_error([
-                'message' => __('Failed to generate CSV export', 'swift-certificate-manager')
-            ], 500);
+        } catch ( Exception $e ) {
+
+            wp_send_json_error(
+                [
+                    'message' => __( 'Failed to generate CSV export', 'swift-certificate-manager' ),
+                ],
+                500
+            );
         }
     }
     /**

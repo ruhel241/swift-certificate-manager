@@ -1,7 +1,7 @@
 {
     "/assets/admin/js/boot.js": "/assets/admin/js/boot.js",
     "/assets/admin/js/start.js": "/assets/admin/js/start.js",
-    "/assets/public/js/wscm_request_form.js": "/assets/public/js/wscm_request_form.js",
+    "/assets/public/js/scm_request_form.js": "/assets/public/js/scm_request_form.js",
     "/assets/public/js/PaymentMethods/stripe-checkout.js": "/assets/public/js/PaymentMethods/stripe-checkout.js",
     "/assets/public/js/PaymentMethods/paypal-checkout.js": "/assets/public/js/PaymentMethods/paypal-checkout.js",
     "/assets/admin/css/admin.css": "/assets/admin/css/admin.css",

@@ -1,10 +1,10 @@
 <template>
-  <div class="wscm-dashboard">
-    <div class="wscm_onboarding">
-      <div class="wscm_setup_step_1" v-if="active === 1">
+  <div class="scm-dashboard">
+    <div class="scm_onboarding">
+      <div class="scm_setup_step_1" v-if="active === 1">
         <el-row :gutter="20">
           <el-col :span="14">
-            <div class="wscm-setup-bg">
+            <div class="scm-setup-bg">
               <!-- <img :src="imageURL+'/setup-img.png'" alt=""> -->
                 <svg height="742" viewBox="0 0 576 742" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <path d="M0 16C0 7.16345 7.16344 0 16 0H576V742H16C7.16345 742 0 734.837 0 726V16Z" fill="url(#pattern0_86_293)"/>
@@ -24,7 +24,7 @@
           </el-col>
           <el-col :span="10">
             <div class="grid-content overview-sidebar">
-              <div class="wscm-setup-heading" style="margin-bottom: 30px;">
+              <div class="scm-setup-heading" style="margin-bottom: 30px;">
                 <h5>Hi There! 👋</h5>
                 <h2 style="margin-top: 10px">
                   Welcome To Swift Certificate Manager
@@ -35,7 +35,7 @@
                 <hr style="margin-top: 10px;"/>
                 <el-form label-position="top" label-width="100px">
                   <el-form-item>
-                    <div class="wscm-setup-category-select">
+                    <div class="scm-setup-category-select">
                       <el-radio v-model="preference" label="instructor">Instructor</el-radio>
                       <el-radio v-model="preference" label="company">Company</el-radio>
                     </div>
@@ -78,19 +78,19 @@
                   <span class="setup-count">0{{active}}</span>
                   <span>/ 03</span>
                 </div>
-                <button class="el-button wscm-primary-btn el-button--default" @click="nextHandler">Next</button>
+                <button class="el-button scm-primary-btn el-button--default" @click="nextHandler">Next</button>
               </div>
             </div>
           </el-col>
         </el-row>
       </div>
-      <div class="wscm_setup_step_2" v-if="active === 2">
+      <div class="scm_setup_step_2" v-if="active === 2">
         <Step2
             :active="active"
             @updateActive="updateStep"
         />
       </div>
-      <div class="wscm_setup_step_3" v-if="active === 3">
+      <div class="scm_setup_step_3" v-if="active === 3">
         <Step4
             :active="active"
             @updateActive="updateStep"
@@ -128,12 +128,12 @@ export default {
         name: "",
         signature: "",
       },
-      active: parseInt(localStorage.getItem('wscm_step_active')) || 1,
+      active: parseInt(localStorage.getItem('scm_step_active')) || 1,
     };
   },
   created() {
     // Load saved data after component creation
-    let storedData = localStorage.getItem('wscm_onboarding_info');
+    let storedData = localStorage.getItem('scm_onboarding_info');
     if (storedData) {
       const parsedData = JSON.parse(storedData);
       // Update info with saved data
@@ -182,18 +182,18 @@ export default {
         ...this.info,
         preference: this.preference
       };
-      localStorage.setItem('wscm_onboarding_info', JSON.stringify(dataToSave));
+      localStorage.setItem('scm_onboarding_info', JSON.stringify(dataToSave));
 
       if (this.active < 3) {
         this.active += 1;
-        localStorage.setItem('wscm_step_active', this.active);
+        localStorage.setItem('scm_step_active', this.active);
       }
 
       this.saveOnBoarding();
     },
     updateStep(value) {
       this.active = value;
-      localStorage.setItem('wscm_step_active', this.active);
+      localStorage.setItem('scm_step_active', this.active);
     },
 
     saveOnBoarding() {
@@ -232,8 +232,8 @@ export default {
 </script>
 
 <style lang="scss">
-  .wscm_onboarding {
-    .wscm-setup-bg {
+  .scm_onboarding {
+    .scm-setup-bg {
       img {
         width: 100%;
       }
@@ -246,7 +246,7 @@ export default {
     .border-bottom {
       border-bottom: solid #ddd;
     }
-    .wscm-setup-category-select {
+    .scm-setup-category-select {
       label {
         border: solid #ddd;
         padding: 8px 15px;

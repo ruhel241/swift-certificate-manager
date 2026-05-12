@@ -35,44 +35,44 @@ class AdminPageHandler
             $menuName,
             $menuName,
             $permisison,
-            'wscm-swift-certificate-manager',
+            'scm-swift-certificate-manager',
             [$this, 'renderPage'],
             $this->getMenuIcon(),
             27
         );
         
         add_submenu_page( 
-            'wscm-swift-certificate-manager', 
+            'scm-swift-certificate-manager', 
             __('Assign Manually', 'swift-certificate-manager'),
             __('Assign Manually', 'swift-certificate-manager'),
             $permisison,
-            'wscm-swift-certificate-manager', 
+            'scm-swift-certificate-manager', 
             array($this, 'renderPage')
         );
 
         add_submenu_page(
-            'wscm-swift-certificate-manager',
+            'scm-swift-certificate-manager',
             __('Manage Certificates', 'swift-certificate-manager'),
             __('Manage Certificates', 'swift-certificate-manager'),
             $permisison,
-            "admin.php?page=wscm-swift-certificate-manager#/manage_certificates",
+            "admin.php?page=scm-swift-certificate-manager#/manage_certificates",
         );
 
         add_submenu_page(
-            'wscm-swift-certificate-manager',
+            'scm-swift-certificate-manager',
             __('Templates', 'swift-certificate-manager'),
             __('Templates', 'swift-certificate-manager'),
             $permisison,
-            "admin.php?page=wscm-swift-certificate-manager#/templates",
+            "admin.php?page=scm-swift-certificate-manager#/templates",
          
         );
         
         add_submenu_page(
-            'wscm-swift-certificate-manager',
+            'scm-swift-certificate-manager',
             __('Settings', 'swift-certificate-manager'),
             __('Settings', 'swift-certificate-manager'),
             $permisison,
-            "admin.php?page=wscm-swift-certificate-manager#/settings"
+            "admin.php?page=scm-swift-certificate-manager#/settings"
         );
 
         add_action('admin_enqueue_scripts', [$this, 'loadAssets']);
@@ -82,7 +82,7 @@ class AdminPageHandler
     {
         echo wp_kses_post("<div class='swift_certificate_manager_wrap'><div id='wp_swift_certificate_manager_app'></div></div>");
 
-        do_action('swift-certificate-manager/admin_app_loaded', true);
+        do_action('swift_certificate_manager/admin_app_loaded', true);
     }
 
     private function getMenuIcon()
@@ -98,7 +98,7 @@ class AdminPageHandler
     public function loadAssets()
     {
         // phpcs:disable WordPress.Security.NonceVerification.Recommended
-        if ( isset( $_GET['page'] ) && sanitize_text_field( wp_unslash( $_GET['page'] ) ) === 'wscm-swift-certificate-manager') {
+        if ( isset( $_GET['page'] ) && sanitize_text_field( wp_unslash( $_GET['page'] ) ) === 'scm-swift-certificate-manager') {
 
             if (function_exists('wp_enqueue_editor')) {
                 wp_enqueue_editor();
@@ -128,7 +128,7 @@ class AdminPageHandler
 
             $helperFunction = new HelperFunction();
 
-            $SwiftCertificateManagerAdminVars = apply_filters('swift-certificate-manager/admin_app_vars', array(
+            $SwiftCertificateManagerAdminVars = apply_filters('swift_certificate_manager/admin_app_vars', array(
                 'assets_url'             => $assetsUrl,
                 'images_url'             => $assetsUrl.'admin/images/',
                 'upload_temp_dir'        => $uploadDir['tempDir'],

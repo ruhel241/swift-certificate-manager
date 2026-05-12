@@ -1,10 +1,10 @@
 // Styles for request certificate page
-.wscm-request-certificate-wrapper {
+.scm-request-certificate-wrapper {
     max-width: 1000px;
     margin: 60px auto !important;
     padding: 20px;
     // background: #f5f7fb;
-    .wscm-container {
+    .scm-container {
         background: #ffffff;
         padding: 40px;
         border-radius: 16px;
@@ -69,7 +69,7 @@
         }
     }
 
-    .wscm_payment_checkbox {
+    .scm_payment_checkbox {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -81,17 +81,17 @@
         cursor: pointer;
     }
 
-    .wscm_payment_checkbox:hover {
+    .scm_payment_checkbox:hover {
         border-color: #4a90e2;
         background: #f0f7ff;
     }
 
-    #wscm_payment_checkbox {
+    #scm_payment_checkbox {
         accent-color: #4a90e2;
         transform: scale(1.2);
     }
 
-    .wscm_payment_method {
+    .scm_payment_method {
         margin-top: 10px;
         padding: 15px;
         border-radius: 10px;
@@ -99,17 +99,17 @@
         border: 1px solid #e5e7eb;
     }
 
-    .wscm_payment_method input[type="radio"] {
+    .scm_payment_method input[type="radio"] {
         accent-color: #4a90e2;
         margin-right: 6px;
     }
 
-    .wscm_payment_method label {
+    .scm_payment_method label {
         margin-right: 15px;
         font-weight: 500;
     }
 
-    .wscm-form-submit-message {
+    .scm-form-submit-message {
         display: none;
         border-radius: 10px;
         margin: 25px 0;
@@ -134,8 +134,8 @@
 
 /* 📱 Mobile Responsive */
 @media (max-width: 600px) {
-    .wscm-request-certificate-wrapper {
-        .wscm-container {
+    .scm-request-certificate-wrapper {
+        .scm-container {
             padding: 20px;
         }
 
@@ -146,14 +146,14 @@
 }
 
 // Styles for verify certificate page
-.wscm-verify-form-wrapper {
+.scm-verify-form-wrapper {
     min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     // background: #f5f7fb;
     padding: 20px;
-    .wscm-card {
+    .scm-card {
         width: 100%;
         max-width: 700px;
         background: #fff;
@@ -162,13 +162,13 @@
         // box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
-    .wscm-title {
+    .scm-title {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         color: #1f2937;
     }
-    .wscm-verify-certificate-message {
+    .scm-verify-certificate-message {
         // padding: 12px 15px;
         border-radius: 10px;
         text-align: center;
@@ -188,23 +188,23 @@
             color: #b91c1c;
         }
     }
-    .wscm-form {
+    .scm-form {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-bottom: 25px;
     }
-    .wscm-form input {
+    .scm-form input {
         padding: 12px;
         border: 1px solid #e5e7eb;
         border-radius: 10px;
         outline: none;
         transition: 0.3s;
     }
-    .wscm-form input:focus {
+    .scm-form input:focus {
         border-color: #4a90e2;
     }
-    .wscm-form button {
+    .scm-form button {
         padding: 12px;
         background: #4a90e2;
         color: white;
@@ -214,31 +214,31 @@
         font-weight: 600;
         transition: 0.3s;
     }
-    .wscm-form button:hover {
+    .scm-form button:hover {
         background: #357ab7;
     }
-    .wscm-loader {
+    .scm-loader {
         text-align: center;
         margin: 20px 0;
     }
 
-    .wscm-loader img {
+    .scm-loader img {
         width: 60px;
     }
 
-    .wscm-grid {
+    .scm-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
     }
 
-    .wscm-grid .item {
+    .scm-grid .item {
         background: #f9fafb;
         padding: 15px;
         border-radius: 12px;
     }
 
-    .wscm-grid .full {
+    .scm-grid .full {
         grid-column: span 2;
     }
 
@@ -256,22 +256,22 @@
     }
 
     @media (max-width: 600px) {
-        .wscm-card {
+        .scm-card {
             padding: 20px;
         }
 
-        .wscm-grid {
+        .scm-grid {
             grid-template-columns: 1fr;
         }
 
-        .wscm-grid .full {
+        .scm-grid .full {
             grid-column: span 1;
         }
     }
 }
    
 // Styles for payment invoice page
-.wscm-invoice-wrrapper {
+.scm-invoice-wrrapper {
     max-width: 800px;
     /*width: 70%;*/
     margin: 40px auto;
@@ -438,7 +438,7 @@
     }
 }
 
-.wscm-error-message {
+.scm-error-message {
     color: red;
     font-weight: 500;
 }
@@ -465,7 +465,7 @@
         display: none !important;
     }
 
-    .wscm-invoice-wrrapper {
+    .scm-invoice-wrrapper {
         width: 210mm;
         min-height: 297mm;
         margin: 0 !important;

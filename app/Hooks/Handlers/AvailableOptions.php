@@ -267,34 +267,34 @@ class AvailableOptions
             ],
         ];
 
-        return apply_filters('swift-certificate-manager/certificate_font_list', $fonts);
+        return apply_filters('swift_certificate_manager/certificate_font_list', $fonts);
     }
 
     public static function getDirStructure()
     {
         $workingPath = wp_upload_dir()['basedir'];
-        $workingDir  = apply_filters('swift-certificate-manager/working_dir', $workingPath .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
+        $workingDir  = apply_filters('swift_certificate_manager/working_dir', $workingPath .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
       
         return [
             'workingDir'      => $workingDir,
-            'tempDir'         => apply_filters('swift-certificate-manager/pdf_temp_dir', $workingDir . '/temp/'),
-            'pdfCacheDir'     => apply_filters('swift-certificate-manager/pdf_cache_dir', $workingDir . '/pdfCache/'),
-            'fontDir'         => apply_filters('swift-certificate-manager/pdf_font_dir', $workingDir . '/fonts/'),
-            'certificatesDir' => apply_filters('swift-certificate-manager/pdf_certificate_templates_dir', $workingDir . '/certificate_templates/')
+            'tempDir'         => apply_filters('swift_certificate_manager/pdf_temp_dir', $workingDir . '/temp/'),
+            'pdfCacheDir'     => apply_filters('swift_certificate_manager/pdf_cache_dir', $workingDir . '/pdfCache/'),
+            'fontDir'         => apply_filters('swift_certificate_manager/pdf_font_dir', $workingDir . '/fonts/'),
+            'certificatesDir' => apply_filters('swift_certificate_manager/pdf_certificate_templates_dir', $workingDir . '/certificate_templates/')
         ];
     }
 
     public static function getDirUrlStructure()
     {
         $workingPathUrl = wp_upload_dir()['baseurl'];
-        $workingUrl     = apply_filters('swift-certificate-manager/working_url', $workingPathUrl .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
+        $workingUrl     = apply_filters('swift_certificate_manager/working_url', $workingPathUrl .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
       
         return [
             'workingUrl'      => $workingUrl,
-            'tempUrl'         => apply_filters('swift-certificate-manager/pdf_temp_url', $workingUrl . '/temp/'),
-            'pdfCacheUrl'     => apply_filters('swift-certificate-manager/pdf_cache_url', $workingUrl . '/pdfCache/'),
-            'fontUrl'         => apply_filters('swift-certificate-manager/pdf_font_url', $workingUrl . '/fonts/'),
-            'certificatesUrl' => apply_filters('swift-certificate-manager/pdf_certificate_templates_url', $workingUrl . '/certificate_templates/')
+            'tempUrl'         => apply_filters('swift_certificate_manager/pdf_temp_url', $workingUrl . '/temp/'),
+            'pdfCacheUrl'     => apply_filters('swift_certificate_manager/pdf_cache_url', $workingUrl . '/pdfCache/'),
+            'fontUrl'         => apply_filters('swift_certificate_manager/pdf_font_url', $workingUrl . '/fonts/'),
+            'certificatesUrl' => apply_filters('swift_certificate_manager/pdf_certificate_templates_url', $workingUrl . '/certificate_templates/')
         ];
     }
 
@@ -387,7 +387,7 @@ class AvailableOptions
 
     public static function globalSettings()
     {
-         return apply_filters('swift-certificate-manager/global-settings',[
+         return apply_filters('swift_certificate_manager/global-settings',[
             'instructor_name'                  => 'John doe',
             'instructor_signature'             => 'John',
             'instructor_signature_img'         => '',

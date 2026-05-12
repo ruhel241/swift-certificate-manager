@@ -47,12 +47,12 @@ class OnboardingHandler
         }
 
         // call method
-        do_action('swift-certificate-manager/doing_ajax_onboarding_' . $route);
+        do_action('swift_certificate_manager/doing_ajax_onboarding_' . $route);
 
         // Pass raw request (sanitize inside method)
         $this->{$maps[$route]}($_REQUEST);
 
-        do_action('swift-certificate-manager/admin_ajax_handler_onboarding_catch', $route);
+        do_action('swift_certificate_manager/admin_ajax_handler_onboarding_catch', $route);
     }
 
     public function saveOnboardingInfo($request)

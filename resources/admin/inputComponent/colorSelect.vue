@@ -1,5 +1,5 @@
 <template>
-    <div class="wscm-color-select">
+    <div class="scm-color-select">
         <p class="label">{{title}}</p>
         <el-color-picker
             v-model="model"

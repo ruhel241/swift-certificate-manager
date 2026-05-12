@@ -1,5 +1,5 @@
 <template>
-  <div class="wscm-transaction-details-page">
+  <div class="scm-transaction-details-page">
     <!-- Header with navigation -->
     <div class="page-header">
       <el-page-header @back="gobackPaymentTransaction" content="Transaction Details"></el-page-header>
@@ -16,13 +16,13 @@
               {{ transaction.payment_status === 'paid' ? 'Payment Successful' : 'Payment Pending' }}
             </div>
 
-            <div class="wscm-status-actions">
+            <div class="scm-status-actions">
               <el-popover
                 placement="bottom"
                 width="300"
                 v-model="statusPopoverVisible"
                 trigger="click">
-                <div class="wscm-status-edit-form">
+                <div class="scm-status-edit-form">
                   <h4>Update Payment Status</h4>
                   <el-form label-position="top">
                     <el-form-item>
@@ -210,7 +210,7 @@
           <!-- Action Buttons -->
           <div class="action-buttons">
             <el-button class="capsule-btn" round icon="el-icon-back" @click="gobackPaymentTransaction">Back to Transactions</el-button>
-            <el-button class="wscm-primary-btn" type="success" icon="el-icon-view" @click="getoViewCertificate(transaction.get_info.id)">View Request Certificate</el-button>
+            <el-button class="scm-primary-btn" type="success" icon="el-icon-view" @click="getoViewCertificate(transaction.get_info.id)">View Request Certificate</el-button>
           </div>
         </div>
       </template>
@@ -254,7 +254,7 @@ export default {
       const transactionId = this.$route.params.transaction_id;
 
       this.$get({
-        action: 'wscm_transaction_admin_ajax',
+        action: 'scm_transaction_admin_ajax',
         route: 'get_transaction_details',
         transaction_id: transactionId,
         nonce: window.SwiftCertificateManagerAdminVars.nonce
@@ -281,7 +281,7 @@ export default {
       this.updatingStatus = true;
 
       this.$post({
-        action: 'wscm_transaction_admin_ajax',
+        action: 'scm_transaction_admin_ajax',
         route: 'update_transaction_status',
         transaction_id: this.transaction.id,
         status: this.editStatus,

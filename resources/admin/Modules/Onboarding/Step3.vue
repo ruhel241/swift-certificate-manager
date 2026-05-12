@@ -1,12 +1,12 @@
 <template>
-  <div class="wscm-fonts-manager">
+  <div class="scm-fonts-manager">
     <div class="title header" v-if="isOnboarded === 'no'">
       <h1>Fonts Manager</h1>
     </div>
 
     <div class="fonts-wrap">
-      <div class="wscm_fonts_downloader_wrapper">
-        <div class="wscm_fonts_installation" v-if="downloadableFiles">
+      <div class="scm_fonts_downloader_wrapper">
+        <div class="scm_fonts_installation" v-if="downloadableFiles">
           <h3>Fonts are required for Certificate Generate</h3>
           <p>
             This module requires downloading Fonts for Certificate Generate.
@@ -16,7 +16,7 @@
 
           <div class="settings-font-manager" v-if="isOnboarded === 'yes'">
             <el-button
-                class="wscm-pro-btn"
+                class="scm-pro-btn"
                 round
                 @click="downloadFonts"
                 :loading="loading"
@@ -27,8 +27,8 @@
           </div>
         </div>
 
-        <div class="wscm_fonts_install_preview" v-else>
-          <div class="wscm_pdf_system_status">
+        <div class="scm_fonts_install_preview" v-else>
+          <div class="scm_pdf_system_status">
             <h3 class="mb-3">
               Swift Certificate Manager Fonts is now active
               <span style="color: red;" v-if="!getSystemStatuses.status">
@@ -55,10 +55,10 @@
         <span class="setup-count">0{{ active }}</span>
         <span>/04</span>
       </div>
-      <div class="wscm_button_group">
+      <div class="scm_button_group">
         <el-button class="capsule-button" round @click="backBtnHandler">Back</el-button>
         <el-button
-            class="wscm-primary-btn"
+            class="scm-primary-btn"
             round
             @click="downloadFonts"
             v-if="downloadableFiles"
@@ -67,7 +67,7 @@
         >
           {{ loading ? 'Installing...' : 'Install Fonts' }}
         </el-button>
-        <el-button class="wscm-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
+        <el-button class="scm-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
       </div>
     </div>
 
@@ -115,7 +115,7 @@ export default {
         text: 'Installing fonts, do not refresh the page, please wait...',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)',
-        customClass: 'wscm-text-loading'
+        customClass: 'scm-text-loading'
       });
 
       this.$post({
@@ -160,13 +160,13 @@ export default {
 
 <style lang="scss">
 
-.wscm_fonts_downloader_wrapper {
+.scm_fonts_downloader_wrapper {
   background-color: #fff;
   border-radius: 5px;
   margin: 0px auto;
   margin-bottom: 80px;
   //padding: 100px;
-  .wscm_fonts_installation {
+  .scm_fonts_installation {
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -185,7 +185,7 @@ export default {
   }
 }
 
-.wscm_fonts_install_preview {
+.scm_fonts_install_preview {
   width: 100%;
   padding: 30px;
 }
@@ -212,7 +212,7 @@ export default {
   margin-top: 50px;
 }
 
-.wscm_pdf_system_status {
+.scm_pdf_system_status {
   .dashicons-yes {
     color: #0def0d;
   }

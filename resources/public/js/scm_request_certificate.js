@@ -13,7 +13,7 @@ jQuery(document).ready(function($) {
                 graduation_date: $('#graduation_date').val(),
                 certificate_details: '',
                 // grade: $('#grade').val(),
-                payment_total: parseInt(parseFloat($('#wscm_payment_total').val()) * 100, 10),
+                payment_total: parseInt(parseFloat($('#scm_payment_total').val()) * 100, 10),
                 payment_method: $('input[name="payment_method"]:checked').val(),
                 currency: window.SwiftCertificateManagerPublicVars.globalSettings.currency || 'USD',
                 status: 'request',
@@ -21,18 +21,18 @@ jQuery(document).ready(function($) {
             };
 
             jQuery.post(ajaxurl, {
-                action: 'swift_certificate_manager_public_ajax', // WordPress expects 'action' to be passed for AJAX hooks
+                action: 'scm_public_ajax', // WordPress expects 'action' to be passed for AJAX hooks
                 route: 'request_certificate_info',
                 info: info,
                 nonce: window.SwiftCertificateManagerPublicVars.nonce
             })
                 .then(function(response) {
-                    $('.wscm-form-submit-message').show();
+                    $('.scm-form-submit-message').show();
                     if (response.success) {
-                        $('.wscm-form-submit-message').html('<p class="success-message">Form submitted successfully! We will get back to you soon.</p>');
-                        $('.wscm-container').hide();
+                        $('.scm-form-submit-message').html('<p class="success-message">Form submitted successfully! We will get back to you soon.</p>');
+                        $('.scm-container').hide();
                     } else {
-                        $('.wscm-form-submit-message').append('<p class="error-message">There was a problem submitting the form. Please try again.</p>');
+                        $('.scm-form-submit-message').append('<p class="error-message">There was a problem submitting the form. Please try again.</p>');
                     }
 
                     if (response.data?.redirectTo) {
@@ -43,13 +43,13 @@ jQuery(document).ready(function($) {
                     if (window.SwiftCertificateManagerPublicVars.stripe_enabled === 'yes' || window.SwiftCertificateManagerPublicVars.paypal_enabled === 'yes') {
                         if (response.data?.actionName === 'custom') {
                             that.fireCustomEvent(response.data.nextAction, response, forms);
-                            $('.wscm-container').show();
+                            $('.scm-container').show();
                         }
                     }
 
                 })
                 .fail(function(error) {
-                    $('.wscm-form-submit-message').append('<p class="error-message">An error occurred. Please try again.</p>');
+                    $('.scm-form-submit-message').append('<p class="error-message">An error occurred. Please try again.</p>');
                     console.log(error); // Handle errors
                 })
                 .always(function() {
@@ -58,12 +58,12 @@ jQuery(document).ready(function($) {
 
         verifyCertificateHandle() {
             var certificateCode = $('#certificate_code').val();
-            $('.wscm-loading-spinner').show();
-            $('.wscm-student-information').hide();
-            $('.wscm-verify-certificate-message').hide().empty();
+            $('.scm-loading-spinner').show();
+            $('.scm-student-information').hide();
+            $('.scm-verify-certificate-message').hide().empty();
             
             jQuery.get(ajaxurl, {
-                action: 'swift_certificate_manager_public_ajax',
+                action: 'scm_public_ajax',
                 route: 'verify_certificate',
                 certificate_code: certificateCode,
                 nonce: window.SwiftCertificateManagerPublicVars.nonce
@@ -71,18 +71,18 @@ jQuery(document).ready(function($) {
             .then(function(response) {
                 if (response.success) {
                     var info = response.data.info;
-                    $('.wscm-student-information .wscm-grid .student_name .value').text(info.student_name);
-                    $('.wscm-student-information .wscm-grid .course_name .value').text(info.course_name);
-                    $('.wscm-student-information .wscm-grid .student_email .value').text(info.student_email);
-                    $('.wscm-student-information .wscm-grid .graduation_date .value').text(info.graduation_date);
-                    $('.wscm-student-information .wscm-grid .certificate_code .value').text(info.certificate_code);
+                    $('.scm-student-information .scm-grid .student_name .value').text(info.student_name);
+                    $('.scm-student-information .scm-grid .course_name .value').text(info.course_name);
+                    $('.scm-student-information .scm-grid .student_email .value').text(info.student_email);
+                    $('.scm-student-information .scm-grid .graduation_date .value').text(info.graduation_date);
+                    $('.scm-student-information .scm-grid .certificate_code .value').text(info.certificate_code);
                     // show result
-                    $('.wscm-student-information').fadeIn();
-                    $('.wscm-verify-certificate-message')
+                    $('.scm-student-information').fadeIn();
+                    $('.scm-verify-certificate-message')
                         .show()
                         .append('<p class="success-message">' + response.data.message + '</p>');
                 } else {
-                    $('.wscm-verify-certificate-message')
+                    $('.scm-verify-certificate-message')
                         .show()
                         .append('<p class="error-message">Unable to verify certificate.</p>');
                 }
@@ -92,24 +92,24 @@ jQuery(document).ready(function($) {
                     ? error.responseJSON.data.message
                     : 'An error occurred while verifying the certificate.';
 
-                $('.wscm-verify-certificate-message')
+                $('.scm-verify-certificate-message')
                     .show()
                     .append('<p class="error-message">' + errorMessage + '</p>');
             })
             .always(function() {
-                $('.wscm-loading-spinner').hide();
+                $('.scm-loading-spinner').hide();
             });
         },
 
         fireCustomEvent(paymentMethod, response, forms) {
-            window.dispatchEvent(new CustomEvent(`swift_certificate_manager_payment_next_action_${paymentMethod}`, {
+            window.dispatchEvent(new CustomEvent(`scm_payment_next_action_${paymentMethod}`, {
                 detail: { form: forms, response },
             }));
         },
 
         requestPaymentCheckbox() {
-            const $paymentCheckbox = $('#wscm_payment_checkbox');
-            const $paymentMethod   = $('.wscm_payment_method');
+            const $paymentCheckbox = $('#scm_payment_checkbox');
+            const $paymentMethod   = $('.scm_payment_method');
 
             if (!$paymentCheckbox.length || !$paymentMethod.length) return;
             
@@ -129,15 +129,15 @@ jQuery(document).ready(function($) {
 
         init: function() {
             var that = this;
-            var forms = $('#wscm_request_certificate');
+            var forms = $('#scm_request_certificate');
             // submit request form
-            $('.wscm-request-certificate-wrapper #wscm_request_certificate').on('submit', function(event) {
+            $('.scm-request-certificate-wrapper #scm_request_certificate').on('submit', function(event) {
                 event.preventDefault(); // Prevent the form from submitting normally
                 that.requestCertificateHandle(forms); // Trigger the AJAX handler
             });
 
             // verify certificate
-            $('.wscm-verify-form-wrapper #verifyForm').on('submit', function(event) {
+            $('.scm-verify-form-wrapper #verifyForm').on('submit', function(event) {
                 event.preventDefault(); // Prevent the form from submitting normally
                 that.verifyCertificateHandle(); // Trigger the AJAX handler
             });

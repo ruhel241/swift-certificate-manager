@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class SettingsController
 {
     public function register() {
-        add_action('wp_ajax_wscm_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_scm_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
@@ -29,7 +29,7 @@ class SettingsController
         }
 
 
-        $route = sanitize_text_field(wp_unslash($_REQUEST['route'] ?? ''));
+        $route = sanitize_key(wp_unslash($_REQUEST['route'] ?? ''));
 
         $maps = array(
             'get_settings'          => 'getSettings',
@@ -42,12 +42,12 @@ class SettingsController
             ], 400);
         }
 
-        do_action('swift-certificate-manager/doing_ajax_settings_' . $route);
+        do_action('swift_certificate_manager/doing_ajax_settings_' . $route);
 
         // Pass request (already sanitized inside methods)
         $this->{$maps[$route]}($_REQUEST);
 
-        do_action('swift-certificate-manager/admin_ajax_handler_settings_catch', $route);
+        do_action('swift_certificate_manager/admin_ajax_handler_settings_catch', $route);
     }
 
     public function getSettings($request)

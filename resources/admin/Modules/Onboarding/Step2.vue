@@ -1,5 +1,5 @@
 <template>
-  <div class="wscm-templates">
+  <div class="scm-templates">
     <div class="title header">
       <h1>Templates</h1>
       <!-- {{ templates }} -->
@@ -18,15 +18,15 @@
     </div>
 
     <div class="templates-wrap">
-      <div class="wscm_downloader_wrapper" v-if="downloadableTemplates">
-        <div class="wscm_templates_installation_message">
-          <h2 class="wscm_title">Templates Are Required To Generate Certificates.</h2>
+      <div class="scm_downloader_wrapper" v-if="downloadableTemplates">
+        <div class="scm_templates_installation_message">
+          <h2 class="scm_title">Templates Are Required To Generate Certificates.</h2>
           <p class="mb10" style="margin-bottom: 30px;">
             This module requires you to download the certificate templates. Please click the button below to download the required template files. This is a one-time setup.
           </p>
 
           <el-button
-              class="wscm-pro-btn"
+              class="scm-pro-btn"
               round
               @click="saveTemplatesHandlerByApi"
               v-if="isOnboarded === 'yes'"
@@ -48,7 +48,7 @@
               </div>
               <div class="card-actions">
                 <el-button
-                    class="wscm-primary-btn"
+                    class="scm-primary-btn"
                     v-if="activeTemplate === template.slug"
                     type="success"
                     round
@@ -100,10 +100,10 @@
           <span class="setup-count">0{{ active }}</span>
           <span>/03</span>
         </div>
-        <div class="wscm_button_group">
+        <div class="scm_button_group">
           <el-button class="capsule-button" round @click="backBtnHandler">Back</el-button>
-          <el-button class="wscm-primary-btn" round @click="saveTemplatesHandlerByApi" v-if="downloadableTemplates">Install Templates</el-button>
-          <el-button class="wscm-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
+          <el-button class="scm-primary-btn" round @click="saveTemplatesHandlerByApi" v-if="downloadableTemplates">Install Templates</el-button>
+          <el-button class="scm-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
         </div>
       </div>
     </div>
@@ -167,7 +167,7 @@ export default {
     getActivatedTemplate() {
       this.fetching = true;
       this.$get({
-        action: 'wscm_template_admin_ajax',
+        action: 'scm_template_admin_ajax',
         route: 'get_active_template',
         nonce: window.SwiftCertificateManagerAdminVars.nonce
       })
@@ -184,7 +184,7 @@ export default {
     saveActivatedTemplate(slug) {
       this.action = true;
       this.$post({
-        action: 'wscm_template_admin_ajax',
+        action: 'scm_template_admin_ajax',
         route: 'save_active_template',
         slug: slug,
         nonce: window.SwiftCertificateManagerAdminVars.nonce
@@ -209,11 +209,11 @@ export default {
         text: 'Installing templates, do not refresh the page, please wait...',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)',
-        customClass: 'wscm-text-loading'
+        customClass: 'scm-text-loading'
       });
 
       this.$post({
-        action: 'wscm_template_admin_ajax',
+        action: 'scm_template_admin_ajax',
         route: 'save_templates_by_api',
         nonce: window.SwiftCertificateManagerAdminVars.nonce
       })
@@ -242,7 +242,7 @@ export default {
     getTemplatesHandler() {
       this.fetching = true;
       this.$get({
-        action: 'wscm_template_admin_ajax',
+        action: 'scm_template_admin_ajax',
         route: 'get_templates',
         nonce: window.SwiftCertificateManagerAdminVars.nonce
       })
