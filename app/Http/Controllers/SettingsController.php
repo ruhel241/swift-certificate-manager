@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 class SettingsController
 {
     public function register() {
-        add_action('wp_ajax_scm_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swiftcm_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
@@ -42,17 +42,17 @@ class SettingsController
             ], 400);
         }
 
-        do_action('swift_certificate_manager/doing_ajax_settings_' . $route);
+        do_action('swiftcm_doing_ajax_settings_' . $route);
 
         // Pass request (already sanitized inside methods)
         $this->{$maps[$route]}($_REQUEST);
 
-        do_action('swift_certificate_manager/admin_ajax_handler_settings_catch', $route);
+        do_action('swiftcm_admin_ajax_handler_settings_catch', $route);
     }
 
     public function getSettings($request)
     {
-        $settings = get_option('swift_certificate_manager_global_settings', array());
+        $settings = get_option('swiftcm_global_settings', array());
 
         wp_send_json_success(array(
             'settings' => $settings
@@ -72,7 +72,7 @@ class SettingsController
 
         $this->handleNewsletter($settings);
 
-        update_option('swift_certificate_manager_global_settings', $settings);
+        update_option('swiftcm_global_settings', $settings);
 
         wp_send_json_success([
             'message' => __('Settings saved successfully.', 'swift-certificate-manager')
@@ -107,7 +107,7 @@ class SettingsController
             return;
         }
 
-        $stored = get_option('swift_certificate_manager_newsletters', []);
+        $stored = get_option('swiftcm_newsletters', []);
         $emails = $stored['emails'] ?? [];
 
         if (!is_array($emails)) {
@@ -123,7 +123,7 @@ class SettingsController
         if (!is_wp_error($result)) {
             $emails[] = $email;
 
-            update_option('swift_certificate_manager_newsletters', [
+            update_option('swiftcm_newsletters', [
                 'emails' => $emails
             ]);
         }

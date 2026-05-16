@@ -30,7 +30,7 @@ The plugin supports both small instructors and large training organisations that
 * Enable Stripe & PayPal for paid certificates **\[Pro\]**  
 * Manage created certificates and requests  
 * Use built-in certificate templates (Free \+ Pro options)  
-* Activate Pro with a licence key
+* Activate Pro with a License key
 
 
 ## **Use Case**
@@ -129,16 +129,9 @@ Pro-only actions include:
 * Delete entries  
 * Export CSV
 
-
-=== For Templates: ==
-
-This plugin allows users to download additional certificate templates from a remote repository (GitHub) upon request.
-No user data is transmitted during this process. Templates are downloaded and stored locally in the WordPress uploads directory.
-This feature is optional and only triggered when the user explicitly requests it.
-
 ## **Pro Licence Activation**
 
-Enter your licence key in the License Management tab to unlock Pro features.
+Enter your License key in the License Management tab to unlock Pro features.
 
 
 ## **Free vs Pro**
@@ -176,7 +169,7 @@ This section describes how to install the plugin and get it working.
 e.g.
 
 1. Upload the plugin files to the /wp-content/plugins/ directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the ‘Plugins’ screen in WordPress
+2. Activate the plugin through the ‘Plugins’ screen in WordPress
 
 Swift Certificate Manager will now appear on your dashboard.
 
@@ -304,7 +297,7 @@ Shows:
 
 ### **License Management**
 
-Enter licence key to unlock Pro.
+Enter License key to unlock Pro.
 
 
 ## **Public Pages**
@@ -326,13 +319,13 @@ Public page for verifying certificates with a unique code.
 ### **Request Certificate Form**
 
 ```
-[swift_certificate form="request-swift-certificate"]
+[swiftcm form="request-swift-certificate-manager"]
 ```
 
 ### **Verify Certificate Form**
 
 ```
-[swift_certificate form="verify-swift-certificate"]
+[swiftcm form="verify-swift-certificate-manager"]
 ```
 
 
@@ -409,11 +402,9 @@ Yes.
 **Which gateways are supported?**  
 Stripe and PayPal (Pro).
 
-**What is included in Free?**  
-10 certificates/month, 5 transactions/month, basic templates.
 
 **How do I unlock Pro templates?**  
-Activate with a licence key.
+Activate with a License key.
 
 
 ## **Troubleshooting**
@@ -435,6 +426,38 @@ Activate with a licence key.
 * Verify public pages  
 * Export records often (Pro)
 
+
+== Remote Templates ==
+
+This plugin includes an optional feature that allows administrators to download additional certificate templates from an official public GitHub repository.
+Remote requests are only made when the administrator explicitly chooses to download a template.
+No personal or sensitive user data is transmitted during this process.
+Downloaded templates are stored locally in the WordPress uploads directory.
+
+== Development ==
+
+This plugin uses modern JavaScript tooling (Vue.js + Laravel Mix + Webpack).
+
+### Source Code
+Full source code is available at:
+https://github.com/ruhel241/swift-certificate-manager
+
+### Build Instructions
+
+To build the plugin assets locally:
+
+1. Install dependencies
+   npm install
+
+2. Build for development
+   npm run dev
+
+3. Build for production
+   npm run production
+
+### Notes
+
+All compiled assets in /assets are generated from the source code using Laravel Mix.
 
 ## **Changelog**
 

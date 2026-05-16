@@ -23,46 +23,46 @@ if (!function_exists('SwiftCertificateManagerQuery')) {
 /**
  * Add rewrite rules for custom invoice URL.
  */
-function swift_certificate_manager_add_rewrite_rules() {
+function swiftcm_add_rewrite_rules() {
 	add_rewrite_rule(
-		'^scm_invoice/([^/]+)/?$',
-		'index.php?scm_invoice=$matches[1]',
+		'^swiftcm_invoice/([^/]+)/?$',
+		'index.php?swiftcm_invoice=$matches[1]',
 		'top'
 	);
 }
-add_action( 'init', 'swift_certificate_manager_add_rewrite_rules' );
+add_action( 'init', 'swiftcm_add_rewrite_rules' );
 
 /**
- * Register scm_invoice query variable.
+ * Register swiftcm_invoice query variable.
  *
  * @param array $vars Query vars.
  * @return array
  */
-function swift_certificate_manager_query_vars( $vars ) {
-	$vars[] = 'scm_invoice';
+function swiftcm_query_vars( $vars ) {
+	$vars[] = 'swiftcm_invoice';
 	return $vars;
 }
-add_filter( 'query_vars', 'swift_certificate_manager_query_vars' );
+add_filter( 'query_vars', 'swiftcm_query_vars' );
 
 
 /**
- * Handle the scm_invoice request
+ * Handle the swiftcm_invoice request
  */
-function swift_certificate_manager_handle_request() {
-	$requestedCertificate = get_query_var( 'scm_invoice', false );
+function swiftcm_handle_request() {
+	$requestedCertificate = get_query_var( 'swiftcm_invoice', false );
 
-	// Check if scm_invoice is in the query string
+	// Check if swiftcm_invoice is in the query string
 	// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public invoice view endpoint, no state change.
-	if ( $requestedCertificate === false && isset( $_GET['scm_invoice'] ) ) {
+	if ( $requestedCertificate === false && isset( $_GET['swiftcm_invoice'] ) ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Public invoice view endpoint; nonce verification is not required.
-		$requestedCertificate = sanitize_text_field( wp_unslash( $_GET['scm_invoice'] ) );
+		$requestedCertificate = sanitize_text_field( wp_unslash( $_GET['swiftcm_invoice'] ) );
 	}
 
 	if ( $requestedCertificate !== false) {
 		get_header();
 			echo do_shortcode(
 			sprintf(
-				'[swift_certificate_manager scm_invoice="%s"]',
+				'[swiftcm swiftcm_invoice="%s"]',
 				esc_attr( $requestedCertificate )
 			)
 		);
@@ -70,36 +70,30 @@ function swift_certificate_manager_handle_request() {
 		exit;
 	}
 }
-add_action( 'template_redirect', 'swift_certificate_manager_handle_request' );
+add_action( 'template_redirect', 'swiftcm_handle_request' );
 
 
 // regiseter custom cron schedule, when app load
-add_action('swift_certificate_manager/admin_app_loaded', function () {
-	if (!wp_next_scheduled('swift_certificate_manager_cleanup_tmp_dir')) {
-        wp_schedule_event(time(), 'daily', 'swift_certificate_manager_cleanup_tmp_dir');
+add_action('swiftcm_admin_app_loaded', function () {
+	if (!wp_next_scheduled('swiftcm_cleanup_tmp_dir')) {
+        wp_schedule_event(time(), 'daily', 'swiftcm_cleanup_tmp_dir');
     }
 });
 
-// error_log(print_r(_get_cron_array(), 1));
+
 
 // for testing purpose
-// function swift_certificate_manager_cleanup_tmp_dir( $schedules ) {
+// function swiftcm_cleanup_tmp_dir( $schedules ) {
 //     $schedules['every_minute'] = array(
 //             'interval'  => 60,
 //             'display'   => __( 'Every Minute', 'textdomain' )
 //     );
 //     return $schedules;
 // }
-// add_filter( 'cron_schedules', 'swift_certificate_manager_cleanup_tmp_dir' );
+// add_filter( 'cron_schedules', 'swiftcm_cleanup_tmp_dir' );
 
 //  ✅ Cron callback
-add_action('swift_certificate_manager_cleanup_tmp_dir', function(){
-    file_put_contents(
-        WP_CONTENT_DIR . '/cron-test.txt',
-        'Cron working at ' . gmdate('Y-m-d H:i:s') . PHP_EOL,
-        FILE_APPEND
-    );
-
-	$availableOptions = new AvailableOptions();
+add_action('swiftcm_cleanup_tmp_dir', function(){
+   $availableOptions = new AvailableOptions();
 	$availableOptions->cleanupTempDir();
 });

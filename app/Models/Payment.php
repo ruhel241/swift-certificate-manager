@@ -4,7 +4,7 @@ namespace SwiftCertificateManager\Models;
 
 class Payment
 {
-    protected $table = "scm_payments";
+    protected $table = "swiftcm_payments";
 
     public function insertGetId($data) {
         $save = SwiftCertificateManagerQuery()->table($this->table)->insert($data);

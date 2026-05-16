@@ -4,24 +4,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
    
-    $swift_certificate_manager_global_settings         = get_option('swift_certificate_manager_global_settings', []);
-    $swift_certificate_manager_payment_settings_stripe = get_option('swift_certificate_manager_payment_settings_stripe', []);
-    $swift_certificate_manager_payment_settings_paypal = get_option('swift_certificate_manager_payment_settings_paypal', []);
+    $swiftcm_global_settings         = get_option('swiftcm_global_settings', []);
+    $swiftcm_payment_settings_stripe = get_option('swiftcm_payment_settings_stripe', []);
+    $swiftcm_payment_settings_paypal = get_option('swiftcm_payment_settings_paypal', []);
 
-    $swift_certificate_manager_stripe_enabled = $swift_certificate_manager_payment_settings_stripe['enable'] ?? 'no';
-    $swift_certificate_manager_paypal_enabled = $swift_certificate_manager_payment_settings_paypal['enable'] ?? 'no';
+    $swiftcm_stripe_enabled = $swiftcm_payment_settings_stripe['enable'] ?? 'no';
+    $swiftcm_paypal_enabled = $swiftcm_payment_settings_paypal['enable'] ?? 'no';
 
-    // $swift_certificate_manager_pro = defined('SWIFT_CERTIFICATE_MANAGER_PRO');
+    // $swiftcm_pro = defined('SWIFT_CERTIFICATE_MANAGER_PRO');
 
 ?>
 
-<div class="scm-request-certificate-wrapper">
-    <div class="scm-form-submit-message"></div>
-    <div class="scm-container">
+<div class="swiftcm-request-certificate-wrapper">
+    <div class="swiftcm-form-submit-message"></div>
+    <div class="swiftcm-container">
         <h2>Student Request Certificate</h2>
 
-        <form id="scm_request_certificate" method="post">
-            <div class="scm_payment_processor"></div>
+        <form id="swiftcm_request_certificate" method="post">
+            <div class="swiftcm_payment_processor"></div>
 
             <div class="request_cretificate_form">
                 <div class="form-group">
@@ -45,22 +45,22 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
 
                 <?php 
-                    if ( ($swift_certificate_manager_stripe_enabled === 'yes') || ($swift_certificate_manager_paypal_enabled === 'yes') ) : 
+                    if ( ($swiftcm_stripe_enabled === 'yes') || ($swiftcm_paypal_enabled === 'yes') ) : 
                     
-                    $swift_certificate_manager_global_settings['certificate_payment'] = $swift_certificate_manager_global_settings['certificate_payment'] ?? '10';
+                    $swiftcm_global_settings['certificate_payment'] = $swiftcm_global_settings['certificate_payment'] ?? '10';
                 ?>
                     <div class="form-group">
-                        <div class="scm_payment_checkbox">
-                            <input type="checkbox" id="scm_payment_checkbox" name="scm_payment_checkbox" value="yes" required>
-                            <label for="scm_payment_checkbox">
+                        <div class="swiftcm_payment_checkbox">
+                            <input type="checkbox" id="swiftcm_payment_checkbox" name="swiftcm_payment_checkbox" value="yes" required>
+                            <label for="swiftcm_payment_checkbox">
                                 Order Digital Certificate for
-                                <?php echo esc_html(\SwiftCertificateManager\Helpers\PaymentHelper::currencySymbol($swift_certificate_manager_global_settings['currency'] ?? 'USD')); ?><?php echo esc_html($swift_certificate_manager_global_settings['certificate_payment']); ?>
+                                <?php echo esc_html(\SwiftCertificateManager\Helpers\PaymentHelper::currencySymbol($swiftcm_global_settings['currency'] ?? 'USD')); ?><?php echo esc_html($swiftcm_global_settings['certificate_payment']); ?>
                             </label>
                             <input
                                 type="number"
-                                class="scm_payment"
-                                id="scm_payment_total"
-                                value="<?php echo esc_attr($swift_certificate_manager_global_settings['certificate_payment']); ?>"
+                                class="swiftcm_payment"
+                                id="swiftcm_payment_total"
+                                value="<?php echo esc_attr($swiftcm_global_settings['certificate_payment']); ?>"
                                 required
                                 disabled
                                 hidden
@@ -68,17 +68,17 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </div>
                     </div>
 
-                    <div class="form-group scm_payment_method" style="display: none;">
+                    <div class="form-group swiftcm_payment_method" style="display: none;">
                         <label>Payment Method:</label><br>
 
-                        <?php if ($swift_certificate_manager_stripe_enabled === 'yes') : ?>
-                            <input type="radio" id="scm_stripe" name="payment_method" value="stripe" required>
-                            <label for="scm_stripe">Pay with Card (Stripe)</label><br>
+                        <?php if ($swiftcm_stripe_enabled === 'yes') : ?>
+                            <input type="radio" id="swiftcm_stripe" name="payment_method" value="stripe" required>
+                            <label for="swiftcm_stripe">Pay with Card (Stripe)</label><br>
                         <?php endif; ?>
 
-                        <?php if ($swift_certificate_manager_paypal_enabled === 'yes') : ?>
-                            <input type="radio" id="scm_paypal" name="payment_method" value="paypal" required>
-                            <label for="scm_paypal">Pay with PayPal</label><br>
+                        <?php if ($swiftcm_paypal_enabled === 'yes') : ?>
+                            <input type="radio" id="swiftcm_paypal" name="payment_method" value="paypal" required>
+                            <label for="swiftcm_paypal">Pay with PayPal</label><br>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

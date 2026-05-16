@@ -24,7 +24,7 @@ export default class SwiftCertificateManager {
         this.addAction = addAction;
         this.applyFilters = applyFilters;
         this.removeAllActions = removeAllActions;
-        this.appVars = window.SwiftCertificateManagerAdminVars;
+        this.appVars = window.swiftcmAdminVars;
         this.Vue = this.extendVueConstructor();
     }
 
@@ -63,10 +63,10 @@ export default class SwiftCertificateManager {
                 },
                 getDisplayShortCode(display, slug) {
                     if (display === 'box') {
-                        return `[SwiftCertificateManager box-slug="${slug}"]`;
+                        return `[swiftcm box-slug="${slug}"]`;
                     }
                     if (display === 'choice') {
-                        return `[SwiftCertificateManager choice-slug="${slug}"]`;
+                        return `[swiftcm choice-slug="${slug}"]`;
                     }
                 },
                 getCopyUrlLink(link) {
@@ -78,7 +78,7 @@ export default class SwiftCertificateManager {
                 },
 
                 $t(string) {
-                    return window.SwiftCertificateManagerAdminVars.i18n[string] || string;
+                    return window.swiftcmAdminVars.i18n[string] || string;
                 },
             }
         });
@@ -105,7 +105,7 @@ export default class SwiftCertificateManager {
             return;
         }
 
-        this.addFilter('swift_certificate_manager_top_menus', this.appVars.slug, function (menus) {
+        this.addFilter('swiftcm_top_menus', this.appVars.slug, function (menus) {
             menus = menus.filter(m => m.route !== route.name);
             menus.push({
                 route: route.name,
@@ -114,7 +114,7 @@ export default class SwiftCertificateManager {
             return menus;
         });
 
-        this.addFilter('swift_certificate_manager_global_routes', this.appVars.slug, function (routes) {
+        this.addFilter('swiftcm_global_routes', this.appVars.slug, function (routes) {
             routes = routes.filter(r => r.name !== route.name);
             routes.push(route);
             return routes;
@@ -122,9 +122,9 @@ export default class SwiftCertificateManager {
     }
 
     request(method, route, data = {}) {
-        const url = `${window.SwiftCertificateManagerAdminVars.rest.url}/${route}`;
+        const url = `${window.swiftcmAdminVars.rest.url}/${route}`;
 
-        const headers = { 'X-WP-Nonce': window.SwiftCertificateManagerAdminVars.rest.nonce };
+        const headers = { 'X-WP-Nonce': window.swiftcmAdminVars.rest.nonce };
 
         if (['PUT', 'PATCH', 'DELETE'].indexOf(method.toUpperCase()) !== -1) {
             headers['X-HTTP-Method-Override'] = method;
@@ -147,23 +147,23 @@ export default class SwiftCertificateManager {
 
   
     $get(options) {
-        return window.jQuery.get(window.SwiftCertificateManagerAdminVars.ajaxurl, options);
+        return window.jQuery.get(window.swiftcmAdminVars.ajaxurl, options);
     }
 
     $post(options) {
-        return window.jQuery.post(window.SwiftCertificateManagerAdminVars.ajaxurl, options);
+        return window.jQuery.post(window.swiftcmAdminVars.ajaxurl, options);
     }
 
     $put(options) {
         return window.jQuery.ajax({
-            url: window.SwiftCertificateManagerAdminVars.ajaxurl,
+            url: window.swiftcmAdminVars.ajaxurl,
             type: 'PUT',
             data: options,
         });
     }
 
     $del(options) {
-        return window.jQuery.post(window.SwiftCertificateManagerAdminVars.ajaxurl, options);
+        return window.jQuery.post(window.swiftcmAdminVars.ajaxurl, options);
     }
 
     ucFirst(text) {

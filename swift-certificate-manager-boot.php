@@ -40,7 +40,7 @@ class SwiftCertificateManagerBoot {
 
 	// public function registerIpnHooks() {
     //     // phpcs:disable WordPress.Security.NonceVerification.Recommended -- IPN/webhook listener endpoint does not use WordPress nonces.
-    //     $has_ipn_listener = isset( $_GET['swift_certificate_manager_ipn_listener'] );
+    //     $has_ipn_listener = isset( $_GET['swiftcm_ipn_listener'] );
     //     $has_method       = isset( $_GET['method'] );
     //     // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -55,7 +55,7 @@ class SwiftCertificateManagerBoot {
     //                 // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
     //                 if ( '' !== $payment_method ) {
-    //                     do_action( 'swift_certificate_manager_ipn_endpoint_' . $payment_method );
+    //                     do_action( 'swiftcm_ipn_endpoint_' . $payment_method );
     //                 }
     //             }
     //         );

@@ -8,7 +8,7 @@ class Currencies
 {
     public static function all()
     {
-        return apply_filters('SwiftCertificateManager/accepted_currencies', array(
+        return apply_filters('swiftcm_accepted_currencies', array(
             'AED' => 'United Arab Emirates Dirham',
             'AFN' => 'Afghan Afghani',
             'ALL' => 'Albanian Lek',

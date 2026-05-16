@@ -17,7 +17,7 @@ use SwiftCertificateManager\Helpers\HelperFunction;
 class AssignCertificateController
 {
     public function register() {
-        add_action('wp_ajax_scm_generate_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swiftcm_generate_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes() {
@@ -60,7 +60,7 @@ class AssignCertificateController
          * @param string $route Current ajax route.
          */
 
-        do_action('swift_certificate_manager/assign_doing_ajax_forms_' . $route);
+        do_action('swiftcm_assign_doing_ajax_forms_' . $route);
 
         // Pass raw request. Sanitization handled inside methods.
         $this->{$maps[ $route ]}( $_REQUEST );
@@ -70,7 +70,7 @@ class AssignCertificateController
          *
          * @param string $route Current ajax route.
          */
-        do_action('swift_certificate_manager/assign_admin_ajax_handler_catch', $route);
+        do_action('swiftcm_assign_admin_ajax_handler_catch', $route);
     }
 
     public function getCertificateInfos($request)
@@ -242,14 +242,14 @@ class AssignCertificateController
 
 
         // Settings
-        $globalSettings        = get_option('swift_certificate_manager_global_settings', []);
+        $globalSettings        = get_option('swiftcm_global_settings', []);
         $certificateCodePrefix = $globalSettings['certificate_code_prefix'] ?? '';
 
         // Generate code
         $certificateCode = $helperFunction->generateCertificateCode($certificateCodePrefix);
 
         // Template
-        $activeTemplate = get_option('swift_certificate_manager_active_template', 'template-1');
+        $activeTemplate = get_option('swiftcm_active_template', 'template-1');
         $getTemplate    = $SwiftCertificateManagerTemplates->getTemplateSlug($activeTemplate);
         $settings       = json_decode($getTemplate->settings, true);
 
@@ -580,13 +580,13 @@ class AssignCertificateController
             : [];
 
         // settings
-        $activeTemplate = get_option('swift_certificate_manager_active_template', 'template-1');
+        $activeTemplate = get_option('swiftcm_active_template', 'template-1');
         $getTemplate    = $SwiftCertificateManagerTemplates->getTemplateSlug($activeTemplate);
 
         $settings = json_decode($getTemplate->settings ?? '', true);
         $settings = is_array($settings) ? $settings : [];
 
-        $globalSettings = get_option('swift_certificate_manager_global_settings', []);
+        $globalSettings = get_option('swiftcm_global_settings', []);
         $preference     = $globalSettings['preference'] ?? '';
 
         // build settings safely
@@ -699,7 +699,7 @@ class AssignCertificateController
             }
 
             $date     = gmdate( 'Y-m-d' );
-            $filename = sanitize_file_name( "swift-certificate-manager-export-{$date}.csv" );
+            $filename = sanitize_file_name( "swiftcm-export-{$date}.csv" );
 
             if ( ! headers_sent() ) {
                 header( 'Content-Type: text/csv; charset=utf-8' );

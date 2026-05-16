@@ -26,7 +26,7 @@ class PaymentHelper
         }
         $currency = strtoupper($currency);
 
-        $symbols = apply_filters('swift_certificate_manager_currency_symbols', array(
+        $symbols = apply_filters('swiftcm_currency_symbols', array(
             'AED' => '&#x62f;.&#x625;',
             'AFN' => '&#x60b;',
             'ALL' => 'L',
@@ -191,6 +191,6 @@ class PaymentHelper
         ));
 
         $currency_symbol = isset($symbols[$currency]) ? $symbols[$currency] : '';
-        return apply_filters('swift_certificate_manager_currency_symbol', $currency_symbol, $currency);
+        return apply_filters('swiftcm_currency_symbol', $currency_symbol, $currency);
     }
 }

@@ -1,18 +1,19 @@
 const webpack = require('webpack');
 const path = require('path');
-// const { VueLoaderPlugin } = require('vue-loader'); // Import VueLoaderPlugin
 let mix = require('laravel-mix');
 
 mix.options({
     progressBar: false
 });
 
+// Remove WebpackBar
 mix.override((webpackConfig) => {
     webpackConfig.plugins = (webpackConfig.plugins || []).filter((plugin) => {
         return plugin?.constructor?.name !== 'WebpackBarPlugin';
     });
 });
 
+// Production optimizations
 if (mix.inProduction()) {
     mix.options({
         terser: {
@@ -22,11 +23,12 @@ if (mix.inProduction()) {
                 },
             },
         },
-     });
+    });
 }
 
 mix.setPublicPath('assets');
 mix.setResourceRoot('../');
+
 mix.webpackConfig({
     module: {
         rules: [
@@ -38,25 +40,43 @@ mix.webpackConfig({
             }
         ]
     },
+
     output: {
-        publicPath: Mix.isUsing('hmr') ? '/' : path.resolve(__dirname + '/../assets'),
-        chunkFilename: 'admin/js/[name].js'
+        publicPath: '/',
     },
+
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                canvg: {
+                    test: /[\\/]node_modules[\\/]canvg[\\/]/,
+                    name: 'canvg',
+                    chunks: 'all',
+                },
+    
+                dompurify: {
+                    test: /[\\/]node_modules[\\/]dompurify[\\/]/,
+                    name: 'dompurify',
+                    chunks: 'all',
+                },
+            },
+        },
+    },
+
     plugins: [
-        // new VueLoaderPlugin(), // Add VueLoaderPlugin here
         new webpack.IgnorePlugin({
             resourceRegExp: /^\.\/locale$/,
             contextRegExp: /moment$/
         })
     ],
+
     resolve: {
-        extensions: ['.*', '.wasm', '.mjs', '.js', '.jsx', '.json', '.vue'],
+        extensions: ['*', '.wasm', '.mjs', '.js', '.jsx', '.json', '.vue'],
         alias: {
             '@Pieces': path.resolve(__dirname, 'resources/admin/Pieces'),
             '@': path.resolve(__dirname, 'resources/admin')
         }
     }
-
 });
 
 module.exports = mix;

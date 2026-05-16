@@ -1,5 +1,5 @@
 <template>
-    <el-row class="scm-header">
+    <el-row class="swiftcm-header">
       <el-col :span="4">
         <div class="nav-logo">
           <router-link to="/" class="nav-logo-link">
@@ -12,18 +12,18 @@
         <el-menu
           :router="true"
           mode="horizontal"
-          class="scm-navigation"
+          class="swiftcm-navigation"
           :default-active="active"
         >
           <el-menu-item class="el-menu-item" v-if="this.appVars.is_onboarded === 'no'">
-            <router-link to="/setup_template" class="scm-menu-link">
+            <router-link to="/setup_template" class="swiftcm-menu-link">
               <span class=""><svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.33333 1.33325H6C2.66666 1.33325 1.33333 2.66659 1.33333 5.99992V9.99992C1.33333 13.3333 2.66666 14.6666 6 14.6666H10C13.3333 14.6666 14.6667 13.3333 14.6667 9.99992V8.66659" stroke="#424145" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.6933 2.01326L5.44 7.26659C5.24 7.46659 5.04 7.85992 5 8.14659L4.71333 10.1533C4.60666 10.8799 5.12 11.3866 5.84666 11.2866L7.85333 10.9999C8.13333 10.9599 8.52666 10.7599 8.73333 10.5599L13.9867 5.30659C14.8933 4.39992 15.32 3.34659 13.9867 2.01326C12.6533 0.679924 11.6 1.10659 10.6933 2.01326Z" stroke="#424145" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.94 2.7666C10.3867 4.35993 11.6333 5.6066 13.2333 6.05993" stroke="#424145" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               Setup Template
             </router-link>
           </el-menu-item>
 
           <el-menu-item class="el-menu-item" v-for="item in items" :key="item.route">
-            <router-link :to="item.route" class="scm-menu-link">
+            <router-link :to="item.route" class="swiftcm-menu-link">
                 <span class="" v-html="item.icon"></span>
                 {{ item.title }}
             </router-link>
@@ -32,9 +32,9 @@
       </el-col>
       <!-- Pro Button -->
       <el-col :span="4">
-        <div class="scm-nav-pro-btn" v-if="!hasPro">
+        <div class="swiftcm-nav-pro-btn" v-if="!hasPro">
           <a href="https://swiftcertificate.com/" class="nav-logo-link" target="_blank">
-            <el-button class="scm-pro-btn">
+            <el-button class="swiftcm-pro-btn">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M13.9166 15.8167H6.08325C5.73325 15.8167 5.34159 15.5417 5.22492 15.2083L1.77492 5.55834C1.28326 4.17501 1.85826 3.75001 3.04159 4.60001L6.29159 6.92501C6.83325 7.30001 7.44992 7.10834 7.68325 6.50001L9.14992 2.59167C9.61659 1.34167 10.3916 1.34167 10.8583 2.59167L12.3249 6.50001C12.5583 7.10834 13.1749 7.30001 13.7083 6.92501L16.7583 4.75001C18.0583 3.81667 18.6833 4.29168 18.1499 5.80001L14.7833 15.225C14.6583 15.5417 14.2666 15.8167 13.9166 15.8167Z" stroke="#424145" stroke-linecap="round" stroke-linejoin="round"/>
                 <path d="M5.41675 18.3333H14.5834" stroke="#424145" stroke-linecap="round" stroke-linejoin="round"/>
@@ -55,8 +55,8 @@
       return {
         active: '/',
         items: [],
-        imageURL: window.SwiftCertificateManagerAdminVars.images_url,
-        hasPro: !!window.SwiftCertificateManagerAdminVars.has_pro
+        imageURL: window.swiftcmAdminVars.images_url,
+        hasPro: !!window.swiftcmAdminVars.has_pro
       };
     },
     methods: {
@@ -94,7 +94,7 @@
       },
       setMenus() {
         this.items = this.applyFilters(
-          'swift_certificate_manager_top_menus',
+          'swiftcm_top_menus',
           this.defaultRoutes()
         );
       },

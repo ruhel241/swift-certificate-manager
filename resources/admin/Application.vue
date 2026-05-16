@@ -1,9 +1,9 @@
 <template>
-    <div class="scm-app">
-        <div class="scm-header">
+    <div class="swiftcm-app">
+        <div class="swiftcm-header">
             <navigation/>
         </div>
-        <div class="scm-body">
+        <div class="swiftcm-body">
             <router-view :key="$route.fullPath"></router-view>
         </div>
     </div>

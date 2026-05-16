@@ -1,5 +1,5 @@
 <template>
-    <div class="scm-color-select">
+    <div class="swiftcm-color-select">
         <p class="label">{{title}}</p>
         <el-color-picker
             v-model="model"

@@ -12,7 +12,7 @@ class OnboardingHandler
 {
     public function registerEndpoints()
     {
-        add_action('wp_ajax_swift_certificate_manager_onboarding_info_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swiftcm_onboarding_info_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
@@ -47,12 +47,12 @@ class OnboardingHandler
         }
 
         // call method
-        do_action('swift_certificate_manager/doing_ajax_onboarding_' . $route);
+        do_action('swiftcm_doing_ajax_onboarding_' . $route);
 
         // Pass raw request (sanitize inside method)
         $this->{$maps[$route]}($_REQUEST);
 
-        do_action('swift_certificate_manager/admin_ajax_handler_onboarding_catch', $route);
+        do_action('swiftcm_admin_ajax_handler_onboarding_catch', $route);
     }
 
     public function saveOnboardingInfo($request)
@@ -74,10 +74,10 @@ class OnboardingHandler
         }
 
         // 💾 save onboarding info safely
-        update_option('swift_certificate_manager_onboarding_info', $info);
+        update_option('swiftcm_onboarding_info', $info);
 
         // 🧠 update global settings safely
-        $globalSettings = get_option('swift_certificate_manager_global_settings', []);
+        $globalSettings = get_option('swiftcm_global_settings', []);
 
         if (!is_array($globalSettings)) {
             $globalSettings = [];
@@ -95,7 +95,7 @@ class OnboardingHandler
 
         $globalSettings['preference'] = $preference;
 
-        update_option('swift_certificate_manager_global_settings', $globalSettings);
+        update_option('swiftcm_global_settings', $globalSettings);
 
         wp_send_json_success([
             'message' => __("Onboarding saved successfully", 'swift-certificate-manager')
@@ -112,7 +112,7 @@ class OnboardingHandler
 
         $isOnboarded = sanitize_text_field($request['is_onboarded']);
 
-        $saveIsOnboarded = update_option('swift_certificate_manager_is_onboarded', $isOnboarded);
+        $saveIsOnboarded = update_option('swiftcm_is_onboarded', $isOnboarded);
 
         if (!$saveIsOnboarded) {
             wp_send_json_error(array(

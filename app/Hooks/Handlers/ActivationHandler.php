@@ -19,18 +19,18 @@ class ActivationHandler
         $globalSettings = AvailableOptions::globalSettings();
        
         // create custom cron schedule and job
-        wp_schedule_event( time(), 'daily', 'swift_certificate_manager_cleanup_tmp_dir' );
+        wp_schedule_event( time(), 'daily', 'swiftcm_cleanup_tmp_dir' );
 
-        if (!get_option('swift_certificate_manager_active_template')){
-            update_option('swift_certificate_manager_active_template', 'template-1');
+        if (!get_option('swiftcm_active_template')){
+            update_option('swiftcm_active_template', 'template-1');
         }
 
-        if (!get_option('swift_certificate_manager_global_settings')){
-            update_option('swift_certificate_manager_global_settings', $globalSettings);
+        if (!get_option('swiftcm_global_settings')){
+            update_option('swiftcm_global_settings', $globalSettings);
         }
 
         // invoice flush 
-        swift_certificate_manager_add_rewrite_rules();
+        swiftcm_add_rewrite_rules();
         flush_rewrite_rules();
     }
 
@@ -74,13 +74,13 @@ class ActivationHandler
         $pages = [
             [
                 'post_title'   => 'Request Swift Certificate Manager',
-                'post_content' => '[swift_certificate_manager form="request-swift-certificate-manager"]',
+                'post_content' => '[swiftcm form="request-swift-certificate-manager"]',
                 'post_status'  => 'publish',
                 'post_type'    => 'page'
             ],
             [
                 'post_title'   => 'Verify Swift Certificate Manager',
-                'post_content' => '[swift_certificate_manager form="verify-swift-certificate-manager"]',
+                'post_content' => '[swiftcm form="verify-swift-certificate-manager"]',
                 'post_status'  => 'publish',
                 'post_type'    => 'page'
             ]

@@ -1,5 +1,5 @@
 <template>
-  <div class="scm-templates">
+  <div class="swiftcm-templates">
     <div class="title header">
       <h1>Templates</h1>
       <!-- {{ templates }} -->
@@ -18,15 +18,15 @@
     </div>
 
     <div class="templates-wrap">
-      <div class="scm_downloader_wrapper" v-if="downloadableTemplates">
-        <div class="scm_templates_installation_message">
-          <h2 class="scm_title">Templates Are Required To Generate Certificates.</h2>
+      <div class="swiftcm_downloader_wrapper" v-if="downloadableTemplates">
+        <div class="swiftcm_templates_installation_message">
+          <h2 class="swiftcm_title">Templates Are Required To Generate Certificates.</h2>
           <p class="mb10" style="margin-bottom: 30px;">
             This module requires you to download the certificate templates. Please click the button below to download the required template files. This is a one-time setup.
           </p>
 
           <el-button
-              class="scm-pro-btn"
+              class="swiftcm-pro-btn"
               round
               @click="saveTemplatesHandlerByApi"
               v-if="isOnboarded === 'yes'"
@@ -48,7 +48,7 @@
               </div>
               <div class="card-actions">
                 <el-button
-                    class="scm-primary-btn"
+                    class="swiftcm-primary-btn"
                     v-if="activeTemplate === template.slug"
                     type="success"
                     round
@@ -100,10 +100,10 @@
           <span class="setup-count">0{{ active }}</span>
           <span>/03</span>
         </div>
-        <div class="scm_button_group">
+        <div class="swiftcm_button_group">
           <el-button class="capsule-button" round @click="backBtnHandler">Back</el-button>
-          <el-button class="scm-primary-btn" round @click="saveTemplatesHandlerByApi" v-if="downloadableTemplates">Install Templates</el-button>
-          <el-button class="scm-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
+          <el-button class="swiftcm-primary-btn" round @click="saveTemplatesHandlerByApi" v-if="downloadableTemplates">Install Templates</el-button>
+          <el-button class="swiftcm-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
         </div>
       </div>
     </div>
@@ -126,11 +126,11 @@ export default {
       loading: false,
       templates: [],
       activeTemplate: '',
-      isOnboarded: window.SwiftCertificateManagerAdminVars.is_onboarded,
-      uploadCertificateUrl: window.SwiftCertificateManagerAdminVars.upload_certificate_url,
-      downloadableTemplates: parseInt(window.SwiftCertificateManagerAdminVars.downloadableTemplates),
-      coreTemplates: window.SwiftCertificateManagerAdminVars.coreTemplates,
-      hasPro: !!window.SwiftCertificateManagerAdminVars.has_pro,
+      isOnboarded: window.swiftcmAdminVars.is_onboarded,
+      uploadCertificateUrl: window.swiftcmAdminVars.upload_certificate_url,
+      downloadableTemplates: parseInt(window.swiftcmAdminVars.downloadableTemplates),
+      coreTemplates: window.swiftcmAdminVars.coreTemplates,
+      hasPro: !!window.swiftcmAdminVars.has_pro,
       upgradePopupVisible: false
     };
   },
@@ -167,9 +167,9 @@ export default {
     getActivatedTemplate() {
       this.fetching = true;
       this.$get({
-        action: 'scm_template_admin_ajax',
+        action: 'swiftcm_template_admin_ajax',
         route: 'get_active_template',
-        nonce: window.SwiftCertificateManagerAdminVars.nonce
+        nonce: window.swiftcmAdminVars.nonce
       })
           .then(response => {
             this.activeTemplate = response.data.active_template
@@ -184,10 +184,10 @@ export default {
     saveActivatedTemplate(slug) {
       this.action = true;
       this.$post({
-        action: 'scm_template_admin_ajax',
+        action: 'swiftcm_template_admin_ajax',
         route: 'save_active_template',
         slug: slug,
-        nonce: window.SwiftCertificateManagerAdminVars.nonce
+        nonce: window.swiftcmAdminVars.nonce
       })
           .then(response => {
             this.getActivatedTemplate();
@@ -209,13 +209,13 @@ export default {
         text: 'Installing templates, do not refresh the page, please wait...',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)',
-        customClass: 'scm-text-loading'
+        customClass: 'swiftcm-text-loading'
       });
 
       this.$post({
-        action: 'scm_template_admin_ajax',
+        action: 'swiftcm_template_admin_ajax',
         route: 'save_templates_by_api',
-        nonce: window.SwiftCertificateManagerAdminVars.nonce
+        nonce: window.swiftcmAdminVars.nonce
       })
           .then(response => {
             if(response.data.downloaded_files && response.data.downloaded_files.length) {
@@ -242,9 +242,9 @@ export default {
     getTemplatesHandler() {
       this.fetching = true;
       this.$get({
-        action: 'scm_template_admin_ajax',
+        action: 'swiftcm_template_admin_ajax',
         route: 'get_templates',
-        nonce: window.SwiftCertificateManagerAdminVars.nonce
+        nonce: window.swiftcmAdminVars.nonce
       })
           .then(response => {
             this.templates = response.data.templates

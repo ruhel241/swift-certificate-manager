@@ -1,10 +1,10 @@
 // Styles for request certificate page
-.scm-request-certificate-wrapper {
+.swiftcm-request-certificate-wrapper {
     max-width: 1000px;
     margin: 60px auto !important;
     padding: 20px;
     // background: #f5f7fb;
-    .scm-container {
+    .swiftcm-container {
         background: #ffffff;
         padding: 40px;
         border-radius: 16px;
@@ -69,7 +69,7 @@
         }
     }
 
-    .scm_payment_checkbox {
+    .swiftcm_payment_checkbox {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -81,17 +81,17 @@
         cursor: pointer;
     }
 
-    .scm_payment_checkbox:hover {
+    .swiftcm_payment_checkbox:hover {
         border-color: #4a90e2;
         background: #f0f7ff;
     }
 
-    #scm_payment_checkbox {
+    #swiftcm_payment_checkbox {
         accent-color: #4a90e2;
         transform: scale(1.2);
     }
 
-    .scm_payment_method {
+    .swiftcm_payment_method {
         margin-top: 10px;
         padding: 15px;
         border-radius: 10px;
@@ -99,17 +99,17 @@
         border: 1px solid #e5e7eb;
     }
 
-    .scm_payment_method input[type="radio"] {
+    .swiftcm_payment_method input[type="radio"] {
         accent-color: #4a90e2;
         margin-right: 6px;
     }
 
-    .scm_payment_method label {
+    .swiftcm_payment_method label {
         margin-right: 15px;
         font-weight: 500;
     }
 
-    .scm-form-submit-message {
+    .swiftcm-form-submit-message {
         display: none;
         border-radius: 10px;
         margin: 25px 0;
@@ -134,8 +134,8 @@
 
 /* 📱 Mobile Responsive */
 @media (max-width: 600px) {
-    .scm-request-certificate-wrapper {
-        .scm-container {
+    .swiftcm-request-certificate-wrapper {
+        .swiftcm-container {
             padding: 20px;
         }
 
@@ -146,14 +146,14 @@
 }
 
 // Styles for verify certificate page
-.scm-verify-form-wrapper {
+.swiftcm-verify-form-wrapper {
     min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     // background: #f5f7fb;
     padding: 20px;
-    .scm-card {
+    .swiftcm-card {
         width: 100%;
         max-width: 700px;
         background: #fff;
@@ -162,13 +162,13 @@
         // box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
-    .scm-title {
+    .swiftcm-title {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         color: #1f2937;
     }
-    .scm-verify-certificate-message {
+    .swiftcm-verify-certificate-message {
         // padding: 12px 15px;
         border-radius: 10px;
         text-align: center;
@@ -188,23 +188,23 @@
             color: #b91c1c;
         }
     }
-    .scm-form {
+    .swiftcm-form {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-bottom: 25px;
     }
-    .scm-form input {
+    .swiftcm-form input {
         padding: 12px;
         border: 1px solid #e5e7eb;
         border-radius: 10px;
         outline: none;
         transition: 0.3s;
     }
-    .scm-form input:focus {
+    .swiftcm-form input:focus {
         border-color: #4a90e2;
     }
-    .scm-form button {
+    .swiftcm-form button {
         padding: 12px;
         background: #4a90e2;
         color: white;
@@ -214,31 +214,31 @@
         font-weight: 600;
         transition: 0.3s;
     }
-    .scm-form button:hover {
+    .swiftcm-form button:hover {
         background: #357ab7;
     }
-    .scm-loader {
+    .swiftcm-loader {
         text-align: center;
         margin: 20px 0;
     }
 
-    .scm-loader img {
+    .swiftcm-loader img {
         width: 60px;
     }
 
-    .scm-grid {
+    .swiftcm-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
     }
 
-    .scm-grid .item {
+    .swiftcm-grid .item {
         background: #f9fafb;
         padding: 15px;
         border-radius: 12px;
     }
 
-    .scm-grid .full {
+    .swiftcm-grid .full {
         grid-column: span 2;
     }
 
@@ -256,22 +256,22 @@
     }
 
     @media (max-width: 600px) {
-        .scm-card {
+        .swiftcm-card {
             padding: 20px;
         }
 
-        .scm-grid {
+        .swiftcm-grid {
             grid-template-columns: 1fr;
         }
 
-        .scm-grid .full {
+        .swiftcm-grid .full {
             grid-column: span 1;
         }
     }
 }
    
 // Styles for payment invoice page
-.scm-invoice-wrrapper {
+.swiftcm-invoice-wrrapper {
     max-width: 800px;
     /*width: 70%;*/
     margin: 40px auto;
@@ -438,7 +438,7 @@
     }
 }
 
-.scm-error-message {
+.swiftcm-error-message {
     color: red;
     font-weight: 500;
 }
@@ -465,7 +465,7 @@
         display: none !important;
     }
 
-    .scm-invoice-wrrapper {
+    .swiftcm-invoice-wrrapper {
         width: 210mm;
         min-height: 297mm;
         margin: 0 !important;

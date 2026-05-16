@@ -15,7 +15,7 @@ use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 class TemplateController
 {
     public function register() {
-        add_action('wp_ajax_scm_template_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swiftcm_template_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
@@ -50,18 +50,18 @@ class TemplateController
             ], 400);
         }
 
-        do_action('swift_certificate_manager/doing_ajax_template_' . $route);
+        do_action('swiftcm_doing_ajax_template_' . $route);
 
         // Pass request (already sanitized inside methods)
         $this->{$maps[$route]}($_REQUEST);
 
-        do_action('swift_certificate_manager/admin_ajax_handler_template_catch', $route);
+        do_action('swiftcm_admin_ajax_handler_template_catch', $route);
     }
 
     public function getActiveTemplate($request) {
         wp_send_json_success([
             'message' => __('get Activated Certificate', 'swift-certificate-manager'),
-            'active_template' => get_option('swift_certificate_manager_active_template', 'template-1')
+            'active_template' => get_option('swiftcm_active_template', 'template-1')
         ]);
     }
 
@@ -76,10 +76,10 @@ class TemplateController
                 ], 400);
         }
 
-        update_option('swift_certificate_manager_active_template', $slug);
+        update_option('swiftcm_active_template', $slug);
 
         wp_send_json_success([
-            'active_template' => get_option('swift_certificate_manager_active_template', 'template-1')
+            'active_template' => get_option('swiftcm_active_template', 'template-1')
         ]);
     }
 
@@ -207,7 +207,7 @@ class TemplateController
 
     public function updateingGolbalSettingsInfo($settings)
     {
-        $existing = get_option('swift_certificate_manager_global_settings', []);
+        $existing = get_option('swiftcm_global_settings', []);
 
         if (!is_array($existing)) {
             $existing = [];
@@ -222,7 +222,7 @@ class TemplateController
             $preference . '_signature_img_enable' => sanitize_text_field($settings['instructor_signature_img_enable'] ?? ''),
         ];
 
-        update_option('swift_certificate_manager_global_settings', array_merge($existing, $instructorInfo));
+        update_option('swiftcm_global_settings', array_merge($existing, $instructorInfo));
     }
 
     public function redesignTemplate($request)

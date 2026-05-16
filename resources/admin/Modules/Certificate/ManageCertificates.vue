@@ -1,12 +1,12 @@
 <template>
-  <div class="scm-manage-certificate">
+  <div class="swiftcm-manage-certificate">
     <div class="title header">
       <h1>Manage Certificate</h1>
       <!-- {{ infos }} -->
       <div class="header-buttons">
         <router-link to="/" class="nav-logo-lin">
           <el-button
-            class="scm-primary-btn svg-span-btn"
+            class="swiftcm-primary-btn svg-span-btn"
             round
           >
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,8 +22,8 @@
       </div>
     </div>
 
-    <div class="scm-card scm-mange-action">
-      <div class="scm-mange-tabs">
+    <div class="swiftcm-card swiftcm-mange-action">
+      <div class="swiftcm-mange-tabs">
         <el-tabs v-model="status" @tab-click="handleTabClick">
           <el-tab-pane label="Created" name="assign">
             <template #label>
@@ -148,7 +148,7 @@
           </el-tab-pane>
         </el-tabs>
       </div>
-      <div class="scm-mange-search">
+      <div class="swiftcm-mange-search">
         <el-input
           placeholder="Search"
           prefix-icon="el-icon-search"
@@ -158,7 +158,7 @@
         >
         </el-input>
 
-        <div class="scm-button">
+        <div class="swiftcm-button">
           <el-button class="capsule-btn defult-svg-span-btn" round @click="exportCSV">
             <svg
                 width="16"
@@ -202,7 +202,7 @@
       </div>
     </div>
 
-    <div class="scm-manage-table-wrap">
+    <div class="swiftcm-manage-table-wrap">
       <table-selections
           :current_status="status"
           @reloadData="fetchInfos"
@@ -232,7 +232,7 @@
 
         <el-table-column label="Certificate Code">
           <template slot-scope="scope">
-            <span class="scm-certificate-code">{{ scope.row.certificate_code }}</span>
+            <span class="swiftcm-certificate-code">{{ scope.row.certificate_code }}</span>
             <el-tooltip
               effect="dark"
               content="Click To Copy"
@@ -263,7 +263,7 @@
 
         <el-table-column :label="$t('Action')">
           <template slot-scope="scope">
-            <div class="scm-table-action">
+            <div class="swiftcm-table-action">
               <el-tooltip content="Edit" placement="top">
                 <a href="javascript:void(0)" @click="gotoEdit(scope.row.id)">
                   <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -322,7 +322,7 @@
           :selections="multipleSelection"
       />
 
-      <div class="scm_pagination_wrap">
+      <div class="swiftcm_pagination_wrap">
         <el-pagination
             :hide-on-single-page="false"
             @size-change="handleSizeChange"
@@ -341,7 +341,7 @@
       @close="upgradePopupVisible = false"
     />
 
-<!--    <div class="scm-card p20" v-else>-->
+<!--    <div class="swiftcm-card p20" v-else>-->
 <!--      <h3>{{ $t("No Data Found") }}</h3>-->
 <!--    </div>-->
   </div>
@@ -371,7 +371,7 @@ export default {
         per_page: +(localStorage.getItem('infosPerPage') || 10)
       },
       upgradePopupVisible: false,
-      hasPro: !!window.SwiftCertificateManagerAdminVars.has_pro
+      hasPro: !!window.swiftcmAdminVars.has_pro
     };
   },
   methods: {
@@ -456,25 +456,25 @@ export default {
         text: 'Exporting CSV File....',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)',
-        customClass: 'scm-text-loading'
+        customClass: 'swiftcm-text-loading'
       });
 
       // Add setTimeout for 1000ms (1 second) delay
       setTimeout(() => {
         // Use fetch instead of direct location.href to handle the response
-        fetch(SwiftCertificateManagerAdminVars.ajaxurl, {
+        fetch(swiftcmAdminVars.ajaxurl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: new URLSearchParams({
-            action: 'scm_generate_admin_ajax',
+            action: 'swiftcm_generate_admin_ajax',
             route: 'get_csv_download',
             status: this.status,
             search: this.search,
             current_page: this.paginate.current_page,
             per_page: this.paginate.per_page,
-            nonce: window.SwiftCertificateManagerAdminVars.nonce,
+            nonce: window.swiftcmAdminVars.nonce,
           })
         })
             .then(response => {
@@ -492,7 +492,7 @@ export default {
               const a = document.createElement('a');
               const date = new Date().toISOString().split('T')[0];
               a.href = url;
-              a.download = `swift-certificate-manager-export-${date}.csv`;
+              a.download = `swiftcm-export-${date}.csv`;
               document.body.appendChild(a);
               a.click();
               window.URL.revokeObjectURL(url);
@@ -561,11 +561,11 @@ export default {
     },
     performAction(type, infoId) {
       this.$post({
-        action: "scm_generate_admin_ajax",
+        action: "swiftcm_generate_admin_ajax",
         route: "maybe_delete_infos",
         info_ids: [infoId],
         action_type: type,
-        nonce: window.SwiftCertificateManagerAdminVars.nonce,
+        nonce: window.swiftcmAdminVars.nonce,
       })
         .then((response) => {
           this.$notify({
@@ -583,13 +583,13 @@ export default {
     fetchInfos() {
       this.fetching = true;
       this.$get({
-        action: "scm_generate_admin_ajax",
+        action: "swiftcm_generate_admin_ajax",
         route: "get_certificate_infos",
         status: this.status,
         search: this.search,
         current_page: this.paginate.current_page,
         per_page: this.paginate.per_page,
-        nonce: window.SwiftCertificateManagerAdminVars.nonce,
+        nonce: window.swiftcmAdminVars.nonce,
       })
         .then((response) => {
           this.infos = response.data.infos;

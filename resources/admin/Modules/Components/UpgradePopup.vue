@@ -8,7 +8,7 @@
             @close="closePopup"
         >
         <div class="upgrade-card">
-            <div class="scm-upgrade-header">
+            <div class="swiftcm-upgrade-header">
                 <!-- LEFT -->
                 <div class="upgrade-left">
                     <span class="badge">PRO</span>
@@ -28,7 +28,7 @@
                 </div>
             </div>
         
-            <div class="scm-upgrade-footer">
+            <div class="swiftcm-upgrade-footer">
                 <div class="features-section">
                     <span> Everything you need to work smarter</span>
                     <div class="features">
@@ -77,7 +77,7 @@ export default {
 
   data() {
     return {
-        imageUrl: window.SwiftCertificateManagerAdminVars.images_url,
+        imageUrl: window.swiftcmAdminVars.images_url,
     }
   },
 

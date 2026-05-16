@@ -1,11 +1,11 @@
 {
-  "name": "swiftcertificatemanager/swift-certificate-manager",
+  "name": "swiftcm/swift-certificate-manager",
   "description": "Swift Certificate Manager",
   "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "authors": [
     {
-      "name": "swiftcertificatemanager",
+      "name": "swiftCertificateManager",
       "email": "info@swiftcertificate.com"
     }
   ],

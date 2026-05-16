@@ -267,34 +267,34 @@ class AvailableOptions
             ],
         ];
 
-        return apply_filters('swift_certificate_manager/certificate_font_list', $fonts);
+        return apply_filters('swiftcm_certificate_font_list', $fonts);
     }
 
     public static function getDirStructure()
     {
         $workingPath = wp_upload_dir()['basedir'];
-        $workingDir  = apply_filters('swift_certificate_manager/working_dir', $workingPath .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
+        $workingDir  = apply_filters('swiftcm_working_dir', $workingPath .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
       
         return [
             'workingDir'      => $workingDir,
-            'tempDir'         => apply_filters('swift_certificate_manager/pdf_temp_dir', $workingDir . '/temp/'),
-            'pdfCacheDir'     => apply_filters('swift_certificate_manager/pdf_cache_dir', $workingDir . '/pdfCache/'),
-            'fontDir'         => apply_filters('swift_certificate_manager/pdf_font_dir', $workingDir . '/fonts/'),
-            'certificatesDir' => apply_filters('swift_certificate_manager/pdf_certificate_templates_dir', $workingDir . '/certificate_templates/')
+            'tempDir'         => apply_filters('swiftcm_pdf_temp_dir', $workingDir . '/temp/'),
+            'pdfCacheDir'     => apply_filters('swiftcm_pdf_cache_dir', $workingDir . '/pdfCache/'),
+            'fontDir'         => apply_filters('swiftcm_pdf_font_dir', $workingDir . '/fonts/'),
+            'certificatesDir' => apply_filters('swiftcm_pdf_certificate_templates_dir', $workingDir . '/certificate_templates/')
         ];
     }
 
     public static function getDirUrlStructure()
     {
         $workingPathUrl = wp_upload_dir()['baseurl'];
-        $workingUrl     = apply_filters('swift_certificate_manager/working_url', $workingPathUrl .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
+        $workingUrl     = apply_filters('swiftcm_working_url', $workingPathUrl .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
       
         return [
             'workingUrl'      => $workingUrl,
-            'tempUrl'         => apply_filters('swift_certificate_manager/pdf_temp_url', $workingUrl . '/temp/'),
-            'pdfCacheUrl'     => apply_filters('swift_certificate_manager/pdf_cache_url', $workingUrl . '/pdfCache/'),
-            'fontUrl'         => apply_filters('swift_certificate_manager/pdf_font_url', $workingUrl . '/fonts/'),
-            'certificatesUrl' => apply_filters('swift_certificate_manager/pdf_certificate_templates_url', $workingUrl . '/certificate_templates/')
+            'tempUrl'         => apply_filters('swiftcm_pdf_temp_url', $workingUrl . '/temp/'),
+            'pdfCacheUrl'     => apply_filters('swiftcm_pdf_cache_url', $workingUrl . '/pdfCache/'),
+            'fontUrl'         => apply_filters('swiftcm_pdf_font_url', $workingUrl . '/fonts/'),
+            'certificatesUrl' => apply_filters('swiftcm_pdf_certificate_templates_url', $workingUrl . '/certificate_templates/')
         ];
     }
 
@@ -387,7 +387,7 @@ class AvailableOptions
 
     public static function globalSettings()
     {
-         return apply_filters('swift_certificate_manager/global-settings',[
+         return apply_filters('swiftcm_global-settings',[
             'instructor_name'                  => 'John doe',
             'instructor_signature'             => 'John',
             'instructor_signature_img'         => '',
@@ -399,8 +399,8 @@ class AvailableOptions
             'preference'                       => '',
             'order_certificate_url'            => get_site_url() . '/request-swift-certificate-manager/',
             'verify_certificate_url'           => get_site_url() . '/verify-swift-certificate-manager/',
-            'order_certificate_shortcode'      => '[swift_certificate_manager form="request-swift-certificate-manager"]',
-            'verify_certificate_shortcode'     => '[swift_certificate_manager form="verify-swift-certificate-manager"]',
+            'order_certificate_shortcode'      => '[swiftcm form="request-swift-certificate-manager"]',
+            'verify_certificate_shortcode'     => '[swiftcm form="verify-swift-certificate-manager"]',
             'certificate_code_prefix'          => 'SC',
             'clear_cache'                      => 'yes',
             'newsletter'                       =>  get_option('admin_email'),
@@ -415,7 +415,7 @@ class AvailableOptions
     }
 
     public static function getConfig() {
-        $globalSettings = get_option('swift_certificate_manager_global_settings', []);
+        $globalSettings = get_option('swiftcm_global_settings', []);
         // Safe preference
         $preference = isset($globalSettings['preference'])  ? sanitize_key($globalSettings['preference']) : 'instructor';
         

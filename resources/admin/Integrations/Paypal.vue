@@ -1,25 +1,25 @@
 <template>
-    <div class="scm_main_container" v-loading="fetching">
-      <div class="scm_wrapper swift_certificate_manager_payment_settings" v-loading="saving">
-        <h3 class="scm_title">
+    <div class="swiftcm_main_container" v-loading="fetching">
+      <div class="swiftcm_wrapper swiftcm_payment_settings" v-loading="saving">
+        <h3 class="swiftcm_title">
           Paypal Gateway Settings:
         </h3>
         <div class="payment_item">
           <label class="label">Status</label>
-          <el-checkbox class="scm_checkbox" true-label="yes" false-label="no" label="Enable paypal payment method." v-model="settings.enable"></el-checkbox>
+          <el-checkbox class="swiftcm_checkbox" true-label="yes" false-label="no" label="Enable paypal payment method." v-model="settings.enable"></el-checkbox>
         </div>
 
         <div class="payment_item" v-if="settings.enable === 'yes'">
           <label class="label">Paypal Payment Mode</label>
-          <el-radio-group v-model="settings.payment_mode" class="scm-payment-mode-select">
+          <el-radio-group v-model="settings.payment_mode" class="swiftcm-payment-mode-select">
             <el-radio label="test">Sandbox Mode</el-radio>
             <el-radio label="live">Live Mode</el-radio>
           </el-radio-group>
         </div>
 
-        <div class="scm_section_body" v-if="settings.enable === 'yes'">
+        <div class="swiftcm_section_body" v-if="settings.enable === 'yes'">
           <el-form :label-position="labelPosition" rel="paypal_settings" label-width="220px">
-            <div v-if="settings.payment_mode !== 'live'" class="scm_settings_section">
+            <div v-if="settings.payment_mode !== 'live'" class="swiftcm_settings_section">
                 <h3>Paypal Test Keys</h3>
                 <div class="settings-item">
                   <div class="setting-form">
@@ -32,7 +32,7 @@
                   </div>
                 </div>
             </div>
-            <div v-else class="scm_settings_section">
+            <div v-else class="swiftcm_settings_section">
               <h3>Paypal Live Keys</h3>
               <div class="settings-item">
                 <div class="setting-form">
@@ -47,7 +47,7 @@
             </div>
             <!-- <el-tabs v-model="settings.payment_type">
               <el-tab-pane label="PayPal Pro" name="pro">
-                <div v-if="settings.payment_mode !== 'live'" class="scm_settings_section">
+                <div v-if="settings.payment_mode !== 'live'" class="swiftcm_settings_section">
                   <h3>Paypal Test Keys</h3>
                   <div class="settings-item">
                     <div class="setting-form">
@@ -60,7 +60,7 @@
                     </div>
                   </div>
                 </div>
-                <div v-else class="scm_settings_section">
+                <div v-else class="swiftcm_settings_section">
                   <h3>Paypal Live Keys</h3>
                   <div class="settings-item">
                     <div class="setting-form">
@@ -75,7 +75,7 @@
                 </div>
               </el-tab-pane>
               <el-tab-pane label="PayPal Standard" name="standard">
-                <div class="scm_settings_section">
+                <div class="swiftcm_settings_section">
                   <h3>PayPal Standard</h3>
                   <div class="settings-item">
                     <div class="setting-form">
@@ -96,7 +96,7 @@
               </el-tab-pane>
             </el-tabs> -->
 
-            <!-- <div class="swift_certificate_manager_settings_section">
+            <!-- <div class="swiftcm_settings_section">
               <p>Please use IPN url to get marked paid on you site.</p>
               <b>IPN URL: </b>
               <el-tooltip effect="dark"
@@ -113,8 +113,8 @@
           </el-form>
         </div>
 
-        <div class="scm_action_btn">
-          <el-button class="scm-primary-btn svg-span-btn" @click="saveSettings()">
+        <div class="swiftcm_action_btn">
+          <el-button class="swiftcm-primary-btn svg-span-btn" @click="saveSettings()">
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M10.0001 18.3333C14.5834 18.3333 18.3334 14.5833 18.3334 9.99999C18.3334 5.41666 14.5834 1.66666 10.0001 1.66666C5.41675 1.66666 1.66675 5.41666 1.66675 9.99999C1.66675 14.5833 5.41675 18.3333 10.0001 18.3333Z" stroke="#424145" stroke-linecap="round" stroke-linejoin="round"/>
               <path d="M6.45825 10L8.81659 12.3583L13.5416 7.64166" stroke="#424145" stroke-linecap="round" stroke-linejoin="round"/>
@@ -147,17 +147,17 @@ export default {
           labelPosition: 'right',
           webhook_url: '',
           upgradePopupVisible: false,
-          hasPro: !!window.SwiftCertificateManagerAdminVars.has_pro
+          hasPro: !!window.swiftcmAdminVars.has_pro
       }
   },
   methods: {
       getSettings() {
           this.fetching = true;
           this.$get({
-              action: 'scm_payment_settings_admin_ajax',
+              action: 'swiftcm_payment_settings_admin_ajax',
               route: 'get_payment_settings',
               method: 'paypal',
-              nonce: window.SwiftCertificateManagerAdminVars.nonce
+              nonce: window.swiftcmAdminVars.nonce
           })
               .then((response) => {
                   this.settings = response.data.settings;
@@ -177,11 +177,11 @@ export default {
         }
           this.saving = true;
           this.$post({
-              action: 'scm_payment_settings_admin_ajax',
+              action: 'swiftcm_payment_settings_admin_ajax',
               route: 'save_payment_settings',
               method: 'paypal',
               settings: this.settings,
-              nonce: window.SwiftCertificateManagerAdminVars.nonce
+              nonce: window.swiftcmAdminVars.nonce
           })
               .then(response => {
                   this.$handleSuccess(response?.data?.message);
@@ -203,7 +203,7 @@ export default {
 </script>
 
 <style lang="scss">
-.swift_certificate_manager_payment_settings {
+.swiftcm_payment_settings {
   .el-tabs__item.is-top.is-active {
     border-bottom: solid;
   }

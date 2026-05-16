@@ -4,7 +4,7 @@ namespace SwiftCertificateManager\Models;
 
 class SwiftCertificateManagerTemplates {
 
-    protected $table = 'scm_templates';
+    protected $table = 'swiftcm_templates';
    
     public function getTemplates() {
         

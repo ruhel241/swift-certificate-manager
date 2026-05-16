@@ -8,7 +8,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class SwiftCertificateManagerGenerateMigrator {
 
-	public static $tableName = 'scm_generates';
+	public static $tableName = 'swiftcm_generates';
 
 	public static function migrate() {
 		global $wpdb;

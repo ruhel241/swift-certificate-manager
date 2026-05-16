@@ -1,10 +1,10 @@
 <template>
-  <div class="scm-customizations-wrapper">
+  <div class="swiftcm-customizations-wrapper">
     <!-- {{ settings }} -->
     <el-row :gutter="20">
       <!-- Certificate Panel -->
       <el-col :span="17">
-        <div class="scm-certificate-preview" v-loading="fetching">
+        <div class="swiftcm-certificate-preview" v-loading="fetching">
           <!-- Certificate Container with Fixed Size -->
           <div class="certificate-outer-container">
             <div id="view-template" class="view-template" :style="viewTemplateStyle">
@@ -123,7 +123,7 @@
 
             <el-button
               :loading="downloading"
-              class="scm-primary-btn svg-span-btn"
+              class="swiftcm-primary-btn svg-span-btn"
               @click="downloadCertificate"
             >
               <svg v-if="!downloading" width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -145,7 +145,7 @@
 
       <!-- Customization Panel -->
       <el-col :span="7">
-        <div class="scm-customizations-panel">
+        <div class="swiftcm-customizations-panel">
           <div class="title">
             <h2 class="panel-title mb-20">Certificate Information</h2>
           </div>
@@ -360,21 +360,21 @@ export default {
   data() {
     return {
       downloading: false,
-      activePanel: localStorage.getItem('scm_settings_active_panel') || '1',
+      activePanel: localStorage.getItem('swiftcm_settings_active_panel') || '1',
       fontColor: "",
       primaryColor: "",
       secondaryColor: "",
       logo: "",
       xOffset: 0,
       debounceTimeout: null,
-      uploadCertificateUrl: window.SwiftCertificateManagerAdminVars.upload_certificate_url,
-      globalSettings: window.SwiftCertificateManagerAdminVars.globalSettings,
+      uploadCertificateUrl: window.swiftcmAdminVars.upload_certificate_url,
+      globalSettings: window.swiftcmAdminVars.globalSettings,
       // New properties for drag & drop
       selectedElement: null,
       dragging: null,
       fontResizing: null,
       imageResizing: null,
-      preference: window.SwiftCertificateManagerAdminVars.globalSettings.preference,
+      preference: window.swiftcmAdminVars.globalSettings.preference,
       templateOrientation: 'landscape',
       templateNaturalWidth: 0,
       templateNaturalHeight: 0,
@@ -607,7 +607,7 @@ export default {
 
     // Your existing methods
     panelChangeHandler(val) {
-      localStorage.setItem('scm_settings_active_panel', val);
+      localStorage.setItem('swiftcm_settings_active_panel', val);
     },
 
     changeHandler(val, attr) {
@@ -886,7 +886,7 @@ export default {
           text: 'Downloading Certificate....',
           spinner: 'el-icon-loading',
           background: 'rgba(0, 0, 0, 0.7)',
-          customClass: 'scm-text-loading'
+          customClass: 'swiftcm-text-loading'
         });
 
         // ✅ ensure template orientation & size is ready

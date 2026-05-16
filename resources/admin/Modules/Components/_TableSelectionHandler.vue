@@ -56,11 +56,11 @@
                     selectedIds.push(selection.id);
                 });
                 this.$post({
-                    action: 'scm_generate_admin_ajax',
+                    action: 'swiftcm_generate_admin_ajax',
                     route: 'maybe_delete_infos',
                     info_ids: selectedIds,
                     action_type: type,
-                    nonce: window.SwiftCertificateManagerAdminVars.nonce
+                    nonce: window.swiftcmAdminVars.nonce
                 })
                     .then(response => {
                         this.$notify({

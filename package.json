@@ -4,6 +4,7 @@
   "description": "The Most certificate generato For WordPress",
   "main": "index.js",
   "scripts": {
+    "postinstall": "patch-package",
     "dev": "mix",
     "watch": "mix watch",
     "production": "mix --production"
@@ -35,6 +36,7 @@
     "eslint": "^7.0.0",
     "eslint-loader": "^4.0.2",
     "laravel-mix": "^6.0.49",
+    "patch-package": "^8.0.1",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.63.6",
     "sass-loader": "^16.0.7",
