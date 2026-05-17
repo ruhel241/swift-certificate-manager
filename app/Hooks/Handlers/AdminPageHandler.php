@@ -7,7 +7,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use SwiftCertificateManager\Helpers\PaymentHelper;
-use SwiftCertificateManager\Helpers\HelperFunction;
 use SwiftCertificateManager\Http\Controllers\AssignCertificateController;
 use SwiftCertificateManager\Libs\Translation\TranslationStrings;
 
@@ -120,20 +119,15 @@ class AdminPageHandler
             $activeTemplate  = get_option('swiftcm_active_template', 'template-1');
             $isOnboarded     = get_option('swiftcm_is_onboarded', "no");
             $globalSettings  = get_option('swiftcm_global_settings', []);
+            $i18ns           = TranslationStrings::getTranslationStrings();
 
             $templateManager = new TemplatesManager();
             $downloadableTemplates = $templateManager->getDownloadableTemplates();
-            
-            $i18ns = TranslationStrings::getTranslationStrings();
-
-            $helperFunction = new HelperFunction();
 
             $swiftcmAdminVars = apply_filters('swiftcm_admin_app_vars', array(
                 'assets_url'             => $assetsUrl,
                 'images_url'             => $assetsUrl.'admin/images/',
-                'upload_temp_dir'        => $uploadDir['tempDir'],
-                'upload_temp_url'        => $uploadUrl['tempUrl'],
-                'upload_certificate_url' =>  $uploadUrl['certificatesUrl'],
+                'upload_certificate_url' => $assetsUrl.'admin/images/templates/',
                 'ajaxurl'                => admin_url('admin-ajax.php'),
                 'slug'                   => 'swiftcm',
                 'site_url'               => get_site_url(),
@@ -145,7 +139,6 @@ class AdminPageHandler
                 'downloadableTemplates'  => count($downloadableTemplates),
                 'getSystemStatuses'      => AvailableOptions::getSystemStatuses(),
                 'globalSettings'         => $globalSettings,
-                'coreTemplates'          => $templateManager->getCoreTemplates(),
                 'currencies'             => (new PaymentHelper)->getCurrencies(),
                 'has_pro'                => defined('SWIFT_CERTIFICATE_MANAGER_PRO'),
                 'has_pro_version'        => defined('SWIFT_CERTIFICATE_MANAGER_PRO_VERSION'),

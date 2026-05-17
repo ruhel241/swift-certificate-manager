@@ -40,7 +40,7 @@ class TemplateController
             'get_templates'         => 'getTemplates',
             'get_template'          => 'getEditTemplate',
             'update_template'       => 'updateTemplate',
-            'save_templates_by_api' => 'saveTemplatesDetails',
+            'save_templates'        => 'saveTemplates',
             'redesign_template'     => 'redesignTemplate'
         );
 
@@ -83,13 +83,18 @@ class TemplateController
         ]);
     }
 
-    public function getTemplates($request) {
-        $SwiftCertificateManagerTemplates = (new SwiftCertificateManagerTemplates);
-
+    public function getTemplates($request)
+    {
+        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
+    
         $getTemplates = $SwiftCertificateManagerTemplates->getTemplates();
-
+    
+        usort($getTemplates, function ($a, $b) {
+            return strnatcmp($a->slug, $b->slug);
+        });
+    
         wp_send_json_success([
-            'message' => __('Get Templates', 'swift-certificate-manager'),
+            'message'   => __('Get Templates', 'swift-certificate-manager'),
             'templates' => $getTemplates
         ], 200);
     }
@@ -154,53 +159,52 @@ class TemplateController
         ]);
     }
 
-    // download templates from github and save details in database
-    public function saveTemplatesDetails($request)  {
+    public function saveTemplates($request)
+    {
         $templateManager = new TemplatesManager();
-        $downloadableFiles = $templateManager->getDownloadableTemplates(3);
-
-        $getConfig = AvailableOptions::getConfig();
-
         $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
 
+        $downloadableFiles = $templateManager->getDownloadableTemplates();
+
+        // Array empty check
+        if (empty($downloadableFiles)) {
+            wp_send_json_error([
+                // 'message' => __('No templates available to install', 'swift-certificate-manager'),
+                'downloaded_files' => $downloadableFiles,
+            ], 404);
+        }
+
+        $getConfigTemplates = AvailableOptions::getConfig();
+
         $downloadedFiles = [];
-        foreach ($downloadableFiles as $downloadableFile) {
-            $templateName = $downloadableFile['name'];
-            $title        = $downloadableFile['title'];
 
-            $res = $templateManager->download($templateName);
-            $downloadedFiles[] = $templateName;
+        foreach ($downloadableFiles as $template) {
+            $templateName  = $template['template_name'];
+            $templateImage = $template['template_image'];
+            $slug          = $template['slug'];
+            $templatePro   = $template['pro'];
+            $settings       = isset($getConfigTemplates[$slug])  ? wp_unslash($getConfigTemplates[$slug]) : [];
 
-            $slug = $downloadableFile['slug'];
-            $templatePro = $downloadableFile['pro'];
+            $data = [
+                'template_name'  => sanitize_text_field($templateName),
+                'slug'           => sanitize_title($slug),
+                'template_image' => sanitize_text_field($templateImage),
+                'pro'            => intval($templatePro),
+                'settings'       => wp_json_encode($settings),
+                'created_at'     => gmdate('Y-m-d H:i:s'),
+                'updated_at'     => gmdate('Y-m-d H:i:s'),
+            ];
 
-            if (!$SwiftCertificateManagerTemplates->isSlug($slug)) {
-                $settings = isset($getConfig[$slug]) ? wp_unslash($getConfig[$slug]) : [];
+            $res = $SwiftCertificateManagerTemplates->insertGetId($data);
 
-                $data = [
-                    'template_name'  => sanitize_text_field($slug),
-                    'slug'           => sanitize_title($slug),
-                    'template_image' => sanitize_text_field($templateName),
-                    'title'          => sanitize_text_field($title),
-                    'pro'            => intval($templatePro),
-                    'settings'       => wp_json_encode($settings),
-                    'created_at'     => gmdate('Y-m-d H:i:s'),
-                    'updated_at'     => gmdate('Y-m-d H:i:s'),
-                ];
-
-                $SwiftCertificateManagerTemplates->insertGetId($data);
-            }
-
-            if (is_wp_error($res)) {
-                wp_send_json_error([
-                    'message' => __('Template Download failed. Please reload and try again', 'swift-certificate-manager')
-                ], 423);
+            if ($res) {
+                $downloadedFiles[] = $slug;
             }
         }
 
         wp_send_json_success([
             'downloaded_files' => $downloadedFiles,
-            'message' => __('Templates Installed Successfully', 'swift-certificate-manager')
+            'message'          => __('Templates Installed Successfully', 'swift-certificate-manager')
         ], 200);
     }
     

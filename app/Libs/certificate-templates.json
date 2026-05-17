@@ -1,80 +1,80 @@
 [
   {
-    "name": "template-1.png",
+    "template_name": "1) Falcon - 1 signature | 1 logo",
+    "template_image": "template-1.png",
     "slug": "template-1",
-    "title": "1) Falcon - 1 signature | 1 logo",
     "pro": 0
   },
   {
-    "name": "template-2.png",
+    "template_name": "2) Falcon - 1 signature | No logo",
+    "template_image": "template-2.png",
     "slug": "template-2",
-    "title": "2) Falcon - 1 signature | No logo",
     "pro": 0
   },
   {
-    "name": "template-3.png",
+    "template_name": "3) Falcon - 2 signature | No logo",
+    "template_image": "template-3.png",
     "slug": "template-3",
-    "title": "3) Falcon - 2 signature | No logo",
     "pro": 0
   },
   {
-    "name": "template-4.png",
+    "template_name": "4) Merlin - 1 signature | 1 logo",
+    "template_image": "template-4.png",
     "slug": "template-4",
-    "title": "4) Merlin - 1 signature | 1 logo",
     "pro": 1
   },
   {
-    "name": "template-5.png",
+    "template_name": "5) Merlin - 2 signature | 1 logo",
+    "template_image": "template-5.png",
     "slug": "template-5",
-    "title": "5) Merlin - 2 signature | 1 logo",
     "pro": 1
   },
   {
-    "name": "template-6.png",
+    "template_name": "6) Merlin - 2 signature | No logo",
+    "template_image": "template-6.png",
     "slug": "template-6",
-    "title": "6) Merlin - 2 signature | No logo",
     "pro": 1
   },
   {
-    "name": "template-7.png",
+    "template_name": "7) Phoenix - 1 signature | 2 logo",
+    "template_image": "template-7.png",
     "slug": "template-7",
-    "title": "7) Phoenix - 1 signature | 2 logo",
     "pro": 1
   },
   {
-    "name": "template-8.png",
+    "template_name": "8) Phoenix - 2 signature | 1 logo",
+    "template_image": "template-8.png",
     "slug": "template-8",
-    "title": "8) Phoenix - 2 signature | 1 logo",
     "pro": 1
   },
   {
-    "name": "template-9.png",
+    "template_name": "9) Phoenix - 2 signature | 2 logo",
+    "template_image": "template-9.png",
     "slug": "template-9",
-    "title": "9) Phoenix - 2 signature | 2 logo",
     "pro": 1
    },
   {
-    "name": "template-10.png",
+    "template_name": "10) Skylark - 2 signature | 1 logo",
+    "template_image": "template-10.png",
      "slug": "template-10",
-    "title": "10) Skylark - 2 signature | 1 logo",
      "pro": 1
   },
   {
-    "name": "template-11.png",
+    "template_name": "11) Skylark - 2 signature | No logo",
+    "template_image": "template-11.png",
     "slug": "template-11",
-    "title": "11) Skylark - 2 signature | No logo",
     "pro": 1
   },
   {
-    "name": "template-12.png",
+    "template_name": "12) Hawk - 1 signature | 2 logo",
+    "template_image": "template-12.png",
     "slug": "template-12",
-    "title": "12) Hawk - 1 signature | 2 logo",
     "pro": 1
   },
   {
-    "name": "template-13.png",
+    "template_name": "13) Hawk - 2 signature | No logo",
+    "template_image": "template-13.png",
     "slug": "template-13",
-    "title": "13) Hawk - 2 signature | No logo",
     "pro": 1
   }
 ]

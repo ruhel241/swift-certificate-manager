@@ -24,7 +24,6 @@ class SwiftCertificateManagerTemplatesMigrator {
 				template_name VARCHAR(255) NULL,
 				slug VARCHAR(255) NULL,
 				template_image VARCHAR(255) NULL,
-				title VARCHAR(255) NULL,
 				pro INT(1) NULL,
 				settings LONGTEXT NULL,
 				created_at TIMESTAMP NULL,

@@ -4,12 +4,13 @@
       <h1>Templates</h1>
       <!-- {{ templates }} -->
       <div class="btn-handler">
-        <!-- <el-button icon="el-icon-refresh" round @click="saveTemplatesHandlerByApi" v-if="downloadableTemplates">
+        <el-button icon="el-icon-refresh" round @click="saveTemplatesHandler">
           Fetch Templates
-        </el-button> -->
-        <el-button class="capsule-btn" icon="el-icon-service" round  @click="upgradePopupHandler">
-          Order Customized Certificates
         </el-button>
+        <!-- v-if="downloadableTemplates" -->
+        <!-- <el-button class="capsule-btn" icon="el-icon-service" round  @click="upgradePopupHandler">
+          Order Customized Certificates
+        </el-button> -->
         <UpgradePopup 
           :upgradePopupVisible="upgradePopupVisible"
           @close="upgradePopupVisible = false"
@@ -28,7 +29,7 @@
           <el-button
               class="swiftcm-pro-btn"
               round
-              @click="saveTemplatesHandlerByApi"
+              @click="saveTemplatesHandler"
               v-if="isOnboarded === 'yes'"
           >
             Install Templates
@@ -44,7 +45,7 @@
                 <img :src="uploadCertificateUrl+template.template_image" class="image"/>
               </div>
               <div class="title" style="padding: 0px 10px; text-align: center;">
-                <p>{{ template.title }}</p>
+                <p>{{ template.template_name }}</p>
               </div>
               <div class="card-actions">
                 <el-button
@@ -102,7 +103,7 @@
         </div>
         <div class="swiftcm_button_group">
           <el-button class="capsule-button" round @click="backBtnHandler">Back</el-button>
-          <el-button class="swiftcm-primary-btn" round @click="saveTemplatesHandlerByApi" v-if="downloadableTemplates">Install Templates</el-button>
+          <el-button class="swiftcm-primary-btn" round @click="saveTemplatesHandler" v-if="downloadableTemplates">Install Templates</el-button>
           <el-button class="swiftcm-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
         </div>
       </div>
@@ -200,45 +201,37 @@ export default {
             this.action = false;
           });
     },
-    saveTemplatesHandlerByApi() {
-      // Show loading spinner
+    saveTemplatesHandler() {
+      // Loader only first time
       this.loading = true;
-      // Create a fullscreen loading instance
       const loadingInstance = this.$loading({
-        fullscreen: true,
-        text: 'Installing templates, do not refresh the page, please wait...',
-        spinner: 'el-icon-loading',
-        background: 'rgba(0, 0, 0, 0.7)',
-        customClass: 'swiftcm-text-loading'
+          fullscreen: true,
+          text: 'Installing templates, do not refresh the page, please wait...',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)',
+          customClass: 'swiftcm-text-loading'
       });
-
+      
       this.$post({
-        action: 'swiftcm_template_admin_ajax',
-        route: 'save_templates_by_api',
-        nonce: window.swiftcmAdminVars.nonce
+          action: 'swiftcm_template_admin_ajax',
+          route: 'save_templates',
+          nonce: window.swiftcmAdminVars.nonce
       })
-          .then(response => {
-            if(response.data.downloaded_files && response.data.downloaded_files.length) {
-              // Continue downloading
-              this.saveTemplatesHandlerByApi();
-            } else {
-              // All Done
-              loadingInstance.close();
-              this.loading = false;
-
-              this.$handleSuccess(response.data.message);
-
-              setTimeout(() => {
-                window.location.reload();
-              }, 1000);
-            }
-          })
-          .fail(error => {
-            loadingInstance.close();
-            this.loading = false;
-            this.$handleError(error);
-          });
+      .then(response => {
+        setTimeout(() => {
+          loadingInstance.close();
+          this.loading = false;
+          this.$handleSuccess(response.data.message);
+          window.location.reload();
+        }, 5000);
+      })
+      .fail(error => {
+          loadingInstanceg.close();
+          this.loading = false;
+          this.$handleError(error);
+      });
     },
+
     getTemplatesHandler() {
       this.fetching = true;
       this.$get({

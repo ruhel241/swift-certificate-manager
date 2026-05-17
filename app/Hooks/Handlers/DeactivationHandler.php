@@ -68,6 +68,7 @@ class DeactivationHandler
         $tables = [
             $wpdb->prefix . 'swiftcm_generates',
             $wpdb->prefix . 'swiftcm_payments',
+            $wpdb->prefix . 'swiftcm_templates',
             $wpdb->prefix . SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR
         ];
 
