@@ -426,14 +426,6 @@ Activate with a License key.
 * Verify public pages  
 * Export records often (Pro)
 
-
-== Remote Templates ==
-
-This plugin includes an optional feature that allows administrators to download additional certificate templates from an official public GitHub repository.
-Remote requests are only made when the administrator explicitly chooses to download a template.
-No personal or sensitive user data is transmitted during this process.
-Downloaded templates are stored locally in the WordPress uploads directory.
-
 == Development ==
 
 This plugin uses modern JavaScript tooling (Vue.js + Laravel Mix + Webpack).
