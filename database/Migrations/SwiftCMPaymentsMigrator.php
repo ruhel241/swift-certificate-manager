@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class SwiftCertificateManagerPaymentsMigrator {
+class SwiftCMPaymentsMigrator {
 
 	public static $tableName = 'swiftcm_payments';
 
@@ -16,8 +16,6 @@ class SwiftCertificateManagerPaymentsMigrator {
 		$charset_collate = $wpdb->get_charset_collate();
 		$table           = $wpdb->prefix . static::$tableName;
 		$ref_table       = $wpdb->prefix . 'swiftcm_generates';
-
-		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
 		dbDelta(
 			"CREATE TABLE {$table} (

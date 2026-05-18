@@ -18,7 +18,7 @@ class OnboardingHandler
     public function ajaxRoutes()
     {
         // 🔐 Nonce check (CSRF protection)
-        if (!check_ajax_referer('swiftcertificate_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -31,15 +31,16 @@ class OnboardingHandler
             ], 403);
         }
 
-        $route = sanitize_text_field(wp_unslash($_REQUEST['route'] ?? ''));
+        $request = wp_unslash($_REQUEST);
 
+        $route = sanitize_key($request['route'] ?? '');
 
         $maps = array(
-           'save_onboarding_info' => 'saveOnboardingInfo',
-           'save_onboarded'       => 'saveOnboarded',
+            'save_onboarding_info' => 'saveOnboardingInfo',
+            'save_onboarded'       => 'saveOnboarded',
         );
 
-          // Validate route
+        // Validate route
         if (!isset($maps[$route])) {
             wp_send_json_error([
                 'message' => __('Invalid route', 'swift-certificate-manager')
@@ -49,8 +50,8 @@ class OnboardingHandler
         // call method
         do_action('swiftcm_doing_ajax_onboarding_' . $route);
 
-        // Pass raw request (sanitize inside method)
-        $this->{$maps[$route]}($_REQUEST);
+        // ✅ pass sanitized request variable
+        $this->{$maps[$route]}($request);
 
         do_action('swiftcm_admin_ajax_handler_onboarding_catch', $route);
     }
@@ -104,13 +105,13 @@ class OnboardingHandler
 
     public function saveOnboarded($request)
     {
-        if (!isset($request['is_onboarded']) || empty($request['is_onboarded'])) {
+        if (!isset($request['is_onboarded'])) {
             wp_send_json_error(array(
                 'message' => __("Invalid onboarded status", 'swift-certificate-manager')
             ), 403);
         }
 
-        $isOnboarded = sanitize_text_field($request['is_onboarded']);
+        $isOnboarded = sanitize_text_field( wp_unslash($request['is_onboarded']) );
 
         $saveIsOnboarded = update_option('swiftcm_is_onboarded', $isOnboarded);
 
@@ -125,18 +126,19 @@ class OnboardingHandler
         ));
     }
 
-    private function sanitizeArray($data)
-    {
-        if (!is_array($data)) {
-            return sanitize_text_field($data);
-        }
+    private function sanitizeArray( $data ) {
 
-        foreach ($data as $key => $value) {
-            $data[$key] = is_array($value)
-                ? $this->sanitizeArray($value)
-                : sanitize_text_field($value);
+        if ( ! is_array( $data ) ) {
+            return sanitize_text_field( (string) $data );
         }
-
+    
+        foreach ( $data as $key => $value ) {
+    
+            $data[ $key ] = is_array( $value )
+                ? $this->sanitizeArray( $value )
+                : sanitize_text_field( (string) $value );
+        }
+    
         return $data;
     }
 }

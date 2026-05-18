@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use SwiftCertificateManager\Hooks\Handlers\TemplatesManager;
 use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
 use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
-use SwiftCertificateManager\Models\SwiftCertificateManagerTemplates;
+use SwiftCertificateManager\Models\SwiftCMTemplates;
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
 class TemplateController
@@ -20,7 +20,7 @@ class TemplateController
 
     public function ajaxRoutes()
     {
-        if (!check_ajax_referer('swiftcertificate_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -32,7 +32,9 @@ class TemplateController
             ], 403);
         }
 
-       $route = sanitize_key(wp_unslash($_REQUEST['route'] ?? ''));
+       $request = wp_unslash($_REQUEST);
+
+       $route = sanitize_key($request['route'] ?? '');
 
         $maps = array(
             'get_active_template'   => 'getActiveTemplate',
@@ -53,7 +55,7 @@ class TemplateController
         do_action('swiftcm_doing_ajax_template_' . $route);
 
         // Pass request (already sanitized inside methods)
-        $this->{$maps[$route]}($_REQUEST);
+        $this->{$maps[$route]}($request);
 
         do_action('swiftcm_admin_ajax_handler_template_catch', $route);
     }
@@ -79,15 +81,16 @@ class TemplateController
         update_option('swiftcm_active_template', $slug);
 
         wp_send_json_success([
-            'active_template' => get_option('swiftcm_active_template', 'template-1')
+            'active_template' => get_option('swiftcm_active_template', 'template-1'),
+            'message' => __('Successfully Active Template', 'swift-certificate-manager')
         ]);
     }
 
     public function getTemplates($request)
     {
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
+        $SwiftCMTemplates = new SwiftCMTemplates();
     
-        $getTemplates = $SwiftCertificateManagerTemplates->getTemplates();
+        $getTemplates = $SwiftCMTemplates->getTemplates();
     
         usort($getTemplates, function ($a, $b) {
             return strnatcmp($a->slug, $b->slug);
@@ -107,8 +110,8 @@ class TemplateController
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
         }
 
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
-        $template = $SwiftCertificateManagerTemplates->getTemplate($templateId);
+        $SwiftCMTemplates = new SwiftCMTemplates();
+        $template = $SwiftCMTemplates->getTemplate($templateId);
 
         if (!$template) {
             wp_send_json_error(['message' => __('Template not found', 'swift-certificate-manager')], 404);
@@ -143,7 +146,7 @@ class TemplateController
 
         $settings = $this->sanitizeArray($settings);
 
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
+        $SwiftCMTemplates = new SwiftCMTemplates();
 
         $updateData = [
             'settings'   => wp_json_encode($settings),
@@ -152,7 +155,7 @@ class TemplateController
 
         $this->updateingGolbalSettingsInfo($settings);
 
-        $SwiftCertificateManagerTemplates->updateInfo($templateId, $updateData);
+        $SwiftCMTemplates->updateInfo($templateId, $updateData);
 
         wp_send_json_success([
             'message' => __('Successfully Updated', 'swift-certificate-manager'),
@@ -162,7 +165,7 @@ class TemplateController
     public function saveTemplates($request)
     {
         $templateManager = new TemplatesManager();
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
+        $SwiftCMTemplates = new SwiftCMTemplates();
 
         $downloadableFiles = $templateManager->getDownloadableTemplates();
 
@@ -195,7 +198,7 @@ class TemplateController
                 'updated_at'     => gmdate('Y-m-d H:i:s'),
             ];
 
-            $res = $SwiftCertificateManagerTemplates->insertGetId($data);
+            $res = $SwiftCMTemplates->insertGetId($data);
 
             if ($res) {
                 $downloadedFiles[] = $slug;
@@ -237,8 +240,8 @@ class TemplateController
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
         }
 
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
-        $template = $SwiftCertificateManagerTemplates->getTemplate($templateId);
+        $SwiftCMTemplates = new SwiftCMTemplates();
+        $template = $SwiftCMTemplates->getTemplate($templateId);
 
         if (!$template) {
             wp_send_json_error(['message' => __('Template not found', 'swift-certificate-manager')], 404);
@@ -249,7 +252,7 @@ class TemplateController
         $config = AvailableOptions::getConfig();
         $settings = $config[$slug] ?? [];
 
-        $SwiftCertificateManagerTemplates->updateInfo($templateId, [
+        $SwiftCMTemplates->updateInfo($templateId, [
             'settings'   => wp_json_encode($settings),
             'updated_at' => gmdate('Y-m-d H:i:s'),
         ]);

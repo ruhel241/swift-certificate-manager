@@ -6,7 +6,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class SwiftCertificateManagerTemplatesMigrator {
+class SwiftCMTemplatesMigrator {
 
 	public static $tableName = 'swiftcm_templates';
 
@@ -15,9 +15,7 @@ class SwiftCertificateManagerTemplatesMigrator {
 
 		$charset_collate = $wpdb->get_charset_collate();
 		$table           = $wpdb->prefix . static::$tableName;
-
-		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
-
+		
 		dbDelta(
 			"CREATE TABLE {$table} (
 				id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,

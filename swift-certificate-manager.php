@@ -16,30 +16,30 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('SWIFT_CERTIFICATE_MANAGER_VERSION', '1.0.0');
-defined('SWIFT_CERTIFICATE_MANAGER_LITE') or define('SWIFT_CERTIFICATE_MANAGER_LITE', true);
-define('SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR', 'swiftcm_templates_upload_dir');
-define('SWIFT_CERTIFICATE_MANAGER_PLUGIN_FILE_PATH', plugin_basename(__FILE__));
-define('SWIFT_CERTIFICATE_MANAGER_PLUGIN_URL', plugin_dir_url(__FILE__));
-define("SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
+define('SWIFTCM_VERSION', '1.0.0');
+defined('SWIFTCM_LITE') or define('SWIFTCM_LITE', true);
+define('SWIFTCM_UPLOAD_DIR', 'swiftcm_templates_upload_dir');
+define('SWIFTCM_PLUGIN_FILE_PATH', plugin_basename(__FILE__));
+define('SWIFTCM_PLUGIN_URL', plugin_dir_url(__FILE__));
+define("SWIFTCM_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
 
 include 'app/Helpers/global_functions.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 add_action('plugins_loaded', function () {
-    require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'swift-certificate-manager-boot.php';
+    require_once SWIFTCM_PLUGIN_DIR_PATH . 'swift-certificate-manager-boot.php';
     $swiftCertificateBoot = new SwiftCertificateManagerBoot();
     $swiftCertificateBoot->boot();
     do_action('swiftcm_loaded', __FILE__);
 });
 
 register_activation_hook(__FILE__, function ($network_wide) {
-    require_once(SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/ActivationHandler.php');
+    require_once(SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/ActivationHandler.php');
     \SwiftCertificateManager\Hooks\Handlers\ActivationHandler::activate($network_wide);
 });
 
 register_deactivation_hook(__FILE__, function ($network_wide) {
-    require_once(SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/DeactivationHandler.php');
+    require_once(SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/DeactivationHandler.php');
     \SwiftCertificateManager\Hooks\Handlers\DeactivationHandler::deActivate($network_wide);
 });
 

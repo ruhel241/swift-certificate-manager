@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
             <button type="submit">Verify</button>
         </form>
         <div class="swiftcm-loader swiftcm-loading-spinner" style="display:none;">
-            <img src="<?php echo esc_url(SWIFT_CERTIFICATE_MANAGER_PLUGIN_URL.'assets/public/images/loading.gif'); ?>" alt="Loading..." />
+            <img src="<?php echo esc_url(SWIFTCM_PLUGIN_URL.'assets/public/images/loading.gif'); ?>" alt="Loading..." />
         </div>
         <div class="swiftcm-result swiftcm-student-information" style="display:none;">
             <div class="swiftcm-grid">

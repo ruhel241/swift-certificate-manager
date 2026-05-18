@@ -5,7 +5,7 @@ namespace SwiftCertificateManager\Models;
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
 
-class SwiftCertificateManagerGenerate {
+class SwiftCMGenerate {
 
     protected $table = 'swiftcm_generates';
    
@@ -19,7 +19,7 @@ class SwiftCertificateManagerGenerate {
 
         $offset = ($currentPage - 1) * $perPage;
 
-        $query = SwiftCertificateManagerQuery()->table($this->table)
+        $query = swiftcm_query()->table($this->table)
             ->orderBy('id', 'DESC');
 
         if ($status) {
@@ -58,7 +58,7 @@ class SwiftCertificateManagerGenerate {
     
     public function getInfo($id)
     {
-        return SwiftCertificateManagerQuery()
+        return swiftcm_query()
             ->table($this->table)
             ->where('id', $id)
             ->first();
@@ -66,13 +66,13 @@ class SwiftCertificateManagerGenerate {
 
     public function find($id)
     {
-        $info = SwiftCertificateManagerQuery()->table($this->table)->where('id', $id)->first();
+        $info = swiftcm_query()->table($this->table)->where('id', $id)->first();
 
         return $info;
     }
 
     public function insertGetId($data) {
-        $save = SwiftCertificateManagerQuery()->table($this->table)->insert($data);
+        $save = swiftcm_query()->table($this->table)->insert($data);
 
         return $save;
     }
@@ -80,7 +80,7 @@ class SwiftCertificateManagerGenerate {
 
     public function updateInfo($id, $data) {
        
-        $update = SwiftCertificateManagerQuery()->table($this->table)
+        $update = swiftcm_query()->table($this->table)
                 ->where('id', $id)
                 ->update($data);
 
@@ -95,12 +95,12 @@ class SwiftCertificateManagerGenerate {
             'updated_at' => gmdate('Y-m-d H:i:s')
         ];
 
-        SwiftCertificateManagerQuery()->table($this->table)->whereIn('id', $infoIds)->update($data);
+        swiftcm_query()->table($this->table)->whereIn('id', $infoIds)->update($data);
     }
 
     public function verifyCertificateCode($certificateCode) {
        
-        $info = SwiftCertificateManagerQuery()->table($this->table)
+        $info = swiftcm_query()->table($this->table)
                 ->where('certificate_code', $certificateCode)
                 ->where('status', 'assign')
                 ->first();
@@ -109,10 +109,10 @@ class SwiftCertificateManagerGenerate {
     }
 
     public function deleteInfo($infoIds) {
-        $infos = SwiftCertificateManagerQuery()->table($this->table)->whereIn('id', $infoIds)->get();
+        $infos = swiftcm_query()->table($this->table)->whereIn('id', $infoIds)->get();
 
         foreach ($infos as $info) {
-            SwiftCertificateManagerQuery()->table($this->table)->where('id', $info->id)->delete();
+            swiftcm_query()->table($this->table)->where('id', $info->id)->delete();
 
             // Removed certificate
             if (!empty($info->image_url) || !empty($info->pdf_url)) {

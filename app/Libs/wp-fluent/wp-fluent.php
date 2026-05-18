@@ -3,21 +3,21 @@
 // Autoload plugin.
 require 'autoload.php';
 
-if (! function_exists('SwiftCertificateManagerDB')) {
+if (! function_exists('swiftcm_db')) {
     /**
      * @return \SwiftCertificateManagerFluent\QueryBuilder\QueryBuilderHandler
      */
-    function SwiftCertificateManagerDB() {
-        static $SwiftCertificateManagerDB;
+    function swiftcm_db() {
+        static $swiftcm_db;
 
-        if (! $SwiftCertificateManagerDB) {
+        if (! $swiftcm_db) {
             global $wpdb;
 
             $connection = new SwiftCertificateManagerFluent\Connection($wpdb, ['prefix' => $wpdb->prefix]);
 
-            $SwiftCertificateManagerDB = new \SwiftCertificateManagerFluent\QueryBuilder\QueryBuilderHandler($connection);
+            $swiftcm_db = new \SwiftCertificateManagerFluent\QueryBuilder\QueryBuilderHandler($connection);
         }
 
-        return $SwiftCertificateManagerDB;
+        return $swiftcm_db;
     }
 }

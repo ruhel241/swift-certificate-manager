@@ -2,13 +2,13 @@
 
 namespace SwiftCertificateManager\Models;
 
-class SwiftCertificateManagerTemplates {
+class SwiftCMTemplates {
 
     protected $table = 'swiftcm_templates';
    
     public function getTemplates() {
         
-        $templates = SwiftCertificateManagerQuery()->table($this->table)
+        $templates = swiftcm_query()->table($this->table)
                 ->orderBy('id', 'ASC')
                 ->get();
 
@@ -17,19 +17,19 @@ class SwiftCertificateManagerTemplates {
 
     public function getTemplate($id)
     {
-        $template = SwiftCertificateManagerQuery()->table($this->table)->where('id', $id)->first();
+        $template = swiftcm_query()->table($this->table)->where('id', $id)->first();
 
         return $template;
     }
 
     public function getTemplateSlug($slug)
     {
-        $template = SwiftCertificateManagerQuery()->table($this->table)->where('slug', $slug)->first();
+        $template = swiftcm_query()->table($this->table)->where('slug', $slug)->first();
         return $template;
     }
 
     public function isSlug($slug) {
-        $isSlug =  SwiftCertificateManagerQuery()->table($this->table)->where('slug', $slug)->first();
+        $isSlug =  swiftcm_query()->table($this->table)->where('slug', $slug)->first();
 
         if ($isSlug) {
             return true;
@@ -39,7 +39,7 @@ class SwiftCertificateManagerTemplates {
     }
 
     public function insertGetId($data) {
-        $save = SwiftCertificateManagerQuery()->table($this->table)->insert($data);
+        $save = swiftcm_query()->table($this->table)->insert($data);
 
         return $save;
     }
@@ -47,7 +47,7 @@ class SwiftCertificateManagerTemplates {
 
     public function updateInfo($id, $data) {
        
-        $update = SwiftCertificateManagerQuery()->table($this->table)
+        $update = swiftcm_query()->table($this->table)
                 ->where('id', $id)
                 ->update($data);
 

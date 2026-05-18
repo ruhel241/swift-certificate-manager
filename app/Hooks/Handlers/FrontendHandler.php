@@ -6,11 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Models\Payment;
+use SwiftCertificateManager\Models\SwiftCMPayment;
 use SwiftCertificateManager\Helpers\PaymentHelper;
 use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Models\SwiftCertificateManagerGenerate;
-use SwiftCertificateManager\Models\SwiftCertificateManagerTemplates;
+use SwiftCertificateManager\Models\SwiftCMGenerate;
+use SwiftCertificateManager\Models\SwiftCMTemplates;
 use SwiftCertificateManager\Helpers\HelperFunction;
 
 class FrontendHandler
@@ -23,7 +23,7 @@ class FrontendHandler
 
         $this->registerShortcodes();  
 
-        if ( defined('SWIFT_CERTIFICATE_MANAGER_MANAGER_PRO') ) {
+        if ( defined('SWIFTCM_MANAGER_PRO') ) {
             // // Load payment gateways for frontend to render payment options in certificate request form
             new \SwiftCertificateManagerPro\Services\Integrations\PayPal\PayPal();
             new \SwiftCertificateManagerPro\Services\Integrations\Stripe\Stripe();
@@ -34,14 +34,16 @@ class FrontendHandler
     public function ajaxRoutes()
     {
         // Nonce check (CSRF protection)
-        if (!check_ajax_referer('swiftcertificate_public_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
         }
 
-        // Route (only sanitized from request)
-        $route = sanitize_text_field(wp_unslash($_REQUEST['route'] ?? ''));
+        $request = wp_unslash(array_merge($_GET, $_POST));
+
+        $route = sanitize_key($request['route'] ?? '');
+
 
         if (empty($route)) {
             wp_send_json_error([
@@ -61,26 +63,11 @@ class FrontendHandler
             ], 400);
         }
 
-        // Decide request method based on route
-        if ($route === 'verify_certificate') {
-            $requestData = $_GET;   // read-only operation
-        } else {
-            $requestData = $_POST;  // write / normal actions
-        }
-
-        
-        // Validate route
-        if (!isset($maps[$route])) {
-            wp_send_json_error([
-                'message' => __('Invalid route', 'swift-certificate-manager')
-            ], 400);
-        }
-
         // call method
         do_action('swiftcm_doing_ajax_public_forms_' . $route);
 
         // Pass raw request (sanitize inside method)
-        $this->{$maps[$route]}($_REQUEST);
+        $this->{$maps[$route]}($request);
 
         do_action('swiftcm_public_ajax_handler_catch', $route);
     }
@@ -119,7 +106,7 @@ class FrontendHandler
     }
 
     public function shortcodeRenderRequestForm() {
-        require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/views/public/request-certificate.php';
+        require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/views/public/request-certificate.php';
 
         $paymentSettingsStripe = get_option('swiftcm_payment_settings_stripe', []);
         $paymentSettingsPaypal = get_option('swiftcm_payment_settings_paypal', []);
@@ -137,12 +124,12 @@ class FrontendHandler
     }
 
     public function shortcodeRenderVerifyForm() {
-        require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/views/public/verify-certificate.php';
+        require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/views/public/verify-certificate.php';
     }
 
     public function getInvoice()
     {
-        require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/views/public/payment-invoice.php';
+        require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/views/public/payment-invoice.php';
     }
 
     public function requestCertificateInfo($request)
@@ -169,8 +156,8 @@ class FrontendHandler
             ], 400);
         }
 
-        $SwiftCertificateManagerGenerate  = new SwiftCertificateManagerGenerate();
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
+        $SwiftCMGenerate  = new SwiftCMGenerate();
+        $SwiftCMTemplates = new SwiftCMTemplates();
         $helperFunction            = new HelperFunction();
 
         // settings
@@ -183,7 +170,7 @@ class FrontendHandler
 
         // template
         $activeTemplate = get_option('swiftcm_active_template', 'template-1');
-        $getTemplate    = $SwiftCertificateManagerTemplates->getTemplateSlug($activeTemplate);
+        $getTemplate    = $SwiftCMTemplates->getTemplateSlug($activeTemplate);
 
         if (!$getTemplate) {
             wp_send_json_error([
@@ -224,8 +211,8 @@ class FrontendHandler
             'updated_at'       => gmdate('Y-m-d H:i:s'),
         ];
 
-        $certificateGenerateId = $SwiftCertificateManagerGenerate->insertGetId($data);
-        $certificateData       = $SwiftCertificateManagerGenerate->getInfo($certificateGenerateId);
+        $certificateGenerateId = $SwiftCMGenerate->insertGetId($data);
+        $certificateData       = $SwiftCMGenerate->getInfo($certificateGenerateId);
 
         // ⚠️ pass sanitized info only
         $this->paymentCreate($info, $certificateGenerateId);
@@ -247,9 +234,9 @@ class FrontendHandler
         // 🔐 sanitize input
         $certificateCode = sanitize_text_field($request['certificate_code']);
 
-        $SwiftCertificateManagerGenerate = new SwiftCertificateManagerGenerate();
+        $SwiftCMGenerate = new SwiftCMGenerate();
 
-        $info = $SwiftCertificateManagerGenerate->verifyCertificateCode($certificateCode);
+        $info = $SwiftCMGenerate->verifyCertificateCode($certificateCode);
 
         if (empty($info)) {
             wp_send_json_error([
@@ -324,7 +311,7 @@ class FrontendHandler
             'updated_at'     => gmdate('Y-m-d H:i:s'),
         ];
 
-        $paymentId = (new Payment())->insertGetId($paymentData);
+        $paymentId = (new SwiftCMPayment)->insertGetId($paymentData);
 
         // 💳 trigger payment only if amount valid
         if ($paymentTotal > 0) {
@@ -347,8 +334,8 @@ class FrontendHandler
             return;
         }
 
-        $SwiftCertificateManagerGenerate  = new SwiftCertificateManagerGenerate();
-        $payment = (new Payment())->getHash($hash);
+        $SwiftCMGenerate  = new SwiftCMGenerate();
+        $payment = (new SwiftCMPayment)->getHash($hash);
         $paymentStatus = $payment->payment_status;
 
         $GenerateData = [
@@ -356,7 +343,7 @@ class FrontendHandler
             'updated_at' => gmdate('Y-m-d H:i:s')
         ];
         
-        $SwiftCertificateManagerGenerate->updateInfo($payment->request_id, $GenerateData);
+        $SwiftCMGenerate->updateInfo($payment->request_id, $GenerateData);
     }
 
     public function loadAssets() {
@@ -366,7 +353,7 @@ class FrontendHandler
 
         $loaded = true;
 
-        $assetsUrl = SWIFT_CERTIFICATE_MANAGER_PLUGIN_URL . 'assets/';
+        $assetsUrl = SWIFTCM_PLUGIN_URL . 'assets/';
 
         $globalSettings        = get_option('swiftcm_global_settings', []);
         $paymentSettingsStripe = get_option('swiftcm_payment_settings_stripe', []);
@@ -379,7 +366,7 @@ class FrontendHandler
             'swiftcm_request_certificate',
             $assetsUrl . 'public/js/swiftcm_request_certificate.js',
             ['jquery'],
-            SWIFT_CERTIFICATE_MANAGER_VERSION,
+            SWIFTCM_VERSION,
             true // footer
         );
 
@@ -396,17 +383,17 @@ class FrontendHandler
             'swiftcm_public_styles',
             $assetsUrl . 'public/css/swiftcm-public.css',
             [],
-            SWIFT_CERTIFICATE_MANAGER_VERSION
+            SWIFTCM_VERSION
         ); 
       
         $swiftcmPublicVars = apply_filters('swiftcm_public_app_vars', [
             'ajaxurl'        => admin_url('admin-ajax.php'),
-            'nonce'          => wp_create_nonce('swiftcertificate_public_nonce'),
+            'nonce'          => wp_create_nonce('swiftcm_public_nonce'),
             'stripe_enabled' => $isStripeEnabled,
             'paypal_enabled' => $isPaypalEnabled,
             'globalSettings' => $globalSettings,
             'currencySymbol' => PaymentHelper::currencySymbol($globalSettings['currency'] ?? 'USD'),
-            'has_pro'        => defined('SWIFT_CERTIFICATE_MANAGER_PRO'),
+            'has_pro'        => defined('SWIFTCM_PRO'),
         ]);
 
         wp_localize_script('swiftcm_request_certificate', 'swiftcmPublicVars', $swiftcmPublicVars);

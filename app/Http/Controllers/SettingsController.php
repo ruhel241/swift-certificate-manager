@@ -12,42 +12,64 @@ class SettingsController
         add_action('wp_ajax_swiftcm_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
-    public function ajaxRoutes()
-    {
-        // 🔐 Nonce check (CSRF protection)
-        if (!check_ajax_referer('swiftcertificate_admin_nonce', 'nonce', false)) {
-            wp_send_json_error([
-                'message' => __('Invalid nonce', 'swift-certificate-manager')
-            ], 403);
+    public function ajaxRoutes() {
+
+        // 🔐 Nonce check (CSRF protection).
+        if ( ! check_ajax_referer( 'swiftcm_admin_nonce', 'nonce', false ) ) {
+            wp_send_json_error(
+                [
+                    'message' => __(
+                        'Invalid nonce',
+                        'swift-certificate-manager'
+                    ),
+                ],
+                403
+            );
         }
-
-        // Permission
-        if (!current_user_can('manage_options')) {
-            wp_send_json_error([
-                'message' => __('Unauthorized access', 'swift-certificate-manager')
-            ], 403);
+    
+        // Permission check.
+        if ( ! current_user_can( 'manage_options' ) ) {
+            wp_send_json_error(
+                [
+                    'message' => __(
+                        'Unauthorized access',
+                        'swift-certificate-manager'
+                    ),
+                ],
+                403
+            );
         }
-
-
-        $route = sanitize_key(wp_unslash($_REQUEST['route'] ?? ''));
-
+    
+        $request = wp_unslash( $_REQUEST );
+    
+        $route = sanitize_key( $request['route'] ?? '' );
+    
         $maps = array(
-            'get_settings'          => 'getSettings',
-            'save_settings'         => 'saveSettings',
+            'get_settings'  => 'getSettings',
+            'save_settings' => 'saveSettings',
         );
-
-        if (!isset($maps[$route])) {
-            wp_send_json_error([
-                'message' => __('Invalid route', 'swift-certificate-manager')
-            ], 400);
+    
+        if ( ! isset( $maps[ $route ] ) ) {
+            wp_send_json_error(
+                [
+                    'message' => __(
+                        'Invalid route',
+                        'swift-certificate-manager'
+                    ),
+                ],
+                400
+            );
         }
-
-        do_action('swiftcm_doing_ajax_settings_' . $route);
-
-        // Pass request (already sanitized inside methods)
-        $this->{$maps[$route]}($_REQUEST);
-
-        do_action('swiftcm_admin_ajax_handler_settings_catch', $route);
+    
+        do_action( 'swiftcm_doing_ajax_settings_' . $route );
+    
+        // Request data sanitization handled in methods.
+        $this->{$maps[ $route ]}( $request );
+    
+        do_action(
+            'swiftcm_admin_ajax_handler_settings_catch',
+            $route
+        );
     }
 
     public function getSettings($request)
@@ -59,38 +81,57 @@ class SettingsController
         ));
     }
 
-    public function saveSettings($request)
-    {
-        if (!isset($request['settings']) || !is_array($request['settings'])) {
-            wp_send_json_error([
-                'message' => __('Invalid settings', 'swift-certificate-manager')
-            ], 400);
+    public function saveSettings( $request ) {
+
+        if (
+            ! isset( $request['settings'] ) ||
+            ! is_array( $request['settings'] )
+        ) {
+            wp_send_json_error(
+                [
+                    'message' => __(
+                        'Invalid settings',
+                        'swift-certificate-manager'
+                    ),
+                ],
+                400
+            );
         }
-
-        // ✅ sanitize full settings array safely
-        $settings = $this->sanitizeArray(wp_unslash($request['settings']));
-
-        $this->handleNewsletter($settings);
-
-        update_option('swiftcm_global_settings', $settings);
-
-        wp_send_json_success([
-            'message' => __('Settings saved successfully.', 'swift-certificate-manager')
-        ]);
+    
+        $settings = $this->sanitizeArray(
+            $request['settings']
+        );
+    
+        $this->handleNewsletter( $settings );
+    
+        update_option(
+            'swiftcm_global_settings',
+            $settings
+        );
+    
+        wp_send_json_success(
+            [
+                'message' => __(
+                    'Settings saved successfully.',
+                    'swift-certificate-manager'
+                ),
+            ]
+        );
     }
 
-    private function sanitizeArray($data)
-    {
-        if (!is_array($data)) {
-            return sanitize_text_field($data);
-        }
+    private function sanitizeArray( $data ) {
 
-        foreach ($data as $key => $value) {
-            $data[$key] = is_array($value)
-                ? $this->sanitizeArray($value)
-                : sanitize_text_field($value);
+        if ( ! is_array( $data ) ) {
+            return sanitize_text_field( (string) $data );
         }
-
+    
+        foreach ( $data as $key => $value ) {
+    
+            $data[ $key ] = is_array( $value )
+                ? $this->sanitizeArray( $value )
+                : sanitize_text_field( (string) $value );
+        }
+    
         return $data;
     }
 
@@ -139,7 +180,7 @@ class SettingsController
 
         $pluginCreatorEmail = 'info@swiftcertificate.com';
 
-        $subject = sanitize_text_field('Swift Certificate Manager Plugin - New Subscriber');
+        $subject = 'Swift Certificate Manager Plugin - New Subscriber';
 
         $message = "
             <h2>Swift Certificate Manager Plugin - New Subscription</h2>
@@ -158,11 +199,7 @@ class SettingsController
         return true;
     }
 
-    public function clearCache()
-    {
-        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
-        header("Cache-Control: post-check=0, pre-check=0", false);
-        header("Pragma: no-cache");
-        header("Expires: 0");
-    }
+    // public function sendNoCacheHeaders() {
+    //     nocache_headers();
+    // }
 }

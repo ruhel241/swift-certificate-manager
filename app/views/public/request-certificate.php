@@ -11,8 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
     $swiftcm_stripe_enabled = $swiftcm_payment_settings_stripe['enable'] ?? 'no';
     $swiftcm_paypal_enabled = $swiftcm_payment_settings_paypal['enable'] ?? 'no';
 
-    // $swiftcm_pro = defined('SWIFT_CERTIFICATE_MANAGER_PRO');
-
 ?>
 
 <div class="swiftcm-request-certificate-wrapper">

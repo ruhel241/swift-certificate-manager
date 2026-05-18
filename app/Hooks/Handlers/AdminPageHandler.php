@@ -26,7 +26,7 @@ class AdminPageHandler
 
         $menuName = __('Swift Certificate Manager', 'swift-certificate-manager');
 
-        if (defined('SWIFT_CERTIFICATE_MANAGER_PRO')) {
+        if (defined('SWIFTCM_PRO')) {
             $menuName =  __('Swift Certificate Manager Pro', 'swift-certificate-manager');
         }
     
@@ -107,14 +107,14 @@ class AdminPageHandler
                 wp_enqueue_media();
             }
 
-            $assetsUrl = SWIFT_CERTIFICATE_MANAGER_PLUGIN_URL.'assets/';
+            $assetsUrl = SWIFTCM_PLUGIN_URL.'assets/';
             
             $uploadDir = AvailableOptions::getDirStructure();
             $uploadUrl = AvailableOptions::getDirUrlStructure();
 
-            wp_enqueue_style('swiftcm_admin',$assetsUrl.'admin/css/swiftcm-admin.css', array(),  SWIFT_CERTIFICATE_MANAGER_VERSION);
-            wp_enqueue_script('swiftcm_admin_boot', $assetsUrl.'admin/js/boot.js', array('jquery'), SWIFT_CERTIFICATE_MANAGER_VERSION, false);
-            wp_enqueue_script('swiftcm_admin_app', $assetsUrl.'admin/js/start.js', array('jquery'), SWIFT_CERTIFICATE_MANAGER_VERSION, true);
+            wp_enqueue_style('swiftcm_admin',$assetsUrl.'admin/css/swiftcm-admin.css', array(),  SWIFTCM_VERSION);
+            wp_enqueue_script('swiftcm_admin_boot', $assetsUrl.'admin/js/boot.js', array('jquery'), SWIFTCM_VERSION, false);
+            wp_enqueue_script('swiftcm_admin_app', $assetsUrl.'admin/js/start.js', array('jquery'), SWIFTCM_VERSION, true);
            
             $activeTemplate  = get_option('swiftcm_active_template', 'template-1');
             $isOnboarded     = get_option('swiftcm_is_onboarded', "no");
@@ -134,14 +134,14 @@ class AdminPageHandler
                 'i18n'                   => $i18ns,
                 'server_time'            => current_time('mysql'),
                 'active_template'        => $activeTemplate,
-                'nonce'                  => wp_create_nonce('swiftcertificate_admin_nonce'),
+                'nonce'                  => wp_create_nonce('swiftcm_admin_nonce'),
                 'is_onboarded'           => $isOnboarded ? $isOnboarded : "no",
                 'downloadableTemplates'  => count($downloadableTemplates),
                 'getSystemStatuses'      => AvailableOptions::getSystemStatuses(),
                 'globalSettings'         => $globalSettings,
                 'currencies'             => (new PaymentHelper)->getCurrencies(),
-                'has_pro'                => defined('SWIFT_CERTIFICATE_MANAGER_PRO'),
-                'has_pro_version'        => defined('SWIFT_CERTIFICATE_MANAGER_PRO_VERSION'),
+                'has_pro'                => defined('SWIFTCM_PRO'),
+                'has_pro_version'        => defined('SWIFTCM_PRO_VERSION'),
 
             ));
     

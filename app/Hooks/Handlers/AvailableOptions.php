@@ -273,7 +273,7 @@ class AvailableOptions
     public static function getDirStructure()
     {
         $workingPath = wp_upload_dir()['basedir'];
-        $workingDir  = apply_filters('swiftcm_working_dir', $workingPath .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
+        $workingDir  = apply_filters('swiftcm_working_dir', $workingPath .'/'. SWIFTCM_UPLOAD_DIR);
       
         return [
             'workingDir'      => $workingDir,
@@ -287,7 +287,7 @@ class AvailableOptions
     public static function getDirUrlStructure()
     {
         $workingPathUrl = wp_upload_dir()['baseurl'];
-        $workingUrl     = apply_filters('swiftcm_working_url', $workingPathUrl .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR);
+        $workingUrl     = apply_filters('swiftcm_working_url', $workingPathUrl .'/'. SWIFTCM_UPLOAD_DIR);
       
         return [
             'workingUrl'      => $workingUrl,

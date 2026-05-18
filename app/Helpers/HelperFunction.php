@@ -21,7 +21,7 @@ class HelperFunction
         $yearMonth = $year . $month;
 
         // Find the latest certificate for this month/year
-        $lastCertificate = SwiftCertificateManagerQuery()->table('swiftcm_generates')
+        $lastCertificate = swiftcm_query()->table('swiftcm_generates')
             ->orderBy('id', 'desc')
             ->first();
 

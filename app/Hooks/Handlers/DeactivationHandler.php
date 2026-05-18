@@ -14,16 +14,15 @@ class DeactivationHandler
             return;
         }
 
-        // remove the cron job
+        // remove cron
         wp_clear_scheduled_hook('swiftcm_cleanup_tmp_dir');
 
         if (!class_exists('\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
-            require_once SWIFT_CERTIFICATE_MANAGER_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
-        } 
-        
+            require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
+        }
+
         $dirs = AvailableOptions::getDirStructure();
 
-        /* delete folders that need to be checked */
         $folders = [
             $dirs['tempDir'],
             $dirs['pdfCacheDir'],
@@ -31,58 +30,56 @@ class DeactivationHandler
             $dirs['certificatesDir'],
         ];
 
-        if(!class_exists('\WP_Filesystem_Direct')) {
-            $admin_path = ABSPATH .'/wp-admin/';
-            if(!class_exists('\WP_Filesystem_Base')) {
-                include_once $admin_path.'includes/class-wp-filesystem-base.php';
-            }
-            include_once $admin_path.'includes/class-wp-filesystem-direct.php';
-        }
+        // ✅ WordPress recommended way
+        global $wp_filesystem;
 
-        $fileSystem = new \WP_Filesystem_Direct([]);
+        if (empty($wp_filesystem)) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+            WP_Filesystem();
+        }
 
         foreach ($folders as $folder) {
-            $fileSystem->delete($folder, true);
+            $wp_filesystem->delete($folder, true);
         }
 
-       /**
-       *  Delete all tables and options
-       */
-        static::dropTables();
+        /**
+         * Delete all tables and options (optional)
+         */
+        // static::dropTables();
     }
 
-    public static function dropTables()
-    {
-        global $wpdb;
+    // public static function dropTables()
+    // {
+    //     global $wpdb;
         
-        // delete options all options
-        delete_option('swiftcm_global_settings');
-        delete_option('swiftcm_onboarding_info');
-        delete_option('swiftcm_is_onboarded');
-        delete_option('swiftcm_newsletters');
+    //     // delete options all options
+    //     delete_option('swiftcm_global_settings');
+    //     delete_option('swiftcm_onboarding_info');
+    //     delete_option('swiftcm_is_onboarded');
+    //     delete_option('swiftcm_newsletters');
 
-        // Disable foreign key checks temporarily
-        $wpdb->query("SET FOREIGN_KEY_CHECKS = 0");
+    //     // Disable foreign key checks temporarily
+    //     $wpdb->query("SET FOREIGN_KEY_CHECKS = 0");
 
-        // List all tables to be deleted
-        $tables = [
-            $wpdb->prefix . 'swiftcm_generates',
-            $wpdb->prefix . 'swiftcm_payments',
-            $wpdb->prefix . 'swiftcm_templates',
-            $wpdb->prefix . SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR
-        ];
+    //     // List all tables to be deleted
+    //     $tables = [
+    //         $wpdb->prefix . 'swiftcm_generates',
+    //         $wpdb->prefix . 'swiftcm_payments',
+    //         $wpdb->prefix . 'swiftcm_templates',
+    //         $wpdb->prefix . SWIFTCM_UPLOAD_DIR
+    //     ];
 
-        // Drop each table
-        foreach ($tables as $table) {
-            // Format for DROP TABLE using string concatenation outside the query
-            // This is the WordPress core pattern for handling table names
-            $table_name = '`' . esc_sql($table) . '`';
-            $wpdb->query("DROP TABLE IF EXISTS $table_name");
-        }
+    //     // Drop each table
+    //     foreach ($tables as $table) {
+    //         // Format for DROP TABLE using string concatenation outside the query
+    //         // This is the WordPress core pattern for handling table names
+    //         $table_name = '`' . esc_sql($table) . '`';
+    //         $wpdb->query("DROP TABLE IF EXISTS $table_name");
+    //     }
 
-        // Re-enable foreign key checks
-        $wpdb->query("SET FOREIGN_KEY_CHECKS = 1");
+    //     // Re-enable foreign key checks
+    //     $wpdb->query("SET FOREIGN_KEY_CHECKS = 1");
 
-        return true;
-    }
+    //     return true;
+    // }
 }

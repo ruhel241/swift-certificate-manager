@@ -7,11 +7,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Models\Payment;
-use SwiftCertificateManager\Models\SwiftCertificateManagerGenerate;
+use SwiftCertificateManager\Models\SwiftCMPayment;
+use SwiftCertificateManager\Models\SwiftCMGenerate;
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
-use SwiftCertificateManager\Models\SwiftCertificateManagerTemplates;
+use SwiftCertificateManager\Models\SwiftCMTemplates;
 use SwiftCertificateManager\Helpers\HelperFunction;
 
 class AssignCertificateController
@@ -21,19 +21,22 @@ class AssignCertificateController
     }
 
     public function ajaxRoutes() {
-
-        // Nonce check.
-        if ( ! check_ajax_referer( 'swiftcertificate_admin_nonce', 'nonce', false ) ) {
-            wp_send_json_error(['message' => __( 'Invalid nonce', 'swift-certificate-manager' )], 403);
+       
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
         }
-
-        // Permission check.
-        if ( ! current_user_can( 'manage_options' ) ) {
-            wp_send_json_error(['message' => __( 'Unauthorized access', 'swift-certificate-manager' )], 403);
+    
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
         }
+    
+        $request = wp_unslash($_REQUEST);
 
-        // Route sanitize.
-        $route = sanitize_key( wp_unslash( $_REQUEST['route'] ?? '' ) );
+        $route = sanitize_key($request['route'] ?? '');
 
         // Route map.
         $maps = [
@@ -49,27 +52,16 @@ class AssignCertificateController
             'redesign_template'                => 'redesignTemplate',
         ];
 
-        // Validate route.
-        if ( ! isset( $maps[ $route ] ) ) {
-            wp_send_json_error(['message' => __( 'Invalid route', 'swift-certificate-manager' )], 400);
+        if (!isset($maps[$route])) {
+            wp_send_json_error([
+                'message' => __('Invalid route', 'swift-certificate-manager')
+            ], 400);
         }
-
-        /**
-         * Fires before ajax route execution.
-         *
-         * @param string $route Current ajax route.
-         */
-
+    
         do_action('swiftcm_assign_doing_ajax_forms_' . $route);
-
-        // Pass raw request. Sanitization handled inside methods.
-        $this->{$maps[ $route ]}( $_REQUEST );
-
-        /**
-         * Fires after ajax route execution.
-         *
-         * @param string $route Current ajax route.
-         */
+    
+        $this->{$maps[$route]}($request);
+    
         do_action('swiftcm_assign_admin_ajax_handler_catch', $route);
     }
 
@@ -82,7 +74,7 @@ class AssignCertificateController
             'per_page'      => isset($request['per_page']) ? max(1, absint($request['per_page'])) : 10,
         ];
 
-        $infos  = new SwiftCertificateManagerGenerate();
+        $infos  = new SwiftCMGenerate();
         $result = $infos->getDatas($params);
 
         wp_send_json_success([
@@ -96,8 +88,8 @@ class AssignCertificateController
 
     public function getCertificateInfoByID($request)
     {
-        $SwiftCertificateManagerGenerate = new SwiftCertificateManagerGenerate();
-        $SwiftCertificateManagerPayment  = new Payment();
+        $SwiftCMGenerate = new SwiftCMGenerate();
+        $SwiftCertificateManagerPayment  = new SwiftCMPayment;
 
         // ✅ safer sanitize
         $id = absint($request['info_id'] ?? 0);
@@ -109,7 +101,7 @@ class AssignCertificateController
             ], 400);
         }
 
-        $info = $SwiftCertificateManagerGenerate->getInfo($id);
+        $info = $SwiftCMGenerate->getInfo($id);
 
         // not found
         if (!$info) {
@@ -135,9 +127,9 @@ class AssignCertificateController
 
     public function getCustomizationCertificate($request)
     {
-        $SwiftCertificateManagerPayment   = new Payment();
-        $SwiftCertificateManagerGenerate  = new SwiftCertificateManagerGenerate();
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
+        $SwiftCertificateManagerPayment   = new SwiftCMPayment;
+        $SwiftCMGenerate  = new SwiftCMGenerate();
+        $SwiftCMTemplates = new SwiftCMTemplates();
 
         // ✅ safe ID
         $id = absint($request['info_id'] ?? 0);
@@ -149,7 +141,7 @@ class AssignCertificateController
         }
 
         // get data
-        $info = $SwiftCertificateManagerGenerate->getInfo($id);
+        $info = $SwiftCMGenerate->getInfo($id);
 
         if (!$info) {
             wp_send_json_error([
@@ -167,7 +159,7 @@ class AssignCertificateController
 
         // safe template fetch
         $getTemplate = $templateId
-            ? $SwiftCertificateManagerTemplates->getTemplate($templateId)
+            ? $SwiftCMTemplates->getTemplate($templateId)
             : null;
 
         wp_send_json_success([
@@ -180,7 +172,7 @@ class AssignCertificateController
 
     public function updateCustomizationCertificate($request)
     {
-        $SwiftCertificateManagerGenerate = new SwiftCertificateManagerGenerate();
+        $SwiftCMGenerate = new SwiftCMGenerate();
 
         // ✅ safe ID
         $id = absint($request['info_id'] ?? 0);
@@ -192,7 +184,7 @@ class AssignCertificateController
         }
 
         // check existing record
-        $info = $SwiftCertificateManagerGenerate->getInfo($id);
+        $info = $SwiftCMGenerate->getInfo($id);
 
         if (!$info) {
             wp_send_json_error([
@@ -213,7 +205,7 @@ class AssignCertificateController
             'updated_at'      => gmdate('Y-m-d H:i:s'),
         ];
 
-        $SwiftCertificateManagerGenerate->updateInfo($id, $updateData);
+        $SwiftCMGenerate->updateInfo($id, $updateData);
 
         wp_send_json_success([
             'message' => __("Successfully updated", 'swift-certificate-manager')
@@ -236,8 +228,8 @@ class AssignCertificateController
         $status        = $info['status'];
         $paymentStatus = $info['payment_status'];
 
-        $SwiftCertificateManagerGenerate  = new SwiftCertificateManagerGenerate();
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
+        $SwiftCMGenerate  = new SwiftCMGenerate();
+        $SwiftCMTemplates = new SwiftCMTemplates();
         $helperFunction            = new HelperFunction();
 
 
@@ -250,7 +242,7 @@ class AssignCertificateController
 
         // Template
         $activeTemplate = get_option('swiftcm_active_template', 'template-1');
-        $getTemplate    = $SwiftCertificateManagerTemplates->getTemplateSlug($activeTemplate);
+        $getTemplate    = $SwiftCMTemplates->getTemplateSlug($activeTemplate);
         $settings       = json_decode($getTemplate->settings, true);
 
         $preference = $globalSettings['preference'] ?? 'instructor';
@@ -285,8 +277,8 @@ class AssignCertificateController
             'updated_at'       => gmdate('Y-m-d H:i:s'),
         ];
 
-        $certificateGenerateId = $SwiftCertificateManagerGenerate->insertGetId($data);
-        $certificateData       = $SwiftCertificateManagerGenerate->getInfo($certificateGenerateId);
+        $certificateGenerateId = $SwiftCMGenerate->insertGetId($data);
+        $certificateData       = $SwiftCMGenerate->getInfo($certificateGenerateId);
 
         // Message
         $message = ($status === 'draft')
@@ -437,7 +429,7 @@ class AssignCertificateController
 
         // Get uploads directory
         $upload_dir = wp_upload_dir();
-        $certificates_dir = $upload_dir['basedir'] .'/'. SWIFT_CERTIFICATE_MANAGER_UPLOAD_DIR .'/temp';
+        $certificates_dir = $upload_dir['basedir'] .'/'. SWIFTCM_UPLOAD_DIR .'/temp';
 
         // Create certificates directory if it doesn't exist
         if (!file_exists($certificates_dir)) {
@@ -481,10 +473,22 @@ class AssignCertificateController
         }
 
         // image URL and path
+        $upload_dir = wp_upload_dir();
+
+        $image_url = '';
+
+        if (strpos($imageFilePath, $upload_dir['basedir']) !== false) {
+            $image_url = str_replace(
+                $upload_dir['basedir'],
+                $upload_dir['baseurl'],
+                $imageFilePath
+            );
+        }
+
         $imageData = [
             'image_file_path' => $imageFilePath,
             'image_name'      => $imageFileName,
-            'image_url'       => str_replace(ABSPATH, site_url('/') , $imageFilePath),
+            'image_url'       => $image_url,
         ];
 
         // Generate PDF directly from the image data
@@ -537,13 +541,25 @@ class AssignCertificateController
             $pdf->Output($pdfFilePath, 'F');
 
             wp_delete_file($temp_png);
-            
+
+            $upload_dir = wp_upload_dir();
+
+            $pdf_url = '';
+
+            if (strpos($pdfFilePath, $upload_dir['basedir']) !== false) {
+                $pdf_url = str_replace(
+                    $upload_dir['basedir'],
+                    $upload_dir['baseurl'],
+                    $pdfFilePath
+                );
+            }
+
             $pdfData = [
                 'pdf_file_path' => $pdfFilePath,
                 'pdf_name'      => $pdfFileName,
-                'pdf_url'       => str_replace(ABSPATH, site_url('/') , $pdfFilePath)
+                'pdf_url'       => $pdf_url
             ];
-
+            
             return $pdfData;
 
         } catch (\Exception $e) {
@@ -553,8 +569,8 @@ class AssignCertificateController
 
     public function updateCertificateInfo($request)
     {
-        $SwiftCertificateManagerGenerate  = new SwiftCertificateManagerGenerate();
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
+        $SwiftCMGenerate  = new SwiftCMGenerate();
+        $SwiftCMTemplates = new SwiftCMTemplates();
 
         // ✅ safe ID
         $id = absint($request['info_id'] ?? 0);
@@ -566,7 +582,7 @@ class AssignCertificateController
         }
 
         // check record exists
-        $info = $SwiftCertificateManagerGenerate->getInfo($id);
+        $info = $SwiftCMGenerate->getInfo($id);
 
         if (!$info) {
             wp_send_json_error([
@@ -581,7 +597,7 @@ class AssignCertificateController
 
         // settings
         $activeTemplate = get_option('swiftcm_active_template', 'template-1');
-        $getTemplate    = $SwiftCertificateManagerTemplates->getTemplateSlug($activeTemplate);
+        $getTemplate    = $SwiftCMTemplates->getTemplateSlug($activeTemplate);
 
         $settings = json_decode($getTemplate->settings ?? '', true);
         $settings = is_array($settings) ? $settings : [];
@@ -611,7 +627,7 @@ class AssignCertificateController
             'updated_at'      => gmdate('Y-m-d H:i:s')
         ];
 
-        $SwiftCertificateManagerGenerate->updateInfo($id, $updateData);
+        $SwiftCMGenerate->updateInfo($id, $updateData);
 
         $message = (($infoData['status'] ?? '') === 'draft')
             ? __("Successfully updated draft", 'swift-certificate-manager')
@@ -619,13 +635,13 @@ class AssignCertificateController
 
         wp_send_json_success([
             'message' => $message,
-            'info'    => $SwiftCertificateManagerGenerate->getInfo($id)
+            'info'    => $SwiftCMGenerate->getInfo($id)
         ], 200);
     }
 
     public function maybeDeleteInfos($request)
     {
-        $SwiftCertificateManagerGenerate = new SwiftCertificateManagerGenerate();
+        $SwiftCMGenerate = new SwiftCMGenerate();
 
         // ✅ safe action type (whitelist)
         $actionType = sanitize_text_field($request['action_type'] ?? '');
@@ -659,7 +675,7 @@ class AssignCertificateController
 
         // DELETE action
         if ($actionType === 'delete') {
-            $SwiftCertificateManagerGenerate->deleteInfo($infoIds);
+            $SwiftCMGenerate->deleteInfo($infoIds);
 
             wp_send_json_success([
                 'message' => __('Selected infos successfully deleted', 'swift-certificate-manager')
@@ -667,7 +683,7 @@ class AssignCertificateController
         }
 
         // UPDATE STATUS action
-        $SwiftCertificateManagerGenerate->updateStatus($infoIds, $actionType);
+        $SwiftCMGenerate->updateStatus($infoIds, $actionType);
 
         wp_send_json_success([
             'message' => __('Selected infos successfully updated', 'swift-certificate-manager')
@@ -683,7 +699,7 @@ class AssignCertificateController
                 ob_end_clean();
             }
 
-            $certificateService = new SwiftCertificateManagerGenerate();
+            $certificateService = new SwiftCMGenerate();
 
             // Request sanitization handled inside getDatas().
             $result       = $certificateService->getDatas( $request );
@@ -811,11 +827,11 @@ class AssignCertificateController
             ], 400);
         }
 
-        $SwiftCertificateManagerTemplates = new SwiftCertificateManagerTemplates();
-        $SwiftCertificateManagerGenerate  = new SwiftCertificateManagerGenerate();
+        $SwiftCMTemplates = new SwiftCMTemplates();
+        $SwiftCMGenerate  = new SwiftCMGenerate();
 
         // ✅ get template
-        $getTemplate = $SwiftCertificateManagerTemplates->getTemplate($templateId);
+        $getTemplate = $SwiftCMTemplates->getTemplate($templateId);
 
         if (!$getTemplate) {
             wp_send_json_error([
@@ -827,7 +843,7 @@ class AssignCertificateController
         $slug = sanitize_key($getTemplate->slug ?? '');
 
         // ✅ get info
-        $info = $SwiftCertificateManagerGenerate->getInfo($infoId);
+        $info = $SwiftCMGenerate->getInfo($infoId);
 
         if (!$info) {
             wp_send_json_error([
@@ -856,7 +872,7 @@ class AssignCertificateController
             'updated_at' => gmdate('Y-m-d H:i:s'),
         ];
 
-        $SwiftCertificateManagerGenerate->updateInfo($infoId, $updateData);
+        $SwiftCMGenerate->updateInfo($infoId, $updateData);
 
         wp_send_json_success([
             'message' => __('Successfully Redesign Certificate', 'swift-certificate-manager')

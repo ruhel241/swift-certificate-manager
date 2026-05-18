@@ -2,34 +2,34 @@
 
 namespace SwiftCertificateManager\Models;
 
-class Payment
+class SwiftCMPayment
 {
     protected $table = "swiftcm_payments";
 
     public function insertGetId($data) {
-        $save = SwiftCertificateManagerQuery()->table($this->table)->insert($data);
+        $save = swiftcm_query()->table($this->table)->insert($data);
 
         return $save;
     }
 
      public function updateData($id, $data)
      {
-         return SwiftCertificateManagerQuery()->table($this->table)->where('id', $id)->update($data);
+         return swiftcm_query()->table($this->table)->where('id', $id)->update($data);
      }
 
      public function find($id)
      {
-         return SwiftCertificateManagerQuery()->table($this->table)->where('id', $id)->first();
+         return swiftcm_query()->table($this->table)->where('id', $id)->first();
      }
 
     public function getHash($hash)
     {
-        return SwiftCertificateManagerQuery()->table($this->table)->where('entry_hash', $hash)->first();
+        return swiftcm_query()->table($this->table)->where('entry_hash', $hash)->first();
     }
 
     // public function delete($id, $column = 'id')
     // {
-    //     return SwiftCertificateManagerQuery()->table($this->table)->where('entry_id', $id)->delete();
+    //     return swiftcm_query()->table($this->table)->where('entry_id', $id)->delete();
     // }
 
      public function getPaymentTransactions($request)
@@ -38,7 +38,7 @@ class Payment
          $perPage      = sanitize_text_field($request['per_page']);
          $offset       = $perPage * ($currentPage - 1);
 
-         $transactions = SwiftCertificateManagerQuery()->table($this->table)
+         $transactions = swiftcm_query()->table($this->table)
 //             ->where('payment_status', 'paid')
              ->orderBy('id', 'DESC')
              ->offset($offset)
@@ -62,13 +62,13 @@ class Payment
 
     public function getQuery()
     {
-        return SwiftCertificateManagerQuery()->table($this->table);
+        return swiftcm_query()->table($this->table);
     }
 
 
     public function getByPaymentId($chargeId, $method = 'paypal')
     {
-        $payment =  SwiftCertificateManagerQuery()->table($this->table)
+        $payment =  swiftcm_query()->table($this->table)
             ->where('charge_id', $chargeId)
             ->where('payment_method', $method)
             ->first();
@@ -81,10 +81,10 @@ class Payment
     }
 
     public function deleteInfo($transactionIds) {
-        $transactions = SwiftCertificateManagerQuery()->table($this->table)->whereIn('id', $transactionIds)->get();
+        $transactions = swiftcm_query()->table($this->table)->whereIn('id', $transactionIds)->get();
 
         foreach ($transactions as $transaction) {
-            SwiftCertificateManagerQuery()->table($this->table)->where('id', $transaction->id)->delete();
+            swiftcm_query()->table($this->table)->where('id', $transaction->id)->delete();
         }
     }
 }

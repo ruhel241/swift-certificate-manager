@@ -1106,24 +1106,26 @@ class QueryBuilderHandler
      */
     public function paginate($perPage = null, $columns = array('*'))
     {
-        $currentPage = intval($_GET['page']) ?: 1;
-
-        $perPage = $perPage ?: intval($_REQUEST['per_page']) ?: 15;
-
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only pagination query parameter.
+        $currentPage = isset( $_GET['page'] ) ? intval( wp_unslash( $_GET['page'] ) ) : 1;
+    
+        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only pagination query parameter.
+        $perPage = $perPage  ?: ( isset( $_GET['per_page'] ) ? intval( wp_unslash( $_GET['per_page'] ) ) : 15 );
+    
         $skip = $perPage * ($currentPage - 1);
-
+    
         $data = (array) $this->select($columns)->limit($perPage)->offset($skip)->get();
-
+    
         $dataCount = count($data);
-
+    
         $from = $dataCount > 0 ? ($currentPage - 1) * $perPage + 1 : null;
-
+    
         $to = $dataCount > 0 ? $from + $dataCount - 1 : null;
-
+    
         $total = $this->count();
-
+    
         $lastPage = (int) ceil($total / $perPage);
-
+    
         return array(
             'current_page'  => $currentPage,
             'per_page'      => $perPage,

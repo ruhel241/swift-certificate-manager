@@ -4,13 +4,12 @@
       <h1>Templates</h1>
       <!-- {{ templates }} -->
       <div class="btn-handler">
-        <el-button icon="el-icon-refresh" round @click="saveTemplatesHandler">
+        <!-- <el-button icon="el-icon-refresh" round @click="saveTemplatesHandler" v-if="downloadableTemplates">
           Fetch Templates
-        </el-button>
-        <!-- v-if="downloadableTemplates" -->
-        <!-- <el-button class="capsule-btn" icon="el-icon-service" round  @click="upgradePopupHandler">
-          Order Customized Certificates
         </el-button> -->
+        <el-button class="capsule-btn" icon="el-icon-service" round  @click="upgradePopupHandler">
+          Order Customized Certificates
+        </el-button>
         <UpgradePopup 
           :upgradePopupVisible="upgradePopupVisible"
           @close="upgradePopupVisible = false"

@@ -18,6 +18,6 @@
     ]
   },
   "require": {
-    "setasign/fpdf": "*"
+    "setasign/fpdf": "^1.8"
   }
 }
