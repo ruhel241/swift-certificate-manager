@@ -22,7 +22,7 @@ class SwiftCMTemplatesMigrator {
 				template_name VARCHAR(255) NULL,
 				slug VARCHAR(255) NULL,
 				template_image VARCHAR(255) NULL,
-				pro INT(1) NULL,
+				pro TINYINT(1) NULL DEFAULT 0,
 				settings LONGTEXT NULL,
 				created_at TIMESTAMP NULL,
 				updated_at TIMESTAMP NULL,

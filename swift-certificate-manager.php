@@ -43,8 +43,9 @@ register_deactivation_hook(__FILE__, function ($network_wide) {
     SwiftCertificateManager\Hooks\Handlers\DeactivationHandler::deActivate($network_wide);
 });
 
-// // disabled admin-notice
+// disabled admin-notice
 add_action('admin_init', function () {
+    // phpcs:disable WordPress.Security.NonceVerification.Recommended
     $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
 
     if ($page !== 'swiftcm') return;
