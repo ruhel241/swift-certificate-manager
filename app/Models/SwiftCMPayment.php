@@ -87,4 +87,14 @@ class SwiftCMPayment
             swiftcm_query()->table($this->table)->where('id', $transaction->id)->delete();
         }
     }
+
+	public function deletePaymentTransactionsByRequestId($id) {
+        $id = absint($id);
+    
+        if (!$id) {
+            return;
+        }
+    
+        swiftcm_query()->table($this->table)->where('request_id', $id)->delete();
+    }
 }

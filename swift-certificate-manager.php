@@ -35,19 +35,20 @@ add_action('plugins_loaded', function () {
 
 register_activation_hook(__FILE__, function ($network_wide) {
     require_once(SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/ActivationHandler.php');
-    \SwiftCertificateManager\Hooks\Handlers\ActivationHandler::activate($network_wide);
+    SwiftCertificateManager\Hooks\Handlers\ActivationHandler::activate($network_wide);
 });
 
 register_deactivation_hook(__FILE__, function ($network_wide) {
     require_once(SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/DeactivationHandler.php');
-    \SwiftCertificateManager\Hooks\Handlers\DeactivationHandler::deActivate($network_wide);
+    SwiftCertificateManager\Hooks\Handlers\DeactivationHandler::deActivate($network_wide);
 });
 
-// disabled admin-notice
+// // disabled admin-notice
 add_action('admin_init', function () {
-    // phpcs:disable WordPress.Security.NonceVerification.Recommended
-    if ( isset( $_GET['page'] ) && 'swiftcm' === sanitize_text_field( wp_unslash( $_GET['page'] ) )) {
-        remove_all_actions( 'admin_notices' );
-    }
-    // phpcs:enable WordPress.Security.NonceVerification.Recommended
+    $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
+
+    if ($page !== 'swiftcm') return;
+
+    remove_all_actions('admin_notices');
+    remove_all_actions('all_admin_notices');
 });

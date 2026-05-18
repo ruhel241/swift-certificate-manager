@@ -15,7 +15,6 @@ class SwiftCMPaymentsMigrator {
 
 		$charset_collate = $wpdb->get_charset_collate();
 		$table           = $wpdb->prefix . static::$tableName;
-		$ref_table       = $wpdb->prefix . 'swiftcm_generates';
 
 		dbDelta(
 			"CREATE TABLE {$table} (
@@ -35,11 +34,7 @@ class SwiftCMPaymentsMigrator {
 				created_at TIMESTAMP NULL DEFAULT NULL,
 				updated_at TIMESTAMP NULL DEFAULT NULL,
 				PRIMARY KEY (id),
-				KEY request_id (request_id),
-				CONSTRAINT fk_swiftcm_payment_request_id
-					FOREIGN KEY (request_id)
-					REFERENCES {$ref_table}(id)
-					ON DELETE CASCADE
+				KEY request_id (request_id)
 			) ENGINE=InnoDB {$charset_collate};"
 		);
 	}

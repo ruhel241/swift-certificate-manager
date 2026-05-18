@@ -3,7 +3,7 @@
 namespace SwiftCertificateManager\Models;
 
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
-
+use SwiftCertificateManager\Models\SwiftCMPayment;
 
 class SwiftCMGenerate {
 
@@ -109,10 +109,14 @@ class SwiftCMGenerate {
     }
 
     public function deleteInfo($infoIds) {
+        $payment = new SwiftCMPayment();
+
         $infos = swiftcm_query()->table($this->table)->whereIn('id', $infoIds)->get();
 
         foreach ($infos as $info) {
             swiftcm_query()->table($this->table)->where('id', $info->id)->delete();
+
+            $payment->deletePaymentTransactionsByRequestId($info->id);
 
             // Removed certificate
             if (!empty($info->image_url) || !empty($info->pdf_url)) {
@@ -121,5 +125,4 @@ class SwiftCMGenerate {
             }
         }
     }
-
 }

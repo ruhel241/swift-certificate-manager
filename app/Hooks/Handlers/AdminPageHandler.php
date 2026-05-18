@@ -95,57 +95,61 @@ class AdminPageHandler
     }
 
     public function loadAssets()
-    {
+    {    
         // phpcs:disable WordPress.Security.NonceVerification.Recommended
-        if ( isset( $_GET['page'] ) && sanitize_text_field( wp_unslash( $_GET['page'] ) ) === 'swiftcm') {
+        $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
 
-            if (function_exists('wp_enqueue_editor')) {
-                wp_enqueue_editor();
-                wp_enqueue_script('thickbox');
-            }
-            if (function_exists('wp_enqueue_media')) {
-                wp_enqueue_media();
-            }
-
-            $assetsUrl = SWIFTCM_PLUGIN_URL.'assets/';
-            
-            $uploadDir = AvailableOptions::getDirStructure();
-            $uploadUrl = AvailableOptions::getDirUrlStructure();
-
-            wp_enqueue_style('swiftcm_admin',$assetsUrl.'admin/css/swiftcm-admin.css', array(),  SWIFTCM_VERSION);
-            wp_enqueue_script('swiftcm_admin_boot', $assetsUrl.'admin/js/boot.js', array('jquery'), SWIFTCM_VERSION, false);
-            wp_enqueue_script('swiftcm_admin_app', $assetsUrl.'admin/js/start.js', array('jquery'), SWIFTCM_VERSION, true);
-           
-            $activeTemplate  = get_option('swiftcm_active_template', 'template-1');
-            $isOnboarded     = get_option('swiftcm_is_onboarded', "no");
-            $globalSettings  = get_option('swiftcm_global_settings', []);
-            $i18ns           = TranslationStrings::getTranslationStrings();
-
-            $templateManager = new TemplatesManager();
-            $downloadableTemplates = $templateManager->getDownloadableTemplates();
-
-            $swiftcmAdminVars = apply_filters('swiftcm_admin_app_vars', array(
-                'assets_url'             => $assetsUrl,
-                'images_url'             => $assetsUrl.'admin/images/',
-                'upload_certificate_url' => $assetsUrl.'admin/images/templates/',
-                'ajaxurl'                => admin_url('admin-ajax.php'),
-                'slug'                   => 'swiftcm',
-                'site_url'               => get_site_url(),
-                'i18n'                   => $i18ns,
-                'server_time'            => current_time('mysql'),
-                'active_template'        => $activeTemplate,
-                'nonce'                  => wp_create_nonce('swiftcm_admin_nonce'),
-                'is_onboarded'           => $isOnboarded ? $isOnboarded : "no",
-                'downloadableTemplates'  => count($downloadableTemplates),
-                'getSystemStatuses'      => AvailableOptions::getSystemStatuses(),
-                'globalSettings'         => $globalSettings,
-                'currencies'             => (new PaymentHelper)->getCurrencies(),
-                'has_pro'                => defined('SWIFTCM_PRO'),
-                'has_pro_version'        => defined('SWIFTCM_PRO_VERSION'),
-
-            ));
-    
-            wp_localize_script('swiftcm_admin_boot', 'swiftcmAdminVars', $swiftcmAdminVars);
+        if ($page !== 'swiftcm') {
+            return;
         }
+
+
+        if (function_exists('wp_enqueue_editor')) {
+            wp_enqueue_editor();
+            wp_enqueue_script('thickbox');
+        }
+        if (function_exists('wp_enqueue_media')) {
+            wp_enqueue_media();
+        }
+
+        $assetsUrl = SWIFTCM_PLUGIN_URL.'assets/';
+        
+        $uploadDir = AvailableOptions::getDirStructure();
+        $uploadUrl = AvailableOptions::getDirUrlStructure();
+
+        wp_enqueue_style('swiftcm_admin',$assetsUrl.'admin/css/swiftcm-admin.css', array(),  SWIFTCM_VERSION);
+        wp_enqueue_script('swiftcm_admin_boot', $assetsUrl.'admin/js/boot.js', array('jquery'), SWIFTCM_VERSION, false);
+        wp_enqueue_script('swiftcm_admin_app', $assetsUrl.'admin/js/start.js', array('jquery'), SWIFTCM_VERSION, true);
+        
+        $activeTemplate  = get_option('swiftcm_active_template', 'template-1');
+        $isOnboarded     = get_option('swiftcm_is_onboarded', "no");
+        $globalSettings  = get_option('swiftcm_global_settings', []);
+        $i18ns           = TranslationStrings::getTranslationStrings();
+
+        $templateManager = new TemplatesManager();
+        $downloadableTemplates = $templateManager->getDownloadableTemplates();
+
+        $swiftcmAdminVars = apply_filters('swiftcm_admin_app_vars', array(
+            'assets_url'             => $assetsUrl,
+            'images_url'             => $assetsUrl.'admin/images/',
+            'upload_certificate_url' => $assetsUrl.'admin/images/templates/',
+            'ajaxurl'                => admin_url('admin-ajax.php'),
+            'slug'                   => 'swiftcm',
+            'site_url'               => get_site_url(),
+            'i18n'                   => $i18ns,
+            'server_time'            => current_time('mysql'),
+            'active_template'        => $activeTemplate,
+            'nonce'                  => wp_create_nonce('swiftcm_admin_nonce'),
+            'is_onboarded'           => $isOnboarded ? $isOnboarded : "no",
+            'downloadableTemplates'  => count($downloadableTemplates),
+            'getSystemStatuses'      => AvailableOptions::getSystemStatuses(),
+            'globalSettings'         => $globalSettings,
+            'currencies'             => (new PaymentHelper)->getCurrencies(),
+            'has_pro'                => defined('SWIFTCM_PRO'),
+            'has_pro_version'        => defined('SWIFTCM_PRO_VERSION'),
+
+        ));
+
+        wp_localize_script('swiftcm_admin_boot', 'swiftcmAdminVars', $swiftcmAdminVars);
     }
 }

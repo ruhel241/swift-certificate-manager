@@ -35,7 +35,7 @@ class SwiftCMGenerateMigrator {
 				settings LONGTEXT NULL,
 				created_at TIMESTAMP NULL,
 				updated_at TIMESTAMP NULL,
-				PRIMARY KEY (id)
+				PRIMARY KEY (id),
 			) {$charset_collate};"
 		);
 	}
