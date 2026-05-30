@@ -2,7 +2,7 @@
 /*
 Plugin Name: Swift Certificate Manager
 Plugin URI: https://wordpress.org/plugins/swift-certificate-manager/
-Description: The Most certificate generato For WordPress  
+Description: Issue, manage, and verify professional digital certificates directly from your WordPress site.
 Version: 1.0.0
 Author: arimtiaz
 Author URI: https://profiles.wordpress.org/arimtiaz/
@@ -23,7 +23,7 @@ define('SWIFTCM_PLUGIN_FILE_PATH', plugin_basename(__FILE__));
 define('SWIFTCM_PLUGIN_URL', plugin_dir_url(__FILE__));
 define("SWIFTCM_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
 
-include 'app/Helpers/global_functions.php';
+require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/Helpers/global_functions.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 add_action('plugins_loaded', function () {
@@ -41,15 +41,4 @@ register_activation_hook(__FILE__, function ($network_wide) {
 register_deactivation_hook(__FILE__, function ($network_wide) {
     require_once(SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/DeactivationHandler.php');
     SwiftCertificateManager\Hooks\Handlers\DeactivationHandler::deActivate($network_wide);
-});
-
-// disabled admin-notice
-add_action('admin_init', function () {
-    // phpcs:disable WordPress.Security.NonceVerification.Recommended
-    $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
-
-    if ($page !== 'swiftcm') return;
-
-    remove_all_actions('admin_notices');
-    remove_all_actions('all_admin_notices');
 });

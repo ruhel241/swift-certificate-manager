@@ -1106,12 +1106,19 @@ class QueryBuilderHandler
      */
     public function paginate($perPage = null, $columns = array('*'))
     {
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only pagination query parameter.
-        $currentPage = isset( $_GET['page'] ) ? intval( wp_unslash( $_GET['page'] ) ) : 1;
+        
+        // // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only pagination query parameter.
+        // $currentPage = isset( $_GET['page'] ) ? intval( wp_unslash( $_GET['page'] ) ) : 1;
     
-        // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only pagination query parameter.
-        $perPage = $perPage  ?: ( isset( $_GET['per_page'] ) ? intval( wp_unslash( $_GET['per_page'] ) ) : 15 );
-    
+        // // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only pagination query parameter.
+        // $perPage = $perPage  ?: ( isset( $_GET['per_page'] ) ? intval( wp_unslash( $_GET['per_page'] ) ) : 15 );
+
+        $currentPage = max( 1, (int) filter_input( INPUT_GET, 'page', FILTER_VALIDATE_INT ) );
+
+        $perPageInput = (int) filter_input( INPUT_GET, 'per_page', FILTER_VALIDATE_INT );
+
+        $perPage = $perPage ?: max( 1, $perPageInput ?: 15 );
+
         $skip = $perPage * ($currentPage - 1);
     
         $data = (array) $this->select($columns)->limit($perPage)->offset($skip)->get();

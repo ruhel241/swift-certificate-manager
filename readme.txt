@@ -428,24 +428,60 @@ Activate with a License key.
 
 == Development ==
 
-This plugin uses modern JavaScript tooling (Vue.js + Laravel Mix + Webpack).
+Swift Certificate Manager uses modern development tools including Vue.js, npm, Laravel Mix, Webpack, Babel, and Composer to generate production-ready JavaScript, CSS, and PHP assets.
 
-### Source Code
-Full source code is available at:
+In accordance with WordPress Plugin Directory guidelines, the complete human-readable source code for all compiled and generated assets is publicly available in the source repository below.
+
+Source Code Repository:
+
 https://github.com/ruhel241/swift-certificate-manager
 
-### Build Instructions
+The repository includes all original source files used to build the distributed plugin assets, including:
 
-To build the plugin assets locally:
+* resources/
+* app/
+* database/
+* languages/
+* patches/
 
-1. Install dependencies
+It also contains all build configuration files and dependency definitions required for development and compilation.
+
+Build Instructions:
+
+1. Clone the repository
+
+2. Install dependencies:
+   composer install
    npm install
 
-2. Build for development
+3. Build development assets:
    npm run dev
 
-3. Build for production
+4. Build production assets:
    npm run production
+
+All compiled assets included in this plugin distribution are generated from the source code available in the repository above.
+
+Example compiled files:
+
+* assets/admin/js/boot.js
+* assets/admin/js/start.js
+* assets/public/js/swiftcm_request_certificate.js
+* assets/public/js/PaymentMethods/paypal-checkout.js
+* assets/public/js/PaymentMethods/stripe-checkout.js
+
+## Composer Autoload
+
+This plugin uses Composer for PHP dependency management and autoloading.
+
+All PHP dependencies are loaded via `vendor/autoload.php`.
+
+To install dependencies, run:
+
+composer install
+
+No obfuscated, encrypted, or proprietary code is included in vendor libraries.
+
 
 ### Notes
 
