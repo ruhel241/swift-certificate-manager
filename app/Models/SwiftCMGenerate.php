@@ -9,13 +9,13 @@ class SwiftCMGenerate {
 
     protected $table = 'swiftcm_generates';
    
-    public function getDatas($request)
+    public function getDatas($params)
     {
         // assume already sanitized, but still safe fallback
-        $search      = $request['search'] ?? '';
-        $status      = $request['status'] ?? '';
-        $currentPage = $request['current_page'] ?? 1;
-        $perPage     = $request['per_page'] ?? 10;
+        $search      = $params['search'] ?? '';
+        $status      = $params['status'] ?? '';
+        $currentPage = $params['current_page'] ?? 1;
+        $perPage     = $params['per_page'] ?? 10;
 
         $offset = ($currentPage - 1) * $perPage;
 

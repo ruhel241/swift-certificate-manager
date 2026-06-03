@@ -20,8 +20,8 @@ class AssignCertificateController
         add_action('wp_ajax_swiftcm_generate_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
-    public function ajaxRoutes() {
-       
+    public function ajaxRoutes()
+    {
         if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
@@ -33,18 +33,19 @@ class AssignCertificateController
                 'message' => __('Unauthorized access', 'swift-certificate-manager')
             ], 403);
         }
-    
-        $request = wp_unslash($_REQUEST);
+        
+        $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
 
-        $route = sanitize_key($request['route'] ?? '');
+        if (!$route) {
+            wp_send_json_error(['message' => 'Invalid route'], 400);
+        }
 
-        // Route map.
-        $maps = [
+        $validRoutes = [
             'get_certificate_infos'            => 'getCertificateInfos',
             'get_certificate_info'             => 'getCertificateInfoByID',
+            'save_certificate_info'            => 'saveCertificateInfo',
             'get_customization_certificate'    => 'getCustomizationCertificate',
             'update_customization_certificate' => 'updateCustomizationCertificate',
-            'save_certificate_info'            => 'saveCertificateInfo',
             'update_certificate_info'          => 'updateCertificateInfo',
             'maybe_delete_infos'               => 'maybeDeleteInfos',
             'sending_email_certificate'        => 'sendingEmailCertificate',
@@ -52,26 +53,28 @@ class AssignCertificateController
             'redesign_template'                => 'redesignTemplate',
         ];
 
-        if (!isset($maps[$route])) {
-            wp_send_json_error([
-                'message' => __('Invalid route', 'swift-certificate-manager')
-            ], 400);
+        if (!isset($validRoutes[$route])) {
+            wp_send_json_error(['message' => 'Invalid route'], 400);
         }
-    
-        do_action('swiftcm_assign_doing_ajax_forms_' . $route);
-    
-        $this->{$maps[$route]}($request);
-    
+
+        $this->{$validRoutes[$route]}();
+
         do_action('swiftcm_assign_admin_ajax_handler_catch', $route);
+
+        wp_die();
     }
 
-    public function getCertificateInfos($request)
+    public function getCertificateInfos()
     {
+        $infoData = isset($_REQUEST['info_data']) && is_array($_REQUEST['info_data'])
+        ? wp_unslash($_REQUEST['info_data'])
+        : [];
+
         $params = [
-            'search'        => sanitize_text_field($request['search'] ?? ''),
-            'status'        => sanitize_text_field($request['status'] ?? ''),
-            'current_page'  => isset($request['current_page']) ? max(1, absint($request['current_page'])) : 1,
-            'per_page'      => isset($request['per_page']) ? max(1, absint($request['per_page'])) : 10,
+            'search'        => sanitize_text_field($infoData['search'] ?? ''),
+            'status'        => sanitize_text_field($infoData['status'] ?? ''),
+            'current_page'  => max(1, absint($infoData['current_page'] ?? 1)),
+            'per_page'      => max(1, absint($infoData['per_page'] ?? 10)),
         ];
 
         $infos  = new SwiftCMGenerate();
@@ -86,62 +89,56 @@ class AssignCertificateController
         ], 200);
     }
 
-    public function getCertificateInfoByID($request)
+    public function getCertificateInfoByID()
     {
-        $SwiftCMGenerate = new SwiftCMGenerate();
-        $SwiftCertificateManagerPayment  = new SwiftCMPayment;
+        $infoId = absint($_REQUEST['info_id'] ?? 0);
 
-        // ✅ safer sanitize
-        $id = absint($request['info_id'] ?? 0);
-
-        // invalid id
-        if (!$id) {
+        if ( ! $infoId ) {
             wp_send_json_error([
                 'message' => __('Invalid ID', 'swift-certificate-manager'),
             ], 400);
         }
 
-        $info = $SwiftCMGenerate->getInfo($id);
+        $SwiftCMGenerate = new SwiftCMGenerate();
+        $SwiftCertificateManagerPayment = new SwiftCMPayment();
 
-        // not found
-        if (!$info) {
+        $info = $SwiftCMGenerate->getInfo($infoId);
+
+        if ( ! $info ) {
             wp_send_json_error([
                 'message' => __('Data not found', 'swift-certificate-manager'),
             ], 404);
         }
 
-        // convert after check
         $info = (array) $info;
 
-        // payment data
         $info['payment_transaction'] = $SwiftCertificateManagerPayment
             ->getQuery()
-            ->where('request_id', $id)
+            ->where('request_id', $infoId)
             ->first();
 
         wp_send_json_success([
-            'message' => __("Get Information", 'swift-certificate-manager'),
+            'message' => __('Get Information', 'swift-certificate-manager'),
             'info'    => $info,
         ], 200);
     }
 
-    public function getCustomizationCertificate($request)
+    public function getCustomizationCertificate()
     {
-        $SwiftCertificateManagerPayment   = new SwiftCMPayment;
-        $SwiftCMGenerate  = new SwiftCMGenerate();
-        $SwiftCMTemplates = new SwiftCMTemplates();
+        $infoId = absint($_REQUEST['info_id'] ?? 0);
 
-        // ✅ safe ID
-        $id = absint($request['info_id'] ?? 0);
-
-        if (!$id) {
+        if ( ! $infoId ) {
             wp_send_json_error([
-                'message' => __('Invalid ID', 'swift-certificate-manager')
+                'message' => __('Invalid ID', 'swift-certificate-manager'),
             ], 400);
         }
 
+        $SwiftCMGenerate                  = new SwiftCMGenerate();
+        $SwiftCMTemplates                 = new SwiftCMTemplates();
+        $SwiftCertificateManagerPayment   = new SwiftCMPayment;
+
         // get data
-        $info = $SwiftCMGenerate->getInfo($id);
+        $info = $SwiftCMGenerate->getInfo($infoId);
 
         if (!$info) {
             wp_send_json_error([
@@ -170,21 +167,19 @@ class AssignCertificateController
         ], 200);
     }
 
-    public function updateCustomizationCertificate($request)
+    public function updateCustomizationCertificate()
     {
-        $SwiftCMGenerate = new SwiftCMGenerate();
+        $infoId = absint($_REQUEST['info_id'] ?? 0);
 
-        // ✅ safe ID
-        $id = absint($request['info_id'] ?? 0);
-
-        if (!$id) {
+        if (!$infoId) {
             wp_send_json_error([
                 'message' => __('Invalid ID', 'swift-certificate-manager')
             ], 400);
         }
 
-        // check existing record
-        $info = $SwiftCMGenerate->getInfo($id);
+        $SwiftCMGenerate = new SwiftCMGenerate();
+
+        $info = $SwiftCMGenerate->getInfo($infoId);
 
         if (!$info) {
             wp_send_json_error([
@@ -192,10 +187,7 @@ class AssignCertificateController
             ], 404);
         }
 
-        // ✅ safe settings
-        $settings = isset($request['settings']) && is_array($request['settings'])
-            ? $request['settings']
-            : [];
+        $settings = (array) wp_unslash($_REQUEST['settings'] ?? []);
 
         $updateData = [
             'student_name'    => sanitize_text_field($settings['student_name'] ?? ''),
@@ -205,16 +197,18 @@ class AssignCertificateController
             'updated_at'      => gmdate('Y-m-d H:i:s'),
         ];
 
-        $SwiftCMGenerate->updateInfo($id, $updateData);
+        $SwiftCMGenerate->updateInfo($infoId, $updateData);
 
         wp_send_json_success([
-            'message' => __("Successfully updated", 'swift-certificate-manager')
+            'message' => __('Successfully updated', 'swift-certificate-manager')
         ], 200);
     }
 
-    public function saveCertificateInfo($request)
+    public function saveCertificateInfo()
     {
-        $infoRaw = isset($request['info']) ? (array) $request['info'] : [];
+        $infoRaw = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
+        ? wp_unslash($_REQUEST['info'])
+        : [];
 
         $info = [
             'student_name'    => sanitize_text_field($infoRaw['student_name'] ?? ''),
@@ -230,7 +224,7 @@ class AssignCertificateController
 
         $SwiftCMGenerate  = new SwiftCMGenerate();
         $SwiftCMTemplates = new SwiftCMTemplates();
-        $helperFunction            = new HelperFunction();
+        $helperFunction   = new HelperFunction();
 
 
         // Settings
@@ -291,33 +285,41 @@ class AssignCertificateController
         ], 200);
     }
 
-    public function sendingEmailCertificate($request)
+    public function sendingEmailCertificate()
     {
-        $info = isset($request['info']) && is_array($request['info'])
-            ? $request['info']
-            : [];
+        $infoData = isset($_REQUEST['info_data']) ? wp_unslash($_REQUEST['info_data']) : [];
 
-        $pdfData     = $this->getPDFandImageURL($request);
+        if (!is_array($infoData)) {
+            wp_send_json_error(['message' => 'Invalid data']);
+        }
+    
+        $info = isset($infoData['info']) && is_array($infoData['info'])
+        ? wp_unslash($infoData['info'])
+        : [];
+
+    
+        $pdfData = $this->getPDFandImageURL($infoData);
         $pdfFilePath = $pdfData['pdf_data']['pdf_file_path'] ?? '';
-
+    
         $studentName     = sanitize_text_field($info['student_name'] ?? '');
         $studentEmail    = sanitize_email($info['student_email'] ?? '');
         $graduationDate  = sanitize_text_field($info['graduation_date'] ?? '');
         $certificateCode = sanitize_text_field($info['certificate_code'] ?? '');
         $courseName      = sanitize_text_field($info['course_name'] ?? '');
-
+    
         if (empty($studentEmail) || !is_email($studentEmail)) {
             wp_send_json_error(['message' => 'Invalid email address']);
         }
-
+    
         if (empty($pdfFilePath) || !file_exists($pdfFilePath)) {
             wp_send_json_error(['message' => 'PDF not found']);
         }
-
-        $to      = $studentEmail;
-        $subject = '[Swift Certificate Manager] PDF Attachment';
-
-        $body  = 'Hi ' . esc_html($studentName) . ", Here's your certificate.<br><br>";
+    
+        $subject = '[Swift Certificate Manager] Your Certificate';
+    
+        $body  = 'Hi ' . esc_html($studentName) . ",<br><br>";
+        $body .= "Please find your certificate attached.<br><br>";
+    
         $body .= $this->emailHtmlBody([
             'student_name'     => $studentName,
             'student_email'    => $studentEmail,
@@ -325,16 +327,15 @@ class AssignCertificateController
             'certificate_code' => $certificateCode,
             'course_name'      => $courseName,
         ]);
-
-        $headers     = ['Content-Type: text/html; charset=UTF-8'];
-        $attachments = [$pdfFilePath];
-
-        $send = wp_mail($to, $subject, $body, $headers, $attachments);
-
+    
+        $headers = ['Content-Type: text/html; charset=UTF-8'];
+    
+        $send = wp_mail($studentEmail, $subject, $body, $headers, [$pdfFilePath]);
+    
         if (!$send) {
             wp_send_json_error(['message' => 'Failed to send email']);
         }
-
+    
         wp_send_json_success(['message' => 'Email sent successfully']);
     }
 
@@ -412,91 +413,91 @@ class AssignCertificateController
         </div>";    
     }
 
-    public function getPDFandImageURL($request) {
-        // Check if we have the necessary data
-        if (!isset($request['certificate_data'])) {
+    public function getPDFandImageURL($infoData)
+    {
+        if (!isset($infoData['certificate_data'])) {
             wp_send_json_error(['message' => 'No certificate data provided']);
-            return;
         }
 
-        $info = $request['info'];
-        // Get image data from POST
-        $image_data = $request['certificate_data'];
+        // ✅ info sanitize safely
+        $info = isset($infoData['info']) && is_array($infoData['info'])
+            ? wp_unslash($infoData['info'])
+            : [];
 
-        // Get student name and course name for the filename
-        $studentName     = isset($info['student_name']) ? sanitize_title($info['student_name']) : 'certificate';
-        $certificateCode = isset($info['certificate_code']) ? sanitize_text_field($info['certificate_code']) : '';
+        // ✅ certificate image data (RAW input)
+        $image_data = isset($infoData['certificate_data'])
+            ? wp_unslash($infoData['certificate_data'])
+            : '';
 
-        // Get uploads directory
-        $upload_dir = wp_upload_dir();
-        $certificates_dir = $upload_dir['basedir'] .'/'. SWIFTCM_UPLOAD_DIR .'/temp';
-
-        // Create certificates directory if it doesn't exist
-        if (!file_exists($certificates_dir)) {
-            wp_mkdir_p($certificates_dir);
-            file_put_contents($certificates_dir . '/index.php', '<?php // Silence is golden');
+        // ❌ validate image input
+        if (!is_string($image_data) || empty($image_data)) {
+            wp_send_json_error(['message' => 'Invalid image data']);
         }
 
-        // Extract base64 data properly
-        if (preg_match('/^data:image\/(jpeg|png|jpg);base64,(.+)$/i', $image_data, $matches)) {
-            $image_type = $matches[1];
-            $image_data = $matches[2];
-        } else {
-            // Try with a simpler approach if the regex fails
-            $image_data = str_replace('data:image/jpeg;base64,', '', $image_data);
-            $image_data = str_replace('data:image/png;base64,', '', $image_data);
-            $image_data = str_replace(' ', '+', $image_data);
-            $image_type = 'jpeg'; // Default to JPEG
+        // ❌ validate format strictly
+        if (!preg_match('/^data:image\/(png|jpg|jpeg);base64,/', $image_data)) {
+            wp_send_json_error(['message' => 'Invalid image format']);
         }
 
-        // Decode the base64 data
+        // ✅ remove base64 prefix
+        $image_data = preg_replace('#^data:image/\w+;base64,#i', '', $image_data);
+
+        // ❌ decode safely
         $raw_data = base64_decode($image_data, true);
 
         if ($raw_data === false) {
-            wp_send_json_error(['message' => 'Invalid image data']);
-            return;
+            wp_send_json_error(['message' => 'Invalid base64 image data']);
         }
 
-        // Generate a unique filename using student name and certificate code
-        $imageFileName = $studentName . '-' . $certificateCode . ".png"; // Using PNG for compatibility
-        // image file path
-        $imageFilePath = $certificates_dir .'/'. $imageFileName; // Using PNG for compatibility
+        // ✅ sanitize metadata
+        $studentName     = sanitize_title($info['student_name'] ?? 'certificate');
+        $certificateCode = sanitize_text_field($info['certificate_code'] ?? '');
 
-        // first of all old image file delete if same name exist.
-        if (!empty($imageFileName)) {
-            AvailableOptions::removedFile($imageFileName);
-        }
-        
-        if (file_put_contents($imageFilePath, $raw_data) === false) {
-            wp_send_json_error(['message' => 'Failed to process image']);
-            return;
-        }
-
-        // image URL and path
+        // ✅ upload directory
         $upload_dir = wp_upload_dir();
+        $certificates_dir = $upload_dir['basedir'] . '/' . SWIFTCM_UPLOAD_DIR . '/temp';
 
-        $image_url = '';
-
-        if (strpos($imageFilePath, $upload_dir['basedir']) !== false) {
-            $image_url = str_replace(
-                $upload_dir['basedir'],
-                $upload_dir['baseurl'],
-                $imageFilePath
-            );
+        // ✅ ensure directory exists
+        if (!file_exists($certificates_dir)) {
+            wp_mkdir_p($certificates_dir);
+            file_put_contents($certificates_dir . '/index.php', '<?php // silence');
         }
 
-        $imageData = [
-            'image_file_path' => $imageFilePath,
-            'image_name'      => $imageFileName,
-            'image_url'       => $image_url,
-        ];
+        // ✅ file name safe
+        $imageFileName = $studentName . '-' . $certificateCode . '.png';
+        $imageFilePath = $certificates_dir . '/' . $imageFileName;
 
-        // Generate PDF directly from the image data
-        $pdfData = $this->generatePDFbyImageData($raw_data, $studentName, $certificateCode);
+        // ✅ safe delete old file
+        if (file_exists($imageFilePath)) {
+            unlink($imageFilePath);
+        }
+
+        // ✅ save file
+        if (file_put_contents($imageFilePath, $raw_data) === false) {
+            wp_send_json_error(['message' => 'Failed to save image']);
+        }
+
+        // ✅ generate URL
+        $image_url = str_replace(
+            $upload_dir['basedir'],
+            $upload_dir['baseurl'],
+            $imageFilePath
+        );
+
+        // ✅ generate PDF
+        $pdfData = $this->generatePDFbyImageData(
+            $raw_data,
+            $studentName,
+            $certificateCode
+        );
 
         return [
-            'image_data' => $imageData,
-            'pdf_data'   => $pdfData
+            'image_data' => [
+                'image_file_path' => $imageFilePath,
+                'image_name'      => $imageFileName,
+                'image_url'       => $image_url,
+            ],
+            'pdf_data' => $pdfData
         ];
     }
 
@@ -567,22 +568,20 @@ class AssignCertificateController
         }
     }
 
-    public function updateCertificateInfo($request)
+    public function updateCertificateInfo()
     {
-        $SwiftCMGenerate  = new SwiftCMGenerate();
-        $SwiftCMTemplates = new SwiftCMTemplates();
+        $infoId = absint($_REQUEST['info_id'] ?? 0);
 
-        // ✅ safe ID
-        $id = absint($request['info_id'] ?? 0);
-
-        if (!$id) {
+        if (!$infoId) {
             wp_send_json_error([
                 'message' => __('Invalid ID', 'swift-certificate-manager')
             ], 400);
         }
 
-        // check record exists
-        $info = $SwiftCMGenerate->getInfo($id);
+        $SwiftCMGenerate  = new SwiftCMGenerate();
+        $SwiftCMTemplates = new SwiftCMTemplates();
+
+        $info = $SwiftCMGenerate->getInfo($infoId);
 
         if (!$info) {
             wp_send_json_error([
@@ -590,12 +589,10 @@ class AssignCertificateController
             ], 404);
         }
 
-        // ✅ safe input data
-        $infoData = isset($request['info']) && is_array($request['info'])
-            ? $request['info']
+        $infoData = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
+            ? wp_unslash($_REQUEST['info'])
             : [];
 
-        // settings
         $activeTemplate = get_option('swiftcm_active_template', 'template-1');
         $getTemplate    = $SwiftCMTemplates->getTemplateSlug($activeTemplate);
 
@@ -605,18 +602,16 @@ class AssignCertificateController
         $globalSettings = get_option('swiftcm_global_settings', []);
         $preference     = $globalSettings['preference'] ?? '';
 
-        // build settings safely
         $settings['student_name']     = sanitize_text_field($infoData['student_name'] ?? '');
         $settings['course_name']      = sanitize_text_field($infoData['course_name'] ?? '');
         $settings['graduation_date']  = sanitize_text_field($infoData['graduation_date'] ?? '');
 
-        $settings['instructor_name']                 = $globalSettings[$preference . '_name'] ?? '';
-        $settings['instructor_signature']            = $globalSettings[$preference . '_signature'] ?? '';
-        $settings['instructor_signature_img']        = $globalSettings[$preference . '_signature_img'] ?? '';
+        $settings['instructor_name']          = $globalSettings[$preference . '_name'] ?? '';
+        $settings['instructor_signature']     = $globalSettings[$preference . '_signature'] ?? '';
+        $settings['instructor_signature_img'] = $globalSettings[$preference . '_signature_img'] ?? '';
         $settings['instructor_signature_img_enable'] = $globalSettings[$preference . '_signature_img_enable'] ?? '';
-        $settings['template_id']                     = $getTemplate->id ?? 0;
+        $settings['template_id']              = $getTemplate->id ?? 0;
 
-        // update data
         $updateData = [
             'status'          => sanitize_text_field($infoData['status'] ?? ''),
             'student_name'    => sanitize_text_field($infoData['student_name'] ?? ''),
@@ -627,7 +622,7 @@ class AssignCertificateController
             'updated_at'      => gmdate('Y-m-d H:i:s')
         ];
 
-        $SwiftCMGenerate->updateInfo($id, $updateData);
+        $SwiftCMGenerate->updateInfo($infoId, $updateData);
 
         $message = (($infoData['status'] ?? '') === 'draft')
             ? __("Successfully updated draft", 'swift-certificate-manager')
@@ -635,63 +630,59 @@ class AssignCertificateController
 
         wp_send_json_success([
             'message' => $message,
-            'info'    => $SwiftCMGenerate->getInfo($id)
+            'info'    => $SwiftCMGenerate->getInfo($infoId)
         ], 200);
     }
 
-    public function maybeDeleteInfos($request)
+    public function maybeDeleteInfos()
     {
         $SwiftCMGenerate = new SwiftCMGenerate();
-
-        // ✅ safe action type (whitelist)
-        $actionType = sanitize_text_field($request['action_type'] ?? '');
-
+    
+        // action type (safe)
+        $actionType = sanitize_key($_REQUEST['action_type'] ?? '');
+    
         $allowedActions = ['delete', 'draft', 'publish'];
-
+    
         if (!in_array($actionType, $allowedActions, true)) {
             wp_send_json_error([
                 'message' => __('Invalid action type', 'swift-certificate-manager')
             ], 400);
         }
-
-        // ✅ safe bulk IDs
-        $infoIds = $request['info_ids'] ?? [];
-
-        if (!is_array($infoIds)) {
-            wp_send_json_error([
-                'message' => __('Invalid data format', 'swift-certificate-manager')
-            ], 400);
-        }
-
+    
+        // safe bulk IDs
+        $infoIds = isset($_REQUEST['info_ids']) && is_array($_REQUEST['info_ids'])
+            ? wp_unslash($_REQUEST['info_ids'])
+            : [];
+    
         // sanitize IDs
         $infoIds = array_map('absint', $infoIds);
-        $infoIds = array_filter($infoIds); // remove 0 values
-
+        $infoIds = array_filter($infoIds);
+    
         if (empty($infoIds)) {
             wp_send_json_error([
                 'message' => __('No valid items selected', 'swift-certificate-manager')
             ], 400);
         }
-
+    
         // DELETE action
         if ($actionType === 'delete') {
             $SwiftCMGenerate->deleteInfo($infoIds);
-
+    
             wp_send_json_success([
                 'message' => __('Selected infos successfully deleted', 'swift-certificate-manager')
             ], 200);
         }
-
+    
         // UPDATE STATUS action
         $SwiftCMGenerate->updateStatus($infoIds, $actionType);
-
+    
         wp_send_json_success([
             'message' => __('Selected infos successfully updated', 'swift-certificate-manager')
         ], 200);
     }
 
     // download CSV File
-    public function getCsvDownload( $request ) {
+    public function getCsvDownload() {
         try {
 
             // Clear output buffer safely.
@@ -701,8 +692,19 @@ class AssignCertificateController
 
             $certificateService = new SwiftCMGenerate();
 
+            $infoData = isset($_REQUEST['info_data'])
+            ? json_decode(wp_unslash($_REQUEST['info_data']), true)
+            : [];
+
+            $params = [
+                'search'        => sanitize_text_field($infoData['search'] ?? ''),
+                'status'        => sanitize_text_field($infoData['status'] ?? ''),
+                'current_page'  => max(1, absint($infoData['current_page'] ?? 1)),
+                'per_page'      => max(1, absint($infoData['per_page'] ?? 10)),
+            ];
+
             // Request sanitization handled inside getDatas().
-            $result       = $certificateService->getDatas( $request );
+            $result       = $certificateService->getDatas( $params );
             $certificates = $result['infos'] ?? [];
 
             if ( empty( $certificates ) ) {
@@ -807,10 +809,9 @@ class AssignCertificateController
     }
     
     // when user want to redesign certificate from single customization page.
-    public function redesignTemplate($request)
+    public function redesignTemplate()
     {
-        // ✅ validate template_id
-        $templateId = absint($request['template_id'] ?? 0);
+        $templateId = absint($_REQUEST['template_id'] ?? 0);
 
         if (!$templateId) {
             wp_send_json_error([
@@ -819,7 +820,7 @@ class AssignCertificateController
         }
 
         // ✅ validate info_id
-        $infoId = absint($request['info_id'] ?? 0);
+        $infoId = absint($_REQUEST['info_id'] ?? 0);
 
         if (!$infoId) {
             wp_send_json_error([

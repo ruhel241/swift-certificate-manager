@@ -12,102 +12,70 @@ class SettingsController
         add_action('wp_ajax_swiftcm_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
-    public function ajaxRoutes() {
+    public function ajaxRoutes()
+    {
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // 🔐 Nonce check (CSRF protection).
-        if ( ! check_ajax_referer( 'swiftcm_admin_nonce', 'nonce', false ) ) {
-            wp_send_json_error(
-                [
-                    'message' => __(
-                        'Invalid nonce',
-                        'swift-certificate-manager'
-                    ),
-                ],
-                403
-            );
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
         }
-    
-        // Permission check.
-        if ( ! current_user_can( 'manage_options' ) ) {
-            wp_send_json_error(
-                [
-                    'message' => __(
-                        'Unauthorized access',
-                        'swift-certificate-manager'
-                    ),
-                ],
-                403
-            );
+
+        $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
+
+        if (!$route) {
+            wp_send_json_error(['message' => 'Invalid route'], 400);
         }
-    
-        $request = wp_unslash( $_REQUEST );
-    
-        $route = sanitize_key( $request['route'] ?? '' );
-    
-        $maps = array(
+
+        $validRoutes = [
             'get_settings'  => 'getSettings',
             'save_settings' => 'saveSettings',
-        );
-    
-        if ( ! isset( $maps[ $route ] ) ) {
-            wp_send_json_error(
-                [
-                    'message' => __(
-                        'Invalid route',
-                        'swift-certificate-manager'
-                    ),
-                ],
-                400
-            );
+        ];
+
+        if (!isset($validRoutes[$route])) {
+            wp_send_json_error(['message' => 'Invalid route'], 400);
         }
-    
-        do_action( 'swiftcm_doing_ajax_settings_' . $route );
-    
-        // Request data sanitization handled in methods.
-        $this->{$maps[ $route ]}( $request );
-    
-        do_action(
-            'swiftcm_admin_ajax_handler_settings_catch',
-            $route
-        );
+
+        $this->{$validRoutes[$route]}();
+
+        do_action('swiftcm_admin_ajax_handler_settings_catch', $route);
+
+        wp_die();
     }
 
-    public function getSettings($request)
+    public function getSettings()
     {
-        $settings = get_option('swiftcm_global_settings', array());
+        $settings = get_option('swiftcm_global_settings', []);
 
         wp_send_json_success(array(
             'settings' => $settings
         ));
     }
 
-    public function saveSettings( $request ) {
+    public function saveSettings() {
+        $settings = isset($_REQUEST['settings']) && is_array($_REQUEST['settings'])
+        ? wp_unslash($_REQUEST['settings'])
+        : [];
 
-        if (
-            ! isset( $request['settings'] ) ||
-            ! is_array( $request['settings'] )
-        ) {
-            wp_send_json_error(
-                [
-                    'message' => __(
-                        'Invalid settings',
-                        'swift-certificate-manager'
-                    ),
-                ],
-                400
-            );
+
+        if (empty($settings)) {
+            wp_send_json_error([
+                'message' => __('Invalid settings', 'swift-certificate-manager'),
+            ], 400);
         }
-    
+
         $settings = $this->sanitizeArray(
-            $request['settings']
+            wp_unslash($_REQUEST['settings'])
         );
     
         $this->handleNewsletter( $settings );
     
-        update_option(
-            'swiftcm_global_settings',
-            $settings
-        );
+        update_option('swiftcm_global_settings', $settings );
     
         wp_send_json_success(
             [

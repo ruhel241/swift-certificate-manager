@@ -32,11 +32,13 @@ class TemplateController
             ], 403);
         }
 
-       $request = wp_unslash($_REQUEST);
+        $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
 
-       $route = sanitize_key($request['route'] ?? '');
+        if (!$route) {
+            wp_send_json_error(['message' => 'Invalid route'], 400);
+        }
 
-        $maps = array(
+        $validRoutes = [
             'get_active_template'   => 'getActiveTemplate',
             'save_active_template'  => 'saveActiveTemplate',
             'get_templates'         => 'getTemplates',
@@ -44,32 +46,29 @@ class TemplateController
             'update_template'       => 'updateTemplate',
             'save_templates'        => 'saveTemplates',
             'redesign_template'     => 'redesignTemplate'
-        );
+        ];
 
-        if (!isset($maps[$route])) {
-            wp_send_json_error([
-                'message' => __('Invalid route', 'swift-certificate-manager')
-            ], 400);
+        if (!isset($validRoutes[$route])) {
+            wp_send_json_error(['message' => 'Invalid route'], 400);
         }
 
-        do_action('swiftcm_doing_ajax_template_' . $route);
-
-        // Pass request (already sanitized inside methods)
-        $this->{$maps[$route]}($request);
+        $this->{$validRoutes[$route]}();
 
         do_action('swiftcm_admin_ajax_handler_template_catch', $route);
+
+        wp_die();
     }
 
-    public function getActiveTemplate($request) {
+    public function getActiveTemplate() {
         wp_send_json_success([
             'message' => __('get Activated Certificate', 'swift-certificate-manager'),
             'active_template' => get_option('swiftcm_active_template', 'template-1')
         ]);
     }
 
-    public function saveActiveTemplate($request)
+    public function saveActiveTemplate()
     {
-        $slug = sanitize_key($request['slug'] ?? '');
+        $slug = sanitize_key($_REQUEST['slug'] ?? '');
 
         if (!$slug) {
             wp_send_json_error(
@@ -86,7 +85,7 @@ class TemplateController
         ]);
     }
 
-    public function getTemplates($request)
+    public function getTemplates()
     {
         $SwiftCMTemplates = new SwiftCMTemplates();
     
@@ -102,9 +101,9 @@ class TemplateController
         ], 200);
     }
 
-    public function getEditTemplate($request)
+    public function getEditTemplate()
     {
-        $templateId = absint($request['template_id'] ?? 0);
+        $templateId = absint($_REQUEST['template_id'] ?? 0);
 
         if (!$templateId) {
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
@@ -124,9 +123,11 @@ class TemplateController
         ]);
     }
 
-    public function updateTemplate($request)
+    public function updateTemplate()
     {
-        $template = $request['template'] ?? [];
+        $template = isset($_REQUEST['template']) && is_array($_REQUEST['template'])
+        ? wp_unslash($_REQUEST['template'])
+        : [];
 
         if (!is_array($template)) {
             wp_send_json_error(['message' => __('Invalid template data', 'swift-certificate-manager')], 400);
@@ -162,7 +163,7 @@ class TemplateController
         ]);
     }
 
-    public function saveTemplates($request)
+    public function saveTemplates()
     {
         $templateManager = new TemplatesManager();
         $SwiftCMTemplates = new SwiftCMTemplates();
@@ -186,7 +187,7 @@ class TemplateController
             $templateImage = $template['template_image'];
             $slug          = $template['slug'];
             $templatePro   = $template['pro'];
-            $settings       = isset($getConfigTemplates[$slug])  ? wp_unslash($getConfigTemplates[$slug]) : [];
+            $settings      = isset($getConfigTemplates[$slug]) ? wp_unslash($getConfigTemplates[$slug]) : [];
 
             $data = [
                 'template_name'  => sanitize_text_field($templateName),
@@ -232,9 +233,9 @@ class TemplateController
         update_option('swiftcm_global_settings', array_merge($existing, $instructorInfo));
     }
 
-    public function redesignTemplate($request)
+    public function redesignTemplate()
     {
-        $templateId = absint($request['template_id'] ?? 0);
+        $templateId = absint($_REQUEST['template_id'] ?? 0);
 
         if (!$templateId) {
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);

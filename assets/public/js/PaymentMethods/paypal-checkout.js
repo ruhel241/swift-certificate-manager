@@ -1,1 +1,109 @@
-(()=>{function t(n){return t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},t(n)}function n(t,n){for(var r=0;r<n.length;r++){var i=n[r];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,e(i.key),i)}}function e(n){var e=function(n,e){if("object"!=t(n)||!n)return n;var r=n[Symbol.toPrimitive];if(void 0!==r){var i=r.call(n,e||"default");if("object"!=t(i))return i;throw new TypeError("@@toPrimitive must return a primitive value.")}return("string"===e?String:Number)(n)}(n,"string");return"symbol"==t(e)?e:e+""}var r=function(){return t=function t(n,e){!function(t,n){if(!(t instanceof n))throw new TypeError("Cannot call a class as a function")}(this,t),this.form=n,this.data=(null==e?void 0:e.data)||{}},(e=[{key:"init",value:function(){var t=this;if(void 0!==window.paypal&&window.paypal.Buttons&&this.form&&this.form.length&&this.data.purchase_units&&this.data.hash){var n=this.form.find(".swiftcm_payment_processor");if(n.length){n.empty(),this.form.find(".swiftcm_complete_payment_instruction").remove();var e=jQuery("<div class='swiftcm_paypal_btn'></div>");n.append(e),window.paypal.Buttons({fundingSource:window.paypal.FUNDING.PAYPAL,style:{shape:"pill",layout:"vertical",label:"paypal",disableMaxWidth:!0},createOrder:function(n,e){return e.order.create({purchase_units:[t.data.purchase_units]})},onApprove:function(n,e){return e.order.capture().then(function(n){var e,r=null==n||null===(e=n.purchase_units)||void 0===e||null===(e=e[0])||void 0===e||null===(e=e.payments)||void 0===e||null===(e=e.captures)||void 0===e?void 0:e[0];if(r&&r.id)return jQuery.post(window.swiftcmPublicVars.ajaxurl,{action:"swiftcm_payment_confirmation_paypal",hash:t.data.hash,charge_id:r.id,nonce:window.swiftcmPublicVars.nonce}).then(function(n){var e;null!=n&&n.success?t.data.confirmation_url&&(window.location.href=t.data.confirmation_url):alert((null==n||null===(e=n.data)||void 0===e?void 0:e.message)||"Payment confirmation failed.")}).catch(function(t){alert("An error occurred while confirming payment.")});alert("Transaction details are missing.")})},onError:function(t){alert("An error occurred during PayPal payment.")},onCancel:function(){}}).render(e[0]),this.form.find(".request_cretificate_form").hide(),this.form.prepend("<p class='swiftcm_complete_payment_instruction'>Please complete your certificate payment with PayPal 👇</p>")}}}}])&&n(t.prototype,e),r&&n(t,r),Object.defineProperty(t,"prototype",{writable:!1}),t;var t,e,r}();window.addEventListener("swiftcm_payment_next_action_paypal",function(t){var n=t.detail;n&&n.form&&n.response&&new r(n.form,n.response).init()})})();
+/******/ (() => { // webpackBootstrap
+/*!***************************************************************!*\
+  !*** ./resources/public/js/PaymentMethods/paypal-checkout.js ***!
+  \***************************************************************/
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+var PaypalCheckout = /*#__PURE__*/function () {
+  function PaypalCheckout($form, $response) {
+    _classCallCheck(this, PaypalCheckout);
+    this.form = $form;
+    this.data = ($response === null || $response === void 0 ? void 0 : $response.data) || {};
+  }
+  return _createClass(PaypalCheckout, [{
+    key: "init",
+    value: function init() {
+      var _this = this;
+      if (typeof window.paypal === 'undefined' || !window.paypal.Buttons) {
+        console.error('PayPal SDK is not loaded.');
+        return;
+      }
+      if (!this.form || !this.form.length) {
+        console.error('PayPal form not found.');
+        return;
+      }
+      if (!this.data.purchase_units || !this.data.hash) {
+        console.error('Invalid PayPal response data.', this.data);
+        return;
+      }
+      var paymentProcessorContainer = this.form.find('.swiftcm_payment_processor');
+      if (!paymentProcessorContainer.length) {
+        console.error('Could not find the payment processor container.');
+        return;
+      }
+
+      // Remove old message/button before re-render
+      paymentProcessorContainer.empty();
+      this.form.find('.swiftcm_complete_payment_instruction').remove();
+      var paypalButtonContainer = jQuery("<div class='swiftcm_paypal_btn'></div>");
+      paymentProcessorContainer.append(paypalButtonContainer);
+      window.paypal.Buttons({
+        fundingSource: window.paypal.FUNDING.PAYPAL,
+        style: {
+          shape: 'pill',
+          layout: 'vertical',
+          label: 'paypal',
+          disableMaxWidth: true
+        },
+        createOrder: function createOrder(data, actions) {
+          return actions.order.create({
+            purchase_units: [_this.data.purchase_units]
+          });
+        },
+        onApprove: function onApprove(data, actions) {
+          return actions.order.capture().then(function (details) {
+            var _details$purchase_uni;
+            var transaction = details === null || details === void 0 || (_details$purchase_uni = details.purchase_units) === null || _details$purchase_uni === void 0 || (_details$purchase_uni = _details$purchase_uni[0]) === null || _details$purchase_uni === void 0 || (_details$purchase_uni = _details$purchase_uni.payments) === null || _details$purchase_uni === void 0 || (_details$purchase_uni = _details$purchase_uni.captures) === null || _details$purchase_uni === void 0 ? void 0 : _details$purchase_uni[0];
+            if (!transaction || !transaction.id) {
+              console.error('Transaction details are missing.');
+              alert('Transaction details are missing.');
+              return;
+            }
+            return jQuery.post(window.swiftcmPublicVars.ajaxurl, {
+              action: 'swiftcm_payment_confirmation_paypal',
+              hash: _this.data.hash,
+              charge_id: transaction.id,
+              nonce: window.swiftcmPublicVars.nonce
+            }).then(function (response) {
+              if (response !== null && response !== void 0 && response.success) {
+                if (_this.data.confirmation_url) {
+                  window.location.href = _this.data.confirmation_url;
+                }
+              } else {
+                var _response$data;
+                console.error('Payment confirmation failed.', response);
+                alert((response === null || response === void 0 || (_response$data = response.data) === null || _response$data === void 0 ? void 0 : _response$data.message) || 'Payment confirmation failed.');
+              }
+            })["catch"](function (error) {
+              console.error('Error during payment confirmation:', error);
+              alert('An error occurred while confirming payment.');
+            });
+          });
+        },
+        onError: function onError(err) {
+          console.error('PayPal error:', err);
+          alert('An error occurred during PayPal payment.');
+        },
+        onCancel: function onCancel() {
+          console.warn('PayPal payment was cancelled by the user.');
+        }
+      }).render(paypalButtonContainer[0]);
+      this.form.find('.request_cretificate_form').hide();
+      this.form.prepend("<p class='swiftcm_complete_payment_instruction'>Please complete your certificate payment with PayPal 👇</p>");
+    }
+  }]);
+}();
+window.addEventListener('swiftcm_payment_next_action_paypal', function (e) {
+  var detail = e.detail;
+  if (detail && detail.form && detail.response) {
+    new PaypalCheckout(detail.form, detail.response).init();
+  } else {
+    console.error('Invalid event details for PayPal checkout.');
+  }
+});
+/******/ })()
+;

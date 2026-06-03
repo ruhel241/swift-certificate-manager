@@ -450,7 +450,14 @@ export default {
         this.upgradePopupVisible = true;
         return;
       }
-      // Create loading indicator
+
+      const data = {
+        status: this.status,
+        search: this.search,
+        current_page: this.paginate.current_page,
+        per_page: this.paginate.per_page,
+      };
+
       const loading = this.$loading({
         fullscreen: true,
         text: 'Exporting CSV File....',
@@ -459,9 +466,7 @@ export default {
         customClass: 'swiftcm-text-loading'
       });
 
-      // Add setTimeout for 1000ms (1 second) delay
       setTimeout(() => {
-        // Use fetch instead of direct location.href to handle the response
         fetch(swiftcmAdminVars.ajaxurl, {
           method: 'POST',
           headers: {
@@ -470,51 +475,50 @@ export default {
           body: new URLSearchParams({
             action: 'swiftcm_generate_admin_ajax',
             route: 'get_csv_download',
-            status: this.status,
-            search: this.search,
-            current_page: this.paginate.current_page,
-            per_page: this.paginate.per_page,
+            info_data: JSON.stringify(data),
             nonce: window.swiftcmAdminVars.nonce,
           })
         })
-            .then(response => {
-              if (!response.ok) {
-                return response.json().then(errorData => {
-                  throw new Error(errorData.data?.message || 'Failed to download CSV');
-                });
-              }
-              // For successful response, get the blob and download it
-              return response.blob();
-            })
-            .then(blob => {
-              // Create a download link for the blob
-              const url = window.URL.createObjectURL(blob);
-              const a = document.createElement('a');
-              const date = new Date().toISOString().split('T')[0];
-              a.href = url;
-              a.download = `swiftcm-export-${date}.csv`;
-              document.body.appendChild(a);
-              a.click();
-              window.URL.revokeObjectURL(url);
-              a.remove();
-            })
-            .catch(error => {
-              // If error is about no data, show a specific message
-              if (error.message) {
-                this.$message({
-                  message: error.message,
-                  type: 'warning',
-                  offset: 50
-                });
-              } else {
-                this.$handleError(error);
-              }
-            })
-            .finally(() => {
-              // Always close the loading indicator
-              loading.close();
+          .then(async response => {
+            if (!response.ok) {
+              let errorMessage = 'Failed to download CSV';
+
+              try {
+                const errorData = await response.json();
+                errorMessage = errorData.data?.message || errorMessage;
+              } catch (e) {}
+
+              throw new Error(errorMessage);
+            }
+
+            return response.blob();
+          })
+          .then(blob => {
+            const url = window.URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            const date = new Date().toISOString().split('T')[0];
+
+            a.href = url;
+            a.download = `swiftcm-export-${date}.csv`;
+
+            document.body.appendChild(a);
+            a.click();
+
+            window.URL.revokeObjectURL(url);
+            a.remove();
+          })
+          .catch(error => {
+            this.$message({
+              message: error.message || 'Something went wrong',
+              type: 'warning',
+              offset: 50
             });
-      }, 1000); // 1000ms timeout
+          })
+          .finally(() => {
+            loading.close();
+          });
+      }, 1000);
     },
     gotoEdit(id) {
       if (!this.hasPro) {
@@ -582,13 +586,17 @@ export default {
     },
     fetchInfos() {
       this.fetching = true;
-      this.$get({
-        action: "swiftcm_generate_admin_ajax",
-        route: "get_certificate_infos",
+      let data = {
         status: this.status,
         search: this.search,
         current_page: this.paginate.current_page,
         per_page: this.paginate.per_page,
+      };
+
+      this.$get({
+        action: "swiftcm_generate_admin_ajax",
+        route: "get_certificate_infos",
+        info_data: data,
         nonce: window.swiftcmAdminVars.nonce,
       })
         .then((response) => {

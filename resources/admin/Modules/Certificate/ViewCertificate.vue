@@ -569,11 +569,15 @@ export default {
       const canvas = await this.renderCanvasForExport(element);
       const imageData = canvas.toDataURL("image/png", 1.0);
 
+      let data = {
+        info: this.info,
+        certificate_data: imageData,
+      }
+
       this.$post({
         action: "swiftcm_generate_admin_ajax",
         route: "sending_email_certificate",
-        info: this.info,
-        certificate_data: imageData,
+        info_data: data,
         nonce: window.swiftcmAdminVars.nonce,
       })
         .then((response) => {

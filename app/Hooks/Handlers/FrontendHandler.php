@@ -40,36 +40,26 @@ class FrontendHandler
             ], 403);
         }
 
-        $request = wp_unslash(array_merge($_GET, $_POST));
+        $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
 
-        $route = sanitize_key($request['route'] ?? '');
-
-
-        if (empty($route)) {
-            wp_send_json_error([
-                'message' => __('Route is required', 'swift-certificate-manager')
-            ], 400);
+        if (!$route) {
+            wp_send_json_error(['message' => 'Invalid route'], 400);
         }
 
-        // Route map
-        $maps = [
+        $validRoutes = [
             'request_certificate_info' => 'requestCertificateInfo',
             'verify_certificate'       => 'verifyCertificate',
         ];
 
-        if (!isset($maps[$route])) {
-            wp_send_json_error([
-                'message' => __('Invalid route', 'swift-certificate-manager')
-            ], 400);
+        if (!isset($validRoutes[$route])) {
+            wp_send_json_error(['message' => 'Invalid route'], 400);
         }
 
-        // call method
-        do_action('swiftcm_doing_ajax_public_forms_' . $route);
-
-        // Pass raw request (sanitize inside method)
-        $this->{$maps[$route]}($request);
+        $this->{$validRoutes[$route]}();
 
         do_action('swiftcm_public_ajax_handler_catch', $route);
+
+        wp_die();
     }
 
     // shortcode register
@@ -84,6 +74,8 @@ class FrontendHandler
     public function render($attr)
     {
        $this->loadAssets();
+
+       $attr = is_array($attr) ? $attr : [];
 
         ob_start();
             foreach($attr as $name ) {
@@ -111,8 +103,9 @@ class FrontendHandler
         $paymentSettingsStripe = get_option('swiftcm_payment_settings_stripe', []);
         $paymentSettingsPaypal = get_option('swiftcm_payment_settings_paypal', []);
 
-        $isStripeEnabled = isset($paymentSettingsStripe['enable']) ? $paymentSettingsStripe['enable'] : 'no';
-        $isPaypalEnabled = isset($paymentSettingsPaypal['enable']) ? $paymentSettingsPaypal['enable'] : 'no';
+       
+        $isStripeEnabled = $paymentSettingsStripe['enable'] ?? 'no';
+        $isPaypalEnabled = $paymentSettingsPaypal['enable'] ?? 'no';
 
         if ($isStripeEnabled === 'yes') {
             do_action('swiftcm_render_component_stripe');
@@ -132,16 +125,17 @@ class FrontendHandler
         require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/views/public/payment-invoice.php';
     }
 
-    public function requestCertificateInfo($request)
+    public function requestCertificateInfo()
     {
-        // ✅ validate info
-        if (!isset($request['info']) || !is_array($request['info'])) {
+        $info = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
+        ? wp_unslash($_REQUEST['info'])
+        : [];
+
+        if (empty($info)) {
             wp_send_json_error([
-                'message' => __('Invalid request data', 'swift-certificate-manager')
+                'message' => __('Invalid request data', 'swift-certificate-manager'),
             ], 400);
         }
-
-        $info = $request['info'];
 
         // ✅ sanitize fields
         $status        = sanitize_text_field(Arr::get($info, 'status'));
@@ -158,7 +152,7 @@ class FrontendHandler
 
         $SwiftCMGenerate  = new SwiftCMGenerate();
         $SwiftCMTemplates = new SwiftCMTemplates();
-        $helperFunction            = new HelperFunction();
+        $helperFunction   = new HelperFunction();
 
         // settings
         $globalSettings = get_option('swiftcm_global_settings', []);
@@ -178,7 +172,9 @@ class FrontendHandler
             ], 404);
         }
 
-        $settings = json_decode($getTemplate->settings, true);
+       
+        $settings = json_decode($getTemplate->settings ?? '', true);
+        $settings = is_array($settings) ? $settings : [];
 
         // date
         $rawDate = sanitize_text_field(Arr::get($info, 'graduation_date'));
@@ -223,17 +219,18 @@ class FrontendHandler
         ], 200);
     }
 
-    public function verifyCertificate($request)
+    public function verifyCertificate()
     {
-        if (empty($request['certificate_code'])) {
+        // 🔐 sanitize input
+        $certificateCode = sanitize_text_field(wp_unslash($_REQUEST['certificate_code']));
+        
+        if (!$certificateCode) {
             wp_send_json_error([
                 'message' => __('Certificate code is required', 'swift-certificate-manager')
             ], 400);
         }
 
-        // 🔐 sanitize input
-        $certificateCode = sanitize_text_field($request['certificate_code']);
-
+       
         $SwiftCMGenerate = new SwiftCMGenerate();
 
         $info = $SwiftCMGenerate->verifyCertificateCode($certificateCode);
@@ -260,7 +257,6 @@ class FrontendHandler
     }
 
     // when payment then trigger action paypal or stripe
-
     public function paymentCreate($info, $certificateGenerateId)
     {
         if (!is_array($info)) {
@@ -270,7 +266,7 @@ class FrontendHandler
         // 🔐 sanitize inputs
         $paymentMethod = sanitize_key(Arr::get($info, 'payment_method'));
         $status        = sanitize_text_field(Arr::get($info, 'status'));
-        $paymentTotal  = floatval(Arr::get($info, 'payment_total'));
+        $paymentTotal  = (float) sanitize_text_field(Arr::get($info, 'payment_total'));
         $currency      = sanitize_text_field(Arr::get($info, 'currency'));
 
         if (empty($paymentMethod)) {
@@ -298,7 +294,7 @@ class FrontendHandler
         }
 
         // 🔐 generate safe hash
-        $hash = sanitize_text_field($this->generateHash());
+        $hash = $this->generateHash();
 
         $paymentData = [
             'request_id'     => absint($certificateGenerateId),
