@@ -51,7 +51,9 @@ class OnboardingHandler
 
     public function saveOnboardingInfo()
     {
-        $info = (array) wp_unslash($_REQUEST['info'] ?? []);
+        $info = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
+        ? wp_unslash($_REQUEST['info'])
+        : [];
     
         if (empty($info)) {
             wp_send_json_error([

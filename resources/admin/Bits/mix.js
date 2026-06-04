@@ -43,6 +43,7 @@ mix.webpackConfig({
 
     output: {
         publicPath: '/',
+        chunkLoadingGlobal: 'webpackChunkswiftcm'
     },
 
     optimization: {

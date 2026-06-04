@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkswift_certificate_manager"] = self["webpackChunkswift_certificate_manager"] || []).push([["canvg"],{
+(self["webpackChunkswiftcm"] = self["webpackChunkswiftcm"] || []).push([["canvg"],{
 
 /***/ "./node_modules/canvg/node_modules/core-js/internals/a-callable.js"
 /*!*************************************************************************!*\

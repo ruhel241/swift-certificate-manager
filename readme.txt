@@ -432,6 +432,18 @@ Swift Certificate Manager uses modern development tools including Vue.js, npm, L
 
 In accordance with WordPress Plugin Directory guidelines, the complete human-readable source code for all compiled and generated assets is publicly available in the source repository below.
 
+## Third-Party Libraries
+
+This plugin includes a bundled third-party library (`wp-fluent`) used internally for framework functionality.
+
+All third-party code is fully isolated and does not affect plugin-level naming conventions, hooks, functions, classes, or options.
+
+Plugin-specific code consistently uses the `swiftcm` prefix.
+
+## Naming Convention
+
+All plugin-defined functions, classes, hooks, AJAX actions, and options use the `swiftcm` prefix to ensure compatibility and avoid conflicts with other plugins.
+
 Source Code Repository:
 
 https://github.com/ruhel241/swift-certificate-manager

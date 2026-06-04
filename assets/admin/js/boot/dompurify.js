@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkswift_certificate_manager"] = self["webpackChunkswift_certificate_manager"] || []).push([["dompurify"],{
+(self["webpackChunkswiftcm"] = self["webpackChunkswiftcm"] || []).push([["dompurify"],{
 
 /***/ "./node_modules/dompurify/dist/purify.es.mjs"
 /*!***************************************************!*\
