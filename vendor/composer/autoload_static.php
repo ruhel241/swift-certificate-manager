@@ -23,6 +23,25 @@ class ComposerStaticInit3532d4747341e97d0d5ace418e3c07c8
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'FPDF' => __DIR__ . '/..' . '/setasign/fpdf/fpdf.php',
+        'SwiftCertificateManager\\Helpers\\ArrayHelper' => __DIR__ . '/../..' . '/app/Helpers/ArrayHelper.php',
+        'SwiftCertificateManager\\Helpers\\Currencies' => __DIR__ . '/../..' . '/app/Helpers/Currencies.php',
+        'SwiftCertificateManager\\Helpers\\HelperFunction' => __DIR__ . '/../..' . '/app/Helpers/HelperFunction.php',
+        'SwiftCertificateManager\\Helpers\\PaymentHelper' => __DIR__ . '/../..' . '/app/Helpers/PaymentHelper.php',
+        'SwiftCertificateManager\\Hooks\\Handlers\\ActivationHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/ActivationHandler.php',
+        'SwiftCertificateManager\\Hooks\\Handlers\\AdminPageHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/AdminPageHandler.php',
+        'SwiftCertificateManager\\Hooks\\Handlers\\AvailableOptions' => __DIR__ . '/../..' . '/app/Hooks/Handlers/AvailableOptions.php',
+        'SwiftCertificateManager\\Hooks\\Handlers\\DeactivationHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/DeactivationHandler.php',
+        'SwiftCertificateManager\\Hooks\\Handlers\\FrontendHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/FrontendHandler.php',
+        'SwiftCertificateManager\\Hooks\\Handlers\\OnboardingHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/OnboardingHandler.php',
+        'SwiftCertificateManager\\Hooks\\Handlers\\TemplatesManager' => __DIR__ . '/../..' . '/app/Hooks/Handlers/TemplatesManager.php',
+        'SwiftCertificateManager\\Hooks\\actions' => __DIR__ . '/../..' . '/app/Hooks/actions.php',
+        'SwiftCertificateManager\\Http\\Controllers\\AssignCertificateController' => __DIR__ . '/../..' . '/app/Http/Controllers/AssignCertificateController.php',
+        'SwiftCertificateManager\\Http\\Controllers\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SettingsController.php',
+        'SwiftCertificateManager\\Http\\Controllers\\TemplateController' => __DIR__ . '/../..' . '/app/Http/Controllers/TemplateController.php',
+        'SwiftCertificateManager\\Libs\\Translation\\TranslationStrings' => __DIR__ . '/../..' . '/app/Libs/Translation/TranslationStrings.php',
+        'SwiftCertificateManager\\Models\\SwiftCMGenerate' => __DIR__ . '/../..' . '/app/Models/SwiftCMGenerate.php',
+        'SwiftCertificateManager\\Models\\SwiftCMPayment' => __DIR__ . '/../..' . '/app/Models/SwiftCMPayment.php',
+        'SwiftCertificateManager\\Models\\SwiftCMTemplates' => __DIR__ . '/../..' . '/app/Models/SwiftCMTemplates.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
