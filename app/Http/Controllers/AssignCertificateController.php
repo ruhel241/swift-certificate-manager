@@ -33,8 +33,10 @@ class AssignCertificateController
                 'message' => __('Unauthorized access', 'swift-certificate-manager')
             ], 403);
         }
-        
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified via check_ajax_referer() above.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$route) {
             wp_send_json_error(['message' => 'Invalid route'], 400);
@@ -66,9 +68,12 @@ class AssignCertificateController
 
     public function getCertificateInfos()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $infoData = isset($_REQUEST['info_data']) && is_array($_REQUEST['info_data'])
-        ? wp_unslash($_REQUEST['info_data'])
-        : [];
+            ? map_deep(wp_unslash($_REQUEST['info_data']), 'sanitize_text_field')
+            : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         $params = [
             'search'        => sanitize_text_field($infoData['search'] ?? ''),
@@ -91,7 +96,10 @@ class AssignCertificateController
 
     public function getCertificateInfoByID()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $infoId = absint($_REQUEST['info_id'] ?? 0);
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if ( ! $infoId ) {
             wp_send_json_error([
@@ -125,7 +133,10 @@ class AssignCertificateController
 
     public function getCustomizationCertificate()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $infoId = absint($_REQUEST['info_id'] ?? 0);
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if ( ! $infoId ) {
             wp_send_json_error([
@@ -169,6 +180,8 @@ class AssignCertificateController
 
     public function updateCustomizationCertificate()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $infoId = absint($_REQUEST['info_id'] ?? 0);
 
         if (!$infoId) {
@@ -187,7 +200,10 @@ class AssignCertificateController
             ], 404);
         }
 
-        $settings = (array) wp_unslash($_REQUEST['settings'] ?? []);
+        $settings = isset($_REQUEST['settings']) && is_array($_REQUEST['settings'])
+            ? map_deep(wp_unslash($_REQUEST['settings']), 'sanitize_text_field')
+            : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         $updateData = [
             'student_name'    => sanitize_text_field($settings['student_name'] ?? ''),
@@ -206,9 +222,12 @@ class AssignCertificateController
 
     public function saveCertificateInfo()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $infoRaw = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
-        ? wp_unslash($_REQUEST['info'])
-        : [];
+            ? map_deep(wp_unslash($_REQUEST['info']), 'sanitize_text_field')
+            : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         $info = [
             'student_name'    => sanitize_text_field($infoRaw['student_name'] ?? ''),
@@ -287,15 +306,20 @@ class AssignCertificateController
 
     public function sendingEmailCertificate()
     {
-        $infoData = isset($_REQUEST['info_data']) ? wp_unslash($_REQUEST['info_data']) : [];
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        $infoData = isset($_REQUEST['info_data']) && is_array($_REQUEST['info_data'])
+            ? map_deep(wp_unslash($_REQUEST['info_data']), 'sanitize_text_field')
+            : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-        if (!is_array($infoData)) {
+        if (empty($infoData)) {
             wp_send_json_error(['message' => 'Invalid data']);
         }
-    
+
         $info = isset($infoData['info']) && is_array($infoData['info'])
-        ? wp_unslash($infoData['info'])
-        : [];
+            ? $infoData['info']
+            : [];
 
     
         $pdfData = $this->getPDFandImageURL($infoData);
@@ -469,7 +493,7 @@ class AssignCertificateController
 
         // ✅ safe delete old file
         if (file_exists($imageFilePath)) {
-            unlink($imageFilePath);
+            wp_delete_file($imageFilePath);
         }
 
         // ✅ save file
@@ -570,6 +594,8 @@ class AssignCertificateController
 
     public function updateCertificateInfo()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $infoId = absint($_REQUEST['info_id'] ?? 0);
 
         if (!$infoId) {
@@ -590,8 +616,9 @@ class AssignCertificateController
         }
 
         $infoData = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
-            ? wp_unslash($_REQUEST['info'])
+            ? map_deep(wp_unslash($_REQUEST['info']), 'sanitize_text_field')
             : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         $activeTemplate = get_option('swiftcm_active_template', 'template-1');
         $getTemplate    = $SwiftCMTemplates->getTemplateSlug($activeTemplate);
@@ -637,27 +664,28 @@ class AssignCertificateController
     public function maybeDeleteInfos()
     {
         $SwiftCMGenerate = new SwiftCMGenerate();
-    
+
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         // action type (safe)
         $actionType = sanitize_key($_REQUEST['action_type'] ?? '');
-    
+
         $allowedActions = ['delete', 'draft', 'publish'];
-    
+
         if (!in_array($actionType, $allowedActions, true)) {
             wp_send_json_error([
                 'message' => __('Invalid action type', 'swift-certificate-manager')
             ], 400);
         }
-    
+
         // safe bulk IDs
         $infoIds = isset($_REQUEST['info_ids']) && is_array($_REQUEST['info_ids'])
-            ? wp_unslash($_REQUEST['info_ids'])
+            ? map_deep(wp_unslash($_REQUEST['info_ids']), 'absint')
             : [];
-    
-        // sanitize IDs
-        $infoIds = array_map('absint', $infoIds);
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+
         $infoIds = array_filter($infoIds);
-    
+
         if (empty($infoIds)) {
             wp_send_json_error([
                 'message' => __('No valid items selected', 'swift-certificate-manager')
@@ -692,9 +720,15 @@ class AssignCertificateController
 
             $certificateService = new SwiftCMGenerate();
 
-            $infoData = isset($_REQUEST['info_data'])
-            ? json_decode(wp_unslash($_REQUEST['info_data']), true)
-            : [];
+            // Nonce verified in ajaxRoutes() via check_ajax_referer().
+            // phpcs:disable WordPress.Security.NonceVerification.Recommended
+            $infoDataJson = isset($_REQUEST['info_data'])
+                ? sanitize_text_field(wp_unslash($_REQUEST['info_data']))
+                : '';
+            $infoData = $infoDataJson
+                ? (array) json_decode($infoDataJson, true)
+                : [];
+            // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
             $params = [
                 'search'        => sanitize_text_field($infoData['search'] ?? ''),
@@ -811,6 +845,8 @@ class AssignCertificateController
     // when user want to redesign certificate from single customization page.
     public function redesignTemplate()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $templateId = absint($_REQUEST['template_id'] ?? 0);
 
         if (!$templateId) {
@@ -821,6 +857,7 @@ class AssignCertificateController
 
         // ✅ validate info_id
         $infoId = absint($_REQUEST['info_id'] ?? 0);
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$infoId) {
             wp_send_json_error([

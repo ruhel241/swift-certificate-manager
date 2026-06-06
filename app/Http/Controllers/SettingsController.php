@@ -26,7 +26,9 @@ class SettingsController
             ], 403);
         }
 
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified via check_ajax_referer() above.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$route) {
             wp_send_json_error(['message' => 'Invalid route'], 400);
@@ -58,20 +60,20 @@ class SettingsController
     }
 
     public function saveSettings() {
-        $settings = isset($_REQUEST['settings']) && is_array($_REQUEST['settings'])
-        ? wp_unslash($_REQUEST['settings'])
-        : [];
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        $rawSettings = isset($_REQUEST['settings']) && is_array($_REQUEST['settings'])
+            ? map_deep(wp_unslash($_REQUEST['settings']), 'sanitize_text_field')
+            : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-
-        if (empty($settings)) {
+        if (empty($rawSettings)) {
             wp_send_json_error([
                 'message' => __('Invalid settings', 'swift-certificate-manager'),
             ], 400);
         }
 
-        $settings = $this->sanitizeArray(
-            wp_unslash($_REQUEST['settings'])
-        );
+        $settings = $this->sanitizeArray($rawSettings);
     
         $this->handleNewsletter( $settings );
     

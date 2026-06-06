@@ -32,7 +32,9 @@ class TemplateController
             ], 403);
         }
 
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified via check_ajax_referer() above.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$route) {
             wp_send_json_error(['message' => 'Invalid route'], 400);
@@ -68,7 +70,10 @@ class TemplateController
 
     public function saveActiveTemplate()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $slug = sanitize_key($_REQUEST['slug'] ?? '');
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$slug) {
             wp_send_json_error(
@@ -103,7 +108,10 @@ class TemplateController
 
     public function getEditTemplate()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $templateId = absint($_REQUEST['template_id'] ?? 0);
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$templateId) {
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
@@ -125,11 +133,14 @@ class TemplateController
 
     public function updateTemplate()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $template = isset($_REQUEST['template']) && is_array($_REQUEST['template'])
-        ? wp_unslash($_REQUEST['template'])
-        : [];
+            ? map_deep(wp_unslash($_REQUEST['template']), 'sanitize_text_field')
+            : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-        if (!is_array($template)) {
+        if (empty($template)) {
             wp_send_json_error(['message' => __('Invalid template data', 'swift-certificate-manager')], 400);
         }
 
@@ -235,7 +246,10 @@ class TemplateController
 
     public function redesignTemplate()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $templateId = absint($_REQUEST['template_id'] ?? 0);
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$templateId) {
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);

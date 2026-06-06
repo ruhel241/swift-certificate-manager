@@ -40,7 +40,9 @@ class FrontendHandler
             ], 403);
         }
 
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified via check_ajax_referer() above.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$route) {
             wp_send_json_error(['message' => 'Invalid route'], 400);
@@ -127,9 +129,12 @@ class FrontendHandler
 
     public function requestCertificateInfo()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $info = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
-        ? wp_unslash($_REQUEST['info'])
-        : [];
+            ? map_deep(wp_unslash($_REQUEST['info']), 'sanitize_text_field')
+            : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (empty($info)) {
             wp_send_json_error([
@@ -221,8 +226,10 @@ class FrontendHandler
 
     public function verifyCertificate()
     {
-        // 🔐 sanitize input
-        $certificateCode = sanitize_text_field(wp_unslash($_REQUEST['certificate_code']));
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        $certificateCode = sanitize_text_field(wp_unslash($_REQUEST['certificate_code'] ?? ''));
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
         
         if (!$certificateCode) {
             wp_send_json_error([

@@ -27,7 +27,9 @@ class OnboardingHandler
             ], 403);
         }
 
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified via check_ajax_referer() above.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (!$route) {
             wp_send_json_error(['message' => 'Invalid route'], 400);
@@ -51,9 +53,12 @@ class OnboardingHandler
 
     public function saveOnboardingInfo()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $info = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
-        ? wp_unslash($_REQUEST['info'])
-        : [];
+            ? map_deep(wp_unslash($_REQUEST['info']), 'sanitize_text_field')
+            : [];
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
     
         if (empty($info)) {
             wp_send_json_error([
@@ -111,9 +116,12 @@ class OnboardingHandler
 
     public function saveOnboarded()
     {
+        // Nonce verified in ajaxRoutes() via check_ajax_referer().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $isOnboarded = sanitize_text_field(
             wp_unslash($_REQUEST['is_onboarded'] ?? '')
         );
+        // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if ($isOnboarded === '') {
             wp_send_json_error([
