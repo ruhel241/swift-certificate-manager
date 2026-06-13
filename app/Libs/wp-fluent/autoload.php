@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Autoload Service Container.
-require 'libs/viocon/autoload.php';
+require 'libs/VioconLib/autoload.php';
 
 spl_autoload_register(function ($class) {
 

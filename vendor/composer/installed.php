@@ -3,11 +3,11 @@
         'name' => 'swiftcm/swift-certificate-manager',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '1b3ad5cc9e4ac51c68bbe9056ae6be45056199da',
+        'reference' => '8193620f2eee9831d9b52a0d93cb5f843c3559ce',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => true,
+        'dev' => false,
     ),
     'versions' => array(
         'setasign/fpdf' => array(
@@ -22,7 +22,7 @@
         'swiftcm/swift-certificate-manager' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '1b3ad5cc9e4ac51c68bbe9056ae6be45056199da',
+            'reference' => '8193620f2eee9831d9b52a0d93cb5f843c3559ce',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
