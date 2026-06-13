@@ -11,6 +11,7 @@ use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
 use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
 use SwiftCertificateManager\Models\SwiftCMTemplates;
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
+use SwiftCertificateManager\Helpers\HelperFunction;
 
 class TemplateController
 {
@@ -20,19 +21,9 @@ class TemplateController
 
     public function ajaxRoutes()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
-            wp_send_json_error([
-                'message' => __('Invalid nonce', 'swift-certificate-manager')
-            ], 403);
-        }
+        HelperFunction::verifyAdminAjaxRequest();
 
-        if (!current_user_can('manage_options')) {
-            wp_send_json_error([
-                'message' => __('Unauthorized access', 'swift-certificate-manager')
-            ], 403);
-        }
-
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified via check_ajax_referer() above.
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -70,8 +61,9 @@ class TemplateController
 
     public function saveActiveTemplate()
     {
-        // Nonce verified in ajaxRoutes() via check_ajax_referer().
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        HelperFunction::verifyAdminAjaxRequest();
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
         $slug = sanitize_key($_REQUEST['slug'] ?? '');
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -107,12 +99,13 @@ class TemplateController
     }
 
     public function getEditTemplate()
-    {
-        // Nonce verified in ajaxRoutes() via check_ajax_referer().
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+    {   
+        HelperFunction::verifyAdminAjaxRequest();
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
         $templateId = absint($_REQUEST['template_id'] ?? 0);
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
-
+       
         if (!$templateId) {
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
         }
@@ -133,8 +126,9 @@ class TemplateController
 
     public function updateTemplate()
     {
-        // Nonce verified in ajaxRoutes() via check_ajax_referer().
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        HelperFunction::verifyAdminAjaxRequest();
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
         $template = isset($_REQUEST['template']) && is_array($_REQUEST['template'])
             ? map_deep(wp_unslash($_REQUEST['template']), 'sanitize_text_field')
             : [];
@@ -246,8 +240,9 @@ class TemplateController
 
     public function redesignTemplate()
     {
-        // Nonce verified in ajaxRoutes() via check_ajax_referer().
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        HelperFunction::verifyAdminAjaxRequest();
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
         $templateId = absint($_REQUEST['template_id'] ?? 0);
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 

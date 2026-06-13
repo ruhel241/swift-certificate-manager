@@ -14,7 +14,7 @@ class HelperFunction
      /**
      * Generate certificate code in format scYYMM0001
      */
-    public function generateCertificateCode($prefix = '') {
+    public static function generateCertificateCode($prefix = '') {
         // Get current 2-digit year and 2-digit month
         $year = gmdate('y');  // 2-digit year (25 for 2025)
         $month = gmdate('m'); // 2-digit month (05 for May)
@@ -42,5 +42,29 @@ class HelperFunction
 
         // Generate the complete certificate code
         return $prefix . $yearMonth . $serialFormatted;
+    }
+
+    public static function verifyAdminAjaxRequest()
+    {
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+    }
+
+    public static function verifyPublicAjaxRequest()
+    {
+        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
     }
 }

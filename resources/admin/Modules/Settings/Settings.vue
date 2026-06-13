@@ -206,7 +206,7 @@
               <span style="color: #000">Review On Wordpress</span>
             </a>
           </div>
-          <div class="setting-form">
+          <!-- <div class="setting-form">
             <h4 class="label">Subscribe To Newsletter</h4>
             <el-input type="email" placeholder="Enter email address" v-model="settings.newsletter"></el-input>
           </div>
@@ -226,7 +226,7 @@
                 terms and conditions
               </a>.
             </el-checkbox>
-          </div>
+          </div> -->
         </div>
         
         <div class="settings-item">

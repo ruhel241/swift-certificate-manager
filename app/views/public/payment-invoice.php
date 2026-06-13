@@ -165,18 +165,12 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 		<div class="footer">
 			<p>
 				<?php
-				echo esc_html__(
-					'Thank you for purchasing our certificate.',
-					'swift-certificate-manager'
-				);
+				echo esc_html__('Thank you for purchasing our certificate.', 'swift-certificate-manager');
 				?>
 			</p>
 			<p>
 				<?php
-				echo esc_html__(
-					'If you have any questions about this invoice, please contact us at info@swiftcertificate.com',
-					'swift-certificate-manager'
-				);
+					echo esc_html__( 'If you have any questions about this invoice, please contact us at info@swiftcertificate.com', 'swift-certificate-manager');
 				?>
 			</p>
 
@@ -187,10 +181,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 				<br>
 
 				<?php
-				echo esc_html__(
-					'All rights reserved.',
-					'swift-certificate-manager'
-				);
+				echo esc_html__( 'All rights reserved.', 'swift-certificate-manager' );
 				?>
 			</p>
 		</div>

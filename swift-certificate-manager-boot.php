@@ -26,12 +26,14 @@ class SwiftCertificateManagerBoot {
 		$ajaxSettingsController = new SwiftCertificateManager\Http\Controllers\SettingsController();
 		$ajaxSettingsController->register();
 
+		$onBoardingController = new SwiftCertificateManager\Http\Controllers\OnboardingController();
+		$onBoardingController->register();
+
 		// all actions
 		$adminActions = new SwiftCertificateManager\Hooks\actions();
 		$adminActions->register();
 		
-		$onBoardingHandler = new SwiftCertificateManager\Hooks\Handlers\OnboardingHandler();
-		$onBoardingHandler->registerEndpoints();
+		
     }
 
 	public function publicHooks() {

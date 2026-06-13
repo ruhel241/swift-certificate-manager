@@ -27,20 +27,14 @@ class FrontendHandler
             // // Load payment gateways for frontend to render payment options in certificate request form
             new \SwiftCertificateManagerPro\Services\Integrations\PayPal\PayPal();
             new \SwiftCertificateManagerPro\Services\Integrations\Stripe\Stripe();
-        }
-       
+        }     
     }
 
     public function ajaxRoutes()
     {
-        // Nonce check (CSRF protection)
-        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
-            wp_send_json_error([
-                'message' => __('Invalid nonce', 'swift-certificate-manager')
-            ], 403);
-        }
+        HelperFunction::verifyPublicAjaxRequest();
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified via check_ajax_referer() above.
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyPublicAjaxRequest().
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -129,8 +123,9 @@ class FrontendHandler
 
     public function requestCertificateInfo()
     {
-        // Nonce verified in ajaxRoutes() via check_ajax_referer().
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        HelperFunction::verifyPublicAjaxRequest();
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyPublicAjaxRequest().
         $info = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
             ? map_deep(wp_unslash($_REQUEST['info']), 'sanitize_text_field')
             : [];
@@ -157,15 +152,14 @@ class FrontendHandler
 
         $SwiftCMGenerate  = new SwiftCMGenerate();
         $SwiftCMTemplates = new SwiftCMTemplates();
-        $helperFunction   = new HelperFunction();
-
+       
         // settings
         $globalSettings = get_option('swiftcm_global_settings', []);
         $preference     = sanitize_key($globalSettings['preference'] ?? '');
 
         // generate code
         $certificateCodePrefix = $globalSettings['certificate_code_prefix'] ?? '';
-        $certificateCode       = $helperFunction->generateCertificateCode($certificateCodePrefix);
+        $certificateCode       = HelperFunction::generateCertificateCode($certificateCodePrefix);
 
         // template
         $activeTemplate = get_option('swiftcm_active_template', 'template-1');
@@ -226,8 +220,9 @@ class FrontendHandler
 
     public function verifyCertificate()
     {
-        // Nonce verified in ajaxRoutes() via check_ajax_referer().
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+        HelperFunction::verifyPublicAjaxRequest();
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyPublicAjaxRequest().
         $certificateCode = sanitize_text_field(wp_unslash($_REQUEST['certificate_code'] ?? ''));
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
         

@@ -6,6 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+use SwiftCertificateManager\Helpers\HelperFunction;
+
+
 class SettingsController
 {
     public function register() {
@@ -14,19 +17,9 @@ class SettingsController
 
     public function ajaxRoutes()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
-            wp_send_json_error([
-                'message' => __('Invalid nonce', 'swift-certificate-manager')
-            ], 403);
-        }
+        HelperFunction::verifyAdminAjaxRequest();
 
-        if (!current_user_can('manage_options')) {
-            wp_send_json_error([
-                'message' => __('Unauthorized access', 'swift-certificate-manager')
-            ], 403);
-        }
-
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Verified via check_ajax_referer() above.
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -59,13 +52,15 @@ class SettingsController
         ));
     }
 
-    public function saveSettings() {
-        // Nonce verified in ajaxRoutes() via check_ajax_referer().
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended
+    public function saveSettings() 
+    {
+        HelperFunction::verifyAdminAjaxRequest();
+        
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
         $rawSettings = isset($_REQUEST['settings']) && is_array($_REQUEST['settings'])
             ? map_deep(wp_unslash($_REQUEST['settings']), 'sanitize_text_field')
             : [];
-        // phpcs:enable WordPress.Security.NonceVerification.Recommended
+       // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
         if (empty($rawSettings)) {
             wp_send_json_error([
@@ -74,9 +69,7 @@ class SettingsController
         }
 
         $settings = $this->sanitizeArray($rawSettings);
-    
-        $this->handleNewsletter( $settings );
-    
+        
         update_option('swiftcm_global_settings', $settings );
     
         wp_send_json_success(
@@ -105,69 +98,6 @@ class SettingsController
         return $data;
     }
 
-    public function handleNewsletter($settings)
-    {
-        $email = sanitize_email($settings['newsletter'] ?? '');
-        $terms = sanitize_text_field($settings['terms_and_condition'] ?? 'no');
-
-        if (empty($email) || !is_email($email)) {
-            return;
-        }
-
-        if ($terms !== 'yes') {
-            return;
-        }
-
-        $stored = get_option('swiftcm_newsletters', []);
-        $emails = $stored['emails'] ?? [];
-
-        if (!is_array($emails)) {
-            $emails = [];
-        }
-
-        if (in_array($email, $emails, true)) {
-            return;
-        }
-
-        $result = $this->subscribeToNewsletter($email);
-
-        if (!is_wp_error($result)) {
-            $emails[] = $email;
-
-            update_option('swiftcm_newsletters', [
-                'emails' => $emails
-            ]);
-        }
-    }
-
-    public function subscribeToNewsletter($email)
-    {
-        $email = sanitize_email($email);
-
-        if (!is_email($email)) {
-            return new \WP_Error('invalid_email', __('Invalid email address.', 'swift-certificate-manager'));
-        }
-
-        $pluginCreatorEmail = 'info@swiftcertificate.com';
-
-        $subject = 'Swift Certificate Manager Plugin - New Subscriber';
-
-        $message = "
-            <h2>Swift Certificate Manager Plugin - New Subscription</h2>
-            <p><strong>Email:</strong> " . esc_html($email) . "</p>
-            <p><strong>Date:</strong> " . esc_html(gmdate('F j, Y, g:i a')) . "</p>
-        ";
-
-        $headers = ['Content-Type: text/html; charset=UTF-8'];
-
-        $sent = wp_mail($pluginCreatorEmail, $subject, $message, $headers);
-
-        if (!$sent) {
-            return new \WP_Error('email_failed', __('Email sending failed.', 'swift-certificate-manager'));
-        }
-
-        return true;
-    }
 
     // public function sendNoCacheHeaders() {
     //     nocache_headers();
