@@ -6,12 +6,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Hooks\Handlers\TemplatesManager;
 use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
 use SwiftCertificateManager\Models\SwiftCMTemplates;
+use SwiftCertificateManager\Hooks\Handlers\TemplatesManager;
+use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
-use SwiftCertificateManager\Helpers\HelperFunction;
 
 class TemplateController
 {
@@ -21,9 +20,19 @@ class TemplateController
 
     public function ajaxRoutes()
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -53,6 +62,7 @@ class TemplateController
     }
 
     public function getActiveTemplate() {
+        
         wp_send_json_success([
             'message' => __('get Activated Certificate', 'swift-certificate-manager'),
             'active_template' => get_option('swiftcm_active_template', 'template-1')
@@ -61,9 +71,19 @@ class TemplateController
 
     public function saveActiveTemplate()
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $slug = sanitize_key($_REQUEST['slug'] ?? '');
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -100,9 +120,19 @@ class TemplateController
 
     public function getEditTemplate()
     {   
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $templateId = absint($_REQUEST['template_id'] ?? 0);
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
        
@@ -126,9 +156,19 @@ class TemplateController
 
     public function updateTemplate()
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $template = isset($_REQUEST['template']) && is_array($_REQUEST['template'])
             ? map_deep(wp_unslash($_REQUEST['template']), 'sanitize_text_field')
             : [];
@@ -240,9 +280,19 @@ class TemplateController
 
     public function redesignTemplate()
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $templateId = absint($_REQUEST['template_id'] ?? 0);
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 

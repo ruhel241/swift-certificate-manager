@@ -3,7 +3,7 @@
         'name' => 'swiftcm/swift-certificate-manager',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '049530e2fa7426c20b971784f428f63a7c22024e',
+        'reference' => '3769a27c7a469ab00634e1f75191ad1c3a647df7',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'swiftcm/swift-certificate-manager' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '049530e2fa7426c20b971784f428f63a7c22024e',
+            'reference' => '3769a27c7a469ab00634e1f75191ad1c3a647df7',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

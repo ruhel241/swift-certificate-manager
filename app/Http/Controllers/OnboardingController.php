@@ -6,8 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Helpers\HelperFunction;
-
 class OnboardingController
 {
     public function register()
@@ -17,9 +15,19 @@ class OnboardingController
 
     public function ajaxRoutes()
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -45,9 +53,19 @@ class OnboardingController
 
     public function saveOnboardingInfo()
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $info = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
         ? map_deep(wp_unslash($_REQUEST['info']), 'sanitize_text_field')
         : [];
@@ -109,9 +127,19 @@ class OnboardingController
 
     public function saveOnboarded()
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $isOnboarded = sanitize_text_field(
             wp_unslash($_REQUEST['is_onboarded'] ?? '')
         );

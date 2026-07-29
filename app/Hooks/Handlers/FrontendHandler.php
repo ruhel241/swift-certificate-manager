@@ -32,9 +32,13 @@ class FrontendHandler
 
     public function ajaxRoutes()
     {
-        HelperFunction::verifyPublicAjaxRequest();
+        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyPublicAjaxRequest().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -59,38 +63,34 @@ class FrontendHandler
     }
 
     // shortcode register
-    public function registerShortcodes()
-    {   
-        add_shortcode('swiftcm', function ($attr) {
-            $builder =  $this->render($attr);
-            return $builder; 
-        });
+    public function registerShortcodes() {
+        add_shortcode( 'swiftcm', [ $this, 'render' ] );
     }
 
-    public function render($attr)
-    {
-       $this->loadAssets();
+    public function render( $attr ) {
 
-       $attr = is_array($attr) ? $attr : [];
+        $this->loadAssets();
+
+        $attr = array_map( 'sanitize_key', (array) $attr );
 
         ob_start();
-            foreach($attr as $name ) {
-                if ($name === 'request-swift-certificate-manager') {
-                    $this->shortcodeRenderRequestForm();
-                }
 
-                if ($name === 'verify-swift-certificate-manager') {
-                    $this->shortcodeRenderVerifyForm();
-                }
+        foreach ( $attr as $name ) {
+
+            if ( 'request-swift-certificate-manager' === $name ) {
+                $this->shortcodeRenderRequestForm();
             }
 
-            if (isset($attr['swiftcm_invoice'])) {
-                $this->getInvoice();
+            if ( 'verify-swift-certificate-manager' === $name ) {
+                $this->shortcodeRenderVerifyForm();
             }
+        }
 
-        $html = ob_get_clean();
+        if ( isset( $attr['swiftcm_invoice'] ) ) {
+            $this->getInvoice();
+        }
 
-        return apply_filters('swiftcm_rendered_post_html', $html);
+        return ob_get_clean();
     }
 
     public function shortcodeRenderRequestForm() {
@@ -123,9 +123,13 @@ class FrontendHandler
 
     public function requestCertificateInfo()
     {
-        HelperFunction::verifyPublicAjaxRequest();
+        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyPublicAjaxRequest().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $info = isset($_REQUEST['info']) && is_array($_REQUEST['info'])
             ? map_deep(wp_unslash($_REQUEST['info']), 'sanitize_text_field')
             : [];
@@ -220,9 +224,13 @@ class FrontendHandler
 
     public function verifyCertificate()
     {
-        HelperFunction::verifyPublicAjaxRequest();
+        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyPublicAjaxRequest().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $certificateCode = sanitize_text_field(wp_unslash($_REQUEST['certificate_code'] ?? ''));
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
         

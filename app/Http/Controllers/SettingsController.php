@@ -6,9 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Helpers\HelperFunction;
-
-
 class SettingsController
 {
     public function register() {
@@ -17,9 +14,19 @@ class SettingsController
 
     public function ajaxRoutes()
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
 
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $route = sanitize_key( wp_unslash($_REQUEST['route'] ?? '') );
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
@@ -45,6 +52,18 @@ class SettingsController
 
     public function getSettings()
     {
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
+
         $settings = get_option('swiftcm_global_settings', []);
 
         wp_send_json_success(array(
@@ -54,9 +73,19 @@ class SettingsController
 
     public function saveSettings() 
     {
-        HelperFunction::verifyAdminAjaxRequest();
+        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+            wp_send_json_error([
+                'message' => __('Invalid nonce', 'swift-certificate-manager')
+            ], 403);
+        }
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error([
+                'message' => __('Unauthorized access', 'swift-certificate-manager')
+            ], 403);
+        }
         
-        // phpcs:disable WordPress.Security.NonceVerification.Recommended -- Nonce verified in verifyAdminAjaxRequest().
+        // phpcs:disable WordPress.Security.NonceVerification.Recommended.
         $rawSettings = isset($_REQUEST['settings']) && is_array($_REQUEST['settings'])
             ? map_deep(wp_unslash($_REQUEST['settings']), 'sanitize_text_field')
             : [];

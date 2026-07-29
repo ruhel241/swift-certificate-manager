@@ -75,7 +75,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 				<div class="info-block">
 					<h3><?php echo esc_html__( 'From', 'swift-certificate-manager' ); ?></h3>
 					<p>
-						<?php bloginfo( 'name' ); ?>
+						<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
 					</p>
 				</div>
 				<div class="info-block">
