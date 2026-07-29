@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 /**
  * HelperFunction Class
- * @since 1.0.0
+ * @since 1.0.1
  */
 class HelperFunction
 {

@@ -4,7 +4,7 @@ Tags: certificate, online course, education, course, certificates
 Requires at least: 5.5
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -195,7 +195,7 @@ After installation:
 * **Settings**
 
 
-## **1\. Assign Manually**
+## **1. Assign Manually**
 
 ### **Fields**
 
@@ -225,7 +225,7 @@ Once generated:
 5. Download or email
 
 
-## **2\. Management**
+## **2. Management**
 
 Tabs include:
 
@@ -501,7 +501,7 @@ All compiled assets in /assets are generated from the source code using Laravel 
 
 ## **Changelog**
 
-### **1.0.0**
+### **1.0.1**
 
 * Manual certificate support  
 * Drafts  

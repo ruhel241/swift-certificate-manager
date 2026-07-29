@@ -670,5 +670,5 @@ For anything please use [github repository](https://github.com/adreastrian/wp-fl
 
 == Screenshots ==
 
-= 1.0.0 =
+= 1.0.1 =
 - Init first version

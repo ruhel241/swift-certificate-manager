@@ -3,7 +3,7 @@
 Plugin Name: Swift Certificate Manager
 Plugin URI: https://wordpress.org/plugins/swift-certificate-manager/
 Description: Issue, manage, and verify professional digital certificates directly from your WordPress site.
-Version: 1.0.0
+Version: 1.0.1
 Author: arimtiaz
 Author URI: https://profiles.wordpress.org/arimtiaz/
 License: GPLv2 or later
@@ -16,7 +16,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('SWIFTCM_VERSION', '1.0.0');
+define('SWIFTCM_VERSION', '1.0.1');
 defined('SWIFTCM_LITE') or define('SWIFTCM_LITE', true);
 define('SWIFTCM_UPLOAD_DIR', 'swiftcm_templates_upload_dir');
 define('SWIFTCM_PLUGIN_FILE_PATH', plugin_basename(__FILE__));
