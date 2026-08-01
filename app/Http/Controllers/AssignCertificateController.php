@@ -762,7 +762,7 @@ class AssignCertificateController
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
        
         // action type (safe)
-        $allowedActions = ['delete', 'draft', 'publish'];
+        $allowedActions = ['delete', 'draft', 'assign'];
 
         if (!in_array($actionType, $allowedActions, true)) {
             wp_send_json_error([
