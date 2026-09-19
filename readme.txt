@@ -2,9 +2,9 @@
 Contributors: arimtiaz, ruhel241
 Tags: certificate, online course, education, course, certificates
 Requires at least: 5.5
-Tested up to: 7.1.1
+Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 1.0.3
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -129,12 +129,12 @@ The distributed plugin contains compiled production assets for performance and c
 
 == Changelog ==
 
-= 1.0.3 =
+= 1.1.0 =
 * Improved plugin compatibility and security.
 * Updated plugin naming and prefixes.
 * Minor bug fixes and improvements.
 
 == Upgrade Notice ==
 
-= 1.0.3 =
+= 1.1.0 =
 This version includes compatibility, security, and general improvements.
