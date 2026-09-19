@@ -21,7 +21,6 @@ echo "📦 Copying production files..."
 
 cp -r app $DIST_DIR/
 cp -r assets $DIST_DIR/
-cp -r database $DIST_DIR/
 cp -r languages $DIST_DIR/ 2>/dev/null
 
 cp swift-certificate-manager.php $DIST_DIR/
