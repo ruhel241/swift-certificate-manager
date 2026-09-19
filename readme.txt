@@ -2,9 +2,9 @@
 Contributors: arimtiaz, ruhel241
 Tags: certificate, online course, education, course, certificates
 Requires at least: 5.5
-Tested up to: 7.1
+Tested up to: 7.1.1
 Requires PHP: 7.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,28 +60,44 @@ The plugin is suitable for educational websites, online courses, training progra
 
 == Development ==
 
-Swift Certificate Manager uses modern development tools including Vue.js, npm, Laravel Mix, Webpack, Babel, and Composer to generate the production JavaScript, CSS, and PHP assets distributed with the plugin.
+Swift Certificate Manager uses Vue.js, npm, Laravel Mix, Webpack, Babel, and Sass to build the production JavaScript and CSS assets distributed with the plugin.
 
-The complete human-readable source code for the compiled and generated assets is publicly available in the following source repository:
+The complete human-readable source code and build configuration are publicly available in the following source repository:
 
 Source Code Repository:
 https://github.com/ruhel241/swift-certificate-manager
 
-The repository contains the original source files used to generate the distributed plugin assets, as well as the build configuration and dependency definitions required to develop and rebuild the plugin.
+The repository contains the original source files used to generate the compiled JavaScript and CSS files included in the plugin distribution.
 
-Relevant source directories include:
+=== Source and Generated Assets ===
 
-* resources/
-* app/
-* database/
-* languages/
-* patches/
+The production JavaScript files are generated from the following human-readable source files:
 
-Build configuration and dependency files are also included in the repository, including:
+* resources/admin/boot.js -> assets/admin/js/boot.js
+* resources/admin/start.js -> assets/admin/js/start.js
+
+The production CSS files are generated from:
+
+* resources/scss/admin.scss -> assets/admin/css/swifcema-admin.css
+* resources/scss/public.scss -> assets/public/css/swifcema-public.css
+
+Other assets are copied from the source/dependency directories during the build process:
+
+* resources/admin/images/ -> assets/admin/images/
+* node_modules/element-ui/lib/theme-chalk/fonts/ -> assets/admin/css/fonts/
+
+The generated files in the `assets/` directory are production files and should not be edited directly. Developers should modify the corresponding human-readable source files and rebuild the assets using the project's build tools.
+
+=== Build Configuration ===
+
+The repository includes the configuration and dependency files required to build the plugin:
 
 * package.json
+* package-lock.json
 * webpack.mix.js
 * composer.json
+* composer.lock
+* build.sh
 
 === Build Instructions ===
 
@@ -95,62 +111,30 @@ composer install
 
 npm install
 
-4. Build development assets:
-
-npm run dev
-
-5. Build production assets:
+4. Build production JavaScript and CSS assets:
 
 npm run production
 
-The JavaScript and CSS files distributed in the plugin's `assets/` directory are generated from the human-readable source code in the repository.
+5. Build the complete production plugin package:
 
-Examples of compiled JavaScript files included in the plugin distribution:
+./build.sh
 
-* assets/admin/js/boot.js
-* assets/admin/js/start.js
-* assets/public/js/swiftcm_request_certificate.js
-* assets/public/js/PaymentMethods/paypal-checkout.js
-* assets/public/js/PaymentMethods/stripe-checkout.js
+The `build.sh` script generates the production assets, installs optimized Composer dependencies, and creates the distributable plugin ZIP package.
 
-Developers should modify the original source files in the repository rather than editing the generated files in the `assets/` directory directly.
+=== Source Availability ===
 
-=== Third-Party Libraries ===
-
-This plugin includes third-party libraries required for its functionality. Their source and dependency information are maintained in the public repository where applicable.
-
-The plugin-specific code uses the `swiftcm` prefix for plugin-defined functions, classes, hooks, AJAX actions, and options.
-
-=== Composer Autoload ===
-
-This plugin uses Composer for PHP dependency management and autoloading.
-
-PHP dependencies are loaded through:
-
-vendor/autoload.php
-
-To install the required Composer dependencies, run:
-
-composer install
-
-No plugin code is intentionally obfuscated or encrypted. The source code required to review and rebuild the distributed plugin assets is publicly available in the repository above.
-
-=== Compiled Assets ===
-
-All compiled JavaScript and CSS files included in the plugin are generated from the corresponding human-readable source code using the project's build tools, including Laravel Mix and Webpack.
-
-
+The distributed plugin contains compiled production assets for performance and compatibility. The corresponding human-readable source code and build configuration are maintained in the public repository above and can be reviewed, modified, and rebuilt by developers.
 
 == Screenshots ==
 
 == Changelog ==
 
-= 1.0.2 =
+= 1.0.3 =
 * Improved plugin compatibility and security.
 * Updated plugin naming and prefixes.
 * Minor bug fixes and improvements.
 
 == Upgrade Notice ==
 
-= 1.0.2 =
+= 1.0.3 =
 This version includes compatibility, security, and general improvements.
