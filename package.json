@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "mix",
     "watch": "mix watch",
-    "prod": "mix --production"
+    "production": "mix --production"
   },
   "keywords": [],
   "author": "",
