@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 use SwiftCertificateManager\Models\SwifCeMaGenerate;
 /**
  * HelperFunction Class
- * @since 1.0.1
+ * @since 2.0.0
  */
 class HelperFunction
 {
