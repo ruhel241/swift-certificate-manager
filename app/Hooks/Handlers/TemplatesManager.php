@@ -1,13 +1,13 @@
 <?php
 
 namespace SwiftCertificateManager\Hooks\Handlers;
-use SwiftCertificateManager\Models\SwiftCMTemplates;
+use SwiftCertificateManager\Models\SwifCeMaTemplates;
 
 class TemplatesManager
 {
     public function getCoreTemplates()
     {
-        $file = SWIFTCM_PLUGIN_DIR_PATH . 'app/Libs/certificate-templates.json';
+        $file = SWIFCEMA_PLUGIN_DIR_PATH . 'app/Libs/certificate-templates.json';
     
         if (!file_exists($file)) {
             return [];
@@ -22,8 +22,8 @@ class TemplatesManager
     {
         $coreTemplates = $this->getCoreTemplates();
     
-        $SwiftCMTemplates = new SwiftCMTemplates();
-        $getTemplates = $SwiftCMTemplates->getTemplates();
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
+        $getTemplates = $SwifCeMaTemplates->getTemplates();
     
         // Existing template slug collect
         $existingSlugs = [];

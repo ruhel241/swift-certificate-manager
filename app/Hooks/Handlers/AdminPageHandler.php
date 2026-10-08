@@ -26,7 +26,7 @@ class AdminPageHandler
 
         $menuName = __('Swift Certificate Manager', 'swift-certificate-manager');
 
-        if (defined('SWIFTCM_PRO')) {
+        if (defined('SWIFCEMA_PRO')) {
             $menuName =  __('Swift Certificate Manager Pro', 'swift-certificate-manager');
         }
     
@@ -34,44 +34,44 @@ class AdminPageHandler
             $menuName,
             $menuName,
             $permisison,
-            'swiftcm',
+            'swifcema',
             [$this, 'renderPage'],
             $this->getMenuIcon(),
             27
         );
         
         add_submenu_page( 
-            'swiftcm', 
+            'swifcema', 
             __('Assign Manually', 'swift-certificate-manager'),
             __('Assign Manually', 'swift-certificate-manager'),
             $permisison,
-            'swiftcm', 
+            'swifcema', 
             array($this, 'renderPage')
         );
 
         add_submenu_page(
-            'swiftcm',
+            'swifcema',
             __('Manage Certificates', 'swift-certificate-manager'),
             __('Manage Certificates', 'swift-certificate-manager'),
             $permisison,
-            "admin.php?page=swiftcm#/manage_certificates",
+            "admin.php?page=swifcema#/manage_certificates",
         );
 
         add_submenu_page(
-            'swiftcm',
+            'swifcema',
             __('Templates', 'swift-certificate-manager'),
             __('Templates', 'swift-certificate-manager'),
             $permisison,
-            "admin.php?page=swiftcm#/templates",
+            "admin.php?page=swifcema#/templates",
          
         );
         
         add_submenu_page(
-            'swiftcm',
+            'swifcema',
             __('Settings', 'swift-certificate-manager'),
             __('Settings', 'swift-certificate-manager'),
             $permisison,
-            "admin.php?page=swiftcm#/settings"
+            "admin.php?page=swifcema#/settings"
         );
 
         add_action('admin_enqueue_scripts', [$this, 'loadAssets']);
@@ -79,9 +79,9 @@ class AdminPageHandler
 
     public function renderPage()
     {
-        echo wp_kses_post("<div class='swiftcm_wrap'><div id='wp_swiftcm_app'></div></div>");
+        echo wp_kses_post("<div class='swifcema_wrap'><div id='wp_swifcema_app'></div></div>");
 
-        do_action('swiftcm_admin_app_loaded', true);
+        do_action('swifcema_admin_app_loaded', true);
     }
 
     private function getMenuIcon()
@@ -99,7 +99,7 @@ class AdminPageHandler
         // phpcs:disable WordPress.Security.NonceVerification.Recommended
         $page = isset($_GET['page']) ? sanitize_key(wp_unslash($_GET['page'])) : '';
 
-        if ($page !== 'swiftcm') {
+        if ($page !== 'swifcema') {
             return;
         }
 
@@ -112,44 +112,43 @@ class AdminPageHandler
             wp_enqueue_media();
         }
 
-        $assetsUrl = SWIFTCM_PLUGIN_URL.'assets/';
+        $assetsUrl = SWIFCEMA_PLUGIN_URL.'assets/';
         
         $uploadDir = AvailableOptions::getDirStructure();
         $uploadUrl = AvailableOptions::getDirUrlStructure();
 
-        wp_enqueue_style('swiftcm_admin',$assetsUrl.'admin/css/swiftcm-admin.css', array(),  SWIFTCM_VERSION);
-        wp_enqueue_script('swiftcm_admin_boot', $assetsUrl.'admin/js/boot.js', array('jquery'), SWIFTCM_VERSION, false);
-        wp_enqueue_script('swiftcm_admin_app', $assetsUrl.'admin/js/start.js', array('jquery'), SWIFTCM_VERSION, true);
+        wp_enqueue_style('swifcema_admin',$assetsUrl.'admin/css/swifcema-admin.css', array(),  SWIFCEMA_VERSION);
+        wp_enqueue_script('swifcema_admin_boot', $assetsUrl.'admin/js/boot.js', array('jquery'), SWIFCEMA_VERSION, false);
+        wp_enqueue_script('swifcema_admin_app', $assetsUrl.'admin/js/start.js', array('jquery'), SWIFCEMA_VERSION, true);
         
-        $activeTemplate  = get_option('swiftcm_active_template', 'template-1');
-        $isOnboarded     = get_option('swiftcm_is_onboarded', "no");
-        $globalSettings  = get_option('swiftcm_global_settings', []);
+        $activeTemplate  = get_option('swifcema_active_template', 'template-1');
+        $isOnboarded     = get_option('swifcema_is_onboarded', "no");
+        $globalSettings  = get_option('swifcema_global_settings', []);
         $i18ns           = TranslationStrings::getTranslationStrings();
 
         $templateManager = new TemplatesManager();
         $downloadableTemplates = $templateManager->getDownloadableTemplates();
 
-        $swiftcmAdminVars = apply_filters('swiftcm_admin_app_vars', array(
+        $swifcemaAdminVars = apply_filters('swifcema_admin_app_vars', array(
             'assets_url'             => $assetsUrl,
             'images_url'             => $assetsUrl.'admin/images/',
             'upload_certificate_url' => $assetsUrl.'admin/images/templates/',
             'ajaxurl'                => admin_url('admin-ajax.php'),
-            'slug'                   => 'swiftcm',
+            'slug'                   => 'swifcema',
             'site_url'               => get_site_url(),
             'i18n'                   => $i18ns,
             'server_time'            => current_time('mysql'),
             'active_template'        => $activeTemplate,
-            'nonce'                  => wp_create_nonce('swiftcm_admin_nonce'),
+            'nonce'                  => wp_create_nonce('swifcema_admin_nonce'),
             'is_onboarded'           => $isOnboarded ? $isOnboarded : "no",
             'downloadableTemplates'  => count($downloadableTemplates),
             'getSystemStatuses'      => AvailableOptions::getSystemStatuses(),
             'globalSettings'         => $globalSettings,
             'currencies'             => (new PaymentHelper)->getCurrencies(),
-            'has_pro'                => defined('SWIFTCM_PRO'),
-            'has_pro_version'        => defined('SWIFTCM_PRO_VERSION'),
-
+            'has_pro'                => defined('SWIFCEMA_PRO'),
+            'has_pro_version'        => defined('SWIFCEMA_PRO_VERSION'),
         ));
 
-        wp_localize_script('swiftcm_admin_boot', 'swiftcmAdminVars', $swiftcmAdminVars);
+        wp_localize_script('swifcema_admin_boot', 'swifcemaAdminVars', $swifcemaAdminVars);
     }
 }

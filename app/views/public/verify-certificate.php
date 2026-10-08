@@ -5,20 +5,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<div class="swiftcm-verify-form-wrapper">
-    <div class="swiftcm-card">
-        <h2 class="swiftcm-title">Verify Certificate</h2>
-        <div class="swiftcm-verify-certificate-message"></div>
-        <form id="verifyForm" class="swiftcm-form" method="get">
+<div class="swifcema-verify-form-wrapper">
+    <div class="swifcema-card">
+        <h2 class="swifcema-title">Verify Certificate</h2>
+        <div class="swifcema-verify-certificate-message"></div>
+        <form id="verifyForm" class="swifcema-form" method="get">
             <label>Certificate Code</label>
             <input type="text" id="certificate_code" name="certificate_code" placeholder="Enter certificate code" required>
             <button type="submit">Verify</button>
         </form>
-        <div class="swiftcm-loader swiftcm-loading-spinner" style="display:none;">
-            <img src="<?php echo esc_url(SWIFTCM_PLUGIN_URL.'assets/public/images/loading.gif'); ?>" alt="Loading..." />
+        <div class="swifcema-loader swifcema-loading-spinner" style="display:none;">
+            <img src="<?php echo esc_url(SWIFCEMA_PLUGIN_URL.'assets/public/images/loading.gif'); ?>" alt="Loading..." />
         </div>
-        <div class="swiftcm-result swiftcm-student-information" style="display:none;">
-            <div class="swiftcm-grid">
+        <div class="swifcema-result swifcema-student-information" style="display:none;">
+            <div class="swifcema-grid">
                 <div class="item student_name">
                     <span class="label">Student Name</span>
                     <span class="value"></span>

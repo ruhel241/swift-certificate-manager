@@ -319,13 +319,13 @@ Public page for verifying certificates with a unique code.
 ### **Request Certificate Form**
 
 ```
-[swiftcm form="request-swift-certificate-manager"]
+[swifcema form="request-swift-certificate-manager"]
 ```
 
 ### **Verify Certificate Form**
 
 ```
-[swiftcm form="verify-swift-certificate-manager"]
+[swifcema form="verify-swift-certificate-manager"]
 ```
 
 
@@ -434,7 +434,7 @@ In accordance with WordPress Plugin Directory guidelines, the complete human-rea
 
 ## Naming Convention
 
-All plugin-defined functions, classes, hooks, AJAX actions, and options use the `swiftcm` prefix to ensure compatibility and avoid conflicts with other plugins.
+All plugin-defined functions, classes, hooks, AJAX actions, and options use the `swifcema` prefix to ensure compatibility and avoid conflicts with other plugins.
 
 Source Code Repository:
 
@@ -470,7 +470,7 @@ Example compiled files:
 
 * assets/admin/js/boot.js
 * assets/admin/js/start.js
-* assets/public/js/swiftcm_request_certificate.js
+* assets/public/js/swifcema_request_certificate.js
 * assets/public/js/PaymentMethods/paypal-checkout.js
 * assets/public/js/PaymentMethods/stripe-checkout.js
 

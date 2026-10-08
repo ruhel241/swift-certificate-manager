@@ -1,11 +1,11 @@
 "use strict";
-(self["webpackChunkswiftcm"] = self["webpackChunkswiftcm"] || []).push([["canvg"],{
+(self["webpackChunkswifcema"] = self["webpackChunkswifcema"] || []).push([["canvg"],{
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/a-callable.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/a-callable.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/a-callable.js ***!
   \*************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/canvg/node_modules/core-js/internals/is-callable.js");
@@ -20,13 +20,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/a-constructor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/a-constructor.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/a-constructor.js ***!
   \****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isConstructor = __webpack_require__(/*! ../internals/is-constructor */ "./node_modules/canvg/node_modules/core-js/internals/is-constructor.js");
@@ -41,13 +41,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/a-possible-prototype.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/a-possible-prototype.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/a-possible-prototype.js ***!
   \***********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isPossiblePrototype = __webpack_require__(/*! ../internals/is-possible-prototype */ "./node_modules/canvg/node_modules/core-js/internals/is-possible-prototype.js");
@@ -61,13 +61,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/add-to-unscopables.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/add-to-unscopables.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/add-to-unscopables.js ***!
   \*********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js");
@@ -92,13 +92,13 @@ module.exports = function (key) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/advance-string-index.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/advance-string-index.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/advance-string-index.js ***!
   \***********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var charAt = (__webpack_require__(/*! ../internals/string-multibyte */ "./node_modules/canvg/node_modules/core-js/internals/string-multibyte.js").charAt);
@@ -110,13 +110,13 @@ module.exports = function (S, index, unicode) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/an-instance.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/an-instance.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/an-instance.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isPrototypeOf = __webpack_require__(/*! ../internals/object-is-prototype-of */ "./node_modules/canvg/node_modules/core-js/internals/object-is-prototype-of.js");
@@ -129,13 +129,13 @@ module.exports = function (it, Prototype) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/an-object.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/an-object.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/an-object.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/canvg/node_modules/core-js/internals/is-object.js");
@@ -150,13 +150,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/array-includes.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/array-includes.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/array-includes.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/canvg/node_modules/core-js/internals/to-indexed-object.js");
@@ -194,13 +194,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/array-method-is-strict.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/array-method-is-strict.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/array-method-is-strict.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -214,13 +214,13 @@ module.exports = function (METHOD_NAME, argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/array-reduce.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/array-reduce.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/array-reduce.js ***!
   \***************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/canvg/node_modules/core-js/internals/a-callable.js");
@@ -270,13 +270,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/array-slice.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/array-slice.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/array-slice.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -284,13 +284,13 @@ var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ 
 module.exports = uncurryThis([].slice);
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/check-correctness-of-iteration.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/check-correctness-of-iteration.js":
 /*!*********************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/check-correctness-of-iteration.js ***!
   \*********************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js");
@@ -337,13 +337,13 @@ module.exports = function (exec, SKIP_CLOSING) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/classof-raw.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/classof-raw.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/classof-raw.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -356,13 +356,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/classof.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/classof.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/classof.js ***!
   \**********************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var TO_STRING_TAG_SUPPORT = __webpack_require__(/*! ../internals/to-string-tag-support */ "./node_modules/canvg/node_modules/core-js/internals/to-string-tag-support.js");
@@ -396,13 +396,13 @@ module.exports = TO_STRING_TAG_SUPPORT ? classofRaw : function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/copy-constructor-properties.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/copy-constructor-properties.js":
 /*!******************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/copy-constructor-properties.js ***!
   \******************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/canvg/node_modules/core-js/internals/has-own-property.js");
@@ -423,13 +423,13 @@ module.exports = function (target, source, exceptions) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/correct-is-regexp-logic.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/correct-is-regexp-logic.js":
 /*!**************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/correct-is-regexp-logic.js ***!
   \**************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js");
@@ -449,13 +449,13 @@ module.exports = function (METHOD_NAME) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/correct-prototype-getter.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/correct-prototype-getter.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/correct-prototype-getter.js ***!
   \***************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -468,13 +468,13 @@ module.exports = !fails(function () {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/create-iter-result-object.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/create-iter-result-object.js":
 /*!****************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/create-iter-result-object.js ***!
   \****************************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 // `CreateIterResultObject` abstract operation
@@ -484,13 +484,13 @@ module.exports = function (value, done) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/create-non-enumerable-property.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/create-non-enumerable-property.js":
 /*!*********************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/create-non-enumerable-property.js ***!
   \*********************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js");
@@ -505,13 +505,13 @@ module.exports = DESCRIPTORS ? function (object, key, value) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/create-property-descriptor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/create-property-descriptor.js":
 /*!*****************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/create-property-descriptor.js ***!
   \*****************************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 module.exports = function (bitmap, value) {
@@ -524,13 +524,13 @@ module.exports = function (bitmap, value) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/define-built-in-accessor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/define-built-in-accessor.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/define-built-in-accessor.js ***!
   \***************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var makeBuiltIn = __webpack_require__(/*! ../internals/make-built-in */ "./node_modules/canvg/node_modules/core-js/internals/make-built-in.js");
@@ -543,13 +543,13 @@ module.exports = function (target, name, descriptor) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/define-built-in.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/define-built-in.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/define-built-in.js ***!
   \******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/canvg/node_modules/core-js/internals/is-callable.js");
@@ -581,13 +581,13 @@ module.exports = function (O, key, value, options) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/define-global-property.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/define-global-property.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/define-global-property.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -604,13 +604,13 @@ module.exports = function (key, value) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/descriptors.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -622,13 +622,13 @@ module.exports = !fails(function () {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/document-create-element.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/document-create-element.js":
 /*!**************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/document-create-element.js ***!
   \**************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -643,13 +643,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/dom-iterables.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/dom-iterables.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/dom-iterables.js ***!
   \****************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 // iterable DOM collections
@@ -689,13 +689,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/dom-token-list-prototype.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/dom-token-list-prototype.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/dom-token-list-prototype.js ***!
   \***************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 // in old WebKit versions, `element.classList` is not an instance of global `DOMTokenList`
@@ -707,13 +707,13 @@ var DOMTokenListPrototype = classList && classList.constructor && classList.cons
 module.exports = DOMTokenListPrototype === Object.prototype ? undefined : DOMTokenListPrototype;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/enum-bug-keys.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/enum-bug-keys.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/enum-bug-keys.js ***!
   \****************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 // IE8- don't enum bug keys
@@ -728,13 +728,13 @@ module.exports = [
 ];
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-is-ios-pebble.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-is-ios-pebble.js":
 /*!****************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/environment-is-ios-pebble.js ***!
   \****************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var userAgent = __webpack_require__(/*! ../internals/environment-user-agent */ "./node_modules/canvg/node_modules/core-js/internals/environment-user-agent.js");
@@ -742,13 +742,13 @@ var userAgent = __webpack_require__(/*! ../internals/environment-user-agent */ "
 module.exports = /ipad|iphone|ipod/i.test(userAgent) && typeof Pebble != 'undefined';
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-is-ios.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-is-ios.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/environment-is-ios.js ***!
   \*********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var userAgent = __webpack_require__(/*! ../internals/environment-user-agent */ "./node_modules/canvg/node_modules/core-js/internals/environment-user-agent.js");
@@ -756,13 +756,13 @@ var userAgent = __webpack_require__(/*! ../internals/environment-user-agent */ "
 module.exports = /ipad|iphone|ipod/i.test(userAgent) && /applewebkit/i.test(userAgent);
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-is-node.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-is-node.js":
 /*!**********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/environment-is-node.js ***!
   \**********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var ENVIRONMENT = __webpack_require__(/*! ../internals/environment */ "./node_modules/canvg/node_modules/core-js/internals/environment.js");
@@ -770,13 +770,13 @@ var ENVIRONMENT = __webpack_require__(/*! ../internals/environment */ "./node_mo
 module.exports = ENVIRONMENT === 'NODE';
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-is-webos-webkit.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-is-webos-webkit.js":
 /*!******************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/environment-is-webos-webkit.js ***!
   \******************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var userAgent = __webpack_require__(/*! ../internals/environment-user-agent */ "./node_modules/canvg/node_modules/core-js/internals/environment-user-agent.js");
@@ -784,13 +784,13 @@ var userAgent = __webpack_require__(/*! ../internals/environment-user-agent */ "
 module.exports = /web0s(?!.*chrome)/i.test(userAgent);
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-user-agent.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-user-agent.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/environment-user-agent.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -801,13 +801,13 @@ var userAgent = navigator && navigator.userAgent;
 module.exports = userAgent ? String(userAgent) : '';
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-v8-version.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/environment-v8-version.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/environment-v8-version.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -839,13 +839,13 @@ if (!version && userAgent) {
 module.exports = version;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/environment.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/environment.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/environment.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 /* global Bun, Deno -- detection */
@@ -870,13 +870,13 @@ module.exports = (function () {
 })();
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/export.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/export.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/export.js ***!
   \*********************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -935,13 +935,13 @@ module.exports = function (options, source) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/fails.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/fails.js":
 /*!********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/fails.js ***!
   \********************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 module.exports = function (exec) {
@@ -953,13 +953,13 @@ module.exports = function (exec) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js":
 /*!*************************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/fix-regexp-well-known-symbol-logic.js ***!
   \*************************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 // TODO: Remove from `core-js@4` since it's moved to entry points
@@ -1041,13 +1041,13 @@ module.exports = function (KEY, exec, FORCED, SHAM) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/function-apply.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/function-apply.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/function-apply.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var NATIVE_BIND = __webpack_require__(/*! ../internals/function-bind-native */ "./node_modules/canvg/node_modules/core-js/internals/function-bind-native.js");
@@ -1062,13 +1062,13 @@ module.exports = typeof Reflect == 'object' && Reflect.apply || (NATIVE_BIND ? c
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/function-bind-context.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/function-bind-context.js":
 /*!************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/function-bind-context.js ***!
   \************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this-clause */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this-clause.js");
@@ -1086,13 +1086,13 @@ module.exports = function (fn, that) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/function-bind-native.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/function-bind-native.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/function-bind-native.js ***!
   \***********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -1105,13 +1105,13 @@ module.exports = !fails(function () {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/function-call.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/function-call.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/function-call.js ***!
   \****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var NATIVE_BIND = __webpack_require__(/*! ../internals/function-bind-native */ "./node_modules/canvg/node_modules/core-js/internals/function-bind-native.js");
@@ -1123,13 +1123,13 @@ module.exports = NATIVE_BIND ? call.bind(call) : function () {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/function-name.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/function-name.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/function-name.js ***!
   \****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js");
@@ -1151,13 +1151,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this-accessor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this-accessor.js":
 /*!*********************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this-accessor.js ***!
   \*********************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -1171,13 +1171,13 @@ module.exports = function (object, key, method) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this-clause.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this-clause.js":
 /*!*******************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this-clause.js ***!
   \*******************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var classofRaw = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/canvg/node_modules/core-js/internals/classof-raw.js");
@@ -1191,13 +1191,13 @@ module.exports = function (fn) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js":
 /*!************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js ***!
   \************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var NATIVE_BIND = __webpack_require__(/*! ../internals/function-bind-native */ "./node_modules/canvg/node_modules/core-js/internals/function-bind-native.js");
@@ -1214,13 +1214,13 @@ module.exports = NATIVE_BIND ? uncurryThisWithBind : function (fn) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/get-built-in.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/get-built-in.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/get-built-in.js ***!
   \***************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -1235,61 +1235,61 @@ module.exports = function (namespace, method) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/get-iterator-method.js"
-/*!**********************************************************************************!*\
-  !*** ./node_modules/canvg/node_modules/core-js/internals/get-iterator-method.js ***!
-  \**********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
-
-
-var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/canvg/node_modules/core-js/internals/classof.js");
-var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/canvg/node_modules/core-js/internals/get-method.js");
-var isNullOrUndefined = __webpack_require__(/*! ../internals/is-null-or-undefined */ "./node_modules/canvg/node_modules/core-js/internals/is-null-or-undefined.js");
-var Iterators = __webpack_require__(/*! ../internals/iterators */ "./node_modules/canvg/node_modules/core-js/internals/iterators.js");
-var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js");
-
-var ITERATOR = wellKnownSymbol('iterator');
-
-module.exports = function (it) {
-  if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR)
-    || getMethod(it, '@@iterator')
-    || Iterators[classof(it)];
-};
-
-
-/***/ },
-
-/***/ "./node_modules/canvg/node_modules/core-js/internals/get-iterator.js"
-/*!***************************************************************************!*\
-  !*** ./node_modules/canvg/node_modules/core-js/internals/get-iterator.js ***!
-  \***************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ "./node_modules/canvg/node_modules/core-js/internals/get-iterator-internal.js":
+/*!************************************************************************************!*\
+  !*** ./node_modules/canvg/node_modules/core-js/internals/get-iterator-internal.js ***!
+  \************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/canvg/node_modules/core-js/internals/function-call.js");
-var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/canvg/node_modules/core-js/internals/a-callable.js");
+var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/canvg/node_modules/core-js/internals/is-callable.js");
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/canvg/node_modules/core-js/internals/an-object.js");
 var tryToString = __webpack_require__(/*! ../internals/try-to-string */ "./node_modules/canvg/node_modules/core-js/internals/try-to-string.js");
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/canvg/node_modules/core-js/internals/get-iterator-method.js");
+var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method-internal */ "./node_modules/canvg/node_modules/core-js/internals/get-iterator-method-internal.js");
 
 var $TypeError = TypeError;
 
 module.exports = function (argument, usingIterator) {
   var iteratorMethod = arguments.length < 2 ? getIteratorMethod(argument) : usingIterator;
-  if (aCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
+  if (isCallable(iteratorMethod)) return anObject(call(iteratorMethod, argument));
   throw new $TypeError(tryToString(argument) + ' is not iterable');
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/get-method.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/get-iterator-method-internal.js":
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/canvg/node_modules/core-js/internals/get-iterator-method-internal.js ***!
+  \*******************************************************************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+
+var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/canvg/node_modules/core-js/internals/classof-raw.js");
+var isNullOrUndefined = __webpack_require__(/*! ../internals/is-null-or-undefined */ "./node_modules/canvg/node_modules/core-js/internals/is-null-or-undefined.js");
+var getMethod = __webpack_require__(/*! ../internals/get-method */ "./node_modules/canvg/node_modules/core-js/internals/get-method.js");
+var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js");
+
+var ITERATOR = wellKnownSymbol('iterator');
+var ArrayPrototype = Array.prototype;
+
+module.exports = function (it) {
+  if (!isNullOrUndefined(it)) return getMethod(it, ITERATOR)
+    || getMethod(it, '@@iterator')
+    || (classof(it) === 'Arguments' ? ArrayPrototype[ITERATOR] : undefined);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/canvg/node_modules/core-js/internals/get-method.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/get-method.js ***!
   \*************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/canvg/node_modules/core-js/internals/a-callable.js");
@@ -1303,13 +1303,13 @@ module.exports = function (V, P) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/get-substitution.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/get-substitution.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/get-substitution.js ***!
   \*******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -1359,13 +1359,13 @@ module.exports = function (matched, str, position, captures, namedCaptures, repl
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/global-this.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/global-this.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/global-this.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 
 var check = function (it) {
@@ -1385,13 +1385,13 @@ module.exports =
   (function () { return this; })() || Function('return this')();
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/has-own-property.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/has-own-property.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/has-own-property.js ***!
   \*******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -1407,25 +1407,25 @@ module.exports = Object.hasOwn || function hasOwn(it, key) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/hidden-keys.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/hidden-keys.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/hidden-keys.js ***!
   \**************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 module.exports = {};
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/host-report-errors.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/host-report-errors.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/host-report-errors.js ***!
   \*********************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 module.exports = function (a, b) {
@@ -1436,13 +1436,13 @@ module.exports = function (a, b) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/html.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/html.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/html.js ***!
   \*******************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/canvg/node_modules/core-js/internals/get-built-in.js");
@@ -1450,13 +1450,13 @@ var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_mo
 module.exports = getBuiltIn('document', 'documentElement');
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/ie8-dom-define.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/ie8-dom-define.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/ie8-dom-define.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js");
@@ -1472,13 +1472,13 @@ module.exports = !DESCRIPTORS && !fails(function () {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/indexed-object.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/indexed-object.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/indexed-object.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -1498,13 +1498,13 @@ module.exports = fails(function () {
 } : $Object;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/inspect-source.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/inspect-source.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/inspect-source.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -1523,13 +1523,13 @@ if (!isCallable(store.inspectSource)) {
 module.exports = store.inspectSource;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/internal-state.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/internal-state.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/internal-state.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var NATIVE_WEAK_MAP = __webpack_require__(/*! ../internals/weak-map-basic-detection */ "./node_modules/canvg/node_modules/core-js/internals/weak-map-basic-detection.js");
@@ -1604,13 +1604,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-array-iterator-method.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-array-iterator-method.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-array-iterator-method.js ***!
   \***************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js");
@@ -1625,13 +1625,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-array.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-array.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-array.js ***!
   \***********************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var classof = __webpack_require__(/*! ../internals/classof-raw */ "./node_modules/canvg/node_modules/core-js/internals/classof-raw.js");
@@ -1644,13 +1644,13 @@ module.exports = Array.isArray || function isArray(argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-callable.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-callable.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-callable.js ***!
   \**************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
@@ -1666,13 +1666,13 @@ module.exports = typeof documentAll == 'undefined' && documentAll !== undefined 
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-constructor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-constructor.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-constructor.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -1728,13 +1728,13 @@ module.exports = !construct || fails(function () {
 }) ? isConstructorLegacy : isConstructorModern;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-forced.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-forced.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-forced.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -1761,13 +1761,13 @@ var POLYFILL = isForced.POLYFILL = 'P';
 module.exports = isForced;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-null-or-undefined.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-null-or-undefined.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-null-or-undefined.js ***!
   \***********************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 // we can't use just `it == null` since of `document.all` special case
@@ -1777,13 +1777,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-object.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-object.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-object.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isCallable = __webpack_require__(/*! ../internals/is-callable */ "./node_modules/canvg/node_modules/core-js/internals/is-callable.js");
@@ -1793,13 +1793,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-possible-prototype.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-possible-prototype.js":
 /*!************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-possible-prototype.js ***!
   \************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/canvg/node_modules/core-js/internals/is-object.js");
@@ -1809,25 +1809,25 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-pure.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-pure.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-pure.js ***!
   \**********************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 module.exports = false;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-regexp.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-regexp.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-regexp.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isObject = __webpack_require__(/*! ../internals/is-object */ "./node_modules/canvg/node_modules/core-js/internals/is-object.js");
@@ -1844,13 +1844,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/is-symbol.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/is-symbol.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/is-symbol.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/canvg/node_modules/core-js/internals/get-built-in.js");
@@ -1868,13 +1868,13 @@ module.exports = USE_SYMBOL_AS_UID ? function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/iterate.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/iterate.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/iterate.js ***!
   \**********************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var bind = __webpack_require__(/*! ../internals/function-bind-context */ "./node_modules/canvg/node_modules/core-js/internals/function-bind-context.js");
@@ -1884,8 +1884,8 @@ var tryToString = __webpack_require__(/*! ../internals/try-to-string */ "./node_
 var isArrayIteratorMethod = __webpack_require__(/*! ../internals/is-array-iterator-method */ "./node_modules/canvg/node_modules/core-js/internals/is-array-iterator-method.js");
 var lengthOfArrayLike = __webpack_require__(/*! ../internals/length-of-array-like */ "./node_modules/canvg/node_modules/core-js/internals/length-of-array-like.js");
 var isPrototypeOf = __webpack_require__(/*! ../internals/object-is-prototype-of */ "./node_modules/canvg/node_modules/core-js/internals/object-is-prototype-of.js");
-var getIterator = __webpack_require__(/*! ../internals/get-iterator */ "./node_modules/canvg/node_modules/core-js/internals/get-iterator.js");
-var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method */ "./node_modules/canvg/node_modules/core-js/internals/get-iterator-method.js");
+var getIterator = __webpack_require__(/*! ../internals/get-iterator-internal */ "./node_modules/canvg/node_modules/core-js/internals/get-iterator-internal.js");
+var getIteratorMethod = __webpack_require__(/*! ../internals/get-iterator-method-internal */ "./node_modules/canvg/node_modules/core-js/internals/get-iterator-method-internal.js");
 var iteratorClose = __webpack_require__(/*! ../internals/iterator-close */ "./node_modules/canvg/node_modules/core-js/internals/iterator-close.js");
 
 var $TypeError = TypeError;
@@ -1952,13 +1952,13 @@ module.exports = function (iterable, unboundFunction, options) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/iterator-close.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/iterator-close.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/iterator-close.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/canvg/node_modules/core-js/internals/function-call.js");
@@ -1986,13 +1986,13 @@ module.exports = function (iterator, kind, value) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/iterator-create-constructor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/iterator-create-constructor.js":
 /*!******************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/iterator-create-constructor.js ***!
   \******************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var IteratorPrototype = (__webpack_require__(/*! ../internals/iterators-core */ "./node_modules/canvg/node_modules/core-js/internals/iterators-core.js").IteratorPrototype);
@@ -2012,13 +2012,13 @@ module.exports = function (IteratorConstructor, NAME, next, ENUMERABLE_NEXT) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/iterator-define.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/iterator-define.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/iterator-define.js ***!
   \******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -2124,13 +2124,13 @@ module.exports = function (Iterable, NAME, IteratorConstructor, next, DEFAULT, I
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/iterators-core.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/iterators-core.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/iterators-core.js ***!
   \*****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -2183,25 +2183,25 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/iterators.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/iterators.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/iterators.js ***!
   \************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
-module.exports = {};
+module.exports = Object.create ? Object.create(null) : {};
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/length-of-array-like.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/length-of-array-like.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/length-of-array-like.js ***!
   \***********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var toLength = __webpack_require__(/*! ../internals/to-length */ "./node_modules/canvg/node_modules/core-js/internals/to-length.js");
@@ -2213,13 +2213,13 @@ module.exports = function (obj) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/make-built-in.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/make-built-in.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/make-built-in.js ***!
   \****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -2278,13 +2278,13 @@ Function.prototype.toString = makeBuiltIn(function toString() {
 }, 'toString');
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/math-trunc.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/math-trunc.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/math-trunc.js ***!
   \*************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 var ceil = Math.ceil;
@@ -2299,13 +2299,13 @@ module.exports = Math.trunc || function trunc(x) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/microtask.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/microtask.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/microtask.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -2388,13 +2388,13 @@ if (!microtask) {
 module.exports = microtask;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/new-promise-capability.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/new-promise-capability.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/new-promise-capability.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var aCallable = __webpack_require__(/*! ../internals/a-callable */ "./node_modules/canvg/node_modules/core-js/internals/a-callable.js");
@@ -2419,13 +2419,13 @@ module.exports.f = function (C) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/not-a-regexp.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/not-a-regexp.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/not-a-regexp.js ***!
   \***************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isRegExp = __webpack_require__(/*! ../internals/is-regexp */ "./node_modules/canvg/node_modules/core-js/internals/is-regexp.js");
@@ -2439,13 +2439,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-create.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-create.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-create.js ***!
   \****************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 /* global ActiveXObject -- old IE, WSH */
@@ -2534,13 +2534,13 @@ module.exports = Object.create || function create(O, Properties) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-define-properties.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-define-properties.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-define-properties.js ***!
   \***************************************************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js");
@@ -2565,13 +2565,13 @@ exports.f = DESCRIPTORS && !V8_PROTOTYPE_DEFINE_BUG ? Object.defineProperties : 
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-define-property.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-define-property.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-define-property.js ***!
   \*************************************************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js");
@@ -2619,13 +2619,13 @@ exports.f = DESCRIPTORS ? V8_PROTOTYPE_DEFINE_BUG ? function defineProperty(O, P
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-descriptor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-descriptor.js":
 /*!*************************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-descriptor.js ***!
   \*************************************************************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js");
@@ -2652,13 +2652,13 @@ exports.f = DESCRIPTORS ? $getOwnPropertyDescriptor : function getOwnPropertyDes
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-names.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-names.js":
 /*!********************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-names.js ***!
   \********************************************************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
 var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/canvg/node_modules/core-js/internals/object-keys-internal.js");
@@ -2674,26 +2674,26 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-symbols.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-symbols.js":
 /*!**********************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-get-own-property-symbols.js ***!
   \**********************************************************************************************/
-(__unused_webpack_module, exports) {
+/***/ ((__unused_webpack_module, exports) => {
 
 
 // eslint-disable-next-line es/no-object-getownpropertysymbols -- safe
 exports.f = Object.getOwnPropertySymbols;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-get-prototype-of.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-get-prototype-of.js":
 /*!**************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-get-prototype-of.js ***!
   \**************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var hasOwn = __webpack_require__(/*! ../internals/has-own-property */ "./node_modules/canvg/node_modules/core-js/internals/has-own-property.js");
@@ -2719,13 +2719,13 @@ module.exports = CORRECT_PROTOTYPE_GETTER ? $Object.getPrototypeOf : function (O
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-is-prototype-of.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-is-prototype-of.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-is-prototype-of.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -2733,13 +2733,13 @@ var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ 
 module.exports = uncurryThis({}.isPrototypeOf);
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-keys-internal.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-keys-internal.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-keys-internal.js ***!
   \***********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -2764,13 +2764,13 @@ module.exports = function (object, names) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-keys.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-keys.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-keys.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var internalObjectKeys = __webpack_require__(/*! ../internals/object-keys-internal */ "./node_modules/canvg/node_modules/core-js/internals/object-keys-internal.js");
@@ -2784,13 +2784,13 @@ module.exports = Object.keys || function keys(O) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-property-is-enumerable.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-property-is-enumerable.js":
 /*!********************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-property-is-enumerable.js ***!
   \********************************************************************************************/
-(__unused_webpack_module, exports) {
+/***/ ((__unused_webpack_module, exports) => {
 
 
 var $propertyIsEnumerable = {}.propertyIsEnumerable;
@@ -2808,13 +2808,13 @@ exports.f = NASHORN_BUG ? function propertyIsEnumerable(V) {
 } : $propertyIsEnumerable;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/object-set-prototype-of.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/object-set-prototype-of.js":
 /*!**************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/object-set-prototype-of.js ***!
   \**************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 /* eslint-disable no-proto -- safe */
@@ -2847,13 +2847,13 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 }() : undefined);
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/ordinary-to-primitive.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/ordinary-to-primitive.js":
 /*!************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/ordinary-to-primitive.js ***!
   \************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/canvg/node_modules/core-js/internals/function-call.js");
@@ -2873,13 +2873,13 @@ module.exports = function (input, pref) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/own-keys.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/own-keys.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/own-keys.js ***!
   \***********************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/canvg/node_modules/core-js/internals/get-built-in.js");
@@ -2898,13 +2898,13 @@ module.exports = getBuiltIn('Reflect', 'ownKeys') || function ownKeys(it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/path.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/path.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/path.js ***!
   \*******************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -2912,13 +2912,13 @@ var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_mod
 module.exports = globalThis;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/perform.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/perform.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/perform.js ***!
   \**********************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 module.exports = function (exec) {
@@ -2930,13 +2930,13 @@ module.exports = function (exec) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/promise-constructor-detection.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/promise-constructor-detection.js":
 /*!********************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/promise-constructor-detection.js ***!
   \********************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -2987,13 +2987,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/promise-native-constructor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/promise-native-constructor.js":
 /*!*****************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/promise-native-constructor.js ***!
   \*****************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -3001,13 +3001,13 @@ var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_mod
 module.exports = globalThis.Promise;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/promise-resolve.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/promise-resolve.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/promise-resolve.js ***!
   \******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/canvg/node_modules/core-js/internals/an-object.js");
@@ -3024,13 +3024,13 @@ module.exports = function (C, x) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/promise-statics-incorrect-iteration.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/promise-statics-incorrect-iteration.js":
 /*!**************************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/promise-statics-incorrect-iteration.js ***!
   \**************************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var NativePromiseConstructor = __webpack_require__(/*! ../internals/promise-native-constructor */ "./node_modules/canvg/node_modules/core-js/internals/promise-native-constructor.js");
@@ -3042,13 +3042,13 @@ module.exports = FORCED_PROMISE_CONSTRUCTOR || !checkCorrectnessOfIteration(func
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/queue.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/queue.js":
 /*!********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/queue.js ***!
   \********************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 var Queue = function () {
@@ -3077,13 +3077,13 @@ Queue.prototype = {
 module.exports = Queue;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-exec-abstract.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-exec-abstract.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/regexp-exec-abstract.js ***!
   \***********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/canvg/node_modules/core-js/internals/function-call.js");
@@ -3108,13 +3108,13 @@ module.exports = function (R, S) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-exec.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-exec.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/regexp-exec.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 /* eslint-disable regexp/no-empty-capturing-group, regexp/no-empty-group, regexp/no-lazy-ends -- testing */
@@ -3242,13 +3242,13 @@ if (PATCH) {
 module.exports = patchedExec;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-flags-detection.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-flags-detection.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/regexp-flags-detection.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -3299,13 +3299,13 @@ var FLAGS_GETTER_IS_CORRECT = !fails(function () {
 module.exports = { correct: FLAGS_GETTER_IS_CORRECT };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-flags.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-flags.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/regexp-flags.js ***!
   \***************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/canvg/node_modules/core-js/internals/an-object.js");
@@ -3327,13 +3327,13 @@ module.exports = function () {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-get-flags.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-get-flags.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/regexp-get-flags.js ***!
   \*******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/canvg/node_modules/core-js/internals/function-call.js");
@@ -3353,13 +3353,13 @@ module.exports = regExpFlagsDetection.correct ? function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-sticky-helpers.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-sticky-helpers.js":
 /*!************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/regexp-sticky-helpers.js ***!
   \************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -3394,13 +3394,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-unsupported-dot-all.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-unsupported-dot-all.js":
 /*!*****************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/regexp-unsupported-dot-all.js ***!
   \*****************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -3415,13 +3415,13 @@ module.exports = fails(function () {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-unsupported-ncg.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/regexp-unsupported-ncg.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/regexp-unsupported-ncg.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var fails = __webpack_require__(/*! ../internals/fails */ "./node_modules/canvg/node_modules/core-js/internals/fails.js");
@@ -3437,13 +3437,13 @@ module.exports = fails(function () {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/require-object-coercible.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/require-object-coercible.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/require-object-coercible.js ***!
   \***************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var isNullOrUndefined = __webpack_require__(/*! ../internals/is-null-or-undefined */ "./node_modules/canvg/node_modules/core-js/internals/is-null-or-undefined.js");
@@ -3458,13 +3458,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/safe-get-built-in.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/safe-get-built-in.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/safe-get-built-in.js ***!
   \********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -3481,13 +3481,13 @@ module.exports = function (name) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/set-species.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/set-species.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/set-species.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var getBuiltIn = __webpack_require__(/*! ../internals/get-built-in */ "./node_modules/canvg/node_modules/core-js/internals/get-built-in.js");
@@ -3509,13 +3509,13 @@ module.exports = function (CONSTRUCTOR_NAME) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/set-to-string-tag.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/set-to-string-tag.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/set-to-string-tag.js ***!
   \********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var defineProperty = (__webpack_require__(/*! ../internals/object-define-property */ "./node_modules/canvg/node_modules/core-js/internals/object-define-property.js").f);
@@ -3532,13 +3532,13 @@ module.exports = function (target, TAG, STATIC) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/shared-key.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/shared-key.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/shared-key.js ***!
   \*************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var shared = __webpack_require__(/*! ../internals/shared */ "./node_modules/canvg/node_modules/core-js/internals/shared.js");
@@ -3551,13 +3551,13 @@ module.exports = function (key) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/shared-store.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/shared-store.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/shared-store.js ***!
   \***************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var IS_PURE = __webpack_require__(/*! ../internals/is-pure */ "./node_modules/canvg/node_modules/core-js/internals/is-pure.js");
@@ -3568,37 +3568,39 @@ var SHARED = '__core-js_shared__';
 var store = module.exports = globalThis[SHARED] || defineGlobalProperty(SHARED, {});
 
 (store.versions || (store.versions = [])).push({
-  version: '3.49.0',
+  version: '3.50.0',
   mode: IS_PURE ? 'pure' : 'global',
   copyright: '© 2013–2025 Denis Pushkarev (zloirock.ru), 2025–2026 CoreJS Company (core-js.io). All rights reserved.',
-  license: 'https://github.com/zloirock/core-js/blob/v3.49.0/LICENSE',
+  license: 'https://github.com/zloirock/core-js/blob/v3.50.0/LICENSE',
   source: 'https://github.com/zloirock/core-js'
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/shared.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/shared.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/shared.js ***!
   \*********************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var store = __webpack_require__(/*! ../internals/shared-store */ "./node_modules/canvg/node_modules/core-js/internals/shared-store.js");
+// eslint-disable-next-line es/no-object-create -- safe
+var create = Object.create || Object;
 
 module.exports = function (key, value) {
-  return store[key] || (store[key] = value || {});
+  return store[key] || (store[key] = value || create(null));
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/species-constructor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/species-constructor.js":
 /*!**********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/species-constructor.js ***!
   \**********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var anObject = __webpack_require__(/*! ../internals/an-object */ "./node_modules/canvg/node_modules/core-js/internals/an-object.js");
@@ -3617,13 +3619,13 @@ module.exports = function (O, defaultConstructor) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/string-multibyte.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/string-multibyte.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/string-multibyte.js ***!
   \*******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -3664,13 +3666,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/string-trim-forced.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/string-trim-forced.js":
 /*!*********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/string-trim-forced.js ***!
   \*********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var PROPER_FUNCTION_NAME = (__webpack_require__(/*! ../internals/function-name */ "./node_modules/canvg/node_modules/core-js/internals/function-name.js").PROPER);
@@ -3690,13 +3692,13 @@ module.exports = function (METHOD_NAME) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/string-trim.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/string-trim.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/string-trim.js ***!
   \**************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -3731,13 +3733,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/symbol-constructor-detection.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/symbol-constructor-detection.js":
 /*!*******************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/symbol-constructor-detection.js ***!
   \*******************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 /* eslint-disable es/no-symbol -- required for testing */
@@ -3760,13 +3762,13 @@ module.exports = !!Object.getOwnPropertySymbols && !fails(function () {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/task.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/task.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/task.js ***!
   \*******************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -3887,13 +3889,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-absolute-index.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-absolute-index.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-absolute-index.js ***!
   \********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var toIntegerOrInfinity = __webpack_require__(/*! ../internals/to-integer-or-infinity */ "./node_modules/canvg/node_modules/core-js/internals/to-integer-or-infinity.js");
@@ -3910,13 +3912,13 @@ module.exports = function (index, length) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-indexed-object.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-indexed-object.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-indexed-object.js ***!
   \********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 // toObject with fallback for non-array-like ES3 strings
@@ -3928,13 +3930,13 @@ module.exports = function (it) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-integer-or-infinity.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-integer-or-infinity.js":
 /*!*************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-integer-or-infinity.js ***!
   \*************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var trunc = __webpack_require__(/*! ../internals/math-trunc */ "./node_modules/canvg/node_modules/core-js/internals/math-trunc.js");
@@ -3948,13 +3950,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-length.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-length.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-length.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var toIntegerOrInfinity = __webpack_require__(/*! ../internals/to-integer-or-infinity */ "./node_modules/canvg/node_modules/core-js/internals/to-integer-or-infinity.js");
@@ -3969,13 +3971,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-object.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-object.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-object.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var requireObjectCoercible = __webpack_require__(/*! ../internals/require-object-coercible */ "./node_modules/canvg/node_modules/core-js/internals/require-object-coercible.js");
@@ -3989,13 +3991,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-primitive.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-primitive.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-primitive.js ***!
   \***************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/canvg/node_modules/core-js/internals/function-call.js");
@@ -4025,13 +4027,13 @@ module.exports = function (input, pref) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-property-key.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-property-key.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-property-key.js ***!
   \******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var toPrimitive = __webpack_require__(/*! ../internals/to-primitive */ "./node_modules/canvg/node_modules/core-js/internals/to-primitive.js");
@@ -4045,13 +4047,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-string-tag-support.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-string-tag-support.js":
 /*!************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-string-tag-support.js ***!
   \************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var wellKnownSymbol = __webpack_require__(/*! ../internals/well-known-symbol */ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js");
@@ -4064,13 +4066,13 @@ test[TO_STRING_TAG] = 'z';
 module.exports = String(test) === '[object z]';
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/to-string.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/to-string.js":
 /*!************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/to-string.js ***!
   \************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var classof = __webpack_require__(/*! ../internals/classof */ "./node_modules/canvg/node_modules/core-js/internals/classof.js");
@@ -4083,13 +4085,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/try-to-string.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/try-to-string.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/try-to-string.js ***!
   \****************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 var $String = String;
@@ -4103,13 +4105,13 @@ module.exports = function (argument) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/uid.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/uid.js":
 /*!******************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/uid.js ***!
   \******************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var uncurryThis = __webpack_require__(/*! ../internals/function-uncurry-this */ "./node_modules/canvg/node_modules/core-js/internals/function-uncurry-this.js");
@@ -4123,13 +4125,13 @@ module.exports = function (key) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/use-symbol-as-uid.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/use-symbol-as-uid.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/use-symbol-as-uid.js ***!
   \********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 /* eslint-disable es/no-symbol -- required for testing */
@@ -4140,13 +4142,13 @@ module.exports = NATIVE_SYMBOL &&
   typeof Symbol.iterator == 'symbol';
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/v8-prototype-define-bug.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/v8-prototype-define-bug.js":
 /*!**************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/v8-prototype-define-bug.js ***!
   \**************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var DESCRIPTORS = __webpack_require__(/*! ../internals/descriptors */ "./node_modules/canvg/node_modules/core-js/internals/descriptors.js");
@@ -4163,13 +4165,13 @@ module.exports = DESCRIPTORS && fails(function () {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/validate-arguments-length.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/validate-arguments-length.js":
 /*!****************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/validate-arguments-length.js ***!
   \****************************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 var $TypeError = TypeError;
@@ -4180,13 +4182,13 @@ module.exports = function (passed, required) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/weak-map-basic-detection.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/weak-map-basic-detection.js":
 /*!***************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/weak-map-basic-detection.js ***!
   \***************************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -4197,13 +4199,13 @@ var WeakMap = globalThis.WeakMap;
 module.exports = isCallable(WeakMap) && /native code/.test(String(WeakMap));
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/well-known-symbol.js ***!
   \********************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -4226,13 +4228,13 @@ module.exports = function (name) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/internals/whitespaces.js"
+/***/ "./node_modules/canvg/node_modules/core-js/internals/whitespaces.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/internals/whitespaces.js ***!
   \**************************************************************************/
-(module) {
+/***/ ((module) => {
 
 
 // a string of all valid unicode whitespaces
@@ -4240,13 +4242,13 @@ module.exports = '\u0009\u000A\u000B\u000C\u000D\u0020\u00A0\u1680\u2000\u2001\u
   '\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.array.index-of.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.array.index-of.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.array.index-of.js ***!
   \******************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 /* eslint-disable es/no-array-prototype-indexof -- required for testing */
@@ -4273,13 +4275,13 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.array.iterator.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.array.iterator.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.array.iterator.js ***!
   \******************************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var toIndexedObject = __webpack_require__(/*! ../internals/to-indexed-object */ "./node_modules/canvg/node_modules/core-js/internals/to-indexed-object.js");
@@ -4345,13 +4347,13 @@ if (!IS_PURE && DESCRIPTORS && values.name !== 'values') try {
 } catch (error) { /* empty */ }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.array.reduce.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.array.reduce.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.array.reduce.js ***!
   \****************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4375,13 +4377,13 @@ $({ target: 'Array', proto: true, forced: FORCED }, {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.array.reverse.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.array.reverse.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.array.reverse.js ***!
   \*****************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4404,13 +4406,13 @@ $({ target: 'Array', proto: true, forced: String(test) === String(test.reverse()
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.all.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.all.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.promise.all.js ***!
   \***************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4453,13 +4455,13 @@ $({ target: 'Promise', stat: true, forced: PROMISE_STATICS_INCORRECT_ITERATION }
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.catch.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.catch.js":
 /*!*****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.promise.catch.js ***!
   \*****************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4489,13 +4491,13 @@ if (!IS_PURE && isCallable(NativePromiseConstructor)) {
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.constructor.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.constructor.js":
 /*!***********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.promise.constructor.js ***!
   \***********************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4792,13 +4794,13 @@ setToStringTag(PromiseConstructor, PROMISE, false, true);
 setSpecies(PROMISE);
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.promise.js ***!
   \***********************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 // TODO: Remove this module from `core-js@4` since it's split to modules listed below
@@ -4810,13 +4812,13 @@ __webpack_require__(/*! ../modules/es.promise.reject */ "./node_modules/canvg/no
 __webpack_require__(/*! ../modules/es.promise.resolve */ "./node_modules/canvg/node_modules/core-js/modules/es.promise.resolve.js");
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.race.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.race.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.promise.race.js ***!
   \****************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4846,13 +4848,13 @@ $({ target: 'Promise', stat: true, forced: PROMISE_STATICS_INCORRECT_ITERATION }
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.reject.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.reject.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.promise.reject.js ***!
   \******************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4871,13 +4873,13 @@ $({ target: 'Promise', stat: true, forced: FORCED_PROMISE_CONSTRUCTOR }, {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.resolve.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.promise.resolve.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.promise.resolve.js ***!
   \*******************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4899,13 +4901,13 @@ $({ target: 'Promise', stat: true, forced: IS_PURE || FORCED_PROMISE_CONSTRUCTOR
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.regexp.exec.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.regexp.exec.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.regexp.exec.js ***!
   \***************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4918,13 +4920,13 @@ $({ target: 'RegExp', proto: true, forced: /./.exec !== exec }, {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.regexp.to-string.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.regexp.to-string.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.regexp.to-string.js ***!
   \********************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var PROPER_FUNCTION_NAME = (__webpack_require__(/*! ../internals/function-name */ "./node_modules/canvg/node_modules/core-js/internals/function-name.js").PROPER);
@@ -4954,13 +4956,13 @@ if (NOT_GENERIC || INCORRECT_NAME) {
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.ends-with.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.ends-with.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.string.ends-with.js ***!
   \********************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -4998,13 +5000,13 @@ $({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGE
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.includes.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.includes.js":
 /*!*******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.string.includes.js ***!
   \*******************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -5029,13 +5031,13 @@ $({ target: 'String', proto: true, forced: !correctIsRegExpLogic('includes') }, 
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.match.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.match.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.string.match.js ***!
   \****************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/canvg/node_modules/core-js/internals/function-call.js");
@@ -5061,7 +5063,9 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
     function match(regexp) {
       var O = requireObjectCoercible(this);
       var matcher = isObject(regexp) ? getMethod(regexp, MATCH) : undefined;
-      return matcher ? call(matcher, regexp, O) : new RegExp(regexp)[MATCH](toString(O));
+      if (matcher) return call(matcher, regexp, O);
+      var S = toString(O);
+      return new RegExp(regexp)[MATCH](S);
     },
     // `RegExp.prototype[@@match]` method
     // https://tc39.es/ecma262/#sec-regexp.prototype-@@match
@@ -5093,13 +5097,13 @@ fixRegExpWellKnownSymbolLogic('match', function (MATCH, nativeMatch, maybeCallNa
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.replace.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.replace.js":
 /*!******************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.string.replace.js ***!
   \******************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var apply = __webpack_require__(/*! ../internals/function-apply */ "./node_modules/canvg/node_modules/core-js/internals/function-apply.js");
@@ -5248,13 +5252,13 @@ fixRegExpWellKnownSymbolLogic('replace', function (_, nativeReplace, maybeCallNa
 }, !REPLACE_SUPPORTS_NAMED_GROUPS || !REPLACE_KEEPS_$0 || REGEXP_REPLACE_SUBSTITUTES_UNDEFINED_CAPTURE);
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.split.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.split.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.string.split.js ***!
   \****************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var call = __webpack_require__(/*! ../internals/function-call */ "./node_modules/canvg/node_modules/core-js/internals/function-call.js");
@@ -5371,13 +5375,13 @@ fixRegExpWellKnownSymbolLogic('split', function (SPLIT, nativeSplit, maybeCallNa
 }, BUGGY || !SPLIT_WORKS_WITH_OVERWRITTEN_EXEC, UNSUPPORTED_Y);
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.starts-with.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.starts-with.js":
 /*!**********************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.string.starts-with.js ***!
   \**********************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -5413,13 +5417,13 @@ $({ target: 'String', proto: true, forced: !MDN_POLYFILL_BUG && !CORRECT_IS_REGE
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.trim.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/es.string.trim.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/es.string.trim.js ***!
   \***************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var $ = __webpack_require__(/*! ../internals/export */ "./node_modules/canvg/node_modules/core-js/internals/export.js");
@@ -5435,13 +5439,13 @@ $({ target: 'String', proto: true, forced: forcedStringTrimMethod('trim') }, {
 });
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/node_modules/core-js/modules/web.dom-collections.iterator.js"
+/***/ "./node_modules/canvg/node_modules/core-js/modules/web.dom-collections.iterator.js":
 /*!*****************************************************************************************!*\
   !*** ./node_modules/canvg/node_modules/core-js/modules/web.dom-collections.iterator.js ***!
   \*****************************************************************************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 
 var globalThis = __webpack_require__(/*! ../internals/global-this */ "./node_modules/canvg/node_modules/core-js/internals/global-this.js");
@@ -5482,13 +5486,13 @@ for (var COLLECTION_NAME in DOMIterables) {
 handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/canvg/lib/index.es.js"
+/***/ "./node_modules/canvg/lib/index.es.js":
 /*!********************************************!*\
   !*** ./node_modules/canvg/lib/index.es.js ***!
   \********************************************/
-(__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -12153,6 +12157,6 @@ class Canvg {
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguZXMuanMiLCJzb3VyY2VzIjpbXSwic291cmNlc0NvbnRlbnQiOltdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OzsifQ==
 
 
-/***/ }
+/***/ })
 
 }]);

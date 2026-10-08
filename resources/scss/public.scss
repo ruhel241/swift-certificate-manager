@@ -1,10 +1,10 @@
 // Styles for request certificate page
-.swiftcm-request-certificate-wrapper {
+.swifcema-request-certificate-wrapper {
     max-width: 1000px;
     margin: 60px auto !important;
     padding: 20px;
     // background: #f5f7fb;
-    .swiftcm-container {
+    .swifcema-container {
         background: #ffffff;
         padding: 40px;
         border-radius: 16px;
@@ -69,7 +69,7 @@
         }
     }
 
-    .swiftcm_payment_checkbox {
+    .swifcema_payment_checkbox {
         display: flex;
         align-items: center;
         gap: 10px;
@@ -81,17 +81,17 @@
         cursor: pointer;
     }
 
-    .swiftcm_payment_checkbox:hover {
+    .swifcema_payment_checkbox:hover {
         border-color: #4a90e2;
         background: #f0f7ff;
     }
 
-    #swiftcm_payment_checkbox {
+    #swifcema_payment_checkbox {
         accent-color: #4a90e2;
         transform: scale(1.2);
     }
 
-    .swiftcm_payment_method {
+    .swifcema_payment_method {
         margin-top: 10px;
         padding: 15px;
         border-radius: 10px;
@@ -99,17 +99,17 @@
         border: 1px solid #e5e7eb;
     }
 
-    .swiftcm_payment_method input[type="radio"] {
+    .swifcema_payment_method input[type="radio"] {
         accent-color: #4a90e2;
         margin-right: 6px;
     }
 
-    .swiftcm_payment_method label {
+    .swifcema_payment_method label {
         margin-right: 15px;
         font-weight: 500;
     }
 
-    .swiftcm-form-submit-message {
+    .swifcema-form-submit-message {
         display: none;
         border-radius: 10px;
         margin: 25px 0;
@@ -134,8 +134,8 @@
 
 /* 📱 Mobile Responsive */
 @media (max-width: 600px) {
-    .swiftcm-request-certificate-wrapper {
-        .swiftcm-container {
+    .swifcema-request-certificate-wrapper {
+        .swifcema-container {
             padding: 20px;
         }
 
@@ -146,14 +146,14 @@
 }
 
 // Styles for verify certificate page
-.swiftcm-verify-form-wrapper {
+.swifcema-verify-form-wrapper {
     min-height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
     // background: #f5f7fb;
     padding: 20px;
-    .swiftcm-card {
+    .swifcema-card {
         width: 100%;
         max-width: 700px;
         background: #fff;
@@ -162,13 +162,13 @@
         // box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     }
-    .swiftcm-title {
+    .swifcema-title {
         text-align: center;
         font-size: 28px;
         margin-bottom: 20px;
         color: #1f2937;
     }
-    .swiftcm-verify-certificate-message {
+    .swifcema-verify-certificate-message {
         // padding: 12px 15px;
         border-radius: 10px;
         text-align: center;
@@ -188,23 +188,23 @@
             color: #b91c1c;
         }
     }
-    .swiftcm-form {
+    .swifcema-form {
         display: flex;
         flex-direction: column;
         gap: 10px;
         margin-bottom: 25px;
     }
-    .swiftcm-form input {
+    .swifcema-form input {
         padding: 12px;
         border: 1px solid #e5e7eb;
         border-radius: 10px;
         outline: none;
         transition: 0.3s;
     }
-    .swiftcm-form input:focus {
+    .swifcema-form input:focus {
         border-color: #4a90e2;
     }
-    .swiftcm-form button {
+    .swifcema-form button {
         padding: 12px;
         background: #4a90e2;
         color: white;
@@ -214,31 +214,31 @@
         font-weight: 600;
         transition: 0.3s;
     }
-    .swiftcm-form button:hover {
+    .swifcema-form button:hover {
         background: #357ab7;
     }
-    .swiftcm-loader {
+    .swifcema-loader {
         text-align: center;
         margin: 20px 0;
     }
 
-    .swiftcm-loader img {
+    .swifcema-loader img {
         width: 60px;
     }
 
-    .swiftcm-grid {
+    .swifcema-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 15px;
     }
 
-    .swiftcm-grid .item {
+    .swifcema-grid .item {
         background: #f9fafb;
         padding: 15px;
         border-radius: 12px;
     }
 
-    .swiftcm-grid .full {
+    .swifcema-grid .full {
         grid-column: span 2;
     }
 
@@ -256,22 +256,22 @@
     }
 
     @media (max-width: 600px) {
-        .swiftcm-card {
+        .swifcema-card {
             padding: 20px;
         }
 
-        .swiftcm-grid {
+        .swifcema-grid {
             grid-template-columns: 1fr;
         }
 
-        .swiftcm-grid .full {
+        .swifcema-grid .full {
             grid-column: span 1;
         }
     }
 }
    
 // Styles for payment invoice page
-.swiftcm-invoice-wrrapper {
+.swifcema-invoice-wrrapper {
     max-width: 800px;
     /*width: 70%;*/
     margin: 40px auto;
@@ -438,7 +438,7 @@
     }
 }
 
-.swiftcm-error-message {
+.swifcema-error-message {
     color: red;
     font-weight: 500;
 }
@@ -465,7 +465,7 @@
         display: none !important;
     }
 
-    .swiftcm-invoice-wrrapper {
+    .swifcema-invoice-wrrapper {
         width: 210mm;
         min-height: 297mm;
         margin: 0 !important;

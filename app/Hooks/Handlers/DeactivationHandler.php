@@ -15,10 +15,10 @@ class DeactivationHandler
         }
 
         // remove cron
-        wp_clear_scheduled_hook('swiftcm_cleanup_tmp_dir');
+        wp_clear_scheduled_hook('swifcema_cleanup_tmp_dir');
 
         if (!class_exists('\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
-            require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
+            require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
         }
 
         $dirs = AvailableOptions::getDirStructure();
@@ -53,20 +53,20 @@ class DeactivationHandler
     //     global $wpdb;
         
     //     // delete options all options
-    //     delete_option('swiftcm_global_settings');
-    //     delete_option('swiftcm_onboarding_info');
-    //     delete_option('swiftcm_is_onboarded');
-    //     delete_option('swiftcm_newsletters');
+    //     delete_option('swifcema_global_settings');
+    //     delete_option('swifcema_onboarding_info');
+    //     delete_option('swifcema_is_onboarded');
+    //     delete_option('swifcema_newsletters');
 
     //     // Disable foreign key checks temporarily
     //     $wpdb->query("SET FOREIGN_KEY_CHECKS = 0");
 
     //     // List all tables to be deleted
     //     $tables = [
-    //         $wpdb->prefix . 'swiftcm_generates',
-    //         $wpdb->prefix . 'swiftcm_payments',
-    //         $wpdb->prefix . 'swiftcm_templates',
-    //         $wpdb->prefix . SWIFTCM_UPLOAD_DIR
+    //         $wpdb->prefix . 'swifcema_generates',
+    //         $wpdb->prefix . 'swifcema_payments',
+    //         $wpdb->prefix . 'swifcema_templates',
+    //         $wpdb->prefix . SWIFCEMA_UPLOAD_DIR
     //     ];
 
     //     // Drop each table

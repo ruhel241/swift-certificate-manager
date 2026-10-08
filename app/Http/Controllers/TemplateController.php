@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Models\SwiftCMTemplates;
+use SwiftCertificateManager\Models\SwifCeMaTemplates;
 use SwiftCertificateManager\Hooks\Handlers\TemplatesManager;
 use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
@@ -15,12 +15,12 @@ use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 class TemplateController
 {
     public function register() {
-        add_action('wp_ajax_swiftcm_template_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swifcema_template_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -56,7 +56,7 @@ class TemplateController
 
         $this->{$validRoutes[$route]}();
 
-        do_action('swiftcm_admin_ajax_handler_template_catch', $route);
+        do_action('swifcema_admin_ajax_handler_template_catch', $route);
 
         wp_die();
     }
@@ -65,13 +65,13 @@ class TemplateController
         
         wp_send_json_success([
             'message' => __('get Activated Certificate', 'swift-certificate-manager'),
-            'active_template' => get_option('swiftcm_active_template', 'template-1')
+            'active_template' => get_option('swifcema_active_template', 'template-1')
         ]);
     }
 
     public function saveActiveTemplate()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -94,19 +94,19 @@ class TemplateController
                 ], 400);
         }
 
-        update_option('swiftcm_active_template', $slug);
+        update_option('swifcema_active_template', $slug);
 
         wp_send_json_success([
-            'active_template' => get_option('swiftcm_active_template', 'template-1'),
+            'active_template' => get_option('swifcema_active_template', 'template-1'),
             'message' => __('Successfully Active Template', 'swift-certificate-manager')
         ]);
     }
 
     public function getTemplates()
     {
-        $SwiftCMTemplates = new SwiftCMTemplates();
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
     
-        $getTemplates = $SwiftCMTemplates->getTemplates();
+        $getTemplates = $SwifCeMaTemplates->getTemplates();
     
         usort($getTemplates, function ($a, $b) {
             return strnatcmp($a->slug, $b->slug);
@@ -120,7 +120,7 @@ class TemplateController
 
     public function getEditTemplate()
     {   
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -140,8 +140,8 @@ class TemplateController
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
         }
 
-        $SwiftCMTemplates = new SwiftCMTemplates();
-        $template = $SwiftCMTemplates->getTemplate($templateId);
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
+        $template = $SwifCeMaTemplates->getTemplate($templateId);
 
         if (!$template) {
             wp_send_json_error(['message' => __('Template not found', 'swift-certificate-manager')], 404);
@@ -156,7 +156,7 @@ class TemplateController
 
     public function updateTemplate()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -192,7 +192,7 @@ class TemplateController
 
         $settings = $this->sanitizeArray($settings);
 
-        $SwiftCMTemplates = new SwiftCMTemplates();
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
 
         $updateData = [
             'settings'   => wp_json_encode($settings),
@@ -201,7 +201,7 @@ class TemplateController
 
         $this->updateingGolbalSettingsInfo($settings);
 
-        $SwiftCMTemplates->updateInfo($templateId, $updateData);
+        $SwifCeMaTemplates->updateInfo($templateId, $updateData);
 
         wp_send_json_success([
             'message' => __('Successfully Updated', 'swift-certificate-manager'),
@@ -211,7 +211,7 @@ class TemplateController
     public function saveTemplates()
     {
         $templateManager = new TemplatesManager();
-        $SwiftCMTemplates = new SwiftCMTemplates();
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
 
         $downloadableFiles = $templateManager->getDownloadableTemplates();
 
@@ -244,7 +244,7 @@ class TemplateController
                 'updated_at'     => gmdate('Y-m-d H:i:s'),
             ];
 
-            $res = $SwiftCMTemplates->insertGetId($data);
+            $res = $SwifCeMaTemplates->insertGetId($data);
 
             if ($res) {
                 $downloadedFiles[] = $slug;
@@ -260,7 +260,7 @@ class TemplateController
 
     public function updateingGolbalSettingsInfo($settings)
     {
-        $existing = get_option('swiftcm_global_settings', []);
+        $existing = get_option('swifcema_global_settings', []);
 
         if (!is_array($existing)) {
             $existing = [];
@@ -275,12 +275,12 @@ class TemplateController
             $preference . '_signature_img_enable' => sanitize_text_field($settings['instructor_signature_img_enable'] ?? ''),
         ];
 
-        update_option('swiftcm_global_settings', array_merge($existing, $instructorInfo));
+        update_option('swifcema_global_settings', array_merge($existing, $instructorInfo));
     }
 
     public function redesignTemplate()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -300,8 +300,8 @@ class TemplateController
             wp_send_json_error(['message' => __('Template ID is required', 'swift-certificate-manager')], 400);
         }
 
-        $SwiftCMTemplates = new SwiftCMTemplates();
-        $template = $SwiftCMTemplates->getTemplate($templateId);
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
+        $template = $SwifCeMaTemplates->getTemplate($templateId);
 
         if (!$template) {
             wp_send_json_error(['message' => __('Template not found', 'swift-certificate-manager')], 404);
@@ -312,7 +312,7 @@ class TemplateController
         $config = AvailableOptions::getConfig();
         $settings = $config[$slug] ?? [];
 
-        $SwiftCMTemplates->updateInfo($templateId, [
+        $SwifCeMaTemplates->updateInfo($templateId, [
             'settings'   => wp_json_encode($settings),
             'updated_at' => gmdate('Y-m-d H:i:s'),
         ]);

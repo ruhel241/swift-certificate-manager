@@ -2,14 +2,14 @@
 
 namespace SwiftCertificateManager\Models;
 
-class SwiftCMTemplates {
+class SwifCeMaTemplates {
 
     protected $table;
 
     public function __construct() {
         global $wpdb;
 
-        $this->table = $wpdb->prefix . 'swiftcm_templates';
+        $this->table = $wpdb->prefix . 'swifcema_templates';
     }
    
      public function getTemplates() {

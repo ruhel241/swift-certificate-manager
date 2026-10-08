@@ -7,32 +7,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Get invoice hash from query var.
  */
-$swiftcm_hash = sanitize_text_field(
+$swifcema_hash = sanitize_text_field(
 	get_query_var( 'hash', '' )
 );
 
-if ( empty( $swiftcm_hash ) ) {
+if ( empty( $swifcema_hash ) ) {
 	return;
 }
 
 /**
  * Get payment info by hash.
  */
-$swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->getHash( $swiftcm_hash );
+$swifcema_payment_info = ( new \SwiftCertificateManager\Models\SwifCeMaPayment )->getHash( $swifcema_hash );
 
 ?>
 
-<?php if ( $swiftcm_payment_info ) : ?>
+<?php if ( $swifcema_payment_info ) : ?>
 
 	<?php
-	    $swiftcm_certificate_info = ( new \SwiftCertificateManager\Models\SwiftCMGenerate())->getInfo( $swiftcm_payment_info->request_id );
+	    $swifcema_certificate_info = ( new \SwiftCertificateManager\Models\SwifCeMaGenerate())->getInfo( $swifcema_payment_info->request_id );
 	?>
 
-	<div class="swiftcm-invoice-wrrapper">
+	<div class="swifcema-invoice-wrrapper">
 		<div class="invoice-header">
 			<div class="invoice-logo">
 				<img
-					src="<?php echo esc_url( SWIFTCM_PLUGIN_URL . 'assets/admin/images/logo.png' ); ?>"
+					src="<?php echo esc_url( SWIFCEMA_PLUGIN_URL . 'assets/admin/images/logo.png' ); ?>"
 					alt="<?php echo esc_attr__( 'Swift Certificate Manager', 'swift-certificate-manager' ); ?>"
 				>
 			</div>
@@ -42,7 +42,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 				<div class="invoice-number">
 					<?php
 					echo esc_html(
-						'#INV-' . gmdate( 'Y' ) . '-000' . $swiftcm_payment_info->id
+						'#INV-' . gmdate( 'Y' ) . '-000' . $swifcema_payment_info->id
 					);
 					?>
 				</div>
@@ -54,10 +54,10 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 				<div class="info-block">
 					<h3><?php echo esc_html__( 'Billed To', 'swift-certificate-manager' ); ?></h3>
 					<p>
-						<?php echo esc_html( $swiftcm_certificate_info->student_name ); ?>
+						<?php echo esc_html( $swifcema_certificate_info->student_name ); ?>
 					</p>
 					<p>
-						<?php echo esc_html( $swiftcm_certificate_info->student_email ); ?>
+						<?php echo esc_html( $swifcema_certificate_info->student_email ); ?>
 					</p>
                     <p>
 						<?php
@@ -66,7 +66,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 							'swift-certificate-manager'
 						);
 						?>
-						<?php echo esc_html( $swiftcm_certificate_info->course_name ); ?>
+						<?php echo esc_html( $swifcema_certificate_info->course_name ); ?>
 					</p>
 				</div>
 			</div>
@@ -91,7 +91,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 						echo esc_html(
 							gmdate(
 								'F j, Y',
-								strtotime( $swiftcm_payment_info->created_at )
+								strtotime( $swifcema_payment_info->created_at )
 							)
 						);
 						?>
@@ -101,7 +101,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 							<?php echo esc_html__( 'Status:', 'swift-certificate-manager' ); ?>
 						</strong>
 						<span class="status-badge status-paid">
-							<?php echo esc_html( $swiftcm_payment_info->payment_status ); ?>
+							<?php echo esc_html( $swifcema_payment_info->payment_status ); ?>
 						</span>
 					</p>
 				</div>
@@ -121,11 +121,11 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 				</div>
 
 				<div>
-					<?php echo esc_html( $swiftcm_payment_info->payment_method ); ?>
+					<?php echo esc_html( $swifcema_payment_info->payment_method ); ?>
 
-					(<?php echo esc_html( $swiftcm_payment_info->card_brand ); ?>
+					(<?php echo esc_html( $swifcema_payment_info->card_brand ); ?>
 					ending in
-					<?php echo esc_html( $swiftcm_payment_info->card_last_4 ); ?>
+					<?php echo esc_html( $swifcema_payment_info->card_last_4 ); ?>
 					)
 				</div>
 			</div>
@@ -137,7 +137,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 					</strong>
 				</div>
 				<div>
-					<?php echo esc_html( $swiftcm_payment_info->charge_id ); ?>
+					<?php echo esc_html( $swifcema_payment_info->charge_id ); ?>
 				</div>
 
 			</div>
@@ -154,7 +154,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 					echo esc_html(
 						gmdate(
 							'F j, Y',
-							strtotime( $swiftcm_payment_info->created_at )
+							strtotime( $swifcema_payment_info->created_at )
 						)
 					);
 					?>
@@ -188,7 +188,7 @@ $swiftcm_payment_info = ( new \SwiftCertificateManager\Models\SwiftCMPayment )->
 	</div>
 <?php else : ?>
 	<div
-		class="swiftcm-error-message"
+		class="swifcema-error-message"
 		style="margin-top:30px;background:#fff;width:100%;padding:50px;box-shadow:0 5px 25px rgba(0,0,0,0.1);border-radius:5px;"
 	>
 		<h2>

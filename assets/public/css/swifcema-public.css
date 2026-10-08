@@ -1,29 +1,29 @@
 @charset "UTF-8";
-.swiftcm-request-certificate-wrapper {
+.swifcema-request-certificate-wrapper {
   max-width: 1000px;
   margin: 60px auto !important;
   padding: 20px;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container {
+.swifcema-request-certificate-wrapper .swifcema-container {
   background: #ffffff;
   padding: 40px;
   border-radius: 16px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container h2 {
+.swifcema-request-certificate-wrapper .swifcema-container h2 {
   text-align: center;
   font-size: 28px;
   margin-bottom: 30px;
   color: #1f2937;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container label {
+.swifcema-request-certificate-wrapper .swifcema-container label {
   font-weight: 600;
   color: #374151;
   font-size: 14px;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container input[type=text],
-.swiftcm-request-certificate-wrapper .swiftcm-container input[type=email],
-.swiftcm-request-certificate-wrapper .swiftcm-container input[type=date] {
+.swifcema-request-certificate-wrapper .swifcema-container input[type=text],
+.swifcema-request-certificate-wrapper .swifcema-container input[type=email],
+.swifcema-request-certificate-wrapper .swifcema-container input[type=date] {
   width: 100%;
   padding: 12px 14px;
   margin-top: 6px;
@@ -33,11 +33,11 @@
   transition: 0.3s ease;
   outline: none;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container input:focus {
+.swifcema-request-certificate-wrapper .swifcema-container input:focus {
   border-color: #4a90e2;
   box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container input[type=submit] {
+.swifcema-request-certificate-wrapper .swifcema-container input[type=submit] {
   width: 100%;
   background: #4a90e2;
   color: white;
@@ -49,19 +49,19 @@
   cursor: pointer;
   transition: 0.3s ease;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container input[type=submit]:hover {
+.swifcema-request-certificate-wrapper .swifcema-container input[type=submit]:hover {
   background: #357ab7;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container .form-group {
+.swifcema-request-certificate-wrapper .swifcema-container .form-group {
   margin-bottom: 20px;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-container input:disabled {
+.swifcema-request-certificate-wrapper .swifcema-container input:disabled {
   background-color: #f3f4f6;
   color: #9ca3af;
   border-color: #e5e7eb;
   cursor: not-allowed;
 }
-.swiftcm-request-certificate-wrapper .swiftcm_payment_checkbox {
+.swifcema-request-certificate-wrapper .swifcema_payment_checkbox {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -72,46 +72,46 @@
   transition: 0.3s;
   cursor: pointer;
 }
-.swiftcm-request-certificate-wrapper .swiftcm_payment_checkbox:hover {
+.swifcema-request-certificate-wrapper .swifcema_payment_checkbox:hover {
   border-color: #4a90e2;
   background: #f0f7ff;
 }
-.swiftcm-request-certificate-wrapper #swiftcm_payment_checkbox {
+.swifcema-request-certificate-wrapper #swifcema_payment_checkbox {
   accent-color: #4a90e2;
   transform: scale(1.2);
 }
-.swiftcm-request-certificate-wrapper .swiftcm_payment_method {
+.swifcema-request-certificate-wrapper .swifcema_payment_method {
   margin-top: 10px;
   padding: 15px;
   border-radius: 10px;
   background: #f9fafb;
   border: 1px solid #e5e7eb;
 }
-.swiftcm-request-certificate-wrapper .swiftcm_payment_method input[type=radio] {
+.swifcema-request-certificate-wrapper .swifcema_payment_method input[type=radio] {
   accent-color: #4a90e2;
   margin-right: 6px;
 }
-.swiftcm-request-certificate-wrapper .swiftcm_payment_method label {
+.swifcema-request-certificate-wrapper .swifcema_payment_method label {
   margin-right: 15px;
   font-weight: 500;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-form-submit-message {
+.swifcema-request-certificate-wrapper .swifcema-form-submit-message {
   display: none;
   border-radius: 10px;
   margin: 25px 0;
   font-weight: 600;
   text-align: center;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-form-submit-message p {
+.swifcema-request-certificate-wrapper .swifcema-form-submit-message p {
   padding: 10px;
   border-radius: 4px;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-form-submit-message .success-message {
+.swifcema-request-certificate-wrapper .swifcema-form-submit-message .success-message {
   background: #eaffea;
   color: #1a7f37;
   border: 1px solid #b6f0c2;
 }
-.swiftcm-request-certificate-wrapper .swiftcm-form-submit-message .error-message {
+.swifcema-request-certificate-wrapper .swifcema-form-submit-message .error-message {
   background: #ffeaea;
   color: #b42318;
   border: 1px solid #f5c2c7;
@@ -119,21 +119,21 @@
 
 /* 📱 Mobile Responsive */
 @media (max-width: 600px) {
-  .swiftcm-request-certificate-wrapper .swiftcm-container {
+  .swifcema-request-certificate-wrapper .swifcema-container {
     padding: 20px;
   }
-  .swiftcm-request-certificate-wrapper h2 {
+  .swifcema-request-certificate-wrapper h2 {
     font-size: 22px;
   }
 }
-.swiftcm-verify-form-wrapper {
+.swifcema-verify-form-wrapper {
   min-height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
 }
-.swiftcm-verify-form-wrapper .swiftcm-card {
+.swifcema-verify-form-wrapper .swifcema-card {
   width: 100%;
   max-width: 700px;
   background: #fff;
@@ -141,48 +141,48 @@
   padding: 40px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.swiftcm-verify-form-wrapper .swiftcm-title {
+.swifcema-verify-form-wrapper .swifcema-title {
   text-align: center;
   font-size: 28px;
   margin-bottom: 20px;
   color: #1f2937;
 }
-.swiftcm-verify-form-wrapper .swiftcm-verify-certificate-message {
+.swifcema-verify-form-wrapper .swifcema-verify-certificate-message {
   border-radius: 10px;
   text-align: center;
   font-weight: 600;
   margin-bottom: 20px;
 }
-.swiftcm-verify-form-wrapper .swiftcm-verify-certificate-message p {
+.swifcema-verify-form-wrapper .swifcema-verify-certificate-message p {
   margin: 0;
   padding: 10px;
   border-radius: 4px;
 }
-.swiftcm-verify-form-wrapper .swiftcm-verify-certificate-message .success-message {
+.swifcema-verify-form-wrapper .swifcema-verify-certificate-message .success-message {
   background: #eaffea;
   color: #1a7f37;
 }
-.swiftcm-verify-form-wrapper .swiftcm-verify-certificate-message .error-message {
+.swifcema-verify-form-wrapper .swifcema-verify-certificate-message .error-message {
   background: #ffe5e5;
   color: #b91c1c;
 }
-.swiftcm-verify-form-wrapper .swiftcm-form {
+.swifcema-verify-form-wrapper .swifcema-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 25px;
 }
-.swiftcm-verify-form-wrapper .swiftcm-form input {
+.swifcema-verify-form-wrapper .swifcema-form input {
   padding: 12px;
   border: 1px solid #e5e7eb;
   border-radius: 10px;
   outline: none;
   transition: 0.3s;
 }
-.swiftcm-verify-form-wrapper .swiftcm-form input:focus {
+.swifcema-verify-form-wrapper .swifcema-form input:focus {
   border-color: #4a90e2;
 }
-.swiftcm-verify-form-wrapper .swiftcm-form button {
+.swifcema-verify-form-wrapper .swifcema-form button {
   padding: 12px;
   background: #4a90e2;
   color: white;
@@ -192,53 +192,53 @@
   font-weight: 600;
   transition: 0.3s;
 }
-.swiftcm-verify-form-wrapper .swiftcm-form button:hover {
+.swifcema-verify-form-wrapper .swifcema-form button:hover {
   background: #357ab7;
 }
-.swiftcm-verify-form-wrapper .swiftcm-loader {
+.swifcema-verify-form-wrapper .swifcema-loader {
   text-align: center;
   margin: 20px 0;
 }
-.swiftcm-verify-form-wrapper .swiftcm-loader img {
+.swifcema-verify-form-wrapper .swifcema-loader img {
   width: 60px;
 }
-.swiftcm-verify-form-wrapper .swiftcm-grid {
+.swifcema-verify-form-wrapper .swifcema-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
-.swiftcm-verify-form-wrapper .swiftcm-grid .item {
+.swifcema-verify-form-wrapper .swifcema-grid .item {
   background: #f9fafb;
   padding: 15px;
   border-radius: 12px;
 }
-.swiftcm-verify-form-wrapper .swiftcm-grid .full {
+.swifcema-verify-form-wrapper .swifcema-grid .full {
   grid-column: span 2;
 }
-.swiftcm-verify-form-wrapper .label {
+.swifcema-verify-form-wrapper .label {
   font-size: 12px;
   color: #6b7280;
   display: block;
   margin-bottom: 5px;
 }
-.swiftcm-verify-form-wrapper .value {
+.swifcema-verify-form-wrapper .value {
   font-size: 16px;
   font-weight: 600;
   color: #111827;
 }
 @media (max-width: 600px) {
-  .swiftcm-verify-form-wrapper .swiftcm-card {
+  .swifcema-verify-form-wrapper .swifcema-card {
     padding: 20px;
   }
-  .swiftcm-verify-form-wrapper .swiftcm-grid {
+  .swifcema-verify-form-wrapper .swifcema-grid {
     grid-template-columns: 1fr;
   }
-  .swiftcm-verify-form-wrapper .swiftcm-grid .full {
+  .swifcema-verify-form-wrapper .swifcema-grid .full {
     grid-column: span 1;
   }
 }
 
-.swiftcm-invoice-wrrapper {
+.swifcema-invoice-wrrapper {
   max-width: 800px;
   /*width: 70%;*/
   margin: 40px auto;
@@ -247,7 +247,7 @@
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
-.swiftcm-invoice-wrrapper .invoice-header {
+.swifcema-invoice-wrrapper .invoice-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -255,56 +255,56 @@
   padding-bottom: 20px;
   border-bottom: 2px solid #5469d4;
 }
-.swiftcm-invoice-wrrapper .logo {
+.swifcema-invoice-wrrapper .logo {
   font-size: 28px;
   font-weight: 700;
   color: #5469d4;
 }
-.swiftcm-invoice-wrrapper .invoice-title {
+.swifcema-invoice-wrrapper .invoice-title {
   text-align: right;
 }
-.swiftcm-invoice-wrrapper .invoice-title h1 {
+.swifcema-invoice-wrrapper .invoice-title h1 {
   color: #5469d4;
   font-size: 24px;
   font-weight: 600;
 }
-.swiftcm-invoice-wrrapper .invoice-number {
+.swifcema-invoice-wrrapper .invoice-number {
   color: #888;
   font-size: 14px;
   margin-top: 5px;
 }
-.swiftcm-invoice-wrrapper .invoice-details {
+.swifcema-invoice-wrrapper .invoice-details {
   display: flex;
   justify-content: space-between;
   margin-bottom: 40px;
 }
-.swiftcm-invoice-wrrapper .invoice-details-col {
+.swifcema-invoice-wrrapper .invoice-details-col {
   flex: 1;
 }
-.swiftcm-invoice-wrrapper .invoice-details-col:last-child {
+.swifcema-invoice-wrrapper .invoice-details-col:last-child {
   text-align: right;
 }
-.swiftcm-invoice-wrrapper .client-details h3, .swiftcm-invoice-wrrapper .company-details h3 {
+.swifcema-invoice-wrrapper .client-details h3, .swifcema-invoice-wrrapper .company-details h3 {
   font-size: 16px;
   color: #5469d4;
   margin-bottom: 10px;
   font-weight: 600;
 }
-.swiftcm-invoice-wrrapper .info-block {
+.swifcema-invoice-wrrapper .info-block {
   margin-bottom: 20px;
 }
-.swiftcm-invoice-wrrapper .info-block p {
+.swifcema-invoice-wrrapper .info-block p {
   margin-bottom: 5px;
   font-size: 14px;
 }
-.swiftcm-invoice-wrrapper .invoice-items {
+.swifcema-invoice-wrrapper .invoice-items {
   margin-bottom: 30px;
 }
-.swiftcm-invoice-wrrapper table {
+.swifcema-invoice-wrrapper table {
   width: 100%;
   border-collapse: collapse;
 }
-.swiftcm-invoice-wrrapper th {
+.swifcema-invoice-wrrapper th {
   background-color: #f8fafc;
   padding: 12px 15px;
   text-align: left;
@@ -313,25 +313,25 @@
   color: #5469d4;
   border-bottom: 2px solid #eaeaea;
 }
-.swiftcm-invoice-wrrapper td {
+.swifcema-invoice-wrrapper td {
   padding: 12px 15px;
   font-size: 14px;
   border-bottom: 1px solid #eaeaea;
 }
-.swiftcm-invoice-wrrapper .item-price, .swiftcm-invoice-wrrapper .item-total {
+.swifcema-invoice-wrrapper .item-price, .swifcema-invoice-wrrapper .item-total {
   text-align: right;
 }
-.swiftcm-invoice-wrrapper .invoice-totals {
+.swifcema-invoice-wrrapper .invoice-totals {
   width: 300px;
   margin-left: auto;
 }
-.swiftcm-invoice-wrrapper .totals-row {
+.swifcema-invoice-wrrapper .totals-row {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
   font-size: 14px;
 }
-.swiftcm-invoice-wrrapper .totals-row.final {
+.swifcema-invoice-wrrapper .totals-row.final {
   font-weight: 700;
   font-size: 16px;
   color: #5469d4;
@@ -339,24 +339,24 @@
   margin-top: 10px;
   padding-top: 15px;
 }
-.swiftcm-invoice-wrrapper .payment-info {
+.swifcema-invoice-wrrapper .payment-info {
   background-color: #f8fafc;
   padding: 20px;
   border-radius: 8px;
   margin: 30px 0;
 }
-.swiftcm-invoice-wrrapper .payment-info h3 {
+.swifcema-invoice-wrrapper .payment-info h3 {
   color: #5469d4;
   margin-bottom: 15px;
   font-size: 16px;
   font-weight: 600;
 }
-.swiftcm-invoice-wrrapper .payment-method {
+.swifcema-invoice-wrrapper .payment-method {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
 }
-.swiftcm-invoice-wrrapper .status-badge {
+.swifcema-invoice-wrrapper .status-badge {
   display: inline-block;
   padding: 4px 12px;
   border-radius: 50px;
@@ -364,24 +364,24 @@
   font-weight: 600;
   text-transform: uppercase;
 }
-.swiftcm-invoice-wrrapper .status-paid {
+.swifcema-invoice-wrrapper .status-paid {
   background-color: #e3fcef;
   color: #0c9d58;
 }
-.swiftcm-invoice-wrrapper .footer {
+.swifcema-invoice-wrrapper .footer {
   text-align: center;
   margin-top: 40px;
   color: #888;
   font-size: 13px;
 }
-.swiftcm-invoice-wrrapper .footer p {
+.swifcema-invoice-wrrapper .footer p {
   margin-bottom: 5px;
 }
-.swiftcm-invoice-wrrapper .invoice-logo img {
+.swifcema-invoice-wrrapper .invoice-logo img {
   max-height: 40px;
 }
 
-.swiftcm-error-message {
+.swifcema-error-message {
   color: red;
   font-weight: 500;
 }
@@ -405,7 +405,7 @@
   footer {
     display: none !important;
   }
-  .swiftcm-invoice-wrrapper {
+  .swifcema-invoice-wrrapper {
     width: 210mm;
     min-height: 297mm;
     margin: 0 !important;
@@ -415,14 +415,14 @@
     background: #fff !important;
     page-break-after: avoid;
   }
-  .swiftcm-invoice-wrrapper .payment-info {
+  .swifcema-invoice-wrrapper .payment-info {
     background-color: #f5f7fb !important;
   }
-  .swiftcm-invoice-wrrapper .status-paid {
+  .swifcema-invoice-wrrapper .status-paid {
     background-color: #e3fcef !important;
     color: #0c9d58 !important;
   }
-  .swiftcm-invoice-wrrapper .footer {
+  .swifcema-invoice-wrrapper .footer {
     margin-top: 60px !important;
   }
 }

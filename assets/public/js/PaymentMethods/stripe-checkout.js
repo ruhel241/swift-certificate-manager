@@ -7,7 +7,7 @@ function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Can
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toPrimitive(t, e) { if ("object" != _typeof(t) || !t) return t; var r; if ("undefined" != typeof Symbol && void 0 !== (r = t[Symbol.toPrimitive])) { var i = r.call(t, e || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === e ? String : Number)(t); }
 var StripeCheckout = /*#__PURE__*/function () {
   function StripeCheckout($form, $response) {
     var _this$data;
@@ -15,7 +15,7 @@ var StripeCheckout = /*#__PURE__*/function () {
     this.form = $form;
     this.data = ($response === null || $response === void 0 ? void 0 : $response.data) || {};
     this.intent = ((_this$data = this.data) === null || _this$data === void 0 ? void 0 : _this$data.intent) || {};
-    this.parentWrapper = this.form.parents('.swiftcm-request-certificate-wrapper');
+    this.parentWrapper = this.form.parents('.swifcema-request-certificate-wrapper');
   }
   return _createClass(StripeCheckout, [{
     key: "init",
@@ -34,11 +34,11 @@ var StripeCheckout = /*#__PURE__*/function () {
         clientSecret: this.intent.client_secret
       });
       var paymentElement = elements.create('payment', {});
-      var formSelector = '#' + this.form.attr('id') + ' .swiftcm_payment_processor';
+      var formSelector = '#' + this.form.attr('id') + ' .swifcema_payment_processor';
       paymentElement.mount(formSelector);
       paymentElement.on('ready', function () {
         _this.afterPaymentProcessorReady(payButtonHtml);
-        var $payNowBtn = _this.form.find('#swiftcm_pay_now');
+        var $payNowBtn = _this.form.find('#swifcema_pay_now');
         var defaultButtonText = $payNowBtn.text();
         $payNowBtn.on('click', function (e) {
           e.preventDefault();
@@ -62,11 +62,11 @@ var StripeCheckout = /*#__PURE__*/function () {
               throw new Error('Stripe payment intent not found.');
             }
             $payNowBtn.text('Redirecting...');
-            return jQuery.post(window.swiftcmPublicVars.ajaxurl, {
-              action: 'swiftcm_payment_confirmation_stripe',
+            return jQuery.post(window.swifcemaPublicVars.ajaxurl, {
+              action: 'swifcema_payment_confirmation_stripe',
               route: 'payment_confirmation',
               intentId: paymentIntentId,
-              nonce: window.swiftcmPublicVars.nonce
+              nonce: window.swifcemaPublicVars.nonce
             });
           }).then(function (response) {
             if (response !== null && response !== void 0 && response.success) {
@@ -95,38 +95,38 @@ var StripeCheckout = /*#__PURE__*/function () {
   }, {
     key: "generatePayButton",
     value: function generatePayButton() {
-      var currencySymbol = window.swiftcmPublicVars.currencySymbol || '';
+      var currencySymbol = window.swifcemaPublicVars.currencySymbol || '';
       var amount = parseInt(this.intent.amount || 0, 10) / 100;
       var buttonText = 'Pay ' + currencySymbol + amount + ' Now';
-      return "<button id='swiftcm_pay_now' style='margin-top:20px;width:100%;' type='button'>" + buttonText + "</button>";
+      return "<button id='swifcema_pay_now' style='margin-top:20px;width:100%;' type='button'>" + buttonText + "</button>";
     }
   }, {
     key: "startPaymentProcessing",
     value: function startPaymentProcessing() {
       var _this2 = this;
-      this.form.find('.swiftcm_payment_processor').parent().prepend("<p class='swiftcm_loading_processor'>Payment processor loading...</p>");
+      this.form.find('.swifcema_payment_processor').parent().prepend("<p class='swifcema_loading_processor'>Payment processor loading...</p>");
       this.parentWrapper.find('.request_cretificate_form').hide();
       setTimeout(function () {
-        _this2.parentWrapper.find('.swiftcm-form-submit-message').hide();
+        _this2.parentWrapper.find('.swifcema-form-submit-message').hide();
       }, 3000);
     }
 
     // afterPaymentSuccess() {
     //     const receipt = "<a href='" + this.data?.order_items?.payment_args?.success_url + "'>View Receipt</a>";
-    //     this.parentWrapper.find('.swiftcm-container').append("<div class='swiftcm_form_receipt'>Thanks for your Request Certificate <br/>" + receipt + "</div>");
-    //     this.parentWrapper.find('#swiftcm_request_certificate').hide();
+    //     this.parentWrapper.find('.swifcema-container').append("<div class='swifcema_form_receipt'>Thanks for your Request Certificate <br/>" + receipt + "</div>");
+    //     this.parentWrapper.find('#swifcema_request_certificate').hide();
     // }
   }, {
     key: "afterPaymentProcessorReady",
     value: function afterPaymentProcessorReady(payButton) {
-      this.form.find('.swiftcm_complete_payment_instruction').remove();
-      this.form.prepend("<p class='swiftcm_complete_payment_instruction'>Please complete your payment with Stripe 👇</p>");
-      this.form.find('.swiftcm_payment_processor').append(payButton);
-      this.form.find('.swiftcm_loading_processor').remove();
+      this.form.find('.swifcema_complete_payment_instruction').remove();
+      this.form.prepend("<p class='swifcema_complete_payment_instruction'>Please complete your payment with Stripe 👇</p>");
+      this.form.find('.swifcema_payment_processor').append(payButton);
+      this.form.find('.swifcema_loading_processor').remove();
     }
   }]);
 }(); // when get response from server then init the stripe checkout
-window.addEventListener('swiftcm_payment_next_action_stripe', function (e) {
+window.addEventListener('swifcema_payment_next_action_stripe', function (e) {
   new StripeCheckout(e.detail.form, e.detail.response).init();
 });
 /******/ })()

@@ -10,12 +10,12 @@ class OnboardingController
 {
     public function register()
     {
-        add_action('wp_ajax_swiftcm_onboarding_info_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swifcema_onboarding_info_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -46,14 +46,14 @@ class OnboardingController
 
         $this->{$validRoutes[$route]}();
 
-        do_action('swiftcm_admin_ajax_handler_onboarding_catch', $route);
+        do_action('swifcema_admin_ajax_handler_onboarding_catch', $route);
 
         wp_die();
     }
 
     public function saveOnboardingInfo()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -97,10 +97,10 @@ class OnboardingController
         ];
     
         // 💾 Save onboarding info
-        update_option('swiftcm_onboarding_info', $onboardingInfo);
+        update_option('swifcema_onboarding_info', $onboardingInfo);
     
         // 🧠 Merge with global settings (NO re-sanitization)
-        $globalSettings = get_option('swiftcm_global_settings', []);
+        $globalSettings = get_option('swifcema_global_settings', []);
         
         if (!is_array($globalSettings)) {
             $globalSettings = [];
@@ -118,7 +118,7 @@ class OnboardingController
             'preference'                      => $onboardingInfo['preference'],
         ]);
     
-        update_option('swiftcm_global_settings', $globalSettings);
+        update_option('swifcema_global_settings', $globalSettings);
     
         wp_send_json_success([
             'message' => __("Onboarding saved successfully", 'swift-certificate-manager')
@@ -127,7 +127,7 @@ class OnboardingController
 
     public function saveOnboarded()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -151,7 +151,7 @@ class OnboardingController
             ], 400);
         }
 
-        update_option('swiftcm_is_onboarded', $isOnboarded);
+        update_option('swifcema_is_onboarded', $isOnboarded);
 
         wp_send_json_success([
             'message' => __('Saved onboarding successfully', 'swift-certificate-manager')

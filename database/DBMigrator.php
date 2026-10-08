@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\database\Migrations\SwiftCMGenerateMigrator;
-use SwiftCertificateManager\database\Migrations\SwiftCMTemplatesMigrator;
-use SwiftCertificateManager\database\Migrations\SwiftCMPaymentsMigrator;
+use SwiftCertificateManager\database\Migrations\SwifCeMaGenerateMigrator;
+use SwiftCertificateManager\database\Migrations\SwifCeMaTemplatesMigrator;
+use SwiftCertificateManager\database\Migrations\SwifCeMaPaymentsMigrator;
 
 class DBMigrator {
 
@@ -43,16 +43,16 @@ class DBMigrator {
 
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-		require_once SWIFTCM_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCMGenerateMigrator.php';
+		require_once SWIFCEMA_PLUGIN_DIR_PATH . 'database/Migrations/SwifCeMaGenerateMigrator.php';
 
-		require_once SWIFTCM_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCMTemplatesMigrator.php';
+		require_once SWIFCEMA_PLUGIN_DIR_PATH . 'database/Migrations/SwifCeMaTemplatesMigrator.php';
 
-		require_once SWIFTCM_PLUGIN_DIR_PATH . 'database/Migrations/SwiftCMPaymentsMigrator.php';
+		require_once SWIFCEMA_PLUGIN_DIR_PATH . 'database/Migrations/SwifCeMaPaymentsMigrator.php';
 
-		SwiftCMGenerateMigrator::migrate();
+		SwifCeMaGenerateMigrator::migrate();
 
-		SwiftCMTemplatesMigrator::migrate();
+		SwifCeMaTemplatesMigrator::migrate();
 
-		SwiftCMPaymentsMigrator::migrate();
+		SwifCeMaPaymentsMigrator::migrate();
 	}
 }

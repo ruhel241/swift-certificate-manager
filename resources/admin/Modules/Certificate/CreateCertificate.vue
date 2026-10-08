@@ -1,5 +1,5 @@
 <template>
-    <div class="swiftcm-assign-certificate">
+    <div class="swifcema-assign-certificate">
         <certificate-creator-intro/>
     </div>
 </template>

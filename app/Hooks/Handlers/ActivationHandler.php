@@ -12,32 +12,32 @@ class ActivationHandler
         self::maybeCreateFolderStructure();
         self::maybeCreatePages();
 
-        require_once(SWIFTCM_PLUGIN_DIR_PATH . 'database/DBMigrator.php');
+        require_once(SWIFCEMA_PLUGIN_DIR_PATH . 'database/DBMigrator.php');
 
         DBMigrator::run($network_wide);
 
         $globalSettings = AvailableOptions::globalSettings();
        
         // create custom cron schedule and job
-        wp_schedule_event( time(), 'daily', 'swiftcm_cleanup_tmp_dir' );
+        wp_schedule_event( time(), 'daily', 'swifcema_cleanup_tmp_dir' );
 
-        if (!get_option('swiftcm_active_template')){
-            update_option('swiftcm_active_template', 'template-1');
+        if (!get_option('swifcema_active_template')){
+            update_option('swifcema_active_template', 'template-1');
         }
 
-        if (!get_option('swiftcm_global_settings')){
-            update_option('swiftcm_global_settings', $globalSettings);
+        if (!get_option('swifcema_global_settings')){
+            update_option('swifcema_global_settings', $globalSettings);
         }
 
         // invoice flush 
-        swiftcm_add_rewrite_rules();
+        swifcema_add_rewrite_rules();
         flush_rewrite_rules();
     }
 
     public static function maybeCreateFolderStructure()
     {
         if (!class_exists('\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
-            require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
+            require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
         }
 
         $dirs = AvailableOptions::getDirStructure();
@@ -74,13 +74,13 @@ class ActivationHandler
         $pages = [
             [
                 'post_title'   => 'Request Swift Certificate Manager',
-                'post_content' => '[swiftcm form="request-swift-certificate-manager"]',
+                'post_content' => '[swifcema form="request-swift-certificate-manager"]',
                 'post_status'  => 'publish',
                 'post_type'    => 'page'
             ],
             [
                 'post_title'   => 'Verify Swift Certificate Manager',
-                'post_content' => '[swiftcm form="verify-swift-certificate-manager"]',
+                'post_content' => '[swifcema form="verify-swift-certificate-manager"]',
                 'post_status'  => 'publish',
                 'post_type'    => 'page'
             ]

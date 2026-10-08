@@ -9,12 +9,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class SettingsController
 {
     public function register() {
-        add_action('wp_ajax_swiftcm_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swifcema_global_settings_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -45,14 +45,14 @@ class SettingsController
 
         $this->{$validRoutes[$route]}();
 
-        do_action('swiftcm_admin_ajax_handler_settings_catch', $route);
+        do_action('swifcema_admin_ajax_handler_settings_catch', $route);
 
         wp_die();
     }
 
     public function getSettings()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -64,7 +64,7 @@ class SettingsController
             ], 403);
         }
 
-        $settings = get_option('swiftcm_global_settings', []);
+        $settings = get_option('swifcema_global_settings', []);
 
         wp_send_json_success(array(
             'settings' => $settings
@@ -73,7 +73,7 @@ class SettingsController
 
     public function saveSettings() 
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -99,7 +99,7 @@ class SettingsController
 
         $settings = $this->sanitizeArray($rawSettings);
         
-        update_option('swiftcm_global_settings', $settings );
+        update_option('swifcema_global_settings', $settings );
     
         wp_send_json_success(
             [

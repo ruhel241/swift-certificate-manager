@@ -7,7 +7,7 @@ function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Can
 function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
 function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toPrimitive(t, e) { if ("object" != _typeof(t) || !t) return t; var r; if ("undefined" != typeof Symbol && void 0 !== (r = t[Symbol.toPrimitive])) { var i = r.call(t, e || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === e ? String : Number)(t); }
 var PaypalCheckout = /*#__PURE__*/function () {
   function PaypalCheckout($form, $response) {
     _classCallCheck(this, PaypalCheckout);
@@ -30,7 +30,7 @@ var PaypalCheckout = /*#__PURE__*/function () {
         console.error('Invalid PayPal response data.', this.data);
         return;
       }
-      var paymentProcessorContainer = this.form.find('.swiftcm_payment_processor');
+      var paymentProcessorContainer = this.form.find('.swifcema_payment_processor');
       if (!paymentProcessorContainer.length) {
         console.error('Could not find the payment processor container.');
         return;
@@ -38,8 +38,8 @@ var PaypalCheckout = /*#__PURE__*/function () {
 
       // Remove old message/button before re-render
       paymentProcessorContainer.empty();
-      this.form.find('.swiftcm_complete_payment_instruction').remove();
-      var paypalButtonContainer = jQuery("<div class='swiftcm_paypal_btn'></div>");
+      this.form.find('.swifcema_complete_payment_instruction').remove();
+      var paypalButtonContainer = jQuery("<div class='swifcema_paypal_btn'></div>");
       paymentProcessorContainer.append(paypalButtonContainer);
       window.paypal.Buttons({
         fundingSource: window.paypal.FUNDING.PAYPAL,
@@ -63,11 +63,11 @@ var PaypalCheckout = /*#__PURE__*/function () {
               alert('Transaction details are missing.');
               return;
             }
-            return jQuery.post(window.swiftcmPublicVars.ajaxurl, {
-              action: 'swiftcm_payment_confirmation_paypal',
+            return jQuery.post(window.swifcemaPublicVars.ajaxurl, {
+              action: 'swifcema_payment_confirmation_paypal',
               hash: _this.data.hash,
               charge_id: transaction.id,
-              nonce: window.swiftcmPublicVars.nonce
+              nonce: window.swifcemaPublicVars.nonce
             }).then(function (response) {
               if (response !== null && response !== void 0 && response.success) {
                 if (_this.data.confirmation_url) {
@@ -93,11 +93,11 @@ var PaypalCheckout = /*#__PURE__*/function () {
         }
       }).render(paypalButtonContainer[0]);
       this.form.find('.request_cretificate_form').hide();
-      this.form.prepend("<p class='swiftcm_complete_payment_instruction'>Please complete your certificate payment with PayPal 👇</p>");
+      this.form.prepend("<p class='swifcema_complete_payment_instruction'>Please complete your certificate payment with PayPal 👇</p>");
     }
   }]);
 }();
-window.addEventListener('swiftcm_payment_next_action_paypal', function (e) {
+window.addEventListener('swifcema_payment_next_action_paypal', function (e) {
   var detail = e.detail;
   if (detail && detail.form && detail.response) {
     new PaypalCheckout(detail.form, detail.response).init();

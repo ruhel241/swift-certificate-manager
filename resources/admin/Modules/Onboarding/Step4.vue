@@ -1,5 +1,5 @@
 <template>
-  <div class="swiftcm-finishing-setup">
+  <div class="swifcema-finishing-setup">
     <div class="cong_wrap" v-loading="action">
       <div class="title-box">
         <h1 class="title">Congratulations! you are ready to generate certificate</h1>
@@ -12,9 +12,9 @@
           <span class="setup-count">0{{active}}</span>
           <span>/03</span>
         </div>
-        <div class="swiftcm_button_group">
+        <div class="swifcema_button_group">
           <el-button class="capsule-button" round @click="backBtnHandler">Back</el-button>
-          <button class="el-button swiftcm-primary-btn el-button--default" @click="finishHandler">Finish Setup</button>
+          <button class="el-button swifcema-primary-btn el-button--default" @click="finishHandler">Finish Setup</button>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@ export default {
     return {
       saving: false,
       action: false,
-      imageUrl: window.swiftcmAdminVars.images_url,
+      imageUrl: window.swifcemaAdminVars.images_url,
       isOnboarded: 'yes',
     };
   },
@@ -41,8 +41,8 @@ export default {
       this.saveOnBoarded();
       setTimeout(() => {
         this.action = false;
-        localStorage.removeItem('swiftcm_step_active');
-        localStorage.removeItem('swiftcm_onboarding_info');
+        localStorage.removeItem('swifcema_step_active');
+        localStorage.removeItem('swifcema_onboarding_info');
         location.reload();
       }, 1000);
     },
@@ -50,10 +50,10 @@ export default {
     saveOnBoarded() {
       this.saving = true;
       this.$post({
-        action: "swiftcm_onboarding_info_ajax",
+        action: "swifcema_onboarding_info_ajax",
         route: "save_onboarded",
         is_onboarded: this.isOnboarded,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
           .then((response) => {
             // console.log(response.data.message);

@@ -6,25 +6,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Models\SwiftCMPayment;
+use SwiftCertificateManager\Models\SwifCeMaPayment;
 use SwiftCertificateManager\Helpers\PaymentHelper;
 use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Models\SwiftCMGenerate;
-use SwiftCertificateManager\Models\SwiftCMTemplates;
+use SwiftCertificateManager\Models\SwifCeMaGenerate;
+use SwiftCertificateManager\Models\SwifCeMaTemplates;
 use SwiftCertificateManager\Helpers\HelperFunction;
 
 class FrontendHandler
 {
     public function register() {
-        add_action('wp_ajax_swiftcm_public_ajax', array($this, 'ajaxRoutes'));
-        add_action('wp_ajax_nopriv_swiftcm_public_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swifcema_public_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_nopriv_swifcema_public_ajax', array($this, 'ajaxRoutes'));
         // when paypal or strip payment success then certificate payment status update
-        add_action('swiftcm_after_payment_success', array($this, 'paymentConfirmationAfterPaymentSuccess'));
+        add_action('swifcema_after_payment_success', array($this, 'paymentConfirmationAfterPaymentSuccess'));
 
         $this->registerShortcodes();  
 
-        if ( defined('SWIFTCM_MANAGER_PRO') ) {
-            // // Load payment gateways for frontend to render payment options in certificate request form
+        if ( defined('SWIFCEMA_PRO') ) {
+            // Load payment gateways for frontend to render payment options in certificate request form
             new \SwiftCertificateManagerPro\Services\Integrations\PayPal\PayPal();
             new \SwiftCertificateManagerPro\Services\Integrations\Stripe\Stripe();
         }     
@@ -32,7 +32,7 @@ class FrontendHandler
 
     public function ajaxRoutes()
     {
-        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_public_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -57,14 +57,14 @@ class FrontendHandler
 
         $this->{$validRoutes[$route]}();
 
-        do_action('swiftcm_public_ajax_handler_catch', $route);
+        do_action('swifcema_public_ajax_handler_catch', $route);
 
         wp_die();
     }
 
     // shortcode register
     public function registerShortcodes() {
-        add_shortcode( 'swiftcm', [ $this, 'render' ] );
+        add_shortcode( 'swifcema', [ $this, 'render' ] );
     }
 
     public function render( $attr ) {
@@ -86,7 +86,7 @@ class FrontendHandler
             }
         }
 
-        if ( isset( $attr['swiftcm_invoice'] ) ) {
+        if ( isset( $attr['swifcema_invoice'] ) ) {
             $this->getInvoice();
         }
 
@@ -94,36 +94,36 @@ class FrontendHandler
     }
 
     public function shortcodeRenderRequestForm() {
-        require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/views/public/request-certificate.php';
+        require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/views/public/request-certificate.php';
 
-        $paymentSettingsStripe = get_option('swiftcm_payment_settings_stripe', []);
-        $paymentSettingsPaypal = get_option('swiftcm_payment_settings_paypal', []);
+        $paymentSettingsStripe = get_option('swifcema_payment_settings_stripe', []);
+        $paymentSettingsPaypal = get_option('swifcema_payment_settings_paypal', []);
 
        
         $isStripeEnabled = $paymentSettingsStripe['enable'] ?? 'no';
         $isPaypalEnabled = $paymentSettingsPaypal['enable'] ?? 'no';
 
         if ($isStripeEnabled === 'yes') {
-            do_action('swiftcm_render_component_stripe');
+            do_action('swifcema_render_component_stripe');
         }
         
         if ($isPaypalEnabled === 'yes') {
-            do_action('swiftcm_render_component_paypal');
+            do_action('swifcema_render_component_paypal');
         }
     }
 
     public function shortcodeRenderVerifyForm() {
-        require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/views/public/verify-certificate.php';
+        require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/views/public/verify-certificate.php';
     }
 
     public function getInvoice()
     {
-        require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/views/public/payment-invoice.php';
+        require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/views/public/payment-invoice.php';
     }
 
     public function requestCertificateInfo()
     {
-        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_public_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -154,11 +154,11 @@ class FrontendHandler
             ], 400);
         }
 
-        $SwiftCMGenerate  = new SwiftCMGenerate();
-        $SwiftCMTemplates = new SwiftCMTemplates();
+        $SwifCeMaGenerate  = new SwifCeMaGenerate();
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
        
         // settings
-        $globalSettings = get_option('swiftcm_global_settings', []);
+        $globalSettings = get_option('swifcema_global_settings', []);
         $preference     = sanitize_key($globalSettings['preference'] ?? '');
 
         // generate code
@@ -166,8 +166,8 @@ class FrontendHandler
         $certificateCode       = HelperFunction::generateCertificateCode($certificateCodePrefix);
 
         // template
-        $activeTemplate = get_option('swiftcm_active_template', 'template-1');
-        $getTemplate    = $SwiftCMTemplates->getTemplateSlug($activeTemplate);
+        $activeTemplate = get_option('swifcema_active_template', 'template-1');
+        $getTemplate    = $SwifCeMaTemplates->getTemplateSlug($activeTemplate);
 
         if (!$getTemplate) {
             wp_send_json_error([
@@ -210,8 +210,8 @@ class FrontendHandler
             'updated_at'       => gmdate('Y-m-d H:i:s'),
         ];
 
-        $certificateGenerateId = $SwiftCMGenerate->insertGetId($data);
-        $certificateData       = $SwiftCMGenerate->getInfo($certificateGenerateId);
+        $certificateGenerateId = $SwifCeMaGenerate->insertGetId($data);
+        $certificateData       = $SwifCeMaGenerate->getInfo($certificateGenerateId);
 
         // ⚠️ pass sanitized info only
         $this->paymentCreate($info, $certificateGenerateId);
@@ -224,7 +224,7 @@ class FrontendHandler
 
     public function verifyCertificate()
     {
-        if (!check_ajax_referer('swiftcm_public_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_public_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -241,9 +241,9 @@ class FrontendHandler
         }
 
        
-        $SwiftCMGenerate = new SwiftCMGenerate();
+        $SwifCeMaGenerate = new SwifCeMaGenerate();
 
-        $info = $SwiftCMGenerate->verifyCertificateCode($certificateCode);
+        $info = $SwifCeMaGenerate->verifyCertificateCode($certificateCode);
 
         if (empty($info)) {
             wp_send_json_error([
@@ -290,7 +290,7 @@ class FrontendHandler
         }
 
         // option key safe
-        $key = "swiftcm_payment_settings_" . $paymentMethod;
+        $key = "swifcema_payment_settings_" . $paymentMethod;
 
         $paymentSettings = get_option($key, []);
         $isEnabled = $paymentSettings['enable'] ?? 'no';
@@ -317,12 +317,12 @@ class FrontendHandler
             'updated_at'     => gmdate('Y-m-d H:i:s'),
         ];
 
-        $paymentId = (new SwiftCMPayment)->insertGetId($paymentData);
+        $paymentId = (new SwifCeMaPayment)->insertGetId($paymentData);
 
         // 💳 trigger payment only if amount valid
         if ($paymentTotal > 0) {
             do_action(
-                'swiftcm_make_payment_' . $paymentMethod,
+                'swifcema_make_payment_' . $paymentMethod,
                 $certificateGenerateId,
                 $paymentId
             );
@@ -331,7 +331,7 @@ class FrontendHandler
 
     private function generateHash()
     {
-        return 'swiftcm_' . wp_generate_uuid4();
+        return 'swifcema_' . wp_generate_uuid4();
     }
 
      // when paypal or stripe paid then generate certificate payment status update
@@ -340,8 +340,8 @@ class FrontendHandler
             return;
         }
 
-        $SwiftCMGenerate  = new SwiftCMGenerate();
-        $payment = (new SwiftCMPayment)->getHash($hash);
+        $SwifCeMaGenerate  = new SwifCeMaGenerate();
+        $payment = (new SwifCeMaPayment)->getHash($hash);
         $paymentStatus = $payment->payment_status;
 
         $GenerateData = [
@@ -349,7 +349,7 @@ class FrontendHandler
             'updated_at' => gmdate('Y-m-d H:i:s')
         ];
         
-        $SwiftCMGenerate->updateInfo($payment->request_id, $GenerateData);
+        $SwifCeMaGenerate->updateInfo($payment->request_id, $GenerateData);
     }
 
     public function loadAssets() {
@@ -359,49 +359,49 @@ class FrontendHandler
 
         $loaded = true;
 
-        $assetsUrl = SWIFTCM_PLUGIN_URL . 'assets/';
+        $assetsUrl = SWIFCEMA_PLUGIN_URL . 'assets/';
 
-        $globalSettings        = get_option('swiftcm_global_settings', []);
-        $paymentSettingsStripe = get_option('swiftcm_payment_settings_stripe', []);
-        $paymentSettingsPaypal = get_option('swiftcm_payment_settings_paypal', []);
+        $globalSettings        = get_option('swifcema_global_settings', []);
+        $paymentSettingsStripe = get_option('swifcema_payment_settings_stripe', []);
+        $paymentSettingsPaypal = get_option('swifcema_payment_settings_paypal', []);
 
         $isStripeEnabled = $paymentSettingsStripe['enable'] ?? 'no';
         $isPaypalEnabled = $paymentSettingsPaypal['enable'] ?? 'no';
 
         wp_enqueue_script(
-            'swiftcm_request_certificate',
-            $assetsUrl . 'public/js/swiftcm_request_certificate.js',
+            'swifcema_request_certificate',
+            $assetsUrl . 'public/js/swifcema_request_certificate.js',
             ['jquery'],
-            SWIFTCM_VERSION,
+            SWIFCEMA_VERSION,
             true // footer
         );
 
         wp_enqueue_script('jquery-ui-datepicker');
 
         wp_enqueue_style(
-            'swiftcm_date_picker',
+            'swifcema_date_picker',
             $assetsUrl . 'public/css/jquery-ui/jquery-ui.css',
             [],
             '1.13.2'
         );
 
         wp_enqueue_style(
-            'swiftcm_public_styles',
-            $assetsUrl . 'public/css/swiftcm-public.css',
+            'swifcema_public_styles',
+            $assetsUrl . 'public/css/swifcema-public.css',
             [],
-            SWIFTCM_VERSION
+            SWIFCEMA_VERSION
         ); 
       
-        $swiftcmPublicVars = apply_filters('swiftcm_public_app_vars', [
+        $swifcemaPublicVars = apply_filters('swifcema_public_app_vars', [
             'ajaxurl'        => admin_url('admin-ajax.php'),
-            'nonce'          => wp_create_nonce('swiftcm_public_nonce'),
+            'nonce'          => wp_create_nonce('swifcema_public_nonce'),
             'stripe_enabled' => $isStripeEnabled,
             'paypal_enabled' => $isPaypalEnabled,
             'globalSettings' => $globalSettings,
             'currencySymbol' => PaymentHelper::currencySymbol($globalSettings['currency'] ?? 'USD'),
-            'has_pro'        => defined('SWIFTCM_PRO'),
+            'has_pro'        => defined('SWIFCEMA_PRO'),
         ]);
 
-        wp_localize_script('swiftcm_request_certificate', 'swiftcmPublicVars', $swiftcmPublicVars);
+        wp_localize_script('swifcema_request_certificate', 'swifcemaPublicVars', $swifcemaPublicVars);
     }
 }

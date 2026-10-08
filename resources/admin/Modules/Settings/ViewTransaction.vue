@@ -1,5 +1,5 @@
 <template>
-  <div class="swiftcm-transaction-details-page">
+  <div class="swifcema-transaction-details-page">
     <!-- Header with navigation -->
     <div class="page-header">
       <el-page-header @back="gobackPaymentTransaction" content="Transaction Details"></el-page-header>
@@ -16,13 +16,13 @@
               {{ transaction.payment_status === 'paid' ? 'Payment Successful' : 'Payment Pending' }}
             </div>
 
-            <div class="swiftcm-status-actions">
+            <div class="swifcema-status-actions">
               <el-popover
                 placement="bottom"
                 width="300"
                 v-model="statusPopoverVisible"
                 trigger="click">
-                <div class="swiftcm-status-edit-form">
+                <div class="swifcema-status-edit-form">
                   <h4>Update Payment Status</h4>
                   <el-form label-position="top">
                     <el-form-item>
@@ -210,7 +210,7 @@
           <!-- Action Buttons -->
           <div class="action-buttons">
             <el-button class="capsule-btn" round icon="el-icon-back" @click="gobackPaymentTransaction">Back to Transactions</el-button>
-            <el-button class="swiftcm-primary-btn" type="success" icon="el-icon-view" @click="getoViewCertificate(transaction.get_info.id)">View Request Certificate</el-button>
+            <el-button class="swifcema-primary-btn" type="success" icon="el-icon-view" @click="getoViewCertificate(transaction.get_info.id)">View Request Certificate</el-button>
           </div>
         </div>
       </template>
@@ -226,7 +226,7 @@ export default {
     return {
       loading: false,
       transaction: null,
-      images_url: window.swiftcmAdminVars.images_url,
+      images_url: window.swifcemaAdminVars.images_url,
       statusPopoverVisible: false,
       editStatus: '',
       updatingStatus: false
@@ -254,10 +254,10 @@ export default {
       const transactionId = this.$route.params.transaction_id;
 
       this.$get({
-        action: 'swiftcm_transaction_admin_ajax',
+        action: 'swifcema_transaction_admin_ajax',
         route: 'get_transaction_details',
         transaction_id: transactionId,
-        nonce: window.swiftcmAdminVars.nonce
+        nonce: window.swifcemaAdminVars.nonce
       })
           .then(response => {
             this.transaction = response.data.transaction;
@@ -281,11 +281,11 @@ export default {
       this.updatingStatus = true;
 
       this.$post({
-        action: 'swiftcm_transaction_admin_ajax',
+        action: 'swifcema_transaction_admin_ajax',
         route: 'update_transaction_status',
         transaction_id: this.transaction.id,
         status: this.editStatus,
-        nonce: window.swiftcmAdminVars.nonce
+        nonce: window.swifcemaAdminVars.nonce
       })
           .then(response => {
             if (response.success) {

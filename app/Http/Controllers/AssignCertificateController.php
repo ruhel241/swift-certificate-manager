@@ -7,22 +7,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Models\SwiftCMPayment;
-use SwiftCertificateManager\Models\SwiftCMGenerate;
+use SwiftCertificateManager\Models\SwifCeMaPayment;
+use SwiftCertificateManager\Models\SwifCeMaGenerate;
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
-use SwiftCertificateManager\Models\SwiftCMTemplates;
+use SwiftCertificateManager\Models\SwifCeMaTemplates;
 use SwiftCertificateManager\Helpers\HelperFunction;
 
 class AssignCertificateController
 {
     public function register() {
-        add_action('wp_ajax_swiftcm_generate_admin_ajax', array($this, 'ajaxRoutes'));
+        add_action('wp_ajax_swifcema_generate_admin_ajax', array($this, 'ajaxRoutes'));
     }
 
     public function ajaxRoutes()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -61,14 +61,14 @@ class AssignCertificateController
 
         $this->{$validRoutes[$route]}();
 
-        do_action('swiftcm_assign_admin_ajax_handler_catch', $route);
+        do_action('swifcema_assign_admin_ajax_handler_catch', $route);
 
         wp_die();
     }
 
     public function getCertificateInfos()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -93,7 +93,7 @@ class AssignCertificateController
             'per_page'      => max(1, absint($infoData['per_page'] ?? 10)),
         ];
 
-        $infos  = new SwiftCMGenerate();
+        $infos  = new SwifCeMaGenerate();
         $result = $infos->getDatas($params);
 
         wp_send_json_success([
@@ -107,7 +107,7 @@ class AssignCertificateController
 
     public function getCertificateInfoByID()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -129,10 +129,10 @@ class AssignCertificateController
             ], 400);
         }
 
-        $SwiftCMGenerate = new SwiftCMGenerate();
-        $SwiftCertificateManagerPayment = new SwiftCMPayment();
+        $SwifCeMaGenerate = new SwifCeMaGenerate();
+        $SwiftCertificateManagerPayment = new SwifCeMaPayment();
 
-        $info = $SwiftCMGenerate->getInfo($infoId);
+        $info = $SwifCeMaGenerate->getInfo($infoId);
 
         if ( ! $info ) {
             wp_send_json_error([
@@ -152,7 +152,7 @@ class AssignCertificateController
 
     public function getCustomizationCertificate()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -174,12 +174,12 @@ class AssignCertificateController
             ], 400);
         }
 
-        $SwiftCMGenerate                  = new SwiftCMGenerate();
-        $SwiftCMTemplates                 = new SwiftCMTemplates();
-        $SwiftCertificateManagerPayment   = new SwiftCMPayment;
+        $SwifCeMaGenerate                  = new SwifCeMaGenerate();
+        $SwifCeMaTemplates                 = new SwifCeMaTemplates();
+        $SwiftCertificateManagerPayment   = new SwifCeMaPayment;
 
         // get data
-        $info = $SwiftCMGenerate->getInfo($infoId);
+        $info = $SwifCeMaGenerate->getInfo($infoId);
 
         if (!$info) {
             wp_send_json_error([
@@ -197,7 +197,7 @@ class AssignCertificateController
 
         // safe template fetch
         $getTemplate = $templateId
-            ? $SwiftCMTemplates->getTemplate($templateId)
+            ? $SwifCeMaTemplates->getTemplate($templateId)
             : null;
 
         wp_send_json_success([
@@ -210,7 +210,7 @@ class AssignCertificateController
 
     public function updateCustomizationCertificate()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -232,9 +232,9 @@ class AssignCertificateController
             ], 400);
         }
 
-        $SwiftCMGenerate = new SwiftCMGenerate();
+        $SwifCeMaGenerate = new SwifCeMaGenerate();
 
-        $info = $SwiftCMGenerate->getInfo($infoId);
+        $info = $SwifCeMaGenerate->getInfo($infoId);
 
         if (!$info) {
             wp_send_json_error([
@@ -256,7 +256,7 @@ class AssignCertificateController
             'updated_at'      => gmdate('Y-m-d H:i:s'),
         ];
 
-        $SwiftCMGenerate->updateInfo($infoId, $updateData);
+        $SwifCeMaGenerate->updateInfo($infoId, $updateData);
 
         wp_send_json_success([
             'message' => __('Successfully updated', 'swift-certificate-manager')
@@ -266,7 +266,7 @@ class AssignCertificateController
 
     public function saveCertificateInfo()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -296,19 +296,19 @@ class AssignCertificateController
         $status        = $info['status'];
         $paymentStatus = $info['payment_status'];
 
-        $SwiftCMGenerate  = new SwiftCMGenerate();
-        $SwiftCMTemplates = new SwiftCMTemplates();
+        $SwifCeMaGenerate  = new SwifCeMaGenerate();
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
        
         // Settings
-        $globalSettings        = get_option('swiftcm_global_settings', []);
+        $globalSettings        = get_option('swifcema_global_settings', []);
         $certificateCodePrefix = $globalSettings['certificate_code_prefix'] ?? '';
 
         // Generate code
         $certificateCode = HelperFunction::generateCertificateCode($certificateCodePrefix);
 
         // Template
-        $activeTemplate = get_option('swiftcm_active_template', 'template-1');
-        $getTemplate    = $SwiftCMTemplates->getTemplateSlug($activeTemplate);
+        $activeTemplate = get_option('swifcema_active_template', 'template-1');
+        $getTemplate    = $SwifCeMaTemplates->getTemplateSlug($activeTemplate);
         $settings       = json_decode($getTemplate->settings, true);
 
         $preference = $globalSettings['preference'] ?? 'instructor';
@@ -343,8 +343,8 @@ class AssignCertificateController
             'updated_at'       => gmdate('Y-m-d H:i:s'),
         ];
 
-        $certificateGenerateId = $SwiftCMGenerate->insertGetId($data);
-        $certificateData       = $SwiftCMGenerate->getInfo($certificateGenerateId);
+        $certificateGenerateId = $SwifCeMaGenerate->insertGetId($data);
+        $certificateData       = $SwifCeMaGenerate->getInfo($certificateGenerateId);
 
         // Message
         $message = ($status === 'draft')
@@ -359,7 +359,7 @@ class AssignCertificateController
 
     public function sendingEmailCertificate()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -543,7 +543,7 @@ class AssignCertificateController
 
         // ✅ upload directory
         $upload_dir = wp_upload_dir();
-        $certificates_dir = $upload_dir['basedir'] . '/' . SWIFTCM_UPLOAD_DIR . '/temp';
+        $certificates_dir = $upload_dir['basedir'] . '/' . SWIFCEMA_UPLOAD_DIR . '/temp';
 
         // ✅ ensure directory exists
         if (!file_exists($certificates_dir)) {
@@ -658,7 +658,7 @@ class AssignCertificateController
 
     public function updateCertificateInfo()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -680,10 +680,10 @@ class AssignCertificateController
             ], 400);
         }
 
-        $SwiftCMGenerate  = new SwiftCMGenerate();
-        $SwiftCMTemplates = new SwiftCMTemplates();
+        $SwifCeMaGenerate  = new SwifCeMaGenerate();
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
 
-        $info = $SwiftCMGenerate->getInfo($infoId);
+        $info = $SwifCeMaGenerate->getInfo($infoId);
 
         if (!$info) {
             wp_send_json_error([
@@ -697,13 +697,13 @@ class AssignCertificateController
             : [];
         // phpcs:enable WordPress.Security.NonceVerification.Recommended
 
-        $activeTemplate = get_option('swiftcm_active_template', 'template-1');
-        $getTemplate    = $SwiftCMTemplates->getTemplateSlug($activeTemplate);
+        $activeTemplate = get_option('swifcema_active_template', 'template-1');
+        $getTemplate    = $SwifCeMaTemplates->getTemplateSlug($activeTemplate);
 
         $settings = json_decode($getTemplate->settings ?? '', true);
         $settings = is_array($settings) ? $settings : [];
 
-        $globalSettings = get_option('swiftcm_global_settings', []);
+        $globalSettings = get_option('swifcema_global_settings', []);
         $preference     = $globalSettings['preference'] ?? '';
 
         $settings['student_name']     = sanitize_text_field($infoData['student_name'] ?? '');
@@ -726,7 +726,7 @@ class AssignCertificateController
             'updated_at'      => gmdate('Y-m-d H:i:s')
         ];
 
-        $SwiftCMGenerate->updateInfo($infoId, $updateData);
+        $SwifCeMaGenerate->updateInfo($infoId, $updateData);
 
         $message = (($infoData['status'] ?? '') === 'draft')
             ? __("Successfully updated draft", 'swift-certificate-manager')
@@ -734,13 +734,13 @@ class AssignCertificateController
 
         wp_send_json_success([
             'message' => $message,
-            'info'    => $SwiftCMGenerate->getInfo($infoId)
+            'info'    => $SwifCeMaGenerate->getInfo($infoId)
         ], 200);
     }
 
     public function maybeDeleteInfos()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -752,7 +752,7 @@ class AssignCertificateController
             ], 403);
         }
 
-        $SwiftCMGenerate = new SwiftCMGenerate();
+        $SwifCeMaGenerate = new SwifCeMaGenerate();
 
         // phpcs:disable WordPress.Security.NonceVerification.Recommended.
          $actionType = sanitize_key($_REQUEST['action_type'] ?? '');
@@ -784,7 +784,7 @@ class AssignCertificateController
     
         // DELETE action
         if ($actionType === 'delete') {
-            $SwiftCMGenerate->deleteInfo($infoIds);
+            $SwifCeMaGenerate->deleteInfo($infoIds);
     
             wp_send_json_success([
                 'message' => __('Selected infos successfully deleted', 'swift-certificate-manager')
@@ -792,7 +792,7 @@ class AssignCertificateController
         }
     
         // UPDATE STATUS action
-        $SwiftCMGenerate->updateStatus($infoIds, $actionType);
+        $SwifCeMaGenerate->updateStatus($infoIds, $actionType);
     
         wp_send_json_success([
             'message' => __('Selected infos successfully updated', 'swift-certificate-manager')
@@ -802,7 +802,7 @@ class AssignCertificateController
     // download CSV File
     public function getCsvDownload() {
         
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -820,7 +820,7 @@ class AssignCertificateController
                 ob_end_clean();
             }
 
-            $certificateService = new SwiftCMGenerate();
+            $certificateService = new SwifCeMaGenerate();
 
             // phpcs:disable WordPress.Security.NonceVerification.Recommended.
             $infoDataJson = isset($_REQUEST['info_data'])
@@ -852,7 +852,7 @@ class AssignCertificateController
             }
 
             $date     = gmdate( 'Y-m-d' );
-            $filename = sanitize_file_name( "swiftcm-export-{$date}.csv" );
+            $filename = sanitize_file_name( "swifcema-export-{$date}.csv" );
 
             if ( ! headers_sent() ) {
                 header( 'Content-Type: text/csv; charset=utf-8' );
@@ -946,7 +946,7 @@ class AssignCertificateController
     // when user want to redesign certificate from single customization page.
     public function redesignTemplate()
     {
-        if (!check_ajax_referer('swiftcm_admin_nonce', 'nonce', false)) {
+        if (!check_ajax_referer('swifcema_admin_nonce', 'nonce', false)) {
             wp_send_json_error([
                 'message' => __('Invalid nonce', 'swift-certificate-manager')
             ], 403);
@@ -979,11 +979,11 @@ class AssignCertificateController
             ], 400);
         }
 
-        $SwiftCMTemplates = new SwiftCMTemplates();
-        $SwiftCMGenerate  = new SwiftCMGenerate();
+        $SwifCeMaTemplates = new SwifCeMaTemplates();
+        $SwifCeMaGenerate  = new SwifCeMaGenerate();
 
         // ✅ get template
-        $getTemplate = $SwiftCMTemplates->getTemplate($templateId);
+        $getTemplate = $SwifCeMaTemplates->getTemplate($templateId);
 
         if (!$getTemplate) {
             wp_send_json_error([
@@ -995,7 +995,7 @@ class AssignCertificateController
         $slug = sanitize_key($getTemplate->slug ?? '');
 
         // ✅ get info
-        $info = $SwiftCMGenerate->getInfo($infoId);
+        $info = $SwifCeMaGenerate->getInfo($infoId);
 
         if (!$info) {
             wp_send_json_error([
@@ -1024,7 +1024,7 @@ class AssignCertificateController
             'updated_at' => gmdate('Y-m-d H:i:s'),
         ];
 
-        $SwiftCMGenerate->updateInfo($infoId, $updateData);
+        $SwifCeMaGenerate->updateInfo($infoId, $updateData);
 
         wp_send_json_success([
             'message' => __('Successfully Redesign Certificate', 'swift-certificate-manager')

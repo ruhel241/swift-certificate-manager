@@ -1,11 +1,11 @@
 <template>
-  <div class="swiftcm-customization">
+  <div class="swifcema-customization">
       <div class="title header">
         <h1>Edit {{ info.status.charAt(0).toUpperCase() + info.status.slice(1) }} Customize Certificate</h1>
         <div class="header-buttons">
           <el-button class="capsule-btn" icon="el-icon-view" round @click="previewCertificate">Preview</el-button>
           <el-button
-              class="swiftcm-primary-btn"
+              class="swifcema-primary-btn"
               type="success"
               icon="el-icon-circle-plus-outline"
               round
@@ -52,8 +52,8 @@ export default {
           auth_active_signature: 'no',
           qr_code_url: ''
         },
-        certificateCodePrefix: window.swiftcmAdminVars.globalSettings.certificate_code_prefix || '',
-        verifyCertificateUrl: window.swiftcmAdminVars.globalSettings.verify_certificate_url || 'https://example.com/',
+        certificateCodePrefix: window.swifcemaAdminVars.globalSettings.certificate_code_prefix || '',
+        verifyCertificateUrl: window.swifcemaAdminVars.globalSettings.verify_certificate_url || 'https://example.com/',
     };
   },
   methods: { 
@@ -68,10 +68,10 @@ export default {
     getTemplate() {
       this.fetching = true;
       this.$get({
-        action: "swiftcm_generate_admin_ajax",
+        action: "swifcema_generate_admin_ajax",
         route: "get_customization_certificate",
         info_id: this.infoId,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
           .then((response) => {
             this.info = response.data.info
@@ -94,11 +94,11 @@ export default {
       this.saving = true;
       this.fetching = true;
       this.$post({
-        action: "swiftcm_generate_admin_ajax",
+        action: "swifcema_generate_admin_ajax",
         route: "update_customization_certificate",
         settings: this.settings,
         info_id: this.infoId,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
           .then((response) => {
             this.getTemplate();
@@ -117,11 +117,11 @@ export default {
       this.fetching = true;
       this.redesigning = true;
       this.$post({
-        action: "swiftcm_generate_admin_ajax",
+        action: "swifcema_generate_admin_ajax",
         route: "redesign_template",
         info_id: this.infoId,
         template_id: this.settings.template_id,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
           .then((response) => {
             this.getTemplate();

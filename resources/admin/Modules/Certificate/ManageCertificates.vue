@@ -1,12 +1,12 @@
 <template>
-  <div class="swiftcm-manage-certificate">
+  <div class="swifcema-manage-certificate">
     <div class="title header">
       <h1>Manage Certificate</h1>
       <!-- {{ infos }} -->
       <div class="header-buttons">
         <router-link to="/" class="nav-logo-lin">
           <el-button
-            class="swiftcm-primary-btn svg-span-btn"
+            class="swifcema-primary-btn svg-span-btn"
             round
           >
             <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -22,8 +22,8 @@
       </div>
     </div>
 
-    <div class="swiftcm-card swiftcm-mange-action">
-      <div class="swiftcm-mange-tabs">
+    <div class="swifcema-card swifcema-mange-action">
+      <div class="swifcema-mange-tabs">
         <el-tabs v-model="status" @tab-click="handleTabClick">
           <el-tab-pane label="Created" name="assign">
             <template #label>
@@ -148,7 +148,7 @@
           </el-tab-pane>
         </el-tabs>
       </div>
-      <div class="swiftcm-mange-search">
+      <div class="swifcema-mange-search">
         <el-input
           placeholder="Search"
           prefix-icon="el-icon-search"
@@ -158,7 +158,7 @@
         >
         </el-input>
 
-        <div class="swiftcm-button">
+        <div class="swifcema-button">
           <el-button class="capsule-btn defult-svg-span-btn" round @click="exportCSV">
             <svg
                 width="16"
@@ -202,7 +202,7 @@
       </div>
     </div>
 
-    <div class="swiftcm-manage-table-wrap">
+    <div class="swifcema-manage-table-wrap">
       <table-selections
           :current_status="status"
           @reloadData="fetchInfos"
@@ -232,7 +232,7 @@
 
         <el-table-column label="Certificate Code">
           <template slot-scope="scope">
-            <span class="swiftcm-certificate-code">{{ scope.row.certificate_code }}</span>
+            <span class="swifcema-certificate-code">{{ scope.row.certificate_code }}</span>
             <el-tooltip
               effect="dark"
               content="Click To Copy"
@@ -263,7 +263,7 @@
 
         <el-table-column :label="$t('Action')">
           <template slot-scope="scope">
-            <div class="swiftcm-table-action">
+            <div class="swifcema-table-action">
               <el-tooltip content="Edit" placement="top">
                 <a href="javascript:void(0)" @click="gotoEdit(scope.row.id)">
                   <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -322,7 +322,7 @@
           :selections="multipleSelection"
       />
 
-      <div class="swiftcm_pagination_wrap">
+      <div class="swifcema_pagination_wrap">
         <el-pagination
             :hide-on-single-page="false"
             @size-change="handleSizeChange"
@@ -341,7 +341,7 @@
       @close="upgradePopupVisible = false"
     />
 
-<!--    <div class="swiftcm-card p20" v-else>-->
+<!--    <div class="swifcema-card p20" v-else>-->
 <!--      <h3>{{ $t("No Data Found") }}</h3>-->
 <!--    </div>-->
   </div>
@@ -371,7 +371,7 @@ export default {
         per_page: +(localStorage.getItem('infosPerPage') || 10)
       },
       upgradePopupVisible: false,
-      hasPro: !!window.swiftcmAdminVars.has_pro
+      hasPro: !!window.swifcemaAdminVars.has_pro
     };
   },
   methods: {
@@ -463,20 +463,20 @@ export default {
         text: 'Exporting CSV File....',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)',
-        customClass: 'swiftcm-text-loading'
+        customClass: 'swifcema-text-loading'
       });
 
       setTimeout(() => {
-        fetch(swiftcmAdminVars.ajaxurl, {
+        fetch(swifcemaAdminVars.ajaxurl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
           },
           body: new URLSearchParams({
-            action: 'swiftcm_generate_admin_ajax',
+            action: 'swifcema_generate_admin_ajax',
             route: 'get_csv_download',
             info_data: JSON.stringify(data),
-            nonce: window.swiftcmAdminVars.nonce,
+            nonce: window.swifcemaAdminVars.nonce,
           })
         })
           .then(async response => {
@@ -500,7 +500,7 @@ export default {
             const date = new Date().toISOString().split('T')[0];
 
             a.href = url;
-            a.download = `swiftcm-export-${date}.csv`;
+            a.download = `swifcema-export-${date}.csv`;
 
             document.body.appendChild(a);
             a.click();
@@ -565,11 +565,11 @@ export default {
     },
     performAction(type, infoId) {
       this.$post({
-        action: "swiftcm_generate_admin_ajax",
+        action: "swifcema_generate_admin_ajax",
         route: "maybe_delete_infos",
         info_ids: [infoId],
         action_type: type,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
         .then((response) => {
           this.$notify({
@@ -594,10 +594,10 @@ export default {
       };
 
       this.$get({
-        action: "swiftcm_generate_admin_ajax",
+        action: "swifcema_generate_admin_ajax",
         route: "get_certificate_infos",
         info_data: data,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
         .then((response) => {
           this.infos = response.data.infos;

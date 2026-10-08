@@ -4,22 +4,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
    
-    $swiftcm_global_settings         = get_option('swiftcm_global_settings', []);
-    $swiftcm_payment_settings_stripe = get_option('swiftcm_payment_settings_stripe', []);
-    $swiftcm_payment_settings_paypal = get_option('swiftcm_payment_settings_paypal', []);
+    $swifcema_global_settings         = get_option('swifcema_global_settings', []);
+    $swifcema_payment_settings_stripe = get_option('swifcema_payment_settings_stripe', []);
+    $swifcema_payment_settings_paypal = get_option('swifcema_payment_settings_paypal', []);
 
-    $swiftcm_stripe_enabled = $swiftcm_payment_settings_stripe['enable'] ?? 'no';
-    $swiftcm_paypal_enabled = $swiftcm_payment_settings_paypal['enable'] ?? 'no';
+    $swifcema_stripe_enabled = $swifcema_payment_settings_stripe['enable'] ?? 'no';
+    $swifcema_paypal_enabled = $swifcema_payment_settings_paypal['enable'] ?? 'no';
 
 ?>
 
-<div class="swiftcm-request-certificate-wrapper">
-    <div class="swiftcm-form-submit-message"></div>
-    <div class="swiftcm-container">
+<div class="swifcema-request-certificate-wrapper">
+    <div class="swifcema-form-submit-message"></div>
+    <div class="swifcema-container">
         <h2>Student Request Certificate</h2>
 
-        <form id="swiftcm_request_certificate" method="post">
-            <div class="swiftcm_payment_processor"></div>
+        <form id="swifcema_request_certificate" method="post">
+            <div class="swifcema_payment_processor"></div>
 
             <div class="request_cretificate_form">
                 <div class="form-group">
@@ -43,22 +43,22 @@ if ( ! defined( 'ABSPATH' ) ) {
                 </div>
 
                 <?php 
-                    if ( ($swiftcm_stripe_enabled === 'yes') || ($swiftcm_paypal_enabled === 'yes') ) : 
+                    if ( ($swifcema_stripe_enabled === 'yes') || ($swifcema_paypal_enabled === 'yes') ) : 
                     
-                    $swiftcm_global_settings['certificate_payment'] = $swiftcm_global_settings['certificate_payment'] ?? '10';
+                    $swifcema_global_settings['certificate_payment'] = $swifcema_global_settings['certificate_payment'] ?? '10';
                 ?>
                     <div class="form-group">
-                        <div class="swiftcm_payment_checkbox">
-                            <input type="checkbox" id="swiftcm_payment_checkbox" name="swiftcm_payment_checkbox" value="yes" required>
-                            <label for="swiftcm_payment_checkbox">
+                        <div class="swifcema_payment_checkbox">
+                            <input type="checkbox" id="swifcema_payment_checkbox" name="swifcema_payment_checkbox" value="yes" required>
+                            <label for="swifcema_payment_checkbox">
                                 Order Digital Certificate for
-                                <?php echo esc_html(\SwiftCertificateManager\Helpers\PaymentHelper::currencySymbol($swiftcm_global_settings['currency'] ?? 'USD')); ?><?php echo esc_html($swiftcm_global_settings['certificate_payment']); ?>
+                                <?php echo esc_html(\SwiftCertificateManager\Helpers\PaymentHelper::currencySymbol($swifcema_global_settings['currency'] ?? 'USD')); ?><?php echo esc_html($swifcema_global_settings['certificate_payment']); ?>
                             </label>
                             <input
                                 type="number"
-                                class="swiftcm_payment"
-                                id="swiftcm_payment_total"
-                                value="<?php echo esc_attr($swiftcm_global_settings['certificate_payment']); ?>"
+                                class="swifcema_payment"
+                                id="swifcema_payment_total"
+                                value="<?php echo esc_attr($swifcema_global_settings['certificate_payment']); ?>"
                                 required
                                 disabled
                                 hidden
@@ -66,17 +66,17 @@ if ( ! defined( 'ABSPATH' ) ) {
                         </div>
                     </div>
 
-                    <div class="form-group swiftcm_payment_method" style="display: none;">
+                    <div class="form-group swifcema_payment_method" style="display: none;">
                         <label>Payment Method:</label><br>
 
-                        <?php if ($swiftcm_stripe_enabled === 'yes') : ?>
-                            <input type="radio" id="swiftcm_stripe" name="payment_method" value="stripe" required>
-                            <label for="swiftcm_stripe">Pay with Card (Stripe)</label><br>
+                        <?php if ($swifcema_stripe_enabled === 'yes') : ?>
+                            <input type="radio" id="swifcema_stripe" name="payment_method" value="stripe" required>
+                            <label for="swifcema_stripe">Pay with Card (Stripe)</label><br>
                         <?php endif; ?>
 
-                        <?php if ($swiftcm_paypal_enabled === 'yes') : ?>
-                            <input type="radio" id="swiftcm_paypal" name="payment_method" value="paypal" required>
-                            <label for="swiftcm_paypal">Pay with PayPal</label><br>
+                        <?php if ($swifcema_paypal_enabled === 'yes') : ?>
+                            <input type="radio" id="swifcema_paypal" name="payment_method" value="paypal" required>
+                            <label for="swifcema_paypal">Pay with PayPal</label><br>
                         <?php endif; ?>
                     </div>
                 <?php endif; ?>

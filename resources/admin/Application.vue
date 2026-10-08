@@ -1,9 +1,9 @@
 <template>
-    <div class="swiftcm-app">
-        <div class="swiftcm-header">
+    <div class="swifcema-app">
+        <div class="swifcema-header">
             <navigation/>
         </div>
-        <div class="swiftcm-body">
+        <div class="swifcema-body">
             <router-view :key="$route.fullPath"></router-view>
         </div>
     </div>

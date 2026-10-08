@@ -3,7 +3,7 @@ class StripeCheckout {
         this.form = $form;
         this.data = $response?.data || {};
         this.intent = this.data?.intent || {};
-        this.parentWrapper = this.form.parents('.swiftcm-request-certificate-wrapper');
+        this.parentWrapper = this.form.parents('.swifcema-request-certificate-wrapper');
     }
 
     init() {
@@ -24,14 +24,14 @@ class StripeCheckout {
         });
 
         const paymentElement = elements.create('payment', {});
-        const formSelector = '#' + this.form.attr('id') + ' .swiftcm_payment_processor';
+        const formSelector = '#' + this.form.attr('id') + ' .swifcema_payment_processor';
 
         paymentElement.mount(formSelector);
 
         paymentElement.on('ready', () => {
             this.afterPaymentProcessorReady(payButtonHtml);
 
-            const $payNowBtn = this.form.find('#swiftcm_pay_now');
+            const $payNowBtn = this.form.find('#swifcema_pay_now');
             const defaultButtonText = $payNowBtn.text();
 
             $payNowBtn.on('click', (e) => {
@@ -64,11 +64,11 @@ class StripeCheckout {
 
                         $payNowBtn.text('Redirecting...');
 
-                        return jQuery.post(window.swiftcmPublicVars.ajaxurl, {
-                            action: 'swiftcm_payment_confirmation_stripe',
+                        return jQuery.post(window.swifcemaPublicVars.ajaxurl, {
+                            action: 'swifcema_payment_confirmation_stripe',
                             route: 'payment_confirmation',
                             intentId: paymentIntentId,
-                            nonce: window.swiftcmPublicVars.nonce
+                            nonce: window.swifcemaPublicVars.nonce
                         });
                     })
                     .then((response) => {
@@ -100,40 +100,40 @@ class StripeCheckout {
     }
 
     generatePayButton() {
-        const currencySymbol = window.swiftcmPublicVars.currencySymbol || '';
+        const currencySymbol = window.swifcemaPublicVars.currencySymbol || '';
         const amount = parseInt(this.intent.amount || 0, 10) / 100;
         const buttonText = 'Pay ' + currencySymbol + amount + ' Now';
 
-        return "<button id='swiftcm_pay_now' style='margin-top:20px;width:100%;' type='button'>" + buttonText + "</button>";
+        return "<button id='swifcema_pay_now' style='margin-top:20px;width:100%;' type='button'>" + buttonText + "</button>";
     }
 
     startPaymentProcessing() {
-        this.form.find('.swiftcm_payment_processor')
+        this.form.find('.swifcema_payment_processor')
             .parent()
-            .prepend("<p class='swiftcm_loading_processor'>Payment processor loading...</p>");
+            .prepend("<p class='swifcema_loading_processor'>Payment processor loading...</p>");
 
         this.parentWrapper.find('.request_cretificate_form').hide();
 
         setTimeout(() => {
-            this.parentWrapper.find('.swiftcm-form-submit-message').hide();
+            this.parentWrapper.find('.swifcema-form-submit-message').hide();
         }, 3000);
     }
 
     // afterPaymentSuccess() {
     //     const receipt = "<a href='" + this.data?.order_items?.payment_args?.success_url + "'>View Receipt</a>";
-    //     this.parentWrapper.find('.swiftcm-container').append("<div class='swiftcm_form_receipt'>Thanks for your Request Certificate <br/>" + receipt + "</div>");
-    //     this.parentWrapper.find('#swiftcm_request_certificate').hide();
+    //     this.parentWrapper.find('.swifcema-container').append("<div class='swifcema_form_receipt'>Thanks for your Request Certificate <br/>" + receipt + "</div>");
+    //     this.parentWrapper.find('#swifcema_request_certificate').hide();
     // }
 
     afterPaymentProcessorReady(payButton) {
-        this.form.find('.swiftcm_complete_payment_instruction').remove();
-        this.form.prepend("<p class='swiftcm_complete_payment_instruction'>Please complete your payment with Stripe 👇</p>");
-        this.form.find('.swiftcm_payment_processor').append(payButton);
-        this.form.find('.swiftcm_loading_processor').remove();
+        this.form.find('.swifcema_complete_payment_instruction').remove();
+        this.form.prepend("<p class='swifcema_complete_payment_instruction'>Please complete your payment with Stripe 👇</p>");
+        this.form.find('.swifcema_payment_processor').append(payButton);
+        this.form.find('.swifcema_loading_processor').remove();
     }
 }
 
 // when get response from server then init the stripe checkout
-window.addEventListener('swiftcm_payment_next_action_stripe', function (e) {
+window.addEventListener('swifcema_payment_next_action_stripe', function (e) {
     new StripeCheckout(e.detail.form, e.detail.response).init();
 });

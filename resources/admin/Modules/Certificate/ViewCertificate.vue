@@ -1,5 +1,5 @@
 <template>
-  <div class="swiftcm-view-certificate-wrapper">
+  <div class="swifcema-view-certificate-wrapper">
     <div class="title header">
       <h1>View {{ statusTitle }} Certificate</h1>
       <div class="fetch-certificate" style="text-align:right;">
@@ -22,7 +22,7 @@
     </div>
     <el-row>
       <el-col :span="24" class="pro-template">
-        <div class="swiftcm-certificate-preview" v-loading="fetching">
+        <div class="swifcema-certificate-preview" v-loading="fetching">
           <!-- ✅ Preview box (fit into 1024x700 like Customization) -->
           <div class="certificate-outer-container">
             <div
@@ -82,7 +82,7 @@
           <div class="footer-buttons">
             <el-button
               :loading="downloading"
-              class="swiftcm-primary-btn svg-span-btn"
+              class="swifcema-primary-btn svg-span-btn"
               @click="downloadCertificate"
             >
               <svg v-if="!downloading" width="16" height="16" viewBox="0 0 16 16" fill="none"
@@ -146,8 +146,8 @@ export default {
         qr_code_enable: "no",
       },
       payment_transaction: null,
-      uploadCertificateUrl: window.swiftcmAdminVars.upload_certificate_url,
-      globalSettings: window.swiftcmAdminVars.globalSettings,
+      uploadCertificateUrl: window.swifcemaAdminVars.upload_certificate_url,
+      globalSettings: window.swifcemaAdminVars.globalSettings,
       // ✅ preview box size (same as customization)
       editorMaxWidth: 1024,
       editorMaxHeight: 700,
@@ -157,7 +157,7 @@ export default {
       templateOrientation: "landscape",
       statusTitle: "",
       upgradePopupVisible: false,
-      hasPro: !!window.swiftcmAdminVars.has_pro
+      hasPro: !!window.swifcemaAdminVars.has_pro
     };
   },
 
@@ -356,10 +356,10 @@ export default {
       this.fetching = true;
 
       this.$get({
-        action: "swiftcm_generate_admin_ajax",
+        action: "swifcema_generate_admin_ajax",
         route: "get_certificate_info",
         info_id: this.infoId,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
         .then(async (response) => {
           this.info = response.data.info || {};
@@ -421,11 +421,11 @@ export default {
     updateHandler() {
       this.saving = true;
       this.$post({
-        action: "swiftcm_generate_admin_ajax",
+        action: "swifcema_generate_admin_ajax",
         route: "update_certificate_info",
         info: this.info,
         info_id: this.infoId,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
         .then(() => {
           this.fetchInfo();
@@ -513,7 +513,7 @@ export default {
           text: "Downloading Certificate....",
           spinner: "el-icon-loading",
           background: "rgba(0, 0, 0, 0.7)",
-          customClass: "swiftcm-text-loading",
+          customClass: "swifcema-text-loading",
         });
 
         await this.detectTemplateOrientationAndSize();
@@ -562,7 +562,7 @@ export default {
         text: "Certificate email is being processed...",
         spinner: "el-icon-loading",
         background: "rgba(0, 0, 0, 0.7)",
-        customClass: "swiftcm-text-loading",
+        customClass: "swifcema-text-loading",
       });
 
       await this.detectTemplateOrientationAndSize();
@@ -575,10 +575,10 @@ export default {
       }
 
       this.$post({
-        action: "swiftcm_generate_admin_ajax",
+        action: "swifcema_generate_admin_ajax",
         route: "sending_email_certificate",
         info_data: data,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
         .then((response) => {
           if (response.success === true) {

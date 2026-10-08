@@ -2,14 +2,14 @@
 
 namespace SwiftCertificateManager\Models;
 
-class SwiftCMPayment
+class SwifCeMaPayment
 {
     protected $table;
 
     public function __construct() {
         global $wpdb;
 
-        $this->table = $wpdb->prefix . 'swiftcm_payments';
+        $this->table = $wpdb->prefix . 'swifcema_payments';
     }
 
     public function insertGetId($data) {
@@ -36,10 +36,8 @@ class SwiftCMPayment
             [
                 'id' => absint($id),
             ],
-            null,
-            [
-                '%d',
-            ]
+            ['%s'],
+            ['%d']
         );
     }
 

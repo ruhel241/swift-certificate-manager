@@ -3,16 +3,16 @@
 namespace SwiftCertificateManager\Models;
 
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
-use SwiftCertificateManager\Models\SwiftCMPayment;
+use SwiftCertificateManager\Models\SwifCeMaPayment;
 
-class SwiftCMGenerate {
+class SwifCeMaGenerate {
 
     protected $table;
 
     public function __construct() {
         global $wpdb;
 
-        $this->table = $wpdb->prefix . 'swiftcm_generates';
+        $this->table = $wpdb->prefix . 'swifcema_generates';
     }
 
     public function getDatas($params) {
@@ -276,7 +276,7 @@ class SwiftCMGenerate {
             return false;
         }
 
-        $payment = new SwiftCMPayment();
+        $payment = new SwifCeMaPayment();
 
         /*
          * Get the records first because we need

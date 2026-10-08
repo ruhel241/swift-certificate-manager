@@ -391,7 +391,7 @@ body {
   padding: 20px;
 }
 
-.swiftcm-card {
+.swifcema-card {
   border-radius: 4px;
   background-color: #FFF;
   overflow: hidden;
@@ -399,7 +399,7 @@ body {
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
-.swiftcm-btn {
+.swifcema-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -422,25 +422,25 @@ body {
   color: #FFF !important;
 }
 
-.swiftcm_wrap {
+.swifcema_wrap {
   background-color: #F5F5FA;
 }
-.swiftcm_wrap *, .swiftcm_wrap *::after, .swiftcm_wrap *::before {
+.swifcema_wrap *, .swifcema_wrap *::after, .swifcema_wrap *::before {
   box-sizing: border-box;
 }
-.swiftcm_wrap .el-date-editor {
+.swifcema_wrap .el-date-editor {
   width: 100% !important;
 }
-.swiftcm_wrap .el-select {
+.swifcema_wrap .el-select {
   width: 100%;
 }
-.swiftcm_wrap .el-select .el-input input {
+.swifcema_wrap .el-select .el-input input {
   background-color: #fff;
 }
-.swiftcm_wrap .el-form-item {
+.swifcema_wrap .el-form-item {
   margin-bottom: 10px;
 }
-.swiftcm_wrap .el-form-item .el-form-item__label {
+.swifcema_wrap .el-form-item .el-form-item__label {
   padding: 0;
 }
 
@@ -470,32 +470,32 @@ body {
   background: #ccbef5;
 }
 
-.swiftcm-primary-btn {
+.swifcema-primary-btn {
   border-radius: 100px;
   background-color: #5b2de0;
   border-color: #5b2de0;
   color: white;
 }
-.swiftcm-primary-btn:focus {
+.swifcema-primary-btn:focus {
   border-radius: 100px;
   background-color: #5b2de0 !important;
   border-color: #5b2de0;
   color: white !important;
 }
-.swiftcm-primary-btn:hover {
+.swifcema-primary-btn:hover {
   border-radius: 100px;
   background: #371b86 !important;
   border-color: #371b86;
   color: white !important;
 }
-.swiftcm-primary-btn:active {
+.swifcema-primary-btn:active {
   border-radius: 100px;
   background: #291465;
   border-color: #291465;
   color: white;
 }
 
-.swiftcm-pro-btn {
+.swifcema-pro-btn {
   border-radius: 100px;
   background-color: #1b1a1f;
   color: white;
@@ -503,21 +503,21 @@ body {
   font-style: normal;
   font-weight: 500;
 }
-.swiftcm-pro-btn:hover {
+.swifcema-pro-btn:hover {
   border-radius: 100px;
   background: #1b1a1f !important;
   color: white !important;
 }
-.swiftcm-pro-btn:focus {
+.swifcema-pro-btn:focus {
   background-color: #1b1a1f !important;
   color: white !important;
 }
-.swiftcm-pro-btn span {
+.swifcema-pro-btn span {
   display: flex;
   gap: 5px;
   align-items: center;
 }
-.swiftcm-pro-btn span svg path {
+.swifcema-pro-btn span svg path {
   stroke: #FFC94A;
 }
 
@@ -579,7 +579,7 @@ body {
   margin-right: 20px;
 }
 
-.swiftcm-card {
+.swifcema-card {
   display: flex;
   margin: 24px 0px;
   padding: 16px;
@@ -589,10 +589,10 @@ body {
   background: var(--White, #fff);
 }
 
-.swiftcm_action_btn {
+.swifcema_action_btn {
   margin-top: 30px;
 }
-.swiftcm_action_btn .swiftcm_primary_btn {
+.swifcema_action_btn .swifcema_primary_btn {
   border-radius: 100px;
   background-color: #5b2de0;
   color: #fff;
@@ -601,27 +601,27 @@ body {
   font-weight: 500;
 }
 
-.swiftcm_checkbox {
+.swifcema_checkbox {
   width: 100%;
 }
-.swiftcm_checkbox .el-checkbox__inner {
+.swifcema_checkbox .el-checkbox__inner {
   border: 1px solid #20104E;
   border-radius: 30px;
   background-color: #FFF;
   width: 30px;
   height: 30px;
 }
-.swiftcm_checkbox .el-checkbox__input.is-checked .el-checkbox__inner {
+.swifcema_checkbox .el-checkbox__input.is-checked .el-checkbox__inner {
   background-color: #20104E;
   border-color: #20104E;
 }
-.swiftcm_checkbox .el-checkbox__input.is-checked .el-checkbox__inner:after {
+.swifcema_checkbox .el-checkbox__input.is-checked .el-checkbox__inner:after {
   height: 13px;
   left: 10px;
   width: 7px;
   top: 5px;
 }
-.swiftcm_checkbox .el-checkbox__input.is-checked + .el-checkbox__label {
+.swifcema_checkbox .el-checkbox__input.is-checked + .el-checkbox__label {
   color: #1B1A1F;
 }
 
@@ -631,32 +631,32 @@ body {
   color: #5b2de0;
 }
 
-.swiftcm-settings-wrap .setting_header .el-radio-group {
+.swifcema-settings-wrap .setting_header .el-radio-group {
   margin-bottom: 10px !important;
 }
-.swiftcm-settings-wrap .setting_header .el-radio-group .el-radio-button {
+.swifcema-settings-wrap .setting_header .el-radio-group .el-radio-button {
   margin-right: 10px;
 }
-.swiftcm-settings-wrap .setting_header .el-radio-group .el-radio-button .el-radio-button__inner {
+.swifcema-settings-wrap .setting_header .el-radio-group .el-radio-button .el-radio-button__inner {
   padding: 12px 40px;
   border: solid 1px;
   border-radius: 35px;
   box-shadow: initial !important;
 }
-.swiftcm-settings-wrap .setting_header .el-radio-button__orig-radio:checked + .el-radio-button__inner {
+.swifcema-settings-wrap .setting_header .el-radio-button__orig-radio:checked + .el-radio-button__inner {
   background-color: #20104E;
 }
-.swiftcm-settings-wrap .setting_header .el-radio-button:focus:not(.is-focus):not(:active):not(.is-disabled) {
+.swifcema-settings-wrap .setting_header .el-radio-button:focus:not(.is-focus):not(:active):not(.is-disabled) {
   box-shadow: initial !important;
 }
-.swiftcm-settings-wrap .setting_header p {
+.swifcema-settings-wrap .setting_header p {
   margin: 15px 0;
 }
-.swiftcm-settings-wrap .settings-item {
+.swifcema-settings-wrap .settings-item {
   width: 100%;
   margin-bottom: 20px;
 }
-.swiftcm-settings-wrap .settings-item .header-title {
+.swifcema-settings-wrap .settings-item .header-title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -669,40 +669,40 @@ body {
   border-width: 1.3px;
   margin-bottom: 15px;
 }
-.swiftcm-settings-wrap .settings-item .header-title .title {
+.swifcema-settings-wrap .settings-item .header-title .title {
   padding: 0;
   margin: 0;
 }
-.swiftcm-settings-wrap .settings-item .setting-form {
+.swifcema-settings-wrap .settings-item .setting-form {
   width: 60%;
   display: flex;
   /* gap: 30px; */
   /* justify-content: center; */
   align-items: center;
 }
-.swiftcm-settings-wrap .settings-item .setting-form .label {
+.swifcema-settings-wrap .settings-item .setting-form .label {
   width: 80%;
 }
-.swiftcm-settings-wrap .settings-item .setting-form .swiftcm-socia-icon {
+.swifcema-settings-wrap .settings-item .setting-form .swifcema-socia-icon {
   width: 100%;
 }
-.swiftcm-settings-wrap .settings-item .setting-form .el-checkbox {
+.swifcema-settings-wrap .settings-item .setting-form .el-checkbox {
   width: 100%;
 }
-.swiftcm-settings-wrap .settings-item .payment_item {
+.swifcema-settings-wrap .settings-item .payment_item {
   width: 60%;
 }
-.swiftcm-settings-wrap .swiftcm-card {
+.swifcema-settings-wrap .swifcema-card {
   display: flex;
   flex-direction: column;
 }
-.swiftcm-settings-wrap .swiftcm-socia-icon {
+.swifcema-settings-wrap .swifcema-socia-icon {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
 }
-.swiftcm-settings-wrap .swiftcm-socia-icon a {
+.swifcema-settings-wrap .swifcema-socia-icon a {
   border: solid #ddd;
   display: flex;
   width: 45px;
@@ -712,32 +712,32 @@ body {
   align-items: center;
   justify-content: center;
 }
-.swiftcm-settings-wrap .swiftcm-socia-icon a svg {
+.swifcema-settings-wrap .swifcema-socia-icon a svg {
   width: 35px;
   height: 35px;
   padding: 7px;
 }
-.swiftcm-settings-wrap .swiftcm-wordpress-icon {
+.swifcema-settings-wrap .swifcema-wordpress-icon {
   width: 100%;
   text-decoration: none;
   border: solid #ddd;
   padding: 9px;
   border-radius: 20px;
 }
-.swiftcm-settings-wrap .swiftcm-buy-icon {
+.swifcema-settings-wrap .swifcema-buy-icon {
   width: 100%;
   text-decoration: none;
   border: solid #ddd;
   padding: 9px;
   border-radius: 20px;
 }
-.swiftcm-settings-wrap .setting-copy-field {
+.swifcema-settings-wrap .setting-copy-field {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
 }
-.swiftcm-settings-wrap .setting-copy-field .el-icon-document-copy {
+.swifcema-settings-wrap .setting-copy-field .el-icon-document-copy {
   font-size: 23px;
 }
 
@@ -780,57 +780,57 @@ body {
   padding: 0px 40px 20px 40px;
   flex-direction: column;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-header {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-header {
   display: flex;
   border-bottom: solid 1px #ddd;
   padding-bottom: 30px;
   gap: 10px;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-header .upgrade-left .badge {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-header .upgrade-left .badge {
   background: #5b2de0;
   color: #fff;
   padding: 6px 12px;
   border-radius: 8px;
   font-size: 12px;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-header .upgrade-left {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-header .upgrade-left {
   width: 40%;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-header .upgrade-left h1 {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-header .upgrade-left h1 {
   font-size: 30px;
   margin: 15px 0;
   line-height: 44px;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-header .upgrade-left p {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-header .upgrade-left p {
   color: #6b7280;
   line-height: 25px;
   word-break: normal;
   overflow-wrap: break-word;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-header .upgrade-right {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-header .upgrade-right {
   width: 60%;
   height: 350px;
   text-align: center;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-header .upgrade-right img {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-header .upgrade-right img {
   max-width: 100%;
   height: 100%;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-footer .features-section span {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-footer .features-section span {
   font-size: 14px;
   font-weight: 700;
   color: #000;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-footer .features-section .features {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-footer .features-section .features {
   display: flex;
   gap: 120px;
   margin-bottom: 20px;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-footer .features-section .features ul {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-footer .features-section .features ul {
   list-style: none;
   padding: 0;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-footer .features-section .features li {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-footer .features-section .features li {
   margin-bottom: 8px;
   font-size: 14px;
   display: flex;
@@ -838,14 +838,14 @@ body {
   gap: 8px;
   line-height: 20px;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-footer .features-section .features li i {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-footer .features-section .features li i {
   color: #5b2de0;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-footer .actions {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-footer .actions {
   display: flex;
   gap: 10px;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-footer .actions .btn-primary {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-footer .actions .btn-primary {
   background: linear-gradient(90deg, #111, #333);
   border: none;
   width: 100%;
@@ -853,7 +853,7 @@ body {
   text-decoration: none;
   cursor: pointer;
 }
-.upgrade-to-popup-wrapper .upgrade-card .swiftcm-upgrade-footer .actions .btn-secondary {
+.upgrade-to-popup-wrapper .upgrade-card .swifcema-upgrade-footer .actions .btn-secondary {
   border: 1px solid #ccc;
   width: 100%;
   border-radius: 8px;
@@ -877,7 +877,7 @@ body {
   padding: 65px;
 }
 
-.swiftcm-body {
+.swifcema-body {
   padding-right: 20px;
 }
 
@@ -951,29 +951,29 @@ input:focus, a:focus {
   stroke: #1B1A1F;
 }
 
-.swiftcm-table-action {
+.swifcema-table-action {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-.swiftcm-table-action a {
+.swifcema-table-action a {
   display: flex;
   align-items: center;
 }
-.swiftcm-table-action a svg {
+.swifcema-table-action a svg {
   width: 40px;
   height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
-.swiftcm-table-action a:focus {
+.swifcema-table-action a:focus {
   outline: initial !important;
   border-color: initial !important;
   box-shadow: initial !important;
 }
 
-.swiftcm_wrap h2 {
+.swifcema_wrap h2 {
   font-family: "Inter";
   font-weight: 600;
   font-style: normal;
@@ -983,15 +983,15 @@ input:focus, a:focus {
   text-transform: capitalize;
   color: #1B1A1F;
 }
-.swiftcm_wrap p {
+.swifcema_wrap p {
   font-family: "Inter";
   margin: 0;
 }
-.swiftcm_wrap .feature-card {
+.swifcema_wrap .feature-card {
   display: flex;
   margin-bottom: 24px; /* Adjust the height as necessary */
 }
-.swiftcm_wrap h5 {
+.swifcema_wrap h5 {
   font-family: "Inter";
   font-weight: 500;
   font-style: normal;
@@ -1003,31 +1003,31 @@ input:focus, a:focus {
   margin-top: 0;
 }
 
-.swiftcm-header {
+.swifcema-header {
   background-color: #fff;
   margin-left: -20px;
   padding-left: 20px;
 }
-.swiftcm-header .el-row {
+.swifcema-header .el-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.swiftcm-header .el-row .nav-logo {
+.swifcema-header .el-row .nav-logo {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 30px;
   width: 150px;
 }
-.swiftcm-header .el-row .nav-logo img {
+.swifcema-header .el-row .nav-logo img {
   height: 30px;
   width: 150px;
 }
-.swiftcm-header .el-row .nav-logo img:focus-visible {
+.swifcema-header .el-row .nav-logo img:focus-visible {
   outline: none !important;
 }
-.swiftcm-header .swiftcm-navigation {
+.swifcema-header .swifcema-navigation {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1035,20 +1035,20 @@ input:focus, a:focus {
   border: 0;
   gap: 20px;
 }
-.swiftcm-header .swiftcm-navigation li {
+.swifcema-header .swifcema-navigation li {
   border-bottom: none;
   display: flex;
   align-items: center;
   padding: 0;
   margin-right: 10px;
 }
-.swiftcm-header .swiftcm-navigation li.is-active {
+.swifcema-header .swifcema-navigation li.is-active {
   border: none;
 }
-.swiftcm-header .swiftcm-navigation li.is-active svg path {
+.swifcema-header .swifcema-navigation li.is-active svg path {
   stroke: rgb(41, 20, 101);
 }
-.swiftcm-header .swiftcm-navigation li a {
+.swifcema-header .swifcema-navigation li a {
   text-decoration: none;
   color: #4A4A4A;
   font-weight: 500;
@@ -1059,45 +1059,45 @@ input:focus, a:focus {
   color: #1b1a1f;
   gap: 5px;
 }
-.swiftcm-header .swiftcm-navigation li a:focus {
+.swifcema-header .swifcema-navigation li a:focus {
   box-shadow: initial !important;
 }
-.swiftcm-header .swiftcm-navigation li a img {
+.swifcema-header .swifcema-navigation li a img {
   padding-right: 5px;
   height: 15px;
 }
-.swiftcm-header .swiftcm-navigation li .router-link-exact-active {
+.swifcema-header .swifcema-navigation li .router-link-exact-active {
   border-bottom: solid 2px #5b2de0 !important;
   color: #5b2de0;
 }
-.swiftcm-header .swiftcm-navigation li .router-link-exact-active svg path {
+.swifcema-header .swifcema-navigation li .router-link-exact-active svg path {
   stroke: #5b2de0;
 }
-.swiftcm-header .swiftcm-nav-pro-btn {
+.swifcema-header .swifcema-nav-pro-btn {
   display: flex;
   justify-content: center;
 }
 
-.swiftcm-dashboard {
+.swifcema-dashboard {
   background-color: #f5f5fa;
   border-radius: 20px;
   height: auto;
 }
-.swiftcm-dashboard .layout-end {
+.swifcema-dashboard .layout-end {
   display: flex;
   justify-content: end;
 }
-.swiftcm-dashboard .swiftcm_setup_step_1 {
+.swifcema-dashboard .swifcema_setup_step_1 {
   margin-top: 24px;
   height: 90%;
   width: 90%;
   padding: 12px;
   border-radius: 16px;
 }
-.swiftcm-dashboard .swiftcm_setup_step_1 .swiftcm-setup-bg svg {
+.swifcema-dashboard .swifcema_setup_step_1 .swifcema-setup-bg svg {
   width: 100%;
 }
-.swiftcm-dashboard .swiftcm_setup_step_1 .overview-sidebar {
+.swifcema-dashboard .swifcema_setup_step_1 .overview-sidebar {
   background-color: white;
   padding-top: 24px;
   border-radius: 12px;
@@ -1130,7 +1130,7 @@ input:focus, a:focus {
   border: 1px solid #5b2de0;
 }
 
-.swiftcm-assign-certificate .el-card {
+.swifcema-assign-certificate .el-card {
   padding: 16px;
   flex-direction: column;
   align-items: flex-start;
@@ -1139,7 +1139,7 @@ input:focus, a:focus {
   border: 1px solid #ececec;
   background: #fff;
 }
-.swiftcm-assign-certificate .el-textarea__inner {
+.swifcema-assign-certificate .el-textarea__inner {
   display: flex;
   padding: 12px;
   align-items: flex-start;
@@ -1149,55 +1149,55 @@ input:focus, a:focus {
   border-radius: 12px;
   border: 1px solid var(--Dark-D50, #E8E8E9);
 }
-.swiftcm-assign-certificate .el-textarea__inner:hover {
+.swifcema-assign-certificate .el-textarea__inner:hover {
   border: 1px solid #ccbef5;
 }
-.swiftcm-assign-certificate .el-textarea__inner:active {
+.swifcema-assign-certificate .el-textarea__inner:active {
   border: 1px solid #5b2de0;
 }
 
-.swiftcm-manage-certificate .swiftcm-mange-action {
+.swifcema-manage-certificate .swifcema-mange-action {
   padding: 20px;
   margin-bottom: 20px;
   display: flex;
 }
-.swiftcm-manage-certificate .swiftcm-mange-action .swiftcm-mange-tabs {
+.swifcema-manage-certificate .swifcema-mange-action .swifcema-mange-tabs {
   flex: 1;
 }
-.swiftcm-manage-certificate .swiftcm-mange-action .swiftcm-mange-tabs .el-tabs__header {
+.swifcema-manage-certificate .swifcema-mange-action .swifcema-mange-tabs .el-tabs__header {
   margin: 0;
 }
-.swiftcm-manage-certificate .swiftcm-mange-action .swiftcm-mange-tabs .el-tabs__nav-wrap::after {
+.swifcema-manage-certificate .swifcema-mange-action .swifcema-mange-tabs .el-tabs__nav-wrap::after {
   background-color: initial;
 }
-.swiftcm-manage-certificate .swiftcm-mange-action .swiftcm-mange-tabs .el-tabs__nav {
+.swifcema-manage-certificate .swifcema-mange-action .swifcema-mange-tabs .el-tabs__nav {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.swiftcm-manage-certificate .swiftcm-mange-action .swiftcm-mange-tabs .el-tabs__nav .el-tabs__item {
+.swifcema-manage-certificate .swifcema-mange-action .swifcema-mange-tabs .el-tabs__nav .el-tabs__item {
   display: flex;
   align-items: center;
   gap: 8px;
   padding-right: 0;
 }
-.swiftcm-manage-certificate .swiftcm-mange-action .swiftcm-mange-search {
+.swifcema-manage-certificate .swifcema-mange-action .swifcema-mange-search {
   flex: 1;
   display: flex;
   gap: 10px;
 }
-.swiftcm-manage-certificate .swiftcm-mange-action .swiftcm-mange-search .el-input__inner {
+.swifcema-manage-certificate .swifcema-mange-action .swifcema-mange-search .el-input__inner {
   border: 1px solid #ccbef5 !important;
 }
-.swiftcm-manage-certificate .swiftcm-mange-action .swiftcm-mange-search .el-icon-search {
+.swifcema-manage-certificate .swifcema-mange-action .swifcema-mange-search .el-icon-search {
   cursor: pointer;
 }
 
-.swiftcm_pagination_wrap {
+.swifcema_pagination_wrap {
   margin-top: 10px;
   text-align: right;
 }
-.swiftcm_pagination_wrap .el-pagination {
+.swifcema_pagination_wrap .el-pagination {
   background: #fff;
   display: inline-flex;
   border-radius: 8px;
@@ -1205,16 +1205,16 @@ input:focus, a:focus {
   box-shadow: 0px 1px 3px rgba(30, 31, 33, 0.08);
   font-weight: 500;
 }
-.swiftcm_pagination_wrap .el-pagination .el-input__inner {
+.swifcema_pagination_wrap .el-pagination .el-input__inner {
   background: #f2f2f2;
   border-color: #f2f2f2;
   border-radius: 4px !important;
   color: #606266;
 }
-.swiftcm_pagination_wrap .el-pagination .el-pager li {
+.swifcema_pagination_wrap .el-pagination .el-pager li {
   border-radius: 4px;
 }
-.swiftcm_pagination_wrap .el-pagination .el-pager li.active {
+.swifcema_pagination_wrap .el-pagination .el-pager li.active {
   background-color: #5b2de0;
   color: #FFFFFF;
 }
@@ -1229,27 +1229,27 @@ input:focus, a:focus {
   text-transform: capitalize;
 }
 
-.swiftcm_button_group .el-button + .el-button {
+.swifcema_button_group .el-button + .el-button {
   margin-left: 3px;
 }
 
-.swiftcm-text-loading .el-loading-spinner {
+.swifcema-text-loading .el-loading-spinner {
   margin-left: 82px;
 }
-.swiftcm-text-loading .el-loading-text {
+.swifcema-text-loading .el-loading-text {
   color: white !important;
   font-size: 18px;
 }
-.swiftcm-text-loading .el-loading-spinner i {
+.swifcema-text-loading .el-loading-spinner i {
   color: #fff;
   font-size: 30px;
 }
 
-.swiftcm-assign-certificate .el-card__body {
+.swifcema-assign-certificate .el-card__body {
   padding: initial !important;
 }
 
-.swiftcm-license-management .swiftcm_header .swiftcm_header_title {
+.swifcema-license-management .swifcema_header .swifcema_header_title {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1257,114 +1257,114 @@ input:focus, a:focus {
   border-bottom: 1px solid #ddd;
   padding-bottom: 15px;
 }
-.swiftcm-license-management .swiftcm_header .swiftcm_header_title button {
+.swifcema-license-management .swifcema_header .swifcema_header_title button {
   padding: 0;
 }
-.swiftcm-license-management .swiftcm_license_valid .swiftcm-valid .title {
+.swifcema-license-management .swifcema_license_valid .swifcema-valid .title {
   font-size: 1.3em;
   margin-bottom: 10px;
 }
-.swiftcm-license-management .swiftcm_license_valid .swiftcm-valid .license-status-container .info-item {
+.swifcema-license-management .swifcema_license_valid .swifcema-valid .license-status-container .info-item {
   display: flex;
   gap: 10px;
   font-size: 14px;
   margin-bottom: 12px;
   align-items: center;
 }
-.swiftcm-license-management .swiftcm_license_valid .swiftcm-valid .license-status-container .info-item .label {
+.swifcema-license-management .swifcema_license_valid .swifcema-valid .license-status-container .info-item .label {
   width: 150px;
 }
-.swiftcm-license-management .swiftcm_license_valid .swiftcm-valid .license-status-container .info-item .remaining .el-tag {
+.swifcema-license-management .swifcema_license_valid .swifcema-valid .license-status-container .info-item .remaining .el-tag {
   font-size: 13px;
   font-weight: 600;
 }
-.swiftcm-license-management .swiftcm_license_valid .swiftcm-valid .circle-check-icon {
+.swifcema-license-management .swifcema_license_valid .swifcema-valid .circle-check-icon {
   margin-bottom: 20px;
 }
-.swiftcm-license-management .swiftcm_license_valid .swiftcm-valid .circle-check-icon span {
+.swifcema-license-management .swifcema_license_valid .swifcema-valid .circle-check-icon span {
   color: #67c23a;
   font-size: 40px;
 }
-.swiftcm-license-management .swiftcm_license_valid .swiftcm-valid .license-valid {
+.swifcema-license-management .swifcema_license_valid .swifcema-valid .license-valid {
   color: #67c23a;
   font-weight: 600;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .title {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .title {
   margin-bottom: 10px;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .license-status-container {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .license-status-container {
   margin: 20px 0;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .license-status-container .info-item {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .license-status-container .info-item {
   display: flex;
   gap: 10px;
   font-size: 14px;
   margin-bottom: 12px;
   align-items: center;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .license-status-container .info-item .label {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .license-status-container .info-item .label {
   width: 150px;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .license-status-container .info-item .remaining .el-tag {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .license-status-container .info-item .remaining .el-tag {
   font-size: 13px;
   font-weight: 600;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .circle-check-icon {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .circle-check-icon {
   margin-bottom: 20px;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .circle-check-icon span {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .circle-check-icon span {
   color: #67c23a;
   font-size: 40px;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .license-expired-notice {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .license-expired-notice {
   margin: 15px 0px;
   color: #fc0404;
   font-weight: 600;
 }
-.swiftcm-license-management .swiftcm_license_expired .swiftcm-expired .expired {
+.swifcema-license-management .swifcema_license_expired .swifcema-expired .expired {
   color: red;
   font-weight: 600;
 }
-.swiftcm-license-management .swiftcm_license_expired a {
+.swifcema-license-management .swifcema_license_expired a {
   text-decoration: none;
 }
-.swiftcm-license-management .fetching-text {
+.swifcema-license-management .fetching-text {
   max-width: 750px;
   margin: 0 auto;
   padding: 100px 100px;
   border-radius: 5px;
   margin-bottom: 20px;
 }
-.swiftcm-license-management .swiftcm-provide-license-key {
+.swifcema-license-management .swifcema-provide-license-key {
   max-width: 750px;
   margin: 0 auto;
   padding: 45px 45px 0px 45px;
   border-radius: 5px;
   margin-bottom: 5px;
 }
-.swiftcm-license-management .swiftcm-provide-license-key h3 {
+.swifcema-license-management .swifcema-provide-license-key h3 {
   margin: 0px 0px 20px 0px;
   text-align: center;
   line-height: 30px;
 }
-.swiftcm-license-management .swiftcm-provide-license-key .license-empty-notice {
+.swifcema-license-management .swifcema-provide-license-key .license-empty-notice {
   margin: 80px 0px 0px 0px;
   font-weight: 600;
   color: #929292;
 }
-.swiftcm-license-management .el-input-group--append .el-input__inner, .swiftcm-license-management .el-input-group__prepend {
+.swifcema-license-management .el-input-group--append .el-input__inner, .swifcema-license-management .el-input-group__prepend {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
   border-top-left-radius: 5px !important;
   border-bottom-left-radius: 5px !important;
 }
-.swiftcm-license-management .el-input__inner:focus {
+.swifcema-license-management .el-input__inner:focus {
   border-color: initial !important;
   box-shadow: initial !important;
   outline: initial !important;
 }
 
-.pro-template .swiftcm-certificate-preview {
+.pro-template .swifcema-certificate-preview {
   position: relative;
   overflow: hidden;
 }
@@ -1410,11 +1410,11 @@ input:focus, a:focus {
   background: #e68900;
 }
 
-.swiftcm-customizations-wrapper .el-row {
+.swifcema-customizations-wrapper .el-row {
   display: flex;
 }
 
-.swiftcm-certificate-preview {
+.swifcema-certificate-preview {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -1423,50 +1423,50 @@ input:focus, a:focus {
   overflow: hidden;
   height: 100%;
 }
-.swiftcm-certificate-preview .certificate-outer-container {
+.swifcema-certificate-preview .certificate-outer-container {
   width: 100%;
   overflow: auto;
   border: 1px solid #dcdfe6;
   background: #f5f7fa;
   margin-bottom: 15px;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template {
+.swifcema-certificate-preview .certificate-outer-container .view-template {
   position: relative;
   margin: 0 auto;
   overflow: hidden;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template img {
+.swifcema-certificate-preview .certificate-outer-container .view-template img {
   height: 100%;
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .elements-container {
+.swifcema-certificate-preview .certificate-outer-container .view-template .elements-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .certificate-element {
+.swifcema-certificate-preview .certificate-outer-container .view-template .certificate-element {
   position: absolute;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .certificate-element.selected {
+.swifcema-certificate-preview .certificate-outer-container .view-template .certificate-element.selected {
   border: 1px solid #409EFF;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .certificate-element.image-element {
+.swifcema-certificate-preview .certificate-outer-container .view-template .certificate-element.image-element {
   overflow: hidden;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .certificate-element.image-element img {
+.swifcema-certificate-preview .certificate-outer-container .view-template .certificate-element.image-element img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .resize-handle {
+.swifcema-certificate-preview .certificate-outer-container .view-template .resize-handle {
   position: absolute;
   width: 10px;
   height: 10px;
@@ -1476,7 +1476,7 @@ input:focus, a:focus {
   z-index: 20;
   cursor: pointer;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .font-resize {
+.swifcema-certificate-preview .certificate-outer-container .view-template .font-resize {
   bottom: -10px;
   left: 50%;
   transform: translateX(-50%);
@@ -1489,61 +1489,61 @@ input:focus, a:focus {
   font-size: 12px;
   color: white;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .resize-handles .resize-handle.top-left {
+.swifcema-certificate-preview .certificate-outer-container .view-template .resize-handles .resize-handle.top-left {
   top: -5px;
   left: -5px;
   cursor: nwse-resize;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .resize-handles .resize-handle.top-right {
+.swifcema-certificate-preview .certificate-outer-container .view-template .resize-handles .resize-handle.top-right {
   top: -5px;
   right: -5px;
   cursor: nesw-resize;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .resize-handles .resize-handle.bottom-left {
+.swifcema-certificate-preview .certificate-outer-container .view-template .resize-handles .resize-handle.bottom-left {
   bottom: -5px;
   left: -5px;
   cursor: nesw-resize;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .resize-handles .resize-handle.bottom-right {
+.swifcema-certificate-preview .certificate-outer-container .view-template .resize-handles .resize-handle.bottom-right {
   bottom: -5px;
   right: -5px;
   cursor: nwse-resize;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template {
+.swifcema-certificate-preview .certificate-outer-container .view-template {
   /* QR Code styling */
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .qr-code-image {
+.swifcema-certificate-preview .certificate-outer-container .view-template .qr-code-image {
   width: 50px;
   height: 50px;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .image-element {
+.swifcema-certificate-preview .certificate-outer-container .view-template .image-element {
   overflow: visible !important; /* Prevent image cropping */
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template .image-element img {
+.swifcema-certificate-preview .certificate-outer-container .view-template .image-element img {
   display: block !important;
   max-width: 100% !important;
   max-height: 100% !important;
   -o-object-fit: contain !important;
      object-fit: contain !important;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template.is-exporting .certificate-element.selected {
+.swifcema-certificate-preview .certificate-outer-container .view-template.is-exporting .certificate-element.selected {
   border: none !important;
 }
-.swiftcm-certificate-preview .certificate-outer-container .view-template.is-exporting .resize-handle,
-.swiftcm-certificate-preview .certificate-outer-container .view-template.is-exporting .resize-handles {
+.swifcema-certificate-preview .certificate-outer-container .view-template.is-exporting .resize-handle,
+.swifcema-certificate-preview .certificate-outer-container .view-template.is-exporting .resize-handles {
   display: none !important;
 }
-.swiftcm-certificate-preview .footer-buttons {
+.swifcema-certificate-preview .footer-buttons {
   display: flex;
   justify-content: flex-end;
   gap: 10px;
   margin-top: 20px;
 }
-.swiftcm-certificate-preview .footer-buttons .el-button {
+.swifcema-certificate-preview .footer-buttons .el-button {
   display: flex;
 }
 
-.swiftcm-customizations-panel {
+.swifcema-customizations-panel {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -1552,34 +1552,34 @@ input:focus, a:focus {
   overflow: hidden;
   height: 100%;
 }
-.swiftcm-customizations-panel .title .panel-title {
+.swifcema-customizations-panel .title .panel-title {
   padding: 0px 20px;
   font-size: 1.3em;
   line-height: initial;
 }
-.swiftcm-customizations-panel .el-collapse-item__header {
+.swifcema-customizations-panel .el-collapse-item__header {
   padding-left: 20px;
 }
-.swiftcm-customizations-panel .el-collapse-item:last-child .el-collapse-item__header {
+.swifcema-customizations-panel .el-collapse-item:last-child .el-collapse-item__header {
   border-bottom: none !important;
 }
-.swiftcm-customizations-panel .el-collapse-item__wrap {
+.swifcema-customizations-panel .el-collapse-item__wrap {
   padding: 0px 20px;
 }
-.swiftcm-customizations-panel .el-collapse {
+.swifcema-customizations-panel .el-collapse {
   border-bottom: initial;
   height: 650px;
   overflow-y: scroll;
 }
-.swiftcm-customizations-panel .swiftcm-color-select {
+.swifcema-customizations-panel .swifcema-color-select {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-.swiftcm-customizations-panel .swiftcm-color-select .label {
+.swifcema-customizations-panel .swifcema-color-select .label {
   flex: 1;
 }
-.swiftcm-customizations-panel .el-input__inner {
+.swifcema-customizations-panel .el-input__inner {
   display: flex;
   padding: 12px;
   align-items: center;
@@ -1588,28 +1588,28 @@ input:focus, a:focus {
   border-radius: 100px;
   border: 1px solid var(--Dark-D50, #e8e8e9);
 }
-.swiftcm-customizations-panel .el-input__inner:hover {
+.swifcema-customizations-panel .el-input__inner:hover {
   border-radius: 100px;
   border: 1px solid #ccbef5;
 }
-.swiftcm-customizations-panel .el-input__inner:active {
+.swifcema-customizations-panel .el-input__inner:active {
   border-radius: 100px;
   border: 1px solid #5b2de0;
 }
-.swiftcm-customizations-panel .el-date-editor .el-input__inner {
+.swifcema-customizations-panel .el-date-editor .el-input__inner {
   padding-left: 30px;
 }
-.swiftcm-customizations-panel .el-tabs__nav-wrap.is-scrollable {
+.swifcema-customizations-panel .el-tabs__nav-wrap.is-scrollable {
   padding: 0px;
 }
-.swiftcm-customizations-panel .el-tabs__nav-scroll {
+.swifcema-customizations-panel .el-tabs__nav-scroll {
   display: flex;
   padding: 4px;
   align-items: center;
   border-radius: 100px;
   background: #f5f4fa;
 }
-.swiftcm-customizations-panel .el-tabs__item is-top {
+.swifcema-customizations-panel .el-tabs__item is-top {
   display: flex;
   padding: 10px 14px;
   justify-content: center;
@@ -1617,7 +1617,7 @@ input:focus, a:focus {
   gap: 8px;
   border-radius: 100px;
 }
-.swiftcm-customizations-panel .el-tabs__item.is-active {
+.swifcema-customizations-panel .el-tabs__item.is-active {
   padding: 0 20px;
   justify-content: center;
   align-items: center;
@@ -1628,58 +1628,58 @@ input:focus, a:focus {
   box-shadow: 2px 2px 12px 0px rgba(0, 0, 0, 0.08);
 }
 
-.swiftcm-templates .templates-wrap {
+.swifcema-templates .templates-wrap {
   position: relative;
 }
-.swiftcm-templates .templates-wrap .el-row {
+.swifcema-templates .templates-wrap .el-row {
   display: flex;
   flex-wrap: wrap;
 }
-.swiftcm-templates .templates-wrap .el-row .el-col-6 {
+.swifcema-templates .templates-wrap .el-row .el-col-6 {
   float: none;
 }
-.swiftcm-templates .templates-wrap .el-row .el-col-6 .grid-content {
+.swifcema-templates .templates-wrap .el-row .el-col-6 .grid-content {
   height: 100% !important;
 }
-.swiftcm-templates .templates-wrap .el-row .el-col-6 .grid-content .el-card {
+.swifcema-templates .templates-wrap .el-row .el-col-6 .grid-content .el-card {
   height: 100% !important;
 }
-.swiftcm-templates .templates-wrap .el-row .el-col-6 .grid-content .el-card .el-card__body {
+.swifcema-templates .templates-wrap .el-row .el-col-6 .grid-content .el-card .el-card__body {
   height: 100% !important;
   display: flex;
   flex-direction: column;
 }
-.swiftcm-templates .templates-wrap .el-row .el-col-6 .grid-content .el-card .el-card__body .card-actions {
+.swifcema-templates .templates-wrap .el-row .el-col-6 .grid-content .el-card .el-card__body .card-actions {
   margin-top: auto;
 }
-.swiftcm-templates .templates-wrap .template-image {
+.swifcema-templates .templates-wrap .template-image {
   padding: 10px;
   height: 200px;
 }
-.swiftcm-templates .templates-wrap .template-image .image {
+.swifcema-templates .templates-wrap .template-image .image {
   width: 100%;
   height: 100%;
   display: block;
   -o-object-fit: contain;
      object-fit: contain;
 }
-.swiftcm-templates .templates-wrap .card-actions {
+.swifcema-templates .templates-wrap .card-actions {
   display: flex;
   padding: 12px;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
 }
-.swiftcm-templates .templates-wrap .box-card {
+.swifcema-templates .templates-wrap .box-card {
   border-radius: 12px;
 }
-.swiftcm-templates .swiftcm_downloader_wrapper {
+.swifcema-templates .swifcema_downloader_wrapper {
   background-color: #fff;
   border-radius: 5px;
   margin: 0px auto;
   margin-bottom: 80px;
 }
-.swiftcm-templates .swiftcm_downloader_wrapper .swiftcm_templates_installation_message {
+.swifcema-templates .swifcema_downloader_wrapper .swifcema_templates_installation_message {
   width: 60%;
   display: flex;
   flex-direction: column;
@@ -1689,19 +1689,19 @@ input:focus, a:focus {
   margin: 0 auto;
   padding: 100px 0 100px 0;
 }
-.swiftcm-templates .swiftcm_downloader_wrapper .swiftcm_templates_installation_message h3 {
+.swifcema-templates .swifcema_downloader_wrapper .swifcema_templates_installation_message h3 {
   margin-top: 0;
 }
-.swiftcm-templates .swiftcm_downloader_wrapper .swiftcm_templates_installation_message p {
+.swifcema-templates .swifcema_downloader_wrapper .swifcema_templates_installation_message p {
   line-height: 24px;
 }
-.swiftcm-templates .swiftcm_downloader_wrapper .swiftcm_title {
+.swifcema-templates .swifcema_downloader_wrapper .swifcema_title {
   margin: 0px 0px 20px 0px;
 }
-.swiftcm-templates .el-button--success {
+.swifcema-templates .el-button--success {
   color: #fff;
 }
-.swiftcm-templates .setup_next_process {
+.swifcema-templates .setup_next_process {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1717,18 +1717,18 @@ input:focus, a:focus {
   margin: 0 auto;
   z-index: 500;
 }
-.swiftcm-templates .setup_next_process .setup-number {
+.swifcema-templates .setup_next_process .setup-number {
   margin-left: 4px;
 }
-.swiftcm-templates .btn-handler {
+.swifcema-templates .btn-handler {
   display: flex;
   gap: 10px;
 }
-.swiftcm-templates .pro-template .box-card {
+.swifcema-templates .pro-template .box-card {
   position: relative;
   overflow: hidden;
 }
-.swiftcm-templates .pro-template .template-overlay {
+.swifcema-templates .pro-template .template-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -1739,13 +1739,13 @@ input:focus, a:focus {
   align-items: center;
   justify-content: center;
 }
-.swiftcm-templates .pro-template .template-overlay a {
+.swifcema-templates .pro-template .template-overlay a {
   text-decoration: none;
 }
-.swiftcm-templates .pro-template .template-overlay a svg path {
+.swifcema-templates .pro-template .template-overlay a svg path {
   stroke: #fff;
 }
-.swiftcm-templates .pro-template .upgrade-btn {
+.swifcema-templates .pro-template .upgrade-btn {
   background: #ff9800;
   border: none;
   color: #fff;
@@ -1759,15 +1759,15 @@ input:focus, a:focus {
   gap: 5px;
   align-items: center;
 }
-.swiftcm-templates .pro-template .upgrade-btn:hover {
+.swifcema-templates .pro-template .upgrade-btn:hover {
   background: #e68900;
 }
 
-.swiftcm-finishing-setup {
+.swifcema-finishing-setup {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.swiftcm-finishing-setup .cong_wrap {
+.swifcema-finishing-setup .cong_wrap {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1775,29 +1775,29 @@ input:focus, a:focus {
   background-color: #fff;
   padding: 60px 0;
 }
-.swiftcm-finishing-setup .cong_wrap .title-box {
+.swifcema-finishing-setup .cong_wrap .title-box {
   width: 40%;
   display: flex;
   line-height: 40px;
   text-align: center;
 }
-.swiftcm-finishing-setup .cong_wrap .title-box .title {
+.swifcema-finishing-setup .cong_wrap .title-box .title {
   font-size: 32px;
   line-height: 45px;
   font-weight: 600;
   margin-top: 0;
 }
-.swiftcm-finishing-setup .cong_wrap .setup_next_process {
+.swifcema-finishing-setup .cong_wrap .setup_next_process {
   margin-top: 50px;
   margin-bottom: 0;
 }
-.swiftcm-finishing-setup .cong_img_box {
+.swifcema-finishing-setup .cong_img_box {
   width: 600px;
 }
-.swiftcm-finishing-setup .cong_img_box img {
+.swifcema-finishing-setup .cong_img_box img {
   width: 100%;
 }
-.swiftcm-finishing-setup .setup_next_process {
+.swifcema-finishing-setup .setup_next_process {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1808,22 +1808,22 @@ input:focus, a:focus {
   margin: 40px auto;
   background: #fff;
 }
-.swiftcm-finishing-setup .setup_next_process .setup-number {
+.swifcema-finishing-setup .setup_next_process .setup-number {
   margin-left: 4px;
 }
 
-.swiftcm-transaction-details-page {
+.swifcema-transaction-details-page {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
-.swiftcm-transaction-details-page .page-header {
+.swifcema-transaction-details-page .page-header {
   margin-bottom: 20px;
 }
-.swiftcm-transaction-details-page .transaction-content {
+.swifcema-transaction-details-page .transaction-content {
   min-height: 500px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .status-banner {
+.swifcema-transaction-details-page .transaction-receipt .status-banner {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1831,123 +1831,123 @@ input:focus, a:focus {
   margin-bottom: 20px;
   border-radius: 4px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .status-banner .status-info {
+.swifcema-transaction-details-page .transaction-receipt .status-banner .status-info {
   font-size: 18px;
   font-weight: 600;
 }
-.swiftcm-transaction-details-page .transaction-receipt .status-banner .status-info i {
+.swifcema-transaction-details-page .transaction-receipt .status-banner .status-info i {
   margin-right: 10px;
   font-size: 20px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .status-banner.status-paid {
+.swifcema-transaction-details-page .transaction-receipt .status-banner.status-paid {
   background-color: #f0f9eb;
   color: #67c23a;
 }
-.swiftcm-transaction-details-page .transaction-receipt .status-banner.status-pending {
+.swifcema-transaction-details-page .transaction-receipt .status-banner.status-pending {
   background-color: #fdf6ec;
   color: #e6a23c;
 }
-.swiftcm-transaction-details-page .transaction-receipt .transaction-card {
+.swifcema-transaction-details-page .transaction-receipt .transaction-card {
   margin-bottom: 20px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .transaction-card .card-header {
+.swifcema-transaction-details-page .transaction-receipt .transaction-card .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-weight: 600;
 }
-.swiftcm-transaction-details-page .transaction-receipt .transaction-card .transaction-meta {
+.swifcema-transaction-details-page .transaction-receipt .transaction-card .transaction-meta {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item {
+.swifcema-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item {
   flex: 1;
   min-width: 150px;
   display: flex;
   align-items: center;
 }
-.swiftcm-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item i {
+.swifcema-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item i {
   margin-right: 8px;
   color: #909399;
 }
-.swiftcm-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item .label {
+.swifcema-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item .label {
   color: #606266;
   margin-right: 5px;
   font-weight: 600;
 }
-.swiftcm-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item .payment-icon {
+.swifcema-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item .payment-icon {
   height: 18px;
   margin-right: 5px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item .amount {
+.swifcema-transaction-details-page .transaction-receipt .transaction-card .transaction-meta .meta-item .amount {
   font-weight: 600;
   color: #5b2de0;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs {
   margin-bottom: 20px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .detail-card {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .detail-card {
   margin-bottom: 20px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item {
   padding: 8px 0;
   display: flex;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item:not(:last-child) {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item:not(:last-child) {
   border-bottom: 1px solid #f0f0f0;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item .detail-label {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item .detail-label {
   width: 140px;
   color: #909399;
   font-weight: 500;
   flex-shrink: 0;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item .detail-value {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item .detail-value {
   color: #303133;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item .detail-value.code {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item .detail-value.code {
   font-family: monospace;
   background: #f5f7fa;
   padding: 2px 6px;
   border-radius: 4px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item .detail-value.small {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .detail-card .detail-list .detail-item .detail-value.small {
   font-size: 12px;
   word-break: break-all;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary {
   padding: 15px;
   background-color: #f5f7fa;
   border-radius: 4px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-amount {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-amount {
   margin-bottom: 15px;
   text-align: center;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-amount .amount-label {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-amount .amount-label {
   font-size: 14px;
   color: #909399;
   margin-bottom: 5px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-amount .amount-value {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-amount .amount-value {
   font-size: 24px;
   font-weight: 700;
   color: #5b2de0;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-date {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-date {
   text-align: center;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-date .date-label {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-date .date-label {
   font-size: 12px;
   color: #909399;
   margin-bottom: 5px;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-date .date-value {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .payment-card .payment-summary .payment-date .date-value {
   font-size: 14px;
   color: #606266;
 }
-.swiftcm-transaction-details-page .transaction-receipt .details-tabs .json-viewer pre {
+.swifcema-transaction-details-page .transaction-receipt .details-tabs .json-viewer pre {
   background-color: #f5f7fa;
   padding: 15px;
   border-radius: 4px;
@@ -1956,23 +1956,23 @@ input:focus, a:focus {
   font-size: 12px;
   color: #303133;
 }
-.swiftcm-transaction-details-page .transaction-receipt .action-buttons {
+.swifcema-transaction-details-page .transaction-receipt .action-buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
   margin-bottom: 30px;
 }
 
-.swiftcm-status-edit-form h4 {
+.swifcema-status-edit-form h4 {
   margin-bottom: 20px;
   margin-top: 10px;
   margin-left: 0;
   margin-right: 0;
 }
-.swiftcm-status-edit-form input {
+.swifcema-status-edit-form input {
   background-color: #fff;
 }
-.swiftcm-status-edit-form .status-form-actions {
+.swifcema-status-edit-form .status-form-actions {
   display: flex;
   justify-content: flex-end;
   margin-top: 10px;

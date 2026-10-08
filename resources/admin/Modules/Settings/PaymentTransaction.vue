@@ -1,6 +1,6 @@
 <template>
-  <div class="swiftcm_payment_transaction">
-    <div class="swiftcm-card">
+  <div class="swifcema_payment_transaction">
+    <div class="swifcema-card">
       <div class="settings-item">
         <div class="header-title">
           <h3 class="title">Payment Transaction</h3>
@@ -40,7 +40,7 @@
             <el-table-column
                 label="Status">
               <template slot-scope="scope">
-                <span :class="[scope.row.payment_status == 'pending' ? 'swiftcm_status_pending swiftcm_status' : 'swiftcm_status_paid swiftcm_status']">
+                <span :class="[scope.row.payment_status == 'pending' ? 'swifcema_status_pending swifcema_status' : 'swifcema_status_paid swifcema_status']">
                   {{scope.row.payment_status}}
                 </span>
               </template>
@@ -48,7 +48,7 @@
             <el-table-column
                 label="Method">
               <template slot-scope="scope">
-                <span class="swiftcm_payment_method">
+                <span class="swifcema_payment_method">
                   <img :src="images_url + 'stripe.svg'" alt="" v-if="scope.row.payment_method === 'stripe'">
                   <img :src="images_url + 'PayPal.svg'" alt="" v-if="scope.row.payment_method === 'paypal'">
                 </span>
@@ -64,7 +64,7 @@
             </el-table-column>
             <el-table-column :label="$t('Action')">
               <template slot-scope="scope">
-                <div class="swiftcm-table-action">
+                <div class="swifcema-table-action">
                   <el-tooltip content="View" placement="top">
                     <a href="javascript:void(0)" @click="gotoView(scope.row.id)">
                       <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -104,7 +104,7 @@
         </div>
       </div>
     </div>
-    <div class="swiftcm_pagination_wrap">
+    <div class="swifcema_pagination_wrap">
       <el-pagination
           :hide-on-single-page="false"
           @size-change="handleSizeChange"
@@ -132,8 +132,8 @@ export default {
         last_page: 1,
         per_page: +(localStorage.getItem('transactionPerPage') || 10)
       },
-      images_url: window.swiftcmAdminVars.images_url,
-      hasPro: !!window.swiftcmAdminVars.has_pro,
+      images_url: window.swifcemaAdminVars.images_url,
+      hasPro: !!window.swifcemaAdminVars.has_pro,
     }
   },
   methods: {
@@ -159,11 +159,11 @@ export default {
     getPaymentTransactionHandler() {
       this.fetching = true;
       this.$get({
-        action: 'swiftcm_transaction_admin_ajax',
+        action: 'swifcema_transaction_admin_ajax',
         route: 'get_payment_transactions',
         current_page: this.paginate.current_page,
         per_page: this.paginate.per_page,
-        nonce: window.swiftcmAdminVars.nonce
+        nonce: window.swifcemaAdminVars.nonce
       })
           .then(response => {
             this.transactions = response.data.transactions;
@@ -200,11 +200,11 @@ export default {
 
      performAction(type, id) {
       this.$post({
-        action: "swiftcm_transaction_admin_ajax",
+        action: "swifcema_transaction_admin_ajax",
         route: "maybe_delete_transactions",
         transactions_ids: [id],
         action_type: type,
-        nonce: window.swiftcmAdminVars.nonce,
+        nonce: window.swifcemaAdminVars.nonce,
       })
         .then((response) => {
           this.$notify({
@@ -231,11 +231,11 @@ export default {
 </script>
 
 <style lang="scss">
-.swiftcm_payment_transaction {
+.swifcema_payment_transaction {
   .settings-item {
     margin-bottom: 0 !important;
   }
-  .swiftcm_status {
+  .swifcema_status {
     padding: 2px 6px;
     border-radius: 5px;
     color: #141414;
@@ -244,16 +244,16 @@ export default {
     font-size: 12px;
   }
 
-  .swiftcm_status_paid {
+  .swifcema_status_paid {
     border: 1px solid rgba(26, 255, 178, 0.5019607843);
     background: rgba(26, 255, 178, 0.5019607843);
   }
 
-  .swiftcm_status_pending{
+  .swifcema_status_pending{
     border: 1px solid rgba(255, 235, 59, 0.55);
     background: rgba(255, 235, 59, 0.55);
   }
-  .swiftcm_payment_method {
+  .swifcema_payment_method {
     img {
       width: 40%;
     }

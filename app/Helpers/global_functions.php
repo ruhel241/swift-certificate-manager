@@ -5,49 +5,49 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
 if (!class_exists('SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
-    require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
+    require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
 }
 
 
 /**
  * Add rewrite rules for custom invoice URL.
  */
-function swiftcm_add_rewrite_rules() {
+function swifcema_add_rewrite_rules() {
 	add_rewrite_rule(
-		'^swiftcm_invoice/([^/]+)/?$',
-		'index.php?swiftcm_invoice=$matches[1]',
+		'^swifcema_invoice/([^/]+)/?$',
+		'index.php?swifcema_invoice=$matches[1]',
 		'top'
 	);
 }
-add_action( 'init', 'swiftcm_add_rewrite_rules' );
+add_action( 'init', 'swifcema_add_rewrite_rules' );
 
 /**
- * Register swiftcm_invoice query variable.
+ * Register swifcema_invoice query variable.
  *
  * @param array $vars Query vars.
  * @return array
  */
 
-function swiftcm_query_vars( $vars ) {
+function swifcema_query_vars( $vars ) {
 
-	$vars[] = 'swiftcm_invoice';
+	$vars[] = 'swifcema_invoice';
 	$vars[] = 'hash';
-	$vars[] = 'swiftcm_success';
+	$vars[] = 'swifcema_success';
 	$vars[] = 'payment_method';
 	$vars[] = 'payment_status';
 
 	return $vars;
 }
 
-add_filter( 'query_vars', 'swiftcm_query_vars' );
+add_filter( 'query_vars', 'swifcema_query_vars' );
 
 
 /**
- * Handle the swiftcm_invoice request
+ * Handle the swifcema_invoice request
  */
-function swiftcm_handle_request() {
+function swifcema_handle_request() {
 
-	$requestedCertificate = get_query_var( 'swiftcm_invoice', false );
+	$requestedCertificate = get_query_var( 'swifcema_invoice', false );
 
 	if ( $requestedCertificate !== false ) {
 
@@ -67,7 +67,7 @@ function swiftcm_handle_request() {
 
 		echo do_shortcode(
 			sprintf(
-				'[swiftcm swiftcm_invoice="%s"]',
+				'[swifcema swifcema_invoice="%s"]',
 				esc_attr( $hash )
 			)
 		);
@@ -77,20 +77,20 @@ function swiftcm_handle_request() {
 		exit;
 	}
 }
-add_action( 'template_redirect', 'swiftcm_handle_request' );
+add_action( 'template_redirect', 'swifcema_handle_request' );
 
 
 // regiseter custom cron schedule, when app load
-add_action('swiftcm_admin_app_loaded', function () {
-	if (!wp_next_scheduled('swiftcm_cleanup_tmp_dir')) {
-        wp_schedule_event(time(), 'daily', 'swiftcm_cleanup_tmp_dir');
+add_action('swifcema_admin_app_loaded', function () {
+	if (!wp_next_scheduled('swifcema_cleanup_tmp_dir')) {
+        wp_schedule_event(time(), 'daily', 'swifcema_cleanup_tmp_dir');
     }
 });
 
 
 //  ✅ Cron callback
-function swiftcm_cleanup_tmp_dir_callback() {
+function swifcema_cleanup_tmp_dir_callback() {
 	$availableOptions = new AvailableOptions();
     $availableOptions->cleanupTempDir();
 }
-add_action('swiftcm_cleanup_tmp_dir', 'swiftcm_cleanup_tmp_dir_callback');
+add_action('swifcema_cleanup_tmp_dir', 'swifcema_cleanup_tmp_dir_callback');

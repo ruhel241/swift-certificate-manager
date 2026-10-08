@@ -1,12 +1,12 @@
 <template>
-  <div class="swiftcm-fonts-manager">
+  <div class="swifcema-fonts-manager">
     <div class="title header" v-if="isOnboarded === 'no'">
       <h1>Fonts Manager</h1>
     </div>
 
     <div class="fonts-wrap">
-      <div class="swiftcm_fonts_downloader_wrapper">
-        <div class="swiftcm_fonts_installation" v-if="downloadableFiles">
+      <div class="swifcema_fonts_downloader_wrapper">
+        <div class="swifcema_fonts_installation" v-if="downloadableFiles">
           <h3>Fonts are required for Certificate Generate</h3>
           <p>
             This module requires downloading Fonts for Certificate Generate.
@@ -16,7 +16,7 @@
 
           <div class="settings-font-manager" v-if="isOnboarded === 'yes'">
             <el-button
-                class="swiftcm-pro-btn"
+                class="swifcema-pro-btn"
                 round
                 @click="downloadFonts"
                 :loading="loading"
@@ -27,8 +27,8 @@
           </div>
         </div>
 
-        <div class="swiftcm_fonts_install_preview" v-else>
-          <div class="swiftcm_pdf_system_status">
+        <div class="swifcema_fonts_install_preview" v-else>
+          <div class="swifcema_pdf_system_status">
             <h3 class="mb-3">
               Swift Certificate Manager Fonts is now active
               <span style="color: red;" v-if="!getSystemStatuses.status">
@@ -55,10 +55,10 @@
         <span class="setup-count">0{{ active }}</span>
         <span>/04</span>
       </div>
-      <div class="swiftcm_button_group">
+      <div class="swifcema_button_group">
         <el-button class="capsule-button" round @click="backBtnHandler">Back</el-button>
         <el-button
-            class="swiftcm-primary-btn"
+            class="swifcema-primary-btn"
             round
             @click="downloadFonts"
             v-if="downloadableFiles"
@@ -67,7 +67,7 @@
         >
           {{ loading ? 'Installing...' : 'Install Fonts' }}
         </el-button>
-        <el-button class="swiftcm-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
+        <el-button class="swifcema-primary-btn" round @click="nextBtnHandler" v-else>Next</el-button>
       </div>
     </div>
 
@@ -86,10 +86,10 @@ export default {
       checkTemplates: false,
       templates: [],
       activeTemplate: '',
-      isOnboarded: window.swiftcmAdminVars.is_onboarded,
-      uploadCertificateUrl: window.swiftcmAdminVars.upload_certificate_url,
-      downloadableFiles: parseInt(window.swiftcmAdminVars.downloadableFiles),
-      getSystemStatuses: window.swiftcmAdminVars.getSystemStatuses,
+      isOnboarded: window.swifcemaAdminVars.is_onboarded,
+      uploadCertificateUrl: window.swifcemaAdminVars.upload_certificate_url,
+      downloadableFiles: parseInt(window.swifcemaAdminVars.downloadableFiles),
+      getSystemStatuses: window.swifcemaAdminVars.getSystemStatuses,
     };
   },
   methods: {
@@ -115,13 +115,13 @@ export default {
         text: 'Installing fonts, do not refresh the page, please wait...',
         spinner: 'el-icon-loading',
         background: 'rgba(0, 0, 0, 0.7)',
-        customClass: 'swiftcm-text-loading'
+        customClass: 'swifcema-text-loading'
       });
 
       this.$post({
-        action: 'swiftcm_fonts_admin_ajax',
+        action: 'swifcema_fonts_admin_ajax',
         route: 'download_fonts',
-        nonce: window.swiftcmAdminVars.nonce
+        nonce: window.swifcemaAdminVars.nonce
       })
           .then(response => {
             if(response.data.downloaded_files && response.data.downloaded_files.length) {
@@ -160,13 +160,13 @@ export default {
 
 <style lang="scss">
 
-.swiftcm_fonts_downloader_wrapper {
+.swifcema_fonts_downloader_wrapper {
   background-color: #fff;
   border-radius: 5px;
   margin: 0px auto;
   margin-bottom: 80px;
   //padding: 100px;
-  .swiftcm_fonts_installation {
+  .swifcema_fonts_installation {
     width: 60%;
     display: flex;
     flex-direction: column;
@@ -185,7 +185,7 @@ export default {
   }
 }
 
-.swiftcm_fonts_install_preview {
+.swifcema_fonts_install_preview {
   width: 100%;
   padding: 30px;
 }
@@ -212,7 +212,7 @@ export default {
   margin-top: 50px;
 }
 
-.swiftcm_pdf_system_status {
+.swifcema_pdf_system_status {
   .dashicons-yes {
     color: #0def0d;
   }

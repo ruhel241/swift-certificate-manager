@@ -3,36 +3,36 @@
 @import "./variables";
 
 // Sc-primary Color Variables
-$swiftcm-primary-light: #efeafc;
-$swiftcm-primary-light-hover: #e6e0fa;
-$swiftcm-primary-light-active: #ccbef5;
-$swiftcm-primary-normal: #5b2de0;
-$swiftcm-primary-normal-hover: #5229ca;
-$swiftcm-primary-normal-active: #4924b3;
-$swiftcm-primary-swiftcm-dark: #4422a8;
-$swiftcm-primary-swiftcm-dark-hover: #371b86;
-$swiftcm-primary-swiftcm-dark-active: #291465;
-$swiftcm-primary-swiftcm-darker: #291465;
-$swiftcm-primary-darker: #1B1A1F;
+$swifcema-primary-light: #efeafc;
+$swifcema-primary-light-hover: #e6e0fa;
+$swifcema-primary-light-active: #ccbef5;
+$swifcema-primary-normal: #5b2de0;
+$swifcema-primary-normal-hover: #5229ca;
+$swifcema-primary-normal-active: #4924b3;
+$swifcema-primary-swifcema-dark: #4422a8;
+$swifcema-primary-swifcema-dark-hover: #371b86;
+$swifcema-primary-swifcema-dark-active: #291465;
+$swifcema-primary-swifcema-darker: #291465;
+$swifcema-primary-darker: #1B1A1F;
 
 
 // Sc-light Color Variables
-$swiftcm-light-50: #fcfcfc;
-$swiftcm-light-75: #f3f4f4;
-$swiftcm-light-100: #eef0f0;
-$swiftcm-light-200: #e7e9e9;
-$swiftcm-light-300: #e2e5e5;
-$swiftcm-light-400: #9ea0a0;
-$swiftcm-background-color: #f0eff5;
+$swifcema-light-50: #fcfcfc;
+$swifcema-light-75: #f3f4f4;
+$swifcema-light-100: #eef0f0;
+$swifcema-light-200: #e7e9e9;
+$swifcema-light-300: #e2e5e5;
+$swifcema-light-400: #9ea0a0;
+$swifcema-background-color: #f0eff5;
 
 // Sc-dark Color Variables
-$swiftcm-dark-50: #e8e8e9;
-$swiftcm-dark-75: #a2a1a3;
-$swiftcm-dark-100: #7b7a7d;
-$swiftcm-dark-200: #424145;
-$swiftcm-dark-300: #1b1a1f;
-$swiftcm-dark-400: #131216;
-$swiftcm-dark-500: #101013;
+$swifcema-dark-50: #e8e8e9;
+$swifcema-dark-75: #a2a1a3;
+$swifcema-dark-100: #7b7a7d;
+$swifcema-dark-200: #424145;
+$swifcema-dark-300: #1b1a1f;
+$swifcema-dark-400: #131216;
+$swifcema-dark-500: #101013;
 
 .mb-24 {
   margin-bottom: 24px;
@@ -47,7 +47,7 @@ $swiftcm-dark-500: #101013;
     padding: 65px;
 }
 
-.swiftcm-body {
+.swifcema-body {
     padding-right: 20px;
 }
 h1, h3, h4, h4, h6 {
@@ -60,19 +60,19 @@ h1, h3, h4, h4, h6 {
 }
 
 .el-select-dropdown__item.selected {
-  color: $swiftcm-primary-normal !important;
+  color: $swifcema-primary-normal !important;
 }
 
 .el-radio-button__inner:hover {
-  color: $swiftcm-primary-darker !important;
-  border-color: $swiftcm-primary-light-active !important;
+  color: $swifcema-primary-darker !important;
+  border-color: $swifcema-primary-light-active !important;
 }
 
 .is-active  {
-  color: $swiftcm-primary-normal !important;
+  color: $swifcema-primary-normal !important;
   svg {
     path {
-      stroke: $swiftcm-primary-normal;
+      stroke: $swifcema-primary-normal;
     }
   }
   .el-radio-button__inner:hover {
@@ -81,53 +81,53 @@ h1, h3, h4, h4, h6 {
 }
 
 .el-button.is-plain:hover {
-  color: $swiftcm-primary-normal !important;
-  border-color: $swiftcm-primary-normal !important;
+  color: $swifcema-primary-normal !important;
+  border-color: $swifcema-primary-normal !important;
 }
 
 .el-button.is-plain:focus {
-  color: $swiftcm-primary-normal !important;
-  border-color: $swiftcm-primary-normal !important;
+  color: $swifcema-primary-normal !important;
+  border-color: $swifcema-primary-normal !important;
 }
 
 input:focus, a:focus{
-  border-color: $swiftcm-primary-normal !important;
-  box-shadow: 0 0 0 1px $swiftcm-primary-normal !important;
+  border-color: $swifcema-primary-normal !important;
+  box-shadow: 0 0 0 1px $swifcema-primary-normal !important;
 }
 
 .el-select .el-input.is-focus .el-input__inner {
-   border-color: $swiftcm-primary-normal !important;
+   border-color: $swifcema-primary-normal !important;
 }
 
 .el-tabs .el-tabs__active-bar {
-  background-color: $swiftcm-primary-normal !important;
+  background-color: $swifcema-primary-normal !important;
 }
 
 .el-tabs__item:hover {
- color: $swiftcm-primary-normal !important;
+ color: $swifcema-primary-normal !important;
 }
 
 .el-popover__reference {
-  color: $swiftcm-primary-normal !important;
+  color: $swifcema-primary-normal !important;
 }
 .transaction {
   a {
-     color: $swiftcm-primary-normal !important;
+     color: $swifcema-primary-normal !important;
   }
 }
 
 .capsule-btn {
-  color: $swiftcm-primary-darker !important;
-  border-color: $swiftcm-primary-light-active !important;
+  color: $swifcema-primary-darker !important;
+  border-color: $swifcema-primary-light-active !important;
   svg {
     path {
-      stroke: $swiftcm-primary-darker;
+      stroke: $swifcema-primary-darker;
     }
   }
 }
 
 // action button edit deletd and view
-.swiftcm-table-action {
+.swifcema-table-action {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -149,7 +149,7 @@ input:focus, a:focus{
   }
 }
 
-.swiftcm_wrap {
+.swifcema_wrap {
   h2 {
     font-family: 'Inter';
     font-weight: 600;
@@ -186,7 +186,7 @@ input:focus, a:focus{
   }
 }
 
-.swiftcm-header {
+.swifcema-header {
   background-color: #fff;
   margin-left: -20px;
   padding-left: 20px;
@@ -212,7 +212,7 @@ input:focus, a:focus{
       }
     }
   }
-  .swiftcm-navigation {
+  .swifcema-navigation {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -253,22 +253,22 @@ input:focus, a:focus{
         }
       }
       .router-link-exact-active {
-        border-bottom: solid 2px $swiftcm-primary-normal !important;
-        color:  $swiftcm-primary-normal;
+        border-bottom: solid 2px $swifcema-primary-normal !important;
+        color:  $swifcema-primary-normal;
         svg {
           path {
-            stroke: $swiftcm-primary-normal;
+            stroke: $swifcema-primary-normal;
           }
         }
       }
     }
   }
-  .swiftcm-nav-pro-btn {
+  .swifcema-nav-pro-btn {
     display: flex;
     justify-content: center;
   }
 }
-.swiftcm-dashboard {
+.swifcema-dashboard {
   background-color: #f5f5fa;
   border-radius: 20px;
   height: auto;
@@ -276,13 +276,13 @@ input:focus, a:focus{
     display: flex;
     justify-content: end;
   }
-  .swiftcm_setup_step_1 {
+  .swifcema_setup_step_1 {
     margin-top: 24px;
     height: 90%;
     width: 90%;
     padding: 12px;
     border-radius: 16px;
-    .swiftcm-setup-bg {  
+    .swifcema-setup-bg {  
       svg {   
         width: 100%;   
       } 
@@ -315,15 +315,15 @@ input:focus, a:focus{
   border: 1px solid var(--Dark-D50, #e8e8e9);
   &:hover {
     border-radius: 100px;
-    border: 1px solid $swiftcm-primary-light-active;
+    border: 1px solid $swifcema-primary-light-active;
   }
   &:active {
     border-radius: 100px;
-    border: 1px solid $swiftcm-primary-normal;
+    border: 1px solid $swifcema-primary-normal;
   }
 }
 
-.swiftcm-assign-certificate {
+.swifcema-assign-certificate {
   .el-card {
     // width: 95%;
     padding: 16px;
@@ -346,22 +346,22 @@ input:focus, a:focus{
     border-radius: 12px;
     border: 1px solid var(--Dark-D50, #E8E8E9);
     &:hover {
-      border: 1px solid $swiftcm-primary-light-active;
+      border: 1px solid $swifcema-primary-light-active;
     }
     &:active {
-      border: 1px solid $swiftcm-primary-normal;
+      border: 1px solid $swifcema-primary-normal;
     }
   }
 }
 
 // manage templates
-.swiftcm-manage-certificate {
-  .swiftcm-mange-action {
+.swifcema-manage-certificate {
+  .swifcema-mange-action {
     padding: 20px;
     margin-bottom: 20px;
     display: flex;
     // justify-content: space-between;
-    .swiftcm-mange-tabs {
+    .swifcema-mange-tabs {
       flex: 1;
       .el-tabs__header {
         margin: 0;
@@ -381,7 +381,7 @@ input:focus, a:focus{
         }
       }
     }
-    .swiftcm-mange-search {
+    .swifcema-mange-search {
       flex: 1;
       display: flex;
       gap: 10px;
@@ -395,7 +395,7 @@ input:focus, a:focus{
   }
 }
 
-.swiftcm_pagination_wrap {
+.swifcema_pagination_wrap {
   margin-top: 10px;
   text-align: right;
   .el-pagination {
@@ -414,7 +414,7 @@ input:focus, a:focus{
     .el-pager li {
       border-radius: 4px;
       &.active {
-        background-color: $swiftcm-primary-normal;
+        background-color: $swifcema-primary-normal;
         color: #FFFFFF;
       }
     }
@@ -431,13 +431,13 @@ input:focus, a:focus{
   text-transform: capitalize;
 }
 
-.swiftcm_button_group {
+.swifcema_button_group {
   .el-button+.el-button {
     margin-left: 3px;
   }
 }
 
-.swiftcm-text-loading {
+.swifcema-text-loading {
   .el-loading-spinner {
     margin-left: 82px;
   }
@@ -451,16 +451,16 @@ input:focus, a:focus{
   }
 }
 
-.swiftcm-assign-certificate {
+.swifcema-assign-certificate {
   .el-card__body {
     padding: initial !important;
   }
 }
 
 // license management styles
-.swiftcm-license-management {
-  .swiftcm_header {
-    .swiftcm_header_title {
+.swifcema-license-management {
+  .swifcema_header {
+    .swifcema_header_title {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -472,9 +472,9 @@ input:focus, a:focus{
       }
     }
   }  
-  .swiftcm_license_valid {
+  .swifcema_license_valid {
     // text-align: center;
-    .swiftcm-valid {
+    .swifcema-valid {
       .title {
         font-size: 1.3em;
         margin-bottom: 10px;
@@ -511,8 +511,8 @@ input:focus, a:focus{
       }
     }
   }
-  .swiftcm_license_expired {
-    .swiftcm-expired {
+  .swifcema_license_expired {
+    .swifcema-expired {
         .title {
           margin-bottom: 10px;
         }
@@ -566,7 +566,7 @@ input:focus, a:focus{
     border-radius: 5px;
     margin-bottom: 20px;
   }
-  .swiftcm-provide-license-key {
+  .swifcema-provide-license-key {
       max-width: 750px;
       margin: 0 auto;
       padding: 45px 45px 0px 45px;
@@ -598,7 +598,7 @@ input:focus, a:focus{
 }
 //pro overlay upgrade
 .pro-template {
-  .swiftcm-certificate-preview {
+  .swifcema-certificate-preview {
       position: relative;
       overflow: hidden;
   }
@@ -647,13 +647,13 @@ input:focus, a:focus{
   }
 }
 // customizations component
-.swiftcm-customizations-wrapper {
+.swifcema-customizations-wrapper {
   .el-row {
     display: flex;
   }
 }
 // preview certificate
-.swiftcm-certificate-preview {
+.swifcema-certificate-preview {
   display: flex;
   flex-direction: column;
   background-color: white;
@@ -785,7 +785,7 @@ input:focus, a:focus{
   }
 }
 // customizations panel
-.swiftcm-customizations-panel {
+.swifcema-customizations-panel {
   display: flex;
   flex-direction: column;
   // height: 757px;
@@ -815,7 +815,7 @@ input:focus, a:focus{
       height: 650px;
       overflow-y: scroll;
   }
-  .swiftcm-color-select {
+  .swifcema-color-select {
     display: flex;
     gap: 20px;
     align-items: center;
@@ -833,11 +833,11 @@ input:focus, a:focus{
     border: 1px solid var(--Dark-D50, #e8e8e9);
     &:hover {
       border-radius: 100px;
-      border: 1px solid $swiftcm-primary-light-active;
+      border: 1px solid $swifcema-primary-light-active;
     }
     &:active {
       border-radius: 100px;
-      border: 1px solid $swiftcm-primary-normal;
+      border: 1px solid $swifcema-primary-normal;
     }
   }
   .el-date-editor {
@@ -876,7 +876,7 @@ input:focus, a:focus{
 }
 
 // templates component
-.swiftcm-templates {
+.swifcema-templates {
   .templates-wrap {
     position: relative;
     .el-row {
@@ -931,13 +931,13 @@ input:focus, a:focus{
       border-radius: 12px;
     }
   }
-  .swiftcm_downloader_wrapper {
+  .swifcema_downloader_wrapper {
     background-color: #fff;
     border-radius: 5px;
     margin: 0px auto;
     margin-bottom: 80px;
     //padding: 100px;
-    .swiftcm_templates_installation_message {
+    .swifcema_templates_installation_message {
       width: 60%;
       display: flex;
       flex-direction: column;
@@ -953,7 +953,7 @@ input:focus, a:focus{
         line-height: 24px;
       }
     }
-    .swiftcm_title {   
+    .swifcema_title {   
      margin: 0px 0px 20px 0px;  
     }
   }
@@ -1029,7 +1029,7 @@ input:focus, a:focus{
 }
 
 // onboarding finishing setup
-.swiftcm-finishing-setup {
+.swifcema-finishing-setup {
     margin-top: 30px;
     margin-bottom: 30px;
    .cong_wrap {
@@ -1079,7 +1079,7 @@ input:focus, a:focus{
 }
 
 //payment transaction
-.swiftcm-transaction-details-page {
+.swifcema-transaction-details-page {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -1161,7 +1161,7 @@ input:focus, a:focus{
 
           .amount {
             font-weight: 600;
-            color: $swiftcm-primary-normal;
+            color: $swifcema-primary-normal;
           }
         }
       }
@@ -1227,7 +1227,7 @@ input:focus, a:focus{
             .amount-value {
               font-size: 24px;
               font-weight: 700;
-              color: $swiftcm-primary-normal;
+              color: $swifcema-primary-normal;
             }
           }
 
@@ -1270,7 +1270,7 @@ input:focus, a:focus{
   }
 }
 // popover payment status modal
-.swiftcm-status-edit-form {
+.swifcema-status-edit-form {
   h4 {
     //margin-top: 0;
     //margin-bottom: 15px;

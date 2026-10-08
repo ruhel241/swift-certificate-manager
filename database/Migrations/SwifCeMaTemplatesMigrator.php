@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class SwiftCMTemplatesMigrator {
+class SwifCeMaTemplatesMigrator {
 
-	public static $tableName = 'swiftcm_templates';
+	public static $tableName = 'swifcema_templates';
 
 	public static function migrate() {
 		global $wpdb;

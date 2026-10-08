@@ -6,9 +6,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class SwiftCMPaymentsMigrator {
+class SwifCeMaPaymentsMigrator {
 
-	public static $tableName = 'swiftcm_payments';
+	public static $tableName = 'swifcema_payments';
 
 	public static function migrate() {
 		global $wpdb;
