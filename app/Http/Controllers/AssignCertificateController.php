@@ -142,10 +142,7 @@ class AssignCertificateController
 
         $info = (array) $info;
 
-        $info['payment_transaction'] = $SwiftCertificateManagerPayment
-            ->getQuery()
-            ->where('request_id', $infoId)
-            ->first();
+        $info['payment_transaction'] = $SwiftCertificateManagerPayment->getByRequestId($infoId);
 
         wp_send_json_success([
             'message' => __('Get Information', 'swift-certificate-manager'),

@@ -4,53 +4,81 @@ namespace SwiftCertificateManager\Models;
 
 class SwiftCMTemplates {
 
-    protected $table = 'swiftcm_templates';
+    protected $table;
+
+    public function __construct() {
+        global $wpdb;
+
+        $this->table = $wpdb->prefix . 'swiftcm_templates';
+    }
    
-    public function getTemplates() {
-        
-        $templates = swiftcm_query()->table($this->table)
-                ->orderBy('id', 'ASC')
-                ->get();
+     public function getTemplates() {
+        global $wpdb;
 
-        return $templates;
+        return $wpdb->get_results(
+            "SELECT * FROM {$this->table} ORDER BY id ASC"
+        );
     }
 
-    public function getTemplate($id)
-    {
-        $template = swiftcm_query()->table($this->table)->where('id', $id)->first();
+    public function getTemplate($id) {
+        global $wpdb;
 
-        return $template;
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT * FROM {$this->table} WHERE id = %d",
+                $id
+            )
+        );
     }
 
-    public function getTemplateSlug($slug)
-    {
-        $template = swiftcm_query()->table($this->table)->where('slug', $slug)->first();
-        return $template;
+    public function getTemplateSlug($slug) {
+        global $wpdb;
+
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT * FROM {$this->table} WHERE slug = %s",
+                $slug
+            )
+        );
     }
 
     public function isSlug($slug) {
-        $isSlug =  swiftcm_query()->table($this->table)->where('slug', $slug)->first();
+        global $wpdb;
 
-        if ($isSlug) {
-            return true;
-        }
+        $template = $wpdb->get_var(
+            $wpdb->prepare(
+                "SELECT id FROM {$this->table} WHERE slug = %s LIMIT 1",
+                $slug
+            )
+        );
 
-        return false;
+        return !empty($template);
     }
 
     public function insertGetId($data) {
-        $save = swiftcm_query()->table($this->table)->insert($data);
+        global $wpdb;
 
-        return $save;
+        $wpdb->insert(
+            $this->table,
+            $data
+        );
+
+        return $wpdb->insert_id;
     }
 
-
     public function updateInfo($id, $data) {
-       
-        $update = swiftcm_query()->table($this->table)
-                ->where('id', $id)
-                ->update($data);
+        global $wpdb;
 
-        return $update; 
+        return $wpdb->update(
+            $this->table,
+            $data,
+            [
+                'id' => $id,
+            ],
+            null,
+            [
+                '%d',
+            ]
+        );
     }
 }

@@ -4,7 +4,7 @@ namespace SwiftCertificateManager\Helpers;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-
+use SwiftCertificateManager\Models\SwiftCMGenerate;
 /**
  * HelperFunction Class
  * @since 1.0.1
@@ -21,9 +21,7 @@ class HelperFunction
         $yearMonth = $year . $month;
 
         // Find the latest certificate for this month/year
-        $lastCertificate = swiftcm_query()->table('swiftcm_generates')
-            ->orderBy('id', 'desc')
-            ->first();
+        $lastCertificate = (new SwiftCMGenerate())->getLastCertificate();
 
         if ($lastCertificate) {
             // Extract the existing serial number

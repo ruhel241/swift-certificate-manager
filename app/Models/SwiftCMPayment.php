@@ -4,74 +4,149 @@ namespace SwiftCertificateManager\Models;
 
 class SwiftCMPayment
 {
-    protected $table = "swiftcm_payments";
+    protected $table;
+
+    public function __construct() {
+        global $wpdb;
+
+        $this->table = $wpdb->prefix . 'swiftcm_payments';
+    }
 
     public function insertGetId($data) {
-        $save = swiftcm_query()->table($this->table)->insert($data);
+        global $wpdb;
 
-        return $save;
+        $inserted = $wpdb->insert(
+            $this->table,
+            $data
+        );
+
+        if (false === $inserted) {
+            return false;
+        }
+
+        return $wpdb->insert_id;
     }
 
-     public function updateData($id, $data)
-     {
-         return swiftcm_query()->table($this->table)->where('id', $id)->update($data);
-     }
+    public function updateData($id, $data) {
+        global $wpdb;
 
-     public function find($id)
-     {
-         return swiftcm_query()->table($this->table)->where('id', $id)->first();
-     }
-
-    public function getHash($hash)
-    {
-        return swiftcm_query()->table($this->table)->where('entry_hash', $hash)->first();
+        return $wpdb->update(
+            $this->table,
+            $data,
+            [
+                'id' => absint($id),
+            ],
+            null,
+            [
+                '%d',
+            ]
+        );
     }
 
-    // public function delete($id, $column = 'id')
-    // {
-    //     return swiftcm_query()->table($this->table)->where('entry_id', $id)->delete();
-    // }
+    public function find($id) {
+        global $wpdb;
 
-     public function getPaymentTransactions($request)
-     {
-         $currentPage  = sanitize_text_field($request['current_page']);
-         $perPage      = sanitize_text_field($request['per_page']);
-         $offset       = $perPage * ($currentPage - 1);
-
-         $transactions = swiftcm_query()->table($this->table)
-//             ->where('payment_status', 'paid')
-             ->orderBy('id', 'DESC')
-             ->offset($offset)
-             ->limit($perPage);
-
-         $paymentTransactions = $transactions->get();
-
-         $total = $transactions->count();
-
-         $lastPage = (int) ceil($total / $perPage);
-
-         $data = [
-             'payment_transactions' => $paymentTransactions,
-             'total'     => $total,
-             'last_page' => $lastPage,
-             'current_page' => intval($currentPage),
-         ];
-
-         return $data;
-     }
-
-    public function getQuery()
-    {
-        return swiftcm_query()->table($this->table);
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT * FROM {$this->table} WHERE id = %d",
+                absint($id)
+            )
+        );
     }
 
+    public function getHash($hash) {
+        global $wpdb;
 
-    public function getByPaymentId($chargeId, $method = 'paypal')
-    {
-        $payment =  swiftcm_query()->table($this->table)
-            ->where('charge_id', $chargeId)
-            ->where('payment_method', $method)
-            ->first();
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT * FROM {$this->table} WHERE entry_hash = %s",
+                $hash
+            )
+        );
+    }
+
+    public function getPaymentTransactions($request) {
+        global $wpdb;
+
+        $currentPage = isset($request['current_page'])
+            ? absint($request['current_page'])
+            : 1;
+
+        $perPage = isset($request['per_page'])
+            ? absint($request['per_page'])
+            : 10;
+
+        if ($currentPage < 1) {
+            $currentPage = 1;
+        }
+
+        if ($perPage < 1) {
+            $perPage = 10;
+        }
+
+        $offset = $perPage * ($currentPage - 1);
+
+        /*
+         * Get total transactions.
+         */
+        $total = (int) $wpdb->get_var(
+            "SELECT COUNT(*) FROM {$this->table}"
+        );
+
+        /*
+         * Get transactions for current page.
+         */
+        $paymentTransactions = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT *
+                FROM {$this->table}
+                ORDER BY id DESC
+                LIMIT %d OFFSET %d",
+                $perPage,
+                $offset
+            )
+        );
+
+        $lastPage = $total > 0
+            ? (int) ceil($total / $perPage)
+            : 0;
+
+        return [
+            'payment_transactions' => $paymentTransactions,
+            'total'                => $total,
+            'last_page'            => $lastPage,
+            'current_page'         => $currentPage,
+        ];
+    }
+
+    public function getByRequestId($requestId) {
+        global $wpdb;
+
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT *
+                FROM {$this->table}
+                WHERE request_id = %d
+                LIMIT 1",
+                absint($requestId)
+            )
+        );
+    }
+
+    public function getByPaymentId($chargeId, $method = 'paypal') {
+        global $wpdb;
+
+        $payment = $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT *
+                FROM {$this->table}
+                WHERE charge_id = %s
+                AND payment_method = %s
+                LIMIT 1",
+                $chargeId,
+                $method
+            )
+        );
 
         if ($payment) {
             return $payment->id;
@@ -81,20 +156,57 @@ class SwiftCMPayment
     }
 
     public function deleteInfo($transactionIds) {
-        $transactions = swiftcm_query()->table($this->table)->whereIn('id', $transactionIds)->get();
+        global $wpdb;
 
-        foreach ($transactions as $transaction) {
-            swiftcm_query()->table($this->table)->where('id', $transaction->id)->delete();
+        if (!is_array($transactionIds)) {
+            $transactionIds = [$transactionIds];
         }
+
+        $transactionIds = array_filter(
+            array_map('absint', $transactionIds)
+        );
+
+        if (empty($transactionIds)) {
+            return false;
+        }
+
+        /*
+         * Create placeholders for IN query.
+         *
+         * Example:
+         * WHERE id IN (%d, %d, %d)
+         */
+        $placeholders = implode(
+            ', ',
+            array_fill(0, count($transactionIds), '%d')
+        );
+
+        $query = $wpdb->prepare(
+            "DELETE FROM {$this->table}
+            WHERE id IN ({$placeholders})",
+            $transactionIds
+        );
+
+        return $wpdb->query($query);
     }
 
-	public function deletePaymentTransactionsByRequestId($id) {
+    public function deletePaymentTransactionsByRequestId($id) {
+        global $wpdb;
+
         $id = absint($id);
-    
+
         if (!$id) {
-            return;
+            return false;
         }
-    
-        swiftcm_query()->table($this->table)->where('request_id', $id)->delete();
+
+        return $wpdb->delete(
+            $this->table,
+            [
+                'request_id' => $id,
+            ],
+            [
+                '%d',
+            ]
+        );
     }
 }

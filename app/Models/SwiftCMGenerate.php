@@ -7,122 +7,331 @@ use SwiftCertificateManager\Models\SwiftCMPayment;
 
 class SwiftCMGenerate {
 
-    protected $table = 'swiftcm_generates';
-   
-    public function getDatas($params)
-    {
-        // assume already sanitized, but still safe fallback
-        $search      = $params['search'] ?? '';
-        $status      = $params['status'] ?? '';
-        $currentPage = $params['current_page'] ?? 1;
-        $perPage     = $params['per_page'] ?? 10;
+    protected $table;
+
+    public function __construct() {
+        global $wpdb;
+
+        $this->table = $wpdb->prefix . 'swiftcm_generates';
+    }
+
+    public function getDatas($params) {
+        global $wpdb;
+
+        $search = isset($params['search'])
+            ? sanitize_text_field($params['search'])
+            : '';
+
+        $status = isset($params['status'])
+            ? sanitize_text_field($params['status'])
+            : '';
+
+        $currentPage = isset($params['current_page'])
+            ? absint($params['current_page'])
+            : 1;
+
+        $perPage = isset($params['per_page'])
+            ? absint($params['per_page'])
+            : 10;
+
+        if ($currentPage < 1) {
+            $currentPage = 1;
+        }
+
+        if ($perPage < 1) {
+            $perPage = 10;
+        }
 
         $offset = ($currentPage - 1) * $perPage;
 
-        $query = swiftcm_query()->table($this->table)
-            ->orderBy('id', 'DESC');
+        /*
+         * Build WHERE conditions.
+         */
+        $where = [];
+        $values = [];
 
         if ($status) {
-            $query->where('status', $status);
+            $where[] = 'status = %s';
+            $values[] = $status;
         }
 
         if ($search) {
-            $query->where(function ($q) use ($search) {
-                $q->where('id', 'LIKE', "%{$search}%")
-                ->orWhere('course_name', 'LIKE', "%{$search}%")
-                ->orWhere('student_name', 'LIKE', "%{$search}%")
-                ->orWhere('graduation_date', 'LIKE', "%{$search}%")
-                ->orWhere('certificate_code', 'LIKE', "%{$search}%")
-                ->orWhere('status', 'LIKE', "%{$search}%")
-                ->orWhere('payment_status', 'LIKE', "%{$search}%");
-            });
+            $searchLike = '%' . $wpdb->esc_like($search) . '%';
+
+            $where[] = '(
+                CAST(id AS CHAR) LIKE %s
+                OR course_name LIKE %s
+                OR student_name LIKE %s
+                OR graduation_date LIKE %s
+                OR certificate_code LIKE %s
+                OR status LIKE %s
+                OR payment_status LIKE %s
+            )';
+
+            $values[] = $searchLike;
+            $values[] = $searchLike;
+            $values[] = $searchLike;
+            $values[] = $searchLike;
+            $values[] = $searchLike;
+            $values[] = $searchLike;
+            $values[] = $searchLike;
         }
 
-        // total আগে count
-        $total = (clone $query)->count();
+        $whereSql = '';
 
-        // pagination
-        $infos = $query->offset($offset)->limit($perPage)->get();
+        if (!empty($where)) {
+            $whereSql = 'WHERE ' . implode(' AND ', $where);
+        }
+
+        /*
+         * Total count.
+         */
+        $countQuery = "SELECT COUNT(*)
+            FROM {$this->table}
+            {$whereSql}";
+
+        if (!empty($values)) {
+            $total = (int) $wpdb->get_var(
+                $wpdb->prepare($countQuery, $values)
+            );
+        } else {
+            $total = (int) $wpdb->get_var($countQuery);
+        }
+
+        /*
+         * Get paginated data.
+         */
+        $dataQuery = "SELECT *
+            FROM {$this->table}
+            {$whereSql}
+            ORDER BY id DESC
+            LIMIT %d OFFSET %d";
+
+        $queryValues = $values;
+        $queryValues[] = $perPage;
+        $queryValues[] = $offset;
+
+        $infos = $wpdb->get_results(
+            $wpdb->prepare($dataQuery, $queryValues)
+        );
 
         foreach ($infos as $info) {
-            $info->human_created_at = human_time_diff(strtotime($info->created_at), time()) . ' ago';
+            $info->human_created_at = human_time_diff(
+                strtotime($info->created_at),
+                time()
+            ) . ' ago';
         }
 
         return [
             'infos'        => $infos,
             'total'        => $total,
-            'last_page'    => (int) ceil($total / $perPage),
+            'last_page'    => $total > 0
+                ? (int) ceil($total / $perPage)
+                : 0,
             'current_page' => $currentPage,
         ];
     }
-    
-    public function getInfo($id)
-    {
-        return swiftcm_query()
-            ->table($this->table)
-            ->where('id', $id)
-            ->first();
+
+    public function getInfo($id) {
+        global $wpdb;
+
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT *
+                FROM {$this->table}
+                WHERE id = %d
+                LIMIT 1",
+                absint($id)
+            )
+        );
     }
 
-    public function find($id)
-    {
-        $info = swiftcm_query()->table($this->table)->where('id', $id)->first();
+    public function find($id) {
+        global $wpdb;
 
-        return $info;
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT *
+                FROM {$this->table}
+                WHERE id = %d
+                LIMIT 1",
+                absint($id)
+            )
+        );
+    }
+
+    public function getLastCertificate() {
+        global $wpdb;
+
+        return $wpdb->get_row(
+            "SELECT *
+            FROM {$this->table}
+            ORDER BY id DESC
+            LIMIT 1"
+        );
     }
 
     public function insertGetId($data) {
-        $save = swiftcm_query()->table($this->table)->insert($data);
+        global $wpdb;
 
-        return $save;
+        $inserted = $wpdb->insert(
+            $this->table,
+            $data
+        );
+
+        if (false === $inserted) {
+            return false;
+        }
+
+        return $wpdb->insert_id;
     }
-
 
     public function updateInfo($id, $data) {
-       
-        $update = swiftcm_query()->table($this->table)
-                ->where('id', $id)
-                ->update($data);
+        global $wpdb;
 
-        return $update; 
+        return $wpdb->update(
+            $this->table,
+            $data,
+            [
+                'id' => absint($id),
+            ],
+            null,
+            [
+                '%d',
+            ]
+        );
     }
 
-
     public function updateStatus($infoIds, $actionType) {
-    
-        $data = [
-            'status'     => $actionType,
-            'updated_at' => gmdate('Y-m-d H:i:s')
-        ];
+        global $wpdb;
 
-        swiftcm_query()->table($this->table)->whereIn('id', $infoIds)->update($data);
+        if (!is_array($infoIds)) {
+            $infoIds = [$infoIds];
+        }
+
+        $infoIds = array_filter(
+            array_map('absint', $infoIds)
+        );
+
+        if (empty($infoIds)) {
+            return false;
+        }
+
+        $actionType = sanitize_text_field($actionType);
+
+        $placeholders = implode(
+            ', ',
+            array_fill(0, count($infoIds), '%d')
+        );
+
+        /*
+         * First values are for SET clause,
+         * remaining values are the IDs.
+         */
+        $query = $wpdb->prepare(
+            "UPDATE {$this->table}
+            SET status = %s,
+                updated_at = %s
+            WHERE id IN ({$placeholders})",
+            array_merge(
+                [
+                    $actionType,
+                    gmdate('Y-m-d H:i:s'),
+                ],
+                $infoIds
+            )
+        );
+
+        return $wpdb->query($query);
     }
 
     public function verifyCertificateCode($certificateCode) {
-       
-        $info = swiftcm_query()->table($this->table)
-                ->where('certificate_code', $certificateCode)
-                ->where('status', 'assign')
-                ->first();
+        global $wpdb;
 
-        return $info; 
+        return $wpdb->get_row(
+            $wpdb->prepare(
+                "SELECT *
+                FROM {$this->table}
+                WHERE certificate_code = %s
+                AND status = %s
+                LIMIT 1",
+                $certificateCode,
+                'assign'
+            )
+        );
     }
 
     public function deleteInfo($infoIds) {
+        global $wpdb;
+
+        if (!is_array($infoIds)) {
+            $infoIds = [$infoIds];
+        }
+
+        $infoIds = array_filter(
+            array_map('absint', $infoIds)
+        );
+
+        if (empty($infoIds)) {
+            return false;
+        }
+
         $payment = new SwiftCMPayment();
 
-        $infos = swiftcm_query()->table($this->table)->whereIn('id', $infoIds)->get();
+        /*
+         * Get the records first because we need
+         * image_url and pdf_url before deleting them.
+         */
+        $placeholders = implode(
+            ', ',
+            array_fill(0, count($infoIds), '%d')
+        );
+
+        $infos = $wpdb->get_results(
+            $wpdb->prepare(
+                "SELECT *
+                FROM {$this->table}
+                WHERE id IN ({$placeholders})",
+                $infoIds
+            )
+        );
+
+        if (empty($infos)) {
+            return false;
+        }
 
         foreach ($infos as $info) {
-            swiftcm_query()->table($this->table)->where('id', $info->id)->delete();
 
-            $payment->deletePaymentTransactionsByRequestId($info->id);
+            /*
+             * Delete payment transaction.
+             */
+            $payment->deletePaymentTransactionsByRequestId(
+                $info->id
+            );
 
-            // Removed certificate
+            /*
+             * Remove certificate files.
+             */
             if (!empty($info->image_url) || !empty($info->pdf_url)) {
-                $filenames = array_filter([$info->image_url, $info->pdf_url]);
-                AvailableOptions::removedFile($filenames); 
+
+                $filenames = array_filter([
+                    $info->image_url,
+                    $info->pdf_url,
+                ]);
+
+                AvailableOptions::removedFile($filenames);
             }
         }
+
+        /*
+         * Delete all certificate records in one query.
+         */
+        return $wpdb->query(
+            $wpdb->prepare(
+                "DELETE FROM {$this->table}
+                WHERE id IN ({$placeholders})",
+                $infoIds
+            )
+        );
     }
 }

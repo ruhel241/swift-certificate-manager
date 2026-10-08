@@ -8,17 +8,6 @@ if (!class_exists('SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
     require_once SWIFTCM_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
 }
 
-// db wp-fluent helper functions
-if (!function_exists('swiftcm_query')) {
-    function swiftcm_query()
-    {
-        if (!function_exists('swiftcm_db')) {
-            include SWIFTCM_PLUGIN_DIR_PATH . 'app/Libs/wp-fluent/wp-fluent.php';
-        }
-       
-        return swiftcm_db();
-    }
-}
 
 /**
  * Add rewrite rules for custom invoice URL.

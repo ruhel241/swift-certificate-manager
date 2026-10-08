@@ -12,10 +12,7 @@
   "autoload": {
     "psr-4": {
       "SwiftCertificateManager\\": "app/"
-    },
-    "exclude-from-classmap": [
-      "app/Libs/wp-fluent/"
-    ]
+    }
   },
   "require": {
     "setasign/fpdf": "^1.8"
