@@ -1,9 +1,9 @@
 <?php
 
-namespace SwiftCertificateManager\Models;
+namespace Arimtiaz\SwiftCertificateManager\Models;
 
-use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
-use SwiftCertificateManager\Models\SwifCeMaPayment;
+use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaPayment;
 
 class SwifCeMaGenerate {
 

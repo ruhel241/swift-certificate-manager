@@ -35,10 +35,10 @@ add_action('plugins_loaded', function () {
 
 register_activation_hook(__FILE__, function ($network_wide) {
     require_once(SWIFCEMA_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/ActivationHandler.php');
-    SwiftCertificateManager\Hooks\Handlers\ActivationHandler::activate($network_wide);
+    Arimtiaz\SwiftCertificateManager\Hooks\Handlers\ActivationHandler::activate($network_wide);
 });
 
 register_deactivation_hook(__FILE__, function ($network_wide) {
     require_once(SWIFCEMA_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/DeactivationHandler.php');
-    SwiftCertificateManager\Hooks\Handlers\DeactivationHandler::deActivate($network_wide);
+    Arimtiaz\SwiftCertificateManager\Hooks\Handlers\DeactivationHandler::deActivate($network_wide);
 });

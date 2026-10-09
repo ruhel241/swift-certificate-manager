@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\Libs\Translation;
+namespace Arimtiaz\SwiftCertificateManager\Libs\Translation;
 
 class TranslationStrings
 {

@@ -11,7 +11,7 @@
   ],
   "autoload": {
     "psr-4": {
-      "SwiftCertificateManager\\": "app/"
+      "Arimtiaz\\SwiftCertificateManager\\": "app/"
     }
   },
   "require": {

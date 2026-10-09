@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\Hooks;
+namespace Arimtiaz\SwiftCertificateManager\Hooks;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

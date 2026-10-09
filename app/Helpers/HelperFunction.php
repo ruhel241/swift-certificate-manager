@@ -1,10 +1,10 @@
 <?php
 
-namespace SwiftCertificateManager\Helpers;
+namespace Arimtiaz\SwiftCertificateManager\Helpers;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-use SwiftCertificateManager\Models\SwifCeMaGenerate;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaGenerate;
 /**
  * HelperFunction Class
  * @since 2.0.0

@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\Models;
+namespace Arimtiaz\SwiftCertificateManager\Models;
 
 class SwifCeMaTemplates {
 
@@ -12,7 +12,7 @@ class SwifCeMaTemplates {
         $this->table = $wpdb->prefix . 'swifcema_templates';
     }
    
-     public function getTemplates() {
+    public function getTemplates() {
         global $wpdb;
 
         return $wpdb->get_results(

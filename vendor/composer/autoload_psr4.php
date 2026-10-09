@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'SwiftCertificateManager\\' => array($baseDir . '/app'),
+    'Arimtiaz\\SwiftCertificateManager\\' => array($baseDir . '/app'),
 );

@@ -1,14 +1,14 @@
 <?php
 
-namespace SwiftCertificateManager\Hooks\Handlers;
+namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Helpers\PaymentHelper;
-use SwiftCertificateManager\Http\Controllers\AssignCertificateController;
-use SwiftCertificateManager\Libs\Translation\TranslationStrings;
+use Arimtiaz\SwiftCertificateManager\Helpers\PaymentHelper;
+use Arimtiaz\SwiftCertificateManager\Http\Controllers\AssignCertificateController;
+use Arimtiaz\SwiftCertificateManager\Libs\Translation\TranslationStrings;
 
 class AdminPageHandler
 {
@@ -102,7 +102,6 @@ class AdminPageHandler
         if ($page !== 'swifcema') {
             return;
         }
-
 
         if (function_exists('wp_enqueue_editor')) {
             wp_enqueue_editor();

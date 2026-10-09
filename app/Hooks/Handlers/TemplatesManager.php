@@ -1,7 +1,7 @@
 <?php
 
-namespace SwiftCertificateManager\Hooks\Handlers;
-use SwiftCertificateManager\Models\SwifCeMaTemplates;
+namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaTemplates;
 
 class TemplatesManager
 {
@@ -24,7 +24,7 @@ class TemplatesManager
     
         $SwifCeMaTemplates = new SwifCeMaTemplates();
         $getTemplates = $SwifCeMaTemplates->getTemplates();
-    
+
         // Existing template slug collect
         $existingSlugs = [];
     

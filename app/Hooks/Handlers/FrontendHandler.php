@@ -1,17 +1,17 @@
 <?php
 
-namespace SwiftCertificateManager\Hooks\Handlers;
+namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Models\SwifCeMaPayment;
-use SwiftCertificateManager\Helpers\PaymentHelper;
-use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Models\SwifCeMaGenerate;
-use SwiftCertificateManager\Models\SwifCeMaTemplates;
-use SwiftCertificateManager\Helpers\HelperFunction;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaPayment;
+use Arimtiaz\SwiftCertificateManager\Helpers\PaymentHelper;
+use Arimtiaz\SwiftCertificateManager\Helpers\ArrayHelper as Arr;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaGenerate;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaTemplates;
+use Arimtiaz\SwiftCertificateManager\Helpers\HelperFunction;
 
 class FrontendHandler
 {

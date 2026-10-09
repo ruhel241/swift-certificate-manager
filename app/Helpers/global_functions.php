@@ -2,9 +2,9 @@
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
-use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
+use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
-if (!class_exists('SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
+if (!class_exists('Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
     require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
 }
 

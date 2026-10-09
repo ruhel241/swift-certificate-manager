@@ -14,30 +14,30 @@ class SwiftCertificateManagerBoot {
 	}
 
 	public function adminHooks() {
-		$menu = new SwiftCertificateManager\Hooks\Handlers\AdminPageHandler();
+		$menu = new Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AdminPageHandler();
 		$menu->register();
 
-		$ajaxAssignController = new SwiftCertificateManager\Http\Controllers\AssignCertificateController();
+		$ajaxAssignController = new Arimtiaz\SwiftCertificateManager\Http\Controllers\AssignCertificateController();
 		$ajaxAssignController->register();
 
-		$ajaxTemplateController = new SwiftCertificateManager\Http\Controllers\TemplateController();
+		$ajaxTemplateController = new Arimtiaz\SwiftCertificateManager\Http\Controllers\TemplateController();
 		$ajaxTemplateController->register();
 
-		$ajaxSettingsController = new SwiftCertificateManager\Http\Controllers\SettingsController();
+		$ajaxSettingsController = new Arimtiaz\SwiftCertificateManager\Http\Controllers\SettingsController();
 		$ajaxSettingsController->register();
 
-		$onBoardingController = new SwiftCertificateManager\Http\Controllers\OnboardingController();
+		$onBoardingController = new Arimtiaz\SwiftCertificateManager\Http\Controllers\OnboardingController();
 		$onBoardingController->register();
 
 		// all actions
-		$adminActions = new SwiftCertificateManager\Hooks\actions();
+		$adminActions = new Arimtiaz\SwiftCertificateManager\Hooks\actions();
 		$adminActions->register();
 		
 		
     }
 
 	public function publicHooks() {
-		(new SwiftCertificateManager\Hooks\Handlers\FrontendHandler)->register();
+		(new Arimtiaz\SwiftCertificateManager\Hooks\Handlers\FrontendHandler)->register();
 	}
 
 	// public function registerIpnHooks() {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\Http\Controllers;
+namespace Arimtiaz\SwiftCertificateManager\Http\Controllers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

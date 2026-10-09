@@ -7,20 +7,39 @@ namespace Composer\Autoload;
 class ComposerStaticInit095f1a9527198be3b78215159b8dee3b
 {
     public static $prefixLengthsPsr4 = array (
-        'S' => 
+        'A' => 
         array (
-            'SwiftCertificateManager\\' => 24,
+            'Arimtiaz\\SwiftCertificateManager\\' => 33,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'SwiftCertificateManager\\' => 
+        'Arimtiaz\\SwiftCertificateManager\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
     );
 
     public static $classMap = array (
+        'Arimtiaz\\SwiftCertificateManager\\Helpers\\ArrayHelper' => __DIR__ . '/../..' . '/app/Helpers/ArrayHelper.php',
+        'Arimtiaz\\SwiftCertificateManager\\Helpers\\Currencies' => __DIR__ . '/../..' . '/app/Helpers/Currencies.php',
+        'Arimtiaz\\SwiftCertificateManager\\Helpers\\HelperFunction' => __DIR__ . '/../..' . '/app/Helpers/HelperFunction.php',
+        'Arimtiaz\\SwiftCertificateManager\\Helpers\\PaymentHelper' => __DIR__ . '/../..' . '/app/Helpers/PaymentHelper.php',
+        'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\ActivationHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/ActivationHandler.php',
+        'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\AdminPageHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/AdminPageHandler.php',
+        'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\AvailableOptions' => __DIR__ . '/../..' . '/app/Hooks/Handlers/AvailableOptions.php',
+        'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\DeactivationHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/DeactivationHandler.php',
+        'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\FrontendHandler' => __DIR__ . '/../..' . '/app/Hooks/Handlers/FrontendHandler.php',
+        'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\TemplatesManager' => __DIR__ . '/../..' . '/app/Hooks/Handlers/TemplatesManager.php',
+        'Arimtiaz\\SwiftCertificateManager\\Hooks\\actions' => __DIR__ . '/../..' . '/app/Hooks/actions.php',
+        'Arimtiaz\\SwiftCertificateManager\\Http\\Controllers\\AssignCertificateController' => __DIR__ . '/../..' . '/app/Http/Controllers/AssignCertificateController.php',
+        'Arimtiaz\\SwiftCertificateManager\\Http\\Controllers\\OnboardingController' => __DIR__ . '/../..' . '/app/Http/Controllers/OnboardingController.php',
+        'Arimtiaz\\SwiftCertificateManager\\Http\\Controllers\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/SettingsController.php',
+        'Arimtiaz\\SwiftCertificateManager\\Http\\Controllers\\TemplateController' => __DIR__ . '/../..' . '/app/Http/Controllers/TemplateController.php',
+        'Arimtiaz\\SwiftCertificateManager\\Libs\\Translation\\TranslationStrings' => __DIR__ . '/../..' . '/app/Libs/Translation/TranslationStrings.php',
+        'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaGenerate' => __DIR__ . '/../..' . '/app/Models/SwifCeMaGenerate.php',
+        'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaPayment' => __DIR__ . '/../..' . '/app/Models/SwifCeMaPayment.php',
+        'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaTemplates' => __DIR__ . '/../..' . '/app/Models/SwifCeMaTemplates.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 

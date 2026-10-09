@@ -6,5 +6,24 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Arimtiaz\\SwiftCertificateManager\\Helpers\\ArrayHelper' => $baseDir . '/app/Helpers/ArrayHelper.php',
+    'Arimtiaz\\SwiftCertificateManager\\Helpers\\Currencies' => $baseDir . '/app/Helpers/Currencies.php',
+    'Arimtiaz\\SwiftCertificateManager\\Helpers\\HelperFunction' => $baseDir . '/app/Helpers/HelperFunction.php',
+    'Arimtiaz\\SwiftCertificateManager\\Helpers\\PaymentHelper' => $baseDir . '/app/Helpers/PaymentHelper.php',
+    'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\ActivationHandler' => $baseDir . '/app/Hooks/Handlers/ActivationHandler.php',
+    'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\AdminPageHandler' => $baseDir . '/app/Hooks/Handlers/AdminPageHandler.php',
+    'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\AvailableOptions' => $baseDir . '/app/Hooks/Handlers/AvailableOptions.php',
+    'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\DeactivationHandler' => $baseDir . '/app/Hooks/Handlers/DeactivationHandler.php',
+    'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\FrontendHandler' => $baseDir . '/app/Hooks/Handlers/FrontendHandler.php',
+    'Arimtiaz\\SwiftCertificateManager\\Hooks\\Handlers\\TemplatesManager' => $baseDir . '/app/Hooks/Handlers/TemplatesManager.php',
+    'Arimtiaz\\SwiftCertificateManager\\Hooks\\actions' => $baseDir . '/app/Hooks/actions.php',
+    'Arimtiaz\\SwiftCertificateManager\\Http\\Controllers\\AssignCertificateController' => $baseDir . '/app/Http/Controllers/AssignCertificateController.php',
+    'Arimtiaz\\SwiftCertificateManager\\Http\\Controllers\\OnboardingController' => $baseDir . '/app/Http/Controllers/OnboardingController.php',
+    'Arimtiaz\\SwiftCertificateManager\\Http\\Controllers\\SettingsController' => $baseDir . '/app/Http/Controllers/SettingsController.php',
+    'Arimtiaz\\SwiftCertificateManager\\Http\\Controllers\\TemplateController' => $baseDir . '/app/Http/Controllers/TemplateController.php',
+    'Arimtiaz\\SwiftCertificateManager\\Libs\\Translation\\TranslationStrings' => $baseDir . '/app/Libs/Translation/TranslationStrings.php',
+    'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaGenerate' => $baseDir . '/app/Models/SwifCeMaGenerate.php',
+    'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaPayment' => $baseDir . '/app/Models/SwifCeMaPayment.php',
+    'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaTemplates' => $baseDir . '/app/Models/SwifCeMaTemplates.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
 );

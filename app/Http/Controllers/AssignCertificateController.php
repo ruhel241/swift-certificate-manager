@@ -1,18 +1,18 @@
 <?php
 
-namespace SwiftCertificateManager\Http\Controllers;
+namespace Arimtiaz\SwiftCertificateManager\Http\Controllers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Models\SwifCeMaPayment;
-use SwiftCertificateManager\Models\SwifCeMaGenerate;
-use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
-use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
-use SwiftCertificateManager\Models\SwifCeMaTemplates;
-use SwiftCertificateManager\Helpers\HelperFunction;
+use Arimtiaz\SwiftCertificateManager\Helpers\ArrayHelper as Arr;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaPayment;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaGenerate;
+use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
+use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaTemplates;
+use Arimtiaz\SwiftCertificateManager\Helpers\HelperFunction;
 
 class AssignCertificateController
 {

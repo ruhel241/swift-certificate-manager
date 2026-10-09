@@ -1,16 +1,16 @@
 <?php
 
-namespace SwiftCertificateManager\Http\Controllers;
+namespace Arimtiaz\SwiftCertificateManager\Http\Controllers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\Helpers\ArrayHelper as Arr;
-use SwiftCertificateManager\Models\SwifCeMaTemplates;
-use SwiftCertificateManager\Hooks\Handlers\TemplatesManager;
-use SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
-use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
+use Arimtiaz\SwiftCertificateManager\Helpers\ArrayHelper as Arr;
+use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaTemplates;
+use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\TemplatesManager;
+use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AdminPageHandler;
+use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
 class TemplateController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\Hooks\Handlers;
+namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
 
 class AvailableOptions
 {

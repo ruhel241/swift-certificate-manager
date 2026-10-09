@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\Models;
+namespace Arimtiaz\SwiftCertificateManager\Models;
 
 class SwifCeMaPayment
 {

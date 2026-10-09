@@ -1,14 +1,14 @@
 <?php
 
-namespace SwiftCertificateManager\database;
+namespace Arimtiaz\SwiftCertificateManager\database;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-use SwiftCertificateManager\database\Migrations\SwifCeMaGenerateMigrator;
-use SwiftCertificateManager\database\Migrations\SwifCeMaTemplatesMigrator;
-use SwiftCertificateManager\database\Migrations\SwifCeMaPaymentsMigrator;
+use Arimtiaz\SwiftCertificateManager\database\Migrations\SwifCeMaGenerateMigrator;
+use Arimtiaz\SwiftCertificateManager\database\Migrations\SwifCeMaTemplatesMigrator;
+use Arimtiaz\SwiftCertificateManager\database\Migrations\SwifCeMaPaymentsMigrator;
 
 class DBMigrator {
 

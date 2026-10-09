@@ -18,14 +18,14 @@ if ( empty( $swifcema_hash ) ) {
 /**
  * Get payment info by hash.
  */
-$swifcema_payment_info = ( new \SwiftCertificateManager\Models\SwifCeMaPayment )->getHash( $swifcema_hash );
+$swifcema_payment_info = ( new \Arimtiaz\SwiftCertificateManager\Models\SwifCeMaPayment )->getHash( $swifcema_hash );
 
 ?>
 
 <?php if ( $swifcema_payment_info ) : ?>
 
 	<?php
-	    $swifcema_certificate_info = ( new \SwiftCertificateManager\Models\SwifCeMaGenerate())->getInfo( $swifcema_payment_info->request_id );
+	    $swifcema_certificate_info = ( new \Arimtiaz\SwiftCertificateManager\Models\SwifCeMaGenerate())->getInfo( $swifcema_payment_info->request_id );
 	?>
 
 	<div class="swifcema-invoice-wrrapper">

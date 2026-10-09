@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\Hooks\Handlers;
+namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -17,7 +17,7 @@ class DeactivationHandler
         // remove cron
         wp_clear_scheduled_hook('swifcema_cleanup_tmp_dir');
 
-        if (!class_exists('\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
+        if (!class_exists('\Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
             require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
         }
 
@@ -45,41 +45,41 @@ class DeactivationHandler
         /**
          * Delete all tables and options (optional)
          */
-        // static::dropTables();
+        static::dropTables();
     }
 
-    // public static function dropTables()
-    // {
-    //     global $wpdb;
+    public static function dropTables()
+    {
+        global $wpdb;
         
-    //     // delete options all options
-    //     delete_option('swifcema_global_settings');
-    //     delete_option('swifcema_onboarding_info');
-    //     delete_option('swifcema_is_onboarded');
-    //     delete_option('swifcema_newsletters');
+        // delete options all options
+        delete_option('swifcema_global_settings');
+        delete_option('swifcema_onboarding_info');
+        delete_option('swifcema_is_onboarded');
+        delete_option('swifcema_newsletters');
 
-    //     // Disable foreign key checks temporarily
-    //     $wpdb->query("SET FOREIGN_KEY_CHECKS = 0");
+        // Disable foreign key checks temporarily
+        $wpdb->query("SET FOREIGN_KEY_CHECKS = 0");
 
-    //     // List all tables to be deleted
-    //     $tables = [
-    //         $wpdb->prefix . 'swifcema_generates',
-    //         $wpdb->prefix . 'swifcema_payments',
-    //         $wpdb->prefix . 'swifcema_templates',
-    //         $wpdb->prefix . SWIFCEMA_UPLOAD_DIR
-    //     ];
+        // List all tables to be deleted
+        $tables = [
+            $wpdb->prefix . 'swifcema_generates',
+            $wpdb->prefix . 'swifcema_payments',
+            $wpdb->prefix . 'swifcema_templates',
+            $wpdb->prefix . SWIFCEMA_UPLOAD_DIR
+        ];
 
-    //     // Drop each table
-    //     foreach ($tables as $table) {
-    //         // Format for DROP TABLE using string concatenation outside the query
-    //         // This is the WordPress core pattern for handling table names
-    //         $table_name = '`' . esc_sql($table) . '`';
-    //         $wpdb->query("DROP TABLE IF EXISTS $table_name");
-    //     }
+        // Drop each table
+        foreach ($tables as $table) {
+            // Format for DROP TABLE using string concatenation outside the query
+            // This is the WordPress core pattern for handling table names
+            $table_name = '`' . esc_sql($table) . '`';
+            $wpdb->query("DROP TABLE IF EXISTS $table_name");
+        }
 
-    //     // Re-enable foreign key checks
-    //     $wpdb->query("SET FOREIGN_KEY_CHECKS = 1");
+        // Re-enable foreign key checks
+        $wpdb->query("SET FOREIGN_KEY_CHECKS = 1");
 
-    //     return true;
-    // }
+        return true;
+    }
 }

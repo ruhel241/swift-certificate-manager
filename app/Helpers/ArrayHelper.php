@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\Helpers;
+namespace Arimtiaz\SwiftCertificateManager\Helpers;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 

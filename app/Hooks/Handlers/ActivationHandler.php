@@ -1,9 +1,9 @@
 <?php
 
-namespace SwiftCertificateManager\Hooks\Handlers;
+namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
 
-use \SwiftCertificateManager\database\DBMigrator;
-use SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
+use Arimtiaz\SwiftCertificateManager\database\DBMigrator;
+use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
 class ActivationHandler
 {
@@ -36,7 +36,7 @@ class ActivationHandler
 
     public static function maybeCreateFolderStructure()
     {
-        if (!class_exists('\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
+        if (!class_exists('\Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions')) {
             require_once SWIFCEMA_PLUGIN_DIR_PATH . 'app/Hooks/Handlers/AvailableOptions.php';
         }
 

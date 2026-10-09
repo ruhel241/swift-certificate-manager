@@ -1,7 +1,7 @@
 <?php
 
-namespace SwiftCertificateManager\Helpers;
-use SwiftCertificateManager\Helpers\Currencies;
+namespace Arimtiaz\SwiftCertificateManager\Helpers;
+use Arimtiaz\SwiftCertificateManager\Helpers\Currencies;
 
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 

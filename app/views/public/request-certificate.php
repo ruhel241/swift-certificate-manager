@@ -52,7 +52,7 @@ if ( ! defined( 'ABSPATH' ) ) {
                             <input type="checkbox" id="swifcema_payment_checkbox" name="swifcema_payment_checkbox" value="yes" required>
                             <label for="swifcema_payment_checkbox">
                                 Order Digital Certificate for
-                                <?php echo esc_html(\SwiftCertificateManager\Helpers\PaymentHelper::currencySymbol($swifcema_global_settings['currency'] ?? 'USD')); ?><?php echo esc_html($swifcema_global_settings['certificate_payment']); ?>
+                                <?php echo esc_html(\Arimtiaz\SwiftCertificateManager\Helpers\PaymentHelper::currencySymbol($swifcema_global_settings['currency'] ?? 'USD')); ?><?php echo esc_html($swifcema_global_settings['certificate_payment']); ?>
                             </label>
                             <input
                                 type="number"

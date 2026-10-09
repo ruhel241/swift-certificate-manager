@@ -1,6 +1,6 @@
 <?php
 
-namespace SwiftCertificateManager\database\Migrations;
+namespace Arimtiaz\SwiftCertificateManager\database\Migrations;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
