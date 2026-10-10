@@ -41,6 +41,7 @@ class ComposerStaticInit095f1a9527198be3b78215159b8dee3b
         'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaPayment' => __DIR__ . '/../..' . '/app/Models/SwifCeMaPayment.php',
         'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaTemplates' => __DIR__ . '/../..' . '/app/Models/SwifCeMaTemplates.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'FPDF' => __DIR__ . '/..' . '/setasign/fpdf/fpdf.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

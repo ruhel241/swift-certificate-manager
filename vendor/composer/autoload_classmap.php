@@ -26,4 +26,5 @@ return array(
     'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaPayment' => $baseDir . '/app/Models/SwifCeMaPayment.php',
     'Arimtiaz\\SwiftCertificateManager\\Models\\SwifCeMaTemplates' => $baseDir . '/app/Models/SwifCeMaTemplates.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
+    'FPDF' => $vendorDir . '/setasign/fpdf/fpdf.php',
 );
