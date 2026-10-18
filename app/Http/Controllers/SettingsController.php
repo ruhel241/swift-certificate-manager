@@ -126,9 +126,4 @@ class SettingsController
     
         return $data;
     }
-
-
-    // public function sendNoCacheHeaders() {
-    //     nocache_headers();
-    // }
 }

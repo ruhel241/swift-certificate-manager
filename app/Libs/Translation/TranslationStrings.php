@@ -2,6 +2,10 @@
 
 namespace Arimtiaz\SwiftCertificateManager\Libs\Translation;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class TranslationStrings
 {
     public static function getTranslationStrings()

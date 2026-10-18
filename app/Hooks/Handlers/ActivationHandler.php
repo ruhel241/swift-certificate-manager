@@ -5,6 +5,10 @@ namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
 use Arimtiaz\SwiftCertificateManager\database\DBMigrator;
 use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class ActivationHandler
 {
     public static function activate($network_wide)
@@ -17,9 +21,11 @@ class ActivationHandler
         DBMigrator::run($network_wide);
 
         $globalSettings = AvailableOptions::globalSettings();
-       
+
         // create custom cron schedule and job
-        wp_schedule_event( time(), 'daily', 'swifcema_cleanup_tmp_dir' );
+        if ( ! wp_next_scheduled( 'swifcema_cleanup_tmp_dir' ) ) {
+            wp_schedule_event( time(), 'daily', 'swifcema_cleanup_tmp_dir' );
+        }
 
         if (!get_option('swifcema_active_template')){
             update_option('swifcema_active_template', 'template-1');
@@ -65,6 +71,7 @@ class ActivationHandler
                     deny from all';
 
         if (!is_file($dirs['workingDir'] . '/.htaccess')) {
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Writing a protection file inside the plugin's own uploads folder.
             file_put_contents($dirs['workingDir'] . '/.htaccess', $content);
         }
     }

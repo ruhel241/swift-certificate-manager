@@ -2,6 +2,10 @@
 
 namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class AvailableOptions
 {
     public static function getInstalledFonts()
@@ -298,19 +302,44 @@ class AvailableOptions
         ];
     }
 
+    /**
+     * Remove generated certificate file(s) from the temp directory.
+     *
+     * Accepts a file name, a file URL, or an array of them. Only the base name
+     * is used, so nothing outside the plugin temp directory can be removed.
+     *
+     * @param string|array $filename File name(s) or URL(s).
+     */
     public static function removedFile($filename) {
 
-        if(empty($filename)) {
+        if (empty($filename)) {
+            return;
+        }
+
+        if (is_array($filename)) {
+            foreach ($filename as $singleFile) {
+                static::removedFile($singleFile);
+            }
+            return;
+        }
+
+        if (!is_string($filename)) {
+            return;
+        }
+
+        $path = wp_parse_url($filename, PHP_URL_PATH);
+        $name = sanitize_file_name(wp_basename($path ? $path : $filename));
+
+        if ('' === $name) {
             return;
         }
 
         $getDirStructure = static::getDirStructure();
-    
-        $filepath =  $getDirStructure['tempDir'].$filename;
-        
-        if (!empty($filename) && file_exists($filepath)) {
+        $filepath        = trailingslashit($getDirStructure['tempDir']) . $name;
+
+        if (file_exists($filepath)) {
             wp_delete_file($filepath);
-        }     
+        }
     }
 
     public static function getSystemStatuses()

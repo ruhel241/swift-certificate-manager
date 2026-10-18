@@ -3,6 +3,10 @@
 namespace Arimtiaz\SwiftCertificateManager\Hooks\Handlers;
 use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaTemplates;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 class TemplatesManager
 {
     public function getCoreTemplates()
@@ -13,6 +17,7 @@ class TemplatesManager
             return [];
         }
     
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents -- Reading a local file bundled with the plugin.
         $json = file_get_contents($file);
     
         return json_decode($json, true);

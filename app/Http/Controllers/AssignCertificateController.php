@@ -337,7 +337,7 @@ class AssignCertificateController
             'payment_status'   => $paymentStatus,
             'graduation_date'  => $graduationDate,
             'certificate_code' => $certificateCode,
-            'qr_code_url'      => esc_url_raw(get_site_url() . '/verify-form/?code=' . urlencode($certificateCode)),
+            'qr_code_url'      => esc_url_raw(get_site_url() . '/verify-swift-certificate-manager/?code=' . rawurlencode($certificateCode)),
             'settings'         => wp_json_encode($settings),
             'created_at'       => gmdate('Y-m-d H:i:s'),
             'updated_at'       => gmdate('Y-m-d H:i:s'),
@@ -433,7 +433,7 @@ class AssignCertificateController
         $graduationDate  = esc_html($data['graduation_date']);
         $certificateCode = esc_html($data['certificate_code']);
         $courseName      = esc_html($data['course_name']);
-        $verifyUrl       = esc_url(get_site_url() . '/verify-swift-certificate-manager/?code=' . urlencode($data['certificate_code']));
+        $verifyUrl       = esc_url(get_site_url() . '/verify-swift-certificate-manager/?code=' . rawurlencode($data['certificate_code']));
         
         return "
         <div style='background-color:#f5f7fa; padding:30px 20px; font-family:Arial, sans-serif;'>
@@ -482,7 +482,7 @@ class AssignCertificateController
 
                     <!-- Button -->
                     <div style='text-align:center; margin:25px 0;'>
-                        <a href='" . esc_url(get_site_url() . '/verify-swift-certificate-manager/?code=' . urlencode($certificateCode)) . "' style='background:#4f46e5; color:#ffffff; padding:12px 20px; text-decoration:none; border-radius:5px; font-size:14px; display:inline-block;'>
+                        <a href='" . esc_url(get_site_url() . '/verify-swift-certificate-manager/?code=' . rawurlencode($certificateCode)) . "' style='background:#4f46e5; color:#ffffff; padding:12px 20px; text-decoration:none; border-radius:5px; font-size:14px; display:inline-block;'>
                             Verify Certificate
                         </a>
                     </div>
@@ -531,6 +531,7 @@ class AssignCertificateController
         $image_data = preg_replace('#^data:image/\w+;base64,#i', '', $image_data);
 
         // ❌ decode safely
+        // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode -- Decoding the certificate image sent by the admin canvas; it is validated as a PNG/JPEG before use.
         $raw_data = base64_decode($image_data, true);
 
         if ($raw_data === false) {
@@ -548,6 +549,7 @@ class AssignCertificateController
         // ✅ ensure directory exists
         if (!file_exists($certificates_dir)) {
             wp_mkdir_p($certificates_dir);
+            // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Writing an index file inside the plugin's own uploads folder.
             file_put_contents($certificates_dir . '/index.php', '<?php // silence');
         }
 
@@ -561,6 +563,7 @@ class AssignCertificateController
         }
 
         // ✅ save file
+        // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Saving a generated certificate image inside the plugin's own uploads folder.
         if (file_put_contents($imageFilePath, $raw_data) === false) {
             wp_send_json_error(['message' => 'Failed to save image']);
         }
@@ -603,7 +606,18 @@ class AssignCertificateController
         }
 
         try {
-            $image = @imagecreatefromstring($imageData);
+            if (!function_exists('imagecreatefromstring')) {
+                return false;
+            }
+
+            // Make sure the decoded data really is a PNG or JPEG image before GD touches it.
+            $imageInfo = getimagesizefromstring($imageData);
+
+            if (!$imageInfo || !in_array($imageInfo['mime'], ['image/png', 'image/jpeg'], true)) {
+                return false;
+            }
+
+            $image = imagecreatefromstring($imageData);
             if (!$image) {
                 return false;
             }

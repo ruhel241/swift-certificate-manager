@@ -218,7 +218,6 @@ class TemplateController
         // Array empty check
         if (empty($downloadableFiles)) {
             wp_send_json_error([
-                // 'message' => __('No templates available to install', 'swift-certificate-manager'),
                 'downloaded_files' => $downloadableFiles,
             ], 404);
         }

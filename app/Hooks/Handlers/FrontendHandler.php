@@ -141,9 +141,17 @@ class FrontendHandler
             ], 400);
         }
 
-        // ✅ sanitize fields
-        $status        = sanitize_text_field(Arr::get($info, 'status'));
-        $paymentStatus = sanitize_text_field(Arr::get($info, 'payment_status'));
+        // Basic spam protection: limit public requests per IP address.
+        if ($this->isRateLimited()) {
+            wp_send_json_error([
+                'message' => __('Too many requests. Please try again later.', 'swift-certificate-manager')
+            ], 429);
+        }
+
+        // Never trust status/payment values sent by a visitor. A public request
+        // is always a pending request; only an administrator can approve it.
+        $status        = 'request';
+        $paymentStatus = 'pending';
         $studentName   = sanitize_text_field(Arr::get($info, 'student_name'));
         $studentEmail  = sanitize_email(Arr::get($info, 'student_email'));
         $courseName    = sanitize_text_field(Arr::get($info, 'course_name'));
@@ -195,6 +203,16 @@ class FrontendHandler
         $settings['instructor_signature_img'] = $globalSettings[$preference . '_signature_img'] ?? '';
         $settings['template_id']              = $getTemplate->id;
 
+        // Price and currency always come from the saved settings, never from the browser.
+        $info['status']         = $status;
+        $info['payment_status'] = $paymentStatus;
+        $info['currency']       = sanitize_text_field($globalSettings['currency'] ?? 'USD');
+        $info['payment_total']  = (int) round((float) ($globalSettings['certificate_payment'] ?? 0) * 100);
+
+        $verifyUrl = !empty($globalSettings['verify_certificate_url'])
+            ? $globalSettings['verify_certificate_url']
+            : home_url('/verify-swift-certificate-manager/');
+
         // db data
         $data = [
             'status'           => $status,
@@ -204,7 +222,7 @@ class FrontendHandler
             'payment_status'   => $paymentStatus,
             'graduation_date'  => $graduationDate,
             'certificate_code' => $certificateCode,
-            'qr_code_url'      => esc_url_raw(get_site_url() . '/verify-form/?code=' . urlencode($certificateCode)),
+            'qr_code_url'      => esc_url_raw(add_query_arg('code', rawurlencode($certificateCode), $verifyUrl)),
             'settings'         => wp_json_encode($settings),
             'created_at'       => gmdate('Y-m-d H:i:s'),
             'updated_at'       => gmdate('Y-m-d H:i:s'),
@@ -276,7 +294,7 @@ class FrontendHandler
         // 🔐 sanitize inputs
         $paymentMethod = sanitize_key(Arr::get($info, 'payment_method'));
         $status        = sanitize_text_field(Arr::get($info, 'status'));
-        $paymentTotal  = (float) sanitize_text_field(Arr::get($info, 'payment_total'));
+        $paymentTotal  = (float) Arr::get($info, 'payment_total');
         $currency      = sanitize_text_field(Arr::get($info, 'currency'));
 
         if (empty($paymentMethod)) {
@@ -327,6 +345,33 @@ class FrontendHandler
                 $paymentId
             );
         }
+    }
+
+    /**
+     * Allow only a limited number of public certificate requests per IP address.
+     * Limit and window can be changed with the filters below.
+     */
+    private function isRateLimited()
+    {
+        $limit  = (int) apply_filters('swifcema_public_request_limit', 5);
+        $window = (int) apply_filters('swifcema_public_request_window', HOUR_IN_SECONDS);
+
+        if ($limit < 1) {
+            return false;
+        }
+
+        $ip  = isset($_SERVER['REMOTE_ADDR']) ? sanitize_text_field(wp_unslash($_SERVER['REMOTE_ADDR'])) : '';
+        $key = 'swifcema_rl_' . md5($ip);
+
+        $count = (int) get_transient($key);
+
+        if ($count >= $limit) {
+            return true;
+        }
+
+        set_transient($key, $count + 1, $window);
+
+        return false;
     }
 
     private function generateHash()

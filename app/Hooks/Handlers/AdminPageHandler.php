@@ -91,6 +91,7 @@ class AdminPageHandler
             <path d="M307.562 75.2541H269.935H237.579C236.181 75.2541 234.84 74.6993 233.852 73.7119C232.863 72.7245 232.308 71.3853 232.308 69.9889V37.6723V0L307.562 75.2541Z" fill="#FFBF03"/>
             </svg>';
 
+        // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_encode -- Encoding a static SVG menu icon as a data URI, as WordPress expects.
         return 'data:image/svg+xml;base64,' . base64_encode($svg);
     }
 

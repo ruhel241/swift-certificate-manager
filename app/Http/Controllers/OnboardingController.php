@@ -157,20 +157,4 @@ class OnboardingController
             'message' => __('Saved onboarding successfully', 'swift-certificate-manager')
         ]);
     }
-
-    // private function sanitizeArray( $data ) {
-
-    //     if ( ! is_array( $data ) ) {
-    //         return sanitize_text_field( (string) $data );
-    //     }
-    
-    //     foreach ( $data as $key => $value ) {
-    
-    //         $data[ $key ] = is_array( $value )
-    //             ? $this->sanitizeArray( $value )
-    //             : sanitize_text_field( (string) $value );
-    //     }
-    
-    //     return $data;
-    // }
 }

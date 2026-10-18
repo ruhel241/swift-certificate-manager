@@ -165,9 +165,6 @@ Enter your License key in the License Management tab to unlock Pro features.
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-e.g.
-
 1. Upload the plugin files to the /wp-content/plugins/ directory, or install the plugin through the WordPress plugins screen directly.
 2. Activate the plugin through the ‘Plugins’ screen in WordPress
 
@@ -379,33 +376,31 @@ Public page for verifying certificates with a unique code.
 * Appreciation certificates
 
 
-## **FAQ**
+== Frequently Asked Questions ==
 
-**Does it require an LMS?**  
+= Does it require an LMS? =
 No.
 
-**Is it suitable for offline training?**  
+= Is it suitable for offline training? =
 Yes.
 
-**Can students request certificates?**  
+= Can students request certificates? =
 Yes.
 
-**Can certificates be verified online?**  
+= Can certificates be verified online? =
 Yes.
 
-**Can certificates be emailed?**  
+= Can certificates be emailed? =
 Yes, with Pro.
 
-**Are PDFs downloadable?**  
+= Are PDFs downloadable? =
 Yes.
 
-**Which gateways are supported?**  
+= Which gateways are supported? =
 Stripe and PayPal (Pro).
 
-
-**How do I unlock Pro templates?**  
+= How do I unlock Pro templates? =
 Activate with a License key.
-
 
 ## **Troubleshooting**
 
@@ -415,7 +410,6 @@ Activate with a License key.
 * Emails not delivered  
 * Pro not unlocked
 
-(Each with recommendations matching your previous style.)
 
 
 ## **Best Practices**
@@ -491,9 +485,19 @@ No obfuscated, encrypted, or proprietary code is included in vendor libraries.
 
 All compiled assets in /assets are generated from the source code using Laravel Mix.
 
-## **Changelog**
+== Changelog ==
 
-### **1.0.1**
+= 2.0.1 =
+
+* Security: certificate status, payment status, price and currency of public requests are now set on the server
+* Security: added a per-IP rate limit to the public certificate request form
+* Fix: deleting a certificate now removes its generated image and PDF files
+* Fix: deactivating the plugin no longer deletes generated files or templates
+* Fix: QR code verification link now points to the verification page
+* New: uninstall.php removes plugin tables, options and files when the plugin is deleted
+* Improved: translation support for the public request and verification forms
+
+= 1.0.1 =
 
 * Manual certificate support  
 * Drafts  
