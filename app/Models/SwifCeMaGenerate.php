@@ -5,6 +5,10 @@ namespace Arimtiaz\SwiftCertificateManager\Models;
 use Arimtiaz\SwiftCertificateManager\Hooks\Handlers\AvailableOptions;
 use Arimtiaz\SwiftCertificateManager\Models\SwifCeMaPayment;
 
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 class SwifCeMaGenerate {
 
     protected $table;
@@ -44,75 +48,73 @@ class SwifCeMaGenerate {
 
         $offset = ($currentPage - 1) * $perPage;
 
-        /*
-         * Build WHERE conditions.
-         */
-        $where = [];
-        $values = [];
-
-        if ($status) {
-            $where[] = 'status = %s';
-            $values[] = $status;
-        }
-
-        if ($search) {
-            $searchLike = '%' . $wpdb->esc_like($search) . '%';
-
-            $where[] = '(
-                CAST(id AS CHAR) LIKE %s
-                OR course_name LIKE %s
-                OR student_name LIKE %s
-                OR graduation_date LIKE %s
-                OR certificate_code LIKE %s
-                OR status LIKE %s
-                OR payment_status LIKE %s
-            )';
-
-            $values[] = $searchLike;
-            $values[] = $searchLike;
-            $values[] = $searchLike;
-            $values[] = $searchLike;
-            $values[] = $searchLike;
-            $values[] = $searchLike;
-            $values[] = $searchLike;
-        }
-
-        $whereSql = '';
-
-        if (!empty($where)) {
-            $whereSql = 'WHERE ' . implode(' AND ', $where);
-        }
+        $searchLike = '' !== $search
+            ? '%' . $wpdb->esc_like($search) . '%'
+            : '';
 
         /*
-         * Total count.
+         * The SQL structure is fixed. Empty filters are skipped by the
+         * "%s = ''" checks, so no dynamic SQL needs to be built.
          */
-        $countQuery = "SELECT COUNT(*)
-            FROM {$this->table}
-            {$whereSql}";
 
-        if (!empty($values)) {
-            $total = (int) $wpdb->get_var(
-                $wpdb->prepare($countQuery, $values)
-            );
-        } else {
-            $total = (int) $wpdb->get_var($countQuery);
-        }
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Count certificate records for pagination.
+        $total = (int) $wpdb->get_var(
+            $wpdb->prepare(
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Trusted table identifier; all filter values use prepared placeholders.
+                "SELECT COUNT(*) FROM {$this->table}
+                WHERE ( %s = '' OR status = %s )
+                AND ( %s = '' OR (
+                    CAST(id AS CHAR) LIKE %s
+                    OR course_name LIKE %s
+                    OR student_name LIKE %s
+                    OR graduation_date LIKE %s
+                    OR certificate_code LIKE %s
+                    OR status LIKE %s
+                    OR payment_status LIKE %s
+                ) )",
+                $status,
+                $status,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike
+            )
+        );
 
-        /*
-         * Get paginated data.
-         */
-        $dataQuery = "SELECT *
-            FROM {$this->table}
-            {$whereSql}
-            ORDER BY id DESC
-            LIMIT %d OFFSET %d";
-
-        $queryValues = $values;
-        $queryValues[] = $perPage;
-        $queryValues[] = $offset;
-
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Retrieve the requested page of certificate records.
         $infos = $wpdb->get_results(
-            $wpdb->prepare($dataQuery, $queryValues)
+            $wpdb->prepare(
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Trusted table identifier; all filter values use prepared placeholders.
+                "SELECT * FROM {$this->table}
+                WHERE ( %s = '' OR status = %s )
+                AND ( %s = '' OR (
+                    CAST(id AS CHAR) LIKE %s
+                    OR course_name LIKE %s
+                    OR student_name LIKE %s
+                    OR graduation_date LIKE %s
+                    OR certificate_code LIKE %s
+                    OR status LIKE %s
+                    OR payment_status LIKE %s
+                ) )
+                ORDER BY id DESC
+                LIMIT %d OFFSET %d",
+                $status,
+                $status,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $searchLike,
+                $perPage,
+                $offset
+            )
         );
 
         foreach ($infos as $info) {
@@ -135,12 +137,11 @@ class SwifCeMaGenerate {
     public function getInfo($id) {
         global $wpdb;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Retrieve the current certificate record.
         return $wpdb->get_row(
             $wpdb->prepare(
-                "SELECT *
-                FROM {$this->table}
-                WHERE id = %d
-                LIMIT 1",
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Trusted table identifier; ID is passed through a prepared placeholder.
+                "SELECT * FROM {$this->table} WHERE id = %d LIMIT 1",
                 absint($id)
             )
         );
@@ -149,12 +150,11 @@ class SwifCeMaGenerate {
     public function find($id) {
         global $wpdb;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Retrieve the current certificate record.
         return $wpdb->get_row(
             $wpdb->prepare(
-                "SELECT *
-                FROM {$this->table}
-                WHERE id = %d
-                LIMIT 1",
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Trusted table identifier; ID is passed through a prepared placeholder.
+                "SELECT * FROM {$this->table} WHERE id = %d LIMIT 1",
                 absint($id)
             )
         );
@@ -163,17 +163,14 @@ class SwifCeMaGenerate {
     public function getLastCertificate() {
         global $wpdb;
 
-        return $wpdb->get_row(
-            "SELECT *
-            FROM {$this->table}
-            ORDER BY id DESC
-            LIMIT 1"
-        );
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Trusted table identifier; query has no external values.
+        return $wpdb->get_row( "SELECT * FROM {$this->table} ORDER BY id DESC LIMIT 1" );
     }
 
     public function insertGetId($data) {
         global $wpdb;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery -- Insert a certificate record into the plugin's custom table.
         $inserted = $wpdb->insert(
             $this->table,
             $data
@@ -189,6 +186,7 @@ class SwifCeMaGenerate {
     public function updateInfo($id, $data) {
         global $wpdb;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Update the plugin's custom certificate table directly.
         return $wpdb->update(
             $this->table,
             $data,
@@ -209,8 +207,10 @@ class SwifCeMaGenerate {
             $infoIds = [$infoIds];
         }
 
-        $infoIds = array_filter(
-            array_map('absint', $infoIds)
+        $infoIds = array_values(
+            array_filter(
+                array_map('absint', $infoIds)
+            )
         );
 
         if (empty($infoIds)) {
@@ -218,43 +218,42 @@ class SwifCeMaGenerate {
         }
 
         $actionType = sanitize_text_field($actionType);
+        $updatedAt  = gmdate('Y-m-d H:i:s');
+        $updated    = 0;
 
-        $placeholders = implode(
-            ', ',
-            array_fill(0, count($infoIds), '%d')
-        );
-
-        /*
-         * First values are for SET clause,
-         * remaining values are the IDs.
-         */
-        $query = $wpdb->prepare(
-            "UPDATE {$this->table}
-            SET status = %s,
-                updated_at = %s
-            WHERE id IN ({$placeholders})",
-            array_merge(
+        foreach ($infoIds as $infoId) {
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Update the status of a selected certificate record.
+            $result = $wpdb->update(
+                $this->table,
                 [
-                    $actionType,
-                    gmdate('Y-m-d H:i:s'),
+                    'status'     => $actionType,
+                    'updated_at' => $updatedAt,
                 ],
-                $infoIds
-            )
-        );
+                [
+                    'id' => $infoId,
+                ],
+                ['%s', '%s'],
+                ['%d']
+            );
 
-        return $wpdb->query($query);
+            if (false === $result) {
+                return false;
+            }
+
+            $updated += $result;
+        }
+
+        return $updated;
     }
 
     public function verifyCertificateCode($certificateCode) {
         global $wpdb;
 
+        // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Verify a certificate code against the custom table.
         return $wpdb->get_row(
             $wpdb->prepare(
-                "SELECT *
-                FROM {$this->table}
-                WHERE certificate_code = %s
-                AND status = %s
-                LIMIT 1",
+                // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Trusted table identifier; values use prepared placeholders.
+                "SELECT * FROM {$this->table} WHERE certificate_code = %s AND status = %s LIMIT 1",
                 $certificateCode,
                 'assign'
             )
@@ -268,8 +267,12 @@ class SwifCeMaGenerate {
             $infoIds = [$infoIds];
         }
 
-        $infoIds = array_filter(
-            array_map('absint', $infoIds)
+        $infoIds = array_values(
+            array_unique(
+                array_filter(
+                    array_map('absint', $infoIds)
+                )
+            )
         );
 
         if (empty($infoIds)) {
@@ -277,30 +280,22 @@ class SwifCeMaGenerate {
         }
 
         $payment = new SwifCeMaPayment();
+        $deleted = 0;
+        $found   = false;
 
-        /*
-         * Get the records first because we need
-         * image_url and pdf_url before deleting them.
-         */
-        $placeholders = implode(
-            ', ',
-            array_fill(0, count($infoIds), '%d')
-        );
+        foreach ($infoIds as $infoId) {
 
-        $infos = $wpdb->get_results(
-            $wpdb->prepare(
-                "SELECT *
-                FROM {$this->table}
-                WHERE id IN ({$placeholders})",
-                $infoIds
-            )
-        );
+            /*
+             * Get the record first because we need
+             * image_url and pdf_url before deleting it.
+             */
+            $info = $this->find($infoId);
 
-        if (empty($infos)) {
-            return false;
-        }
+            if (empty($info)) {
+                continue;
+            }
 
-        foreach ($infos as $info) {
+            $found = true;
 
             /*
              * Delete payment transaction.
@@ -321,17 +316,30 @@ class SwifCeMaGenerate {
 
                 AvailableOptions::removedFile($filenames);
             }
+
+            /*
+             * Delete the certificate record.
+             */
+            // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Delete a selected certificate record from the plugin's custom table.
+            $result = $wpdb->delete(
+                $this->table,
+                [
+                    'id' => $infoId,
+                ],
+                ['%d']
+            );
+
+            if (false === $result) {
+                return false;
+            }
+
+            $deleted += $result;
         }
 
-        /*
-         * Delete all certificate records in one query.
-         */
-        return $wpdb->query(
-            $wpdb->prepare(
-                "DELETE FROM {$this->table}
-                WHERE id IN ({$placeholders})",
-                $infoIds
-            )
-        );
+        if (!$found) {
+            return false;
+        }
+
+        return $deleted;
     }
 }
