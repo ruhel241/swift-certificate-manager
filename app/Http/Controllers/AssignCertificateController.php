@@ -929,7 +929,7 @@ class AssignCertificateController
 
             exit;
 
-        } catch ( Exception $e ) {
+        } catch (\Exception $e) {
 
             wp_send_json_error(
                 [

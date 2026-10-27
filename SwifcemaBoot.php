@@ -30,9 +30,7 @@ class SwifcemaBoot {
 
 		// all actions
 		$adminActions = new Arimtiaz\SwiftCertificateManager\Hooks\actions();
-		$adminActions->register();
-		
-		
+		$adminActions->register();	
     }
 
 	public function publicHooks() {

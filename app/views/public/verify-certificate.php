@@ -27,16 +27,12 @@ if ( ! defined( 'ABSPATH' ) ) {
                     <span class="label"><?php echo esc_html__( 'Certificate', 'swift-certificate-manager' ); ?></span>
                     <span class="value"></span>
                 </div>
-                <div class="item student_email">
-                    <span class="label"><?php echo esc_html__( 'Email', 'swift-certificate-manager' ); ?></span>
+                <div class="item certificate_code">
+                    <span class="label"><?php echo esc_html__( 'Certificate Code', 'swift-certificate-manager' ); ?></span>
                     <span class="value"></span>
                 </div>
                 <div class="item graduation_date">
                     <span class="label"><?php echo esc_html__( 'Graduation Date', 'swift-certificate-manager' ); ?></span>
-                    <span class="value"></span>
-                </div>
-                <div class="item full certificate_code">
-                    <span class="label"><?php echo esc_html__( 'Certificate Code', 'swift-certificate-manager' ); ?></span>
                     <span class="value"></span>
                 </div>
             </div>

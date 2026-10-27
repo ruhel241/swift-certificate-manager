@@ -68,7 +68,7 @@ jQuery(document).ready(function ($) {
           var info = response.data.info;
           $('.swifcema-student-information .swifcema-grid .student_name .value').text(info.student_name);
           $('.swifcema-student-information .swifcema-grid .course_name .value').text(info.course_name);
-          $('.swifcema-student-information .swifcema-grid .student_email .value').text(info.student_email);
+          // $('.swifcema-student-information .swifcema-grid .student_email .value').text(info.student_email);
           $('.swifcema-student-information .swifcema-grid .graduation_date .value').text(info.graduation_date);
           $('.swifcema-student-information .swifcema-grid .certificate_code .value').text(info.certificate_code);
           // show result

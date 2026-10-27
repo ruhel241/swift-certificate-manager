@@ -386,8 +386,8 @@ class FrontendHandler
         }
 
         $SwifCeMaGenerate  = new SwifCeMaGenerate();
-        $payment = (new SwifCeMaPayment)->getHash($hash);
-        $paymentStatus = $payment->payment_status;
+        $payment           = (new SwifCeMaPayment)->getHash($hash);
+        $paymentStatus     = $payment->payment_status;
 
         $GenerateData = [
             'payment_status' => $paymentStatus,
