@@ -227,8 +227,8 @@ export default {
                 });
         }
     },
-    mounted() {
-        this.getLicense();
-    }
+    // mounted() {
+    //     this.getLicense();
+    // }
 }
 </script>

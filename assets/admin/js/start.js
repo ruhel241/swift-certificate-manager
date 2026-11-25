@@ -23,25 +23,7 @@ __webpack_require__.r(__webpack_exports__);
     Navigation: _Layouts_Navigation__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
-    return {
-      tableData: [{
-        date: '2016-05-03',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
-      }, {
-        date: '2016-05-02',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
-      }, {
-        date: '2016-05-04',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
-      }, {
-        date: '2016-05-01',
-        name: 'Tom',
-        address: 'No. 189, Grove St, Los Angeles'
-      }]
-    };
+    return {};
   },
   mounted: function mounted() {
     var _this = this;
@@ -1622,6 +1604,11 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
     };
   },
   watch: {
+    settings: {
+      immediate: true,
+      deep: true,
+      handler: function handler(newValue, oldValue) {}
+    },
     template: {
       immediate: true,
       deep: true,
@@ -2864,122 +2851,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=script&lang=js":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=script&lang=js ***!
-  \********************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: 'license-management',
-  components: {},
-  data: function data() {
-    return {
-      fetching: false,
-      verifying: false,
-      licenseData: {},
-      licenseKey: '',
-      showNewLicenseInput: false,
-      errorMessage: ''
-    };
-  },
-  methods: {
-    getLicense: function getLicense() {
-      var _this = this;
-      this.errorMessage = '';
-      this.fetching = true;
-      this.$get({
-        action: "swifcema_admin_license_ajax",
-        route: "get_license_status",
-        nonce: window.swifcemaAdminVars.nonce
-        // verify: true
-      }).then(function (response) {
-        // console.log(response);
-        _this.licenseData = response.data.license_data;
-      }).fail(function (error) {
-        console.log(error);
-        _this.$handleError(error);
-      }).always(function () {
-        _this.fetching = false;
-      });
-    },
-    verifyLicense: function verifyLicense() {
-      var _this2 = this;
-      if (!this.licenseKey) {
-        this.$handleError('Please provide a license key');
-        this.errorMessage = 'Please provide a license key';
-        return;
-      }
-      this.verifying = true;
-      this.errorMessage = '';
-      this.$post({
-        action: "swifcema_admin_license_ajax",
-        route: "save_license",
-        nonce: window.swifcemaAdminVars.nonce,
-        license_key: this.licenseKey
-      }).then(function (response) {
-        _this2.getLicense();
-        if (response.success === false) {
-          _this2.errorMessage = response.data.message;
-          _this2.$handleError(response.data.message);
-          return;
-        }
-        _this2.$handleSuccess(response.data.message);
-        // setTimeout(() => {
-        //     window.location.reload();
-        // }, 3000);
-      }).fail(function (errorResponse) {
-        var errorMessage = '';
-        if (typeof errorResponse === 'string') {
-          errorMessage = errorResponse;
-        } else if (errorResponse && errorResponse.message) {
-          errorMessage = errorResponse.message;
-        } else {
-          errorMessage = 'Something is wrong!';
-        }
-        if (!errorMessage) {
-          errorMessage = 'Something is wrong!';
-        }
-        _this2.errorMessage = errorMessage;
-        _this2.$handleError(errorResponse);
-      }).always(function () {
-        _this2.verifying = false;
-      });
-    },
-    deactivateLicense: function deactivateLicense() {
-      var _this3 = this;
-      this.verifying = true;
-      this.$del({
-        action: "swifcema_admin_license_ajax",
-        route: "deactivated_license",
-        nonce: window.swifcemaAdminVars.nonce
-      }).then(function (response) {
-        _this3.licenseData = response.data.license_data;
-        _this3.$handleSuccess(response.data.message);
-        // setTimeout(() => {
-        //     window.location.reload();
-        // }, 3000);
-      }).fail(function (error) {
-        console.log(error);
-        _this3.$handleError(error);
-      }).always(function () {
-        _this3.verifying = false;
-        _this3.fetching = false;
-      });
-    }
-  },
-  mounted: function mounted() {
-    this.getLicense();
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/PaymentTransaction.vue?vue&type=script&lang=js":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/PaymentTransaction.vue?vue&type=script&lang=js ***!
@@ -3103,23 +2974,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _LicenseManagement_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LicenseManagement.vue */ "./resources/admin/Modules/Settings/LicenseManagement.vue");
-/* harmony import */ var _Integrations_Stripe__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Integrations/Stripe */ "./resources/admin/Integrations/Stripe.vue");
-/* harmony import */ var _Integrations_Paypal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Integrations/Paypal */ "./resources/admin/Integrations/Paypal.vue");
-/* harmony import */ var _inputComponent_PhotoUploader_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../inputComponent/PhotoUploader.vue */ "./resources/admin/inputComponent/PhotoUploader.vue");
-/* harmony import */ var _PaymentTransaction_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PaymentTransaction.vue */ "./resources/admin/Modules/Settings/PaymentTransaction.vue");
-
+/* harmony import */ var _Integrations_Stripe__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Integrations/Stripe */ "./resources/admin/Integrations/Stripe.vue");
+/* harmony import */ var _Integrations_Paypal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../Integrations/Paypal */ "./resources/admin/Integrations/Paypal.vue");
+/* harmony import */ var _inputComponent_PhotoUploader_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../inputComponent/PhotoUploader.vue */ "./resources/admin/inputComponent/PhotoUploader.vue");
+/* harmony import */ var _PaymentTransaction_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PaymentTransaction.vue */ "./resources/admin/Modules/Settings/PaymentTransaction.vue");
+// import LicenseManagement from "./LicenseManagement.vue";
 
 
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
-    LicenseManagement: _LicenseManagement_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    Stripe: _Integrations_Stripe__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Paypal: _Integrations_Paypal__WEBPACK_IMPORTED_MODULE_2__["default"],
-    PhotoUploader: _inputComponent_PhotoUploader_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
-    PaymentTransaction: _PaymentTransaction_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    // LicenseManagement,
+    Stripe: _Integrations_Stripe__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Paypal: _Integrations_Paypal__WEBPACK_IMPORTED_MODULE_1__["default"],
+    PhotoUploader: _inputComponent_PhotoUploader_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    PaymentTransaction: _PaymentTransaction_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   data: function data() {
     return {
@@ -6514,285 +6384,6 @@ render._withStripped = true;
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=template&id=2e7ffed0":
-/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=template&id=2e7ffed0 ***!
-  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* binding */ render),
-/* harmony export */   staticRenderFns: () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function render() {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "swifcema-card"
-  }, [_c("div", {
-    staticClass: "settings-item"
-  }, [_c("div", {
-    staticClass: "header-title"
-  }, [_c("h3", {
-    staticClass: "title"
-  }, [_vm._v("License Management")]), _vm._v(" "), _c("el-button", {
-    attrs: {
-      type: "text",
-      size: "medium",
-      icon: "el-icon-refresh"
-    },
-    on: {
-      click: _vm.getLicense
-    }
-  })], 1), _vm._v(" "), _c("div", {
-    staticClass: "swifcema-license-management"
-  }, [_c("div", {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: _vm.verifying,
-      expression: "verifying"
-    }],
-    staticClass: "swifcema_pad_around"
-  }, [_vm.fetching ? _c("div", {
-    directives: [{
-      name: "loading",
-      rawName: "v-loading",
-      value: _vm.fetching,
-      expression: "fetching"
-    }],
-    staticClass: "swifcema_narrow_box text-align-center fetching-text"
-  }, [_c("h3", [_vm._v("Fetching License Information Please wait")])]) : _c("div", {
-    staticClass: "swifcema_narrow_box",
-    "class": "swifcema_license_" + _vm.licenseData.status
-  }, [_vm.licenseData.status == "expired" ? _c("div", {
-    staticClass: "swifcema-expired"
-  }, [_c("h3", [_vm._v("Looks like your license has been expired ")]), _vm._v(" "), _c("div", {
-    staticClass: "license-status-container"
-  }, [_c("div", {
-    staticClass: "license-info-card"
-  }, [_vm._m(0), _vm._v(" "), _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" License Status: ")]), _vm._v(" "), _c("div", {
-    staticClass: "value expired"
-  }, [_vm._v("\n                                        " + _vm._s(_vm.licenseData.status.charAt(0).toUpperCase() + _vm.licenseData.status.slice(1)) + "\n                                    ")])]), _vm._v(" "), _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" Expiry On: ")]), _vm._v(" "), _c("div", {
-    staticClass: "value"
-  }, [_vm._v(_vm._s(_vm.licenseData.expires_formatted))])]), _vm._v(" "), _vm.licenseData.expires !== "Lifetime" ? _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" " + _vm._s(_vm.licenseData.time_label) + " ")]), _vm._v(" "), _c("div", {
-    staticClass: "value remaining"
-  }, [_c("el-tag", {
-    attrs: {
-      size: "small",
-      type: "danger"
-    }
-  }, [_vm._v(" " + _vm._s(_vm.licenseData.human_date))])], 1)]) : _vm._e()])]), _vm._v(" "), _c("a", {
-    staticClass: "el-button el-button--danger el-button--small",
-    attrs: {
-      href: _vm.licenseData.renew_url,
-      target: "_blank"
-    }
-  }, [_vm._v("Click Here to Renew your License")]), _vm._v(" "), _vm._m(1), _vm._v(" "), _c("hr", {
-    staticStyle: {
-      margin: "20px 0px"
-    }
-  }), _vm._v(" "), !_vm.showNewLicenseInput ? _c("p", [_vm._v("Have a new license Key? "), _c("a", {
-    attrs: {
-      href: "#"
-    },
-    on: {
-      click: function click($event) {
-        $event.preventDefault();
-        _vm.showNewLicenseInput = !_vm.showNewLicenseInput;
-      }
-    }
-  }, [_vm._v("Click here")])]) : _c("div", [_c("h3", {
-    staticStyle: {
-      "margin-bottom": "15px"
-    }
-  }, [_vm._v("Your License Key")]), _vm._v(" "), _c("el-input", {
-    attrs: {
-      placeholder: "License Key"
-    },
-    model: {
-      value: _vm.licenseKey,
-      callback: function callback($$v) {
-        _vm.licenseKey = $$v;
-      },
-      expression: "licenseKey"
-    }
-  }, [_c("el-button", {
-    attrs: {
-      slot: "append",
-      icon: "el-icon-lock"
-    },
-    on: {
-      click: function click($event) {
-        return _vm.verifyLicense();
-      }
-    },
-    slot: "append"
-  }, [_vm._v("Verify License")])], 1)], 1)]) : _vm.licenseData.status == "valid" ? _c("div", {
-    staticClass: "swifcema-valid"
-  }, [_vm._m(2), _vm._v(" "), _c("h2", {
-    staticClass: "title"
-  }, [_vm._v("You license key is valid and activated")]), _vm._v(" "), _c("div", {
-    staticClass: "license-status-container"
-  }, [_c("div", {
-    staticClass: "license-info-card"
-  }, [_vm._m(3), _vm._v(" "), _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" License Key: ")]), _vm._v(" "), _c("div", {
-    staticClass: "value license-key"
-  }, [_vm._v(" " + _vm._s(_vm.licenseData.license_key))])]), _vm._v(" "), _vm._m(4), _vm._v(" "), _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" Expiry Date: ")]), _vm._v(" "), _c("div", {
-    staticClass: "value"
-  }, [_vm._v(_vm._s(_vm.licenseData.expires_formatted))])]), _vm._v(" "), _vm.licenseData.expires !== "Lifetime" ? _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" " + _vm._s(_vm.licenseData.time_label) + " ")]), _vm._v(" "), _c("div", {
-    staticClass: "value remaining"
-  }, [_c("el-tag", {
-    attrs: {
-      size: "small",
-      type: "success"
-    }
-  }, [_vm._v(" " + _vm._s(_vm.licenseData.human_date))])], 1)]) : _vm._e()])]), _vm._v(" "), _c("hr", {
-    staticStyle: {
-      margin: "20px 0px"
-    }
-  }), _vm._v(" "), _c("p", [_vm._v("Want to deactivate this license? "), _c("a", {
-    attrs: {
-      href: "#"
-    },
-    on: {
-      click: function click($event) {
-        $event.preventDefault();
-        return _vm.deactivateLicense();
-      }
-    }
-  }, [_vm._v("Click here")])])]) : _c("div", {
-    staticClass: "swifcema-provide-license-key"
-  }, [_c("h3", [_vm._v("Please Provide a license key of Swift Certificate Manager Pro")]), _vm._v(" "), _c("el-input", {
-    attrs: {
-      placeholder: "License Key"
-    },
-    model: {
-      value: _vm.licenseKey,
-      callback: function callback($$v) {
-        _vm.licenseKey = $$v;
-      },
-      expression: "licenseKey"
-    }
-  }, [_c("el-button", {
-    attrs: {
-      slot: "append",
-      type: "success",
-      icon: "el-icon-lock"
-    },
-    on: {
-      click: function click($event) {
-        return _vm.verifyLicense();
-      }
-    },
-    slot: "append"
-  }, [_vm._v("Verify License")])], 1), _vm._v(" "), _c("p", {
-    staticClass: "text-align-center",
-    staticStyle: {
-      color: "red",
-      margin: "50px 0 0px 0px"
-    },
-    domProps: {
-      innerHTML: _vm._s(_vm.errorMessage)
-    }
-  }), _vm._v(" "), _c("hr", {
-    staticStyle: {
-      margin: "10px 0px 10px 0px"
-    }
-  }), _vm._v(" "), _c("p", {
-    staticClass: "text-align-center alert-text",
-    staticStyle: {
-      "text-align": "center"
-    }
-  }, [_vm._v(" Don't have a license key? "), _c("a", {
-    attrs: {
-      target: "_blank",
-      href: _vm.licenseData.purchase_url
-    }
-  }, [_vm._v("Purchase one here")])]), _vm._v(" "), _vm._m(5)], 1)])])])])]);
-};
-var staticRenderFns = [function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" Plugin:  ")]), _vm._v(" "), _c("div", {
-    staticClass: "value"
-  }, [_vm._v(" Swift Certificate Manager Pro")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticClass: "license-expired-notice"
-  }, [_vm._v("Note: "), _c("em", [_vm._v('Your License has expired, so "Swift Certificate Manager Pro" Addons is currently inactive. Please click the button to renew your license and continue using the plugin.')])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "circle-check-icon"
-  }, [_c("span", {
-    staticClass: "el-icon el-icon-circle-check"
-  })]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" Plugin:  ")]), _vm._v(" "), _c("div", {
-    staticClass: "value"
-  }, [_vm._v(" Swift Certificate Manager Pro ")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("div", {
-    staticClass: "info-item"
-  }, [_c("div", {
-    staticClass: "label"
-  }, [_vm._v(" License Status: ")]), _vm._v(" "), _c("div", {
-    staticClass: "value license-valid"
-  }, [_vm._v("\n                                        Active\n                                    ")])]);
-}, function () {
-  var _vm = this,
-    _c = _vm._self._c;
-  return _c("p", {
-    staticClass: "license-empty-notice"
-  }, [_vm._v("Note: "), _c("em", [_vm._v("Please activate your license key, Swift Certificate Manager Pro will not work without license activation.")])]);
-}];
-render._withStripped = true;
-
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/PaymentTransaction.vue?vue&type=template&id=18728e74":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/PaymentTransaction.vue?vue&type=template&id=18728e74 ***!
@@ -7133,11 +6724,7 @@ var render = function render() {
     attrs: {
       label: "payment_transaction"
     }
-  }, [_vm._v("Payment Transaction")]), _vm._v(" "), _vm.hasProVersion ? _c("el-radio-button", {
-    attrs: {
-      label: "license_management"
-    }
-  }, [_vm._v("License Management")]) : _vm._e()], 1)], 1)]), _vm._v(" "), _vm.settingTabMenu === "general" ? _c("div", {
+  }, [_vm._v("Payment Transaction")])], 1)], 1)]), _vm._v(" "), _vm.settingTabMenu === "general" ? _c("div", {
     directives: [{
       name: "loading",
       rawName: "v-loading",
@@ -7614,7 +7201,7 @@ var render = function render() {
       label: "Paypal",
       name: "paypal"
     }
-  }, [_c("paypal")], 1)], 1)], 1)]) : _vm._e(), _vm._v(" "), _vm.settingTabMenu === "payment_transaction" ? _c("div", [_c("payment-transaction")], 1) : _vm._e(), _vm._v(" "), _vm.settingTabMenu === "license_management" && _vm.hasProVersion ? _c("div", [_c("license-management")], 1) : _vm._e()]);
+  }, [_c("paypal")], 1)], 1)], 1)]) : _vm._e(), _vm._v(" "), _vm.settingTabMenu === "payment_transaction" ? _c("div", [_c("payment-transaction")], 1) : _vm._e()]);
 };
 var staticRenderFns = [function () {
   var _vm = this,
@@ -25832,45 +25419,6 @@ component.options.__file = "resources/admin/Modules/Onboarding/Step4.vue"
 
 /***/ }),
 
-/***/ "./resources/admin/Modules/Settings/LicenseManagement.vue":
-/*!****************************************************************!*\
-  !*** ./resources/admin/Modules/Settings/LicenseManagement.vue ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _LicenseManagement_vue_vue_type_template_id_2e7ffed0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LicenseManagement.vue?vue&type=template&id=2e7ffed0 */ "./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=template&id=2e7ffed0");
-/* harmony import */ var _LicenseManagement_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LicenseManagement.vue?vue&type=script&lang=js */ "./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=script&lang=js");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-;
-var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _LicenseManagement_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"],
-  _LicenseManagement_vue_vue_type_template_id_2e7ffed0__WEBPACK_IMPORTED_MODULE_0__.render,
-  _LicenseManagement_vue_vue_type_template_id_2e7ffed0__WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/admin/Modules/Settings/LicenseManagement.vue"
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
-
-/***/ }),
-
 /***/ "./resources/admin/Modules/Settings/PaymentTransaction.vue":
 /*!*****************************************************************!*\
   !*** ./resources/admin/Modules/Settings/PaymentTransaction.vue ***!
@@ -26413,22 +25961,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=script&lang=js":
-/*!****************************************************************************************!*\
-  !*** ./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=script&lang=js ***!
-  \****************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LicenseManagement_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LicenseManagement.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=script&lang=js");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_LicenseManagement_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
 /***/ "./resources/admin/Modules/Settings/PaymentTransaction.vue?vue&type=script&lang=js":
 /*!*****************************************************************************************!*\
   !*** ./resources/admin/Modules/Settings/PaymentTransaction.vue?vue&type=script&lang=js ***!
@@ -26844,23 +26376,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Step4_vue_vue_type_template_id_e6884bd8__WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Step4_vue_vue_type_template_id_e6884bd8__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./Step4.vue?vue&type=template&id=e6884bd8 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Onboarding/Step4.vue?vue&type=template&id=e6884bd8");
-
-
-/***/ }),
-
-/***/ "./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=template&id=2e7ffed0":
-/*!**********************************************************************************************!*\
-  !*** ./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=template&id=2e7ffed0 ***!
-  \**********************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   render: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LicenseManagement_vue_vue_type_template_id_2e7ffed0__WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   staticRenderFns: () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LicenseManagement_vue_vue_type_template_id_2e7ffed0__WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
-/* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_lib_loaders_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_lib_index_js_vue_loader_options_LicenseManagement_vue_vue_type_template_id_2e7ffed0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./LicenseManagement.vue?vue&type=template&id=2e7ffed0 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/lib/loaders/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/admin/Modules/Settings/LicenseManagement.vue?vue&type=template&id=2e7ffed0");
 
 
 /***/ }),

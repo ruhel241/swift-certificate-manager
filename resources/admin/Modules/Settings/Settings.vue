@@ -9,7 +9,7 @@
             <el-radio-button label="general">General</el-radio-button>
             <el-radio-button label="payment_methods">Payment Methods</el-radio-button>
             <el-radio-button label="payment_transaction">Payment Transaction</el-radio-button>
-            <el-radio-button label="license_management" v-if="hasProVersion">License Management</el-radio-button>
+            <!-- <el-radio-button label="license_management" v-if="hasProVersion">License Management</el-radio-button> -->
           </el-radio-group>
         </div>
       </div>
@@ -261,15 +261,14 @@
       <div v-if="settingTabMenu === 'payment_transaction'">
         <payment-transaction/>
       </div>
-
-      <div v-if="settingTabMenu === 'license_management' && hasProVersion">
+      <!-- <div v-if="settingTabMenu === 'license_management' && hasProVersion">
         <license-management/>
-      </div>
+      </div> -->
   </div>
 </template>
 
 <script>
-import LicenseManagement from "./LicenseManagement.vue";
+// import LicenseManagement from "./LicenseManagement.vue";
 import Stripe from '../../Integrations/Stripe';
 import Paypal from '../../Integrations/Paypal'
 import PhotoUploader from "../../inputComponent/PhotoUploader.vue";
@@ -277,7 +276,7 @@ import PaymentTransaction from "./PaymentTransaction.vue";
 
 export default {
   components: {
-    LicenseManagement,
+    // LicenseManagement,
     Stripe,
     Paypal,
     PhotoUploader,

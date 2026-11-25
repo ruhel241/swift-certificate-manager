@@ -10,7 +10,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
     $swifcema_stripe_enabled = $swifcema_payment_settings_stripe['enable'] ?? 'no';
     $swifcema_paypal_enabled = $swifcema_payment_settings_paypal['enable'] ?? 'no';
-
 ?>
 
 <div class="swifcema-request-certificate-wrapper">

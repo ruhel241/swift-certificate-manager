@@ -257,7 +257,6 @@ class FrontendHandler
                 'message' => __('Certificate code is required', 'swift-certificate-manager')
             ], 400);
         }
-
        
         $SwifCeMaGenerate = new SwifCeMaGenerate();
 

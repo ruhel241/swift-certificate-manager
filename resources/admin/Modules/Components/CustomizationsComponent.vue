@@ -384,6 +384,12 @@ export default {
     };
   },
   watch: {
+    settings: {
+        immediate: true,
+        deep: true,
+        handler(newValue, oldValue) {
+        },
+    },
     template: {
       immediate: true,
       deep: true,

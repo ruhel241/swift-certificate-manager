@@ -3,7 +3,7 @@
 Plugin Name: Swift Certificate Manager
 Plugin URI: https://wordpress.org/plugins/swift-certificate-manager/
 Description: Issue, manage, and verify professional digital certificates directly from your WordPress site.
-Version: 2.0.1
+Version: 1.0.0
 Requires at least: 5.5
 Requires PHP: 7.4
 Author: arimtiaz
