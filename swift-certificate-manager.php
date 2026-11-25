@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('SWIFCEMA_VERSION', '2.0.1');
+define('SWIFCEMA_VERSION', '1.0.0');
 defined('SWIFCEMA_LITE') or define('SWIFCEMA_LITE', true);
 define('SWIFCEMA_UPLOAD_DIR', 'swifcema_templates_upload_dir');
 define('SWIFCEMA_PLUGIN_FILE_PATH', plugin_basename(__FILE__));

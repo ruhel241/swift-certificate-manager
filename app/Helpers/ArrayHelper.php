@@ -6,7 +6,7 @@ if (!defined('ABSPATH')) exit; // Exit if accessed directly
 
 /**
  * ArrayHelper Class
- * @since 2.0.1
+ * @since 1.0.0
  */
 class ArrayHelper
 {
