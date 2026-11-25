@@ -147,6 +147,17 @@ class TemplateController
             wp_send_json_error(['message' => __('Template not found', 'swift-certificate-manager')], 404);
         }
 
+        $settings = json_decode($template->settings ?? '', true);
+        $settings = is_array($settings) ? $settings : [];
+
+        $globalSettings = get_option('swifcema_global_settings', []);
+        $preference     = $globalSettings['preference'] ?? '';
+
+        $settings['instructor_name']          = $globalSettings[$preference . '_name'] ?? '';
+        $settings['instructor_signature']     = $globalSettings[$preference . '_signature'] ?? '';
+        $settings['instructor_signature_img'] = $globalSettings[$preference . '_signature_img'] ?? '';
+        $settings['instructor_signature_img_enable'] = $globalSettings[$preference . '_signature_img_enable'] ?? '';
+
         wp_send_json_success([
             'message' => __('Get Template', 'swift-certificate-manager'),
             'template' => $template,

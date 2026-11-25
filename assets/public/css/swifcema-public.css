@@ -116,6 +116,11 @@
   color: #b42318;
   border: 1px solid #f5c2c7;
 }
+.swifcema-request-certificate-wrapper #swifcema_pay_now {
+  color: #ffffff !important;
+  background-color: #045cb4 !important;
+  border-color: #045cb4 !important;
+}
 
 /* 📱 Mobile Responsive */
 @media (max-width: 600px) {
